@@ -1,0 +1,60 @@
+---
+permalink: sm-storage/change-the-settings-for-a-host.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, settings, host 
+summary: 'Vous pouvez modifier le nom, le type de système d"exploitation hôte et les clusters hôtes associés pour un hôte.' 
+---
+= Modifier les paramètres d'un hôte dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez modifier le nom, le type de système d'exploitation hôte et les clusters hôtes associés pour un hôte.
+
+.Étapes
+. Sélectionnez le menu : Storage[Hosts].
+. Sélectionnez l'hôte que vous souhaitez modifier, puis cliquez sur *Afficher/Modifier les paramètres*.
++
+Une boîte de dialogue s'affiche, affichant les paramètres d'hôte actuels.
+
+. Si ce n'est pas déjà sélectionné, cliquez sur l'onglet *Propriétés*.
+. Modifiez les paramètres selon vos besoins.
++
+.Détails du champ
+[%collapsible]
+====
+[cols="25h,~"]
+|===
+| Paramètre | Description 
+
+
+ a| 
+Nom
+ a| 
+Vous pouvez modifier le nom de l'hôte fourni par l'utilisateur. La spécification d'un nom pour l'hôte est obligatoire.
+
+
+
+ a| 
+Cluster hôte associé
+ a| 
+Vous pouvez choisir l'une des options suivantes :
+
+** *Aucun* -- L’hôte reste un hôte autonome. Si l’hôte était associé à un cluster d’hôtes, le système retire l’hôte de ce cluster.
+** *<Host Cluster>* -- Le système associe l'hôte au cluster sélectionné.
+
+
+
+
+ a| 
+Type de système d'exploitation hôte
+ a| 
+Vous pouvez modifier le type de système d'exploitation exécuté sur l'hôte que vous avez défini.
+
+|===
+====
+. Cliquez sur *Enregistrer*.
+

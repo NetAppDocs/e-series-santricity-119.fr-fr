@@ -1,0 +1,96 @@
+---
+permalink: sm-storage/snapshot-terminology.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, snapshot, terms 
+summary: 'Découvrez comment les termes relatifs aux instantanés s"appliquent à votre storage array.' 
+---
+= Découvrez la terminologie relative aux instantanés dans le logiciel SANtricity
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Découvrez comment les termes relatifs aux instantanés s'appliquent à votre storage array.
+
+[cols="25h,~"]
+|===
+| Terme | Description 
+
+
+ a| 
+Fonctionnalité de snapshots
+ a| 
+La fonction Snapshots permet de créer et de gérer des images de volumes.
+
+
+
+ a| 
+Image instantanée
+ a| 
+Une image instantanée est une copie logique des données d'un volume, capturée à un instant précis. À l'instar d'un point de restauration, les images instantanées permettent de revenir à un ensemble de données connu et fonctionnel. Bien que l'hôte puisse accéder à l'image instantanée, il ne peut pas la lire ou y écrire directement.
+
+
+
+ a| 
+Volume de base
+ a| 
+Un volume de base est la source à partir de laquelle une image instantanée est créée. Il peut s'agir d'un volume épais ou mince et est généralement attribué à un hôte. Le volume de base peut se trouver dans un groupe de volumes ou un pool de disques.
+
+
+
+ a| 
+Volume instantané
+ a| 
+Un volume de snapshot permet à l'hôte d'accéder aux données de l'image snapshot. Le volume de snapshot contient sa propre capacité réservée, qui enregistre toute modification apportée au volume de base sans affecter l'image snapshot originale.
+
+
+
+ a| 
+Groupe instantané
+ a| 
+Un groupe d'instantanés est une collection d'images instantanées provenant d'un seul volume de base.
+
+
+
+ a| 
+Volume de capacité réservée
+ a| 
+Un volume de capacité réservée suit quels blocs de données du volume de base sont écrasés et le contenu préservé de ces blocs.
+
+
+
+ a| 
+Calendrier des snapshots
+ a| 
+Un calendrier de capture d'images est un programme permettant de créer automatiquement des images instantanées. Grâce au calendrier, vous pouvez contrôler la fréquence de création des images.
+
+
+
+ a| 
+groupe de cohérence de snapshot
+ a| 
+Un groupe de cohérence d'instantanés est un ensemble de volumes traités comme une seule entité lors de la création d'une image d'instantané. Chacun de ces volumes possède sa propre image d'instantané, mais toutes les images sont créées au même moment.
+
+
+
+ a| 
+Volume membre du groupe de cohérence de snapshot
+ a| 
+Chaque volume appartenant à un groupe de cohérence d'instantanés est appelé volume membre. Lorsque vous ajoutez un volume à un groupe de cohérence d'instantanés, System Manager crée automatiquement un nouveau groupe d'instantanés correspondant à ce volume membre.
+
+
+
+ a| 
+Restauration
+ a| 
+Un rollback est le processus de retour des données d'un volume de base à un point antérieur dans le temps.
+
+
+
+ a| 
+Capacité réservée
+ a| 
+La capacité réservée correspond à la capacité physique allouée qui est utilisée pour toute opération de service de copie et tout objet de stockage. Elle n'est pas directement lisible par l'hôte.
+
+|===

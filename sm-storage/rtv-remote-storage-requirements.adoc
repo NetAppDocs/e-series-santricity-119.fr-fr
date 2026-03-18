@@ -1,0 +1,61 @@
+---
+permalink: sm-storage/rtv-remote-storage-requirements.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, remote, storage, requirements 
+summary: 'Avant d"utiliser la fonction Remote Storage, veuillez prendre connaissance des exigences et restrictions suivantes.' 
+---
+= Découvrez les exigences relatives à la fonctionnalité de stockage à distance dans le logiciel SANtricity
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Avant d'utiliser la fonction Remote Storage, veuillez prendre connaissance des exigences et restrictions suivantes.
+
+
+
+== Protocoles pris en charge
+
+Les protocoles suivants sont pris en charge :
+
+* iSCSI
+* IPv4
+
+
+Pour obtenir des informations à jour sur la prise en charge et la configuration E-Series, consultez le https://imt.netapp.com/matrix/#welcome["Outil NetApp Interoperability Matrix Tool"^].
+
+
+
+== Exigences matérielles
+
+Le système de stockage E-Series doit comprendre :
+
+* Deux contrôleurs (mode duplex)
+* Connexions iSCSI pour que les deux contrôleurs E-Series puissent communiquer avec le système de stockage distant via une ou plusieurs connexions iSCSI
+* SANtricity OS 11.71 ou supérieur
+* Fonction de stockage à distance activée dans le Submodel ID (SMID)
+
+
+Le système distant peut être un système de stockage E-Series ou un système d'un autre fournisseur. Il doit comprendre :
+
+* Interfaces compatibles iSCSI
+
+
+
+
+== Restrictions
+
+La fonctionnalité de stockage à distance présente les restrictions suivantes :
+
+* La mise en miroir doit être désactivée.
+* Le volume de destination sur le système E-Series ne doit pas avoir de snapshots.
+* Le volume de destination sur le système E-Series ne doit pas être mappé à un hôte avant le début de l'importation.
+* Le volume de destination sur le système E-Series doit avoir l’allocation de ressources désactivée.
+* Le mappage direct du volume de stockage distant vers un ou plusieurs hôtes n'est pas pris en charge.
+* Le proxy Web Services n'est pas pris en charge.
+* Les secrets iSCSI CHAP ne sont pas pris en charge.
+* SMcli n'est pas pris en charge.
+* VMware Datastore n'est pas pris en charge.
+* Un seul système de stockage dans la paire de relation/importation peut être mis à niveau à la fois lorsqu'une paire d'importation est présente.
+

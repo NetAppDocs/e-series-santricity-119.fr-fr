@@ -1,0 +1,43 @@
+---
+permalink: sm-mirroring/workflow-for-mirroring-a-volume-synchronously.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, workflow, mirroring, synchronously, 
+summary: 'Vous configurez la mise en miroir synchrone à l"aide du workflow suivant.' 
+---
+= Dupliquez un volume de manière synchrone dans le logiciel SANtricity
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous configurez la mise en miroir synchrone à l'aide du workflow suivant.
+
+[NOTE]
+====
+Cette fonctionnalité n'est pas disponible sur le système de stockage EF600/EF600C ou EF300/EF300C.
+
+====
+. Effectuez la configuration initiale dans Unified Manager :
++
+.. Sélectionnez une baie de stockage locale comme source pour le transfert de données.
+.. Sélectionnez un volume principal dans la baie de stockage locale.
+.. Sélectionnez une baie de stockage distante comme destination du transfert de données, puis sélectionnez un volume secondaire.
+.. Sélectionnez les priorités de synchronisation et de resynchronisation.
+.. Démarrez le transfert de données initial du volume principal vers le volume secondaire. Selon la taille du volume, ce transfert initial peut prendre plusieurs heures.
+
+
+. Vérifiez la progression de la synchronisation initiale :
++
+.. Dans Unified Manager, lancez System Manager pour la baie locale.
+.. Dans System Manager, consultez l'état de l'opération de mise en miroir. Une fois la mise en miroir terminée, l'état de la paire en miroir est « Optimal ». Les deux arrays tentent de rester synchronisés lors des opérations normales. Seuls les blocs nouveaux et modifiés sont transférés du volume principal vers le volume secondaire.
+
+
+. *Facultatif :* Vous pouvez modifier les paramètres de synchronisation dans System Manager.
++
+[NOTE]
+====
+Étant donné que la réplication synchrone est continue, la liaison de réplication entre les deux sites doit offrir des capacités de bande passante suffisantes.
+
+====
+

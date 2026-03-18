@@ -1,0 +1,36 @@
+---
+permalink: sm-settings/change-default-host-type.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, change, default, host, type, 
+summary: 'Utilisez le paramètre « Modifier le système d"exploitation hôte par défaut » pour modifier le type d"hôte par défaut au niveau de la baie de stockage. En général, vous modifierez le type d"hôte par défaut avant de connecter des hôtes à la baie de stockage ou lorsque vous connectez des hôtes supplémentaires.' 
+---
+= Modifier le type d'hôte par défaut dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Utilisez le paramètre « Modifier le système d'exploitation hôte par défaut » pour modifier le type d'hôte par défaut au niveau de la baie de stockage. En général, vous modifierez le type d'hôte par défaut avant de connecter des hôtes à la baie de stockage ou lorsque vous connectez des hôtes supplémentaires.
+
+.À propos de cette tâche
+Gardez ces consignes à l'esprit :
+
+* Si tous les hôtes que vous prévoyez de connecter à la baie de stockage ont le même système d'exploitation (environnement hôte homogène), alors modifiez le type d'hôte pour qu'il corresponde au système d'exploitation.
+* Si vous prévoyez de connecter à la baie de stockage des hôtes dotés de systèmes d'exploitation différents (environnement hôte hétérogène), modifiez le type d'hôte pour qu'il corresponde au système d'exploitation de la majorité des hôtes.
++
+Par exemple, si vous connectez huit hôtes différents à la baie de stockage et que six de ces hôtes exécutent un système d'exploitation Windows, vous devez sélectionner Windows comme type de système d'exploitation hôte par défaut.
+
+* Si la majorité des hôtes connectés ont un mélange de différents systèmes d'exploitation, changez le type d'hôte en Factory Default.
++
+Par exemple, si vous connectez huit hôtes différents à la baie de stockage, et que deux de ces hôtes exécutent un système d'exploitation Windows, trois exécutent un système d'exploitation VMware et trois autres exécutent un système d'exploitation Linux, vous devez sélectionner Factory Default comme type de système d'exploitation hôte par défaut.
+
+
+
+.Étapes
+. Sélectionnez menu : Paramètres [System].
+. Faites défiler vers le bas jusqu'à *Paramètres supplémentaires*, puis cliquez sur *Modifier le type de système d'exploitation hôte par défaut*.
+. Sélectionnez le type de système d'exploitation hôte que vous souhaitez utiliser comme valeur par défaut.
+. Cliquez sur *Change*.
+

@@ -1,0 +1,44 @@
+---
+permalink: sm-storage/overview-remote-storage.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, remote, storage 
+summary: Si vous disposez de la fonctionnalité Remote Storage, vous pouvez importer des données depuis un système de stockage distant. 
+---
+= Découvrez la fonctionnalité Remote Storage dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Si vous disposez de la fonctionnalité Remote Storage, vous pouvez importer des données depuis un système de stockage distant vers votre baie de stockage.
+
+
+
+== Qu'est-ce que la fonctionnalité Remote Storage ?
+
+La fonctionnalité _Stockage distant_ vous permet d'importer des données depuis un système de stockage distant vers un système de stockage E-Series. Le système distant peut être un autre système E-Series ou un système d'un autre fournisseur. Cette fonctionnalité est utile lorsque vous souhaitez simplifier la migration des données avec une interruption minimale, par exemple lors de mises à niveau d'équipement.
+
+
+NOTE: Pour utiliser le stockage distant, cette fonctionnalité doit être activée dans le Submodel ID (SMID).
+
+En savoir plus :
+
+* link:rtv-how-remote-storage-works.html["Comment fonctionne le stockage distant"]
+* link:rtv-terminology.html["Terminologie du stockage à distance"]
+* link:rtv-remote-storage-requirements.html["Exigences de stockage à distance"]
+* link:rtv-remote-storage-volume-requirements.html["Exigences relatives au volume de stockage à distance"]
+
+
+
+
+== Comment importer des données avec cette fonctionnalité ?
+
+L'assistant de stockage distant vous permet d'associer un périphérique de stockage distant (la source de l'importation des données) à un volume cible sur le système E-Series. Cet assistant est accessible via le menu : Storage[Remote storage].
+
+En savoir plus :
+
+* link:rtv-import-remote-storage.html["Importer un stockage distant"]
+* link:rtv-manage-progress-of-remote-volume-import.html["Gérer la progression de l'importation des données"]
+

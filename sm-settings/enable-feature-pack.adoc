@@ -1,0 +1,47 @@
+---
+permalink: sm-settings/enable-feature-pack.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, enable, feature, pack, 
+summary: 'Un pack de fonctionnalités est un ensemble qui modifie les attributs d"une baie de stockage (par exemple, en changeant le protocole de Fibre Channel à iSCSI). Les packs de fonctionnalités nécessitent une clé spéciale pour l"activation.' 
+---
+= Activer le pack de fonctionnalités dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Un pack de fonctionnalités est un ensemble qui modifie les attributs d'une baie de stockage (par exemple, en changeant le protocole de Fibre Channel à iSCSI). Les packs de fonctionnalités nécessitent une clé spéciale pour l'activation.
+
+.Avant de commencer
+* Vous avez suivi les instructions relatives à la conversion et à la préparation des nouveaux attributs de la baie de stockage. Pour les instructions de conversion du protocole hôte, consultez le guide de maintenance matérielle de votre modèle de contrôleur.
+* La baie de stockage est hors ligne, donc aucun hôte ni application n'y accède.
+* Toutes les données sont sauvegardées.
+* Vous avez obtenu un fichier de feature pack.
++
+Le fichier du pack de fonctionnalités est chargé sur le client de gestion (le système avec un navigateur pour accéder à System Manager).
+
+
+
+[NOTE]
+====
+Vous devez planifier une fenêtre de maintenance pour interruption et arrêter toutes les opérations d'E/S entre l'hôte et les contrôleurs. De plus, sachez que vous ne pourrez pas accéder aux données de la baie de stockage tant que vous n'aurez pas terminé la conversion avec succès.
+
+====
+.À propos de cette tâche
+Cette procédure explique comment utiliser System Manager pour activer un module complémentaire. Une fois l'opération terminée, vous devez redémarrer la baie de stockage.
+
+.Étapes
+. Sélectionnez menu : Paramètres [System].
+. Sous *Modules complémentaires*, sélectionnez *Change Feature Pack*.
+. Cliquez sur *Parcourir*, puis sélectionnez le fichier clé.
++
+Le nom du fichier s'affiche dans la boîte de dialogue.
+
+. Saisissez  `change`dans le champ.
+. Cliquez sur *Change*.
++
+La migration du pack de fonctionnalités démarre et les contrôleurs redémarrent. Les données du cache non écrites sont supprimées, ce qui garantit l'absence d'activité d'E/S. Les deux contrôleurs redémarrent automatiquement pour que le nouveau pack de fonctionnalités soit pris en compte. La baie de stockage redevient réactive une fois le redémarrage terminé.
+
+

@@ -1,0 +1,35 @@
+---
+permalink: sm-mirroring/re-synchronize-mirror-consistency-group-manually.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, re-synchronize, mirror, consistency, group, manually, 
+summary: 'Vous pouvez lancer manuellement la resynchronisation pour toutes les paires mises en miroir au sein d"un groupe de cohérence miroir.' 
+---
+= Resynchronisez manuellement les groupes de cohérence de miroir dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez lancer manuellement la resynchronisation pour toutes les paires mises en miroir au sein d'un groupe de cohérence miroir.
+
+.Étapes
+. Sélectionnez menu : Storage[Asynchronous Mirroring].
+. Sélectionnez l’onglet *Mirror Consistency Groups*.
++
+Le tableau Mirror Consistency Group s'affiche et présente tous les mirror consistency groups associés à la baie de stockage.
+
+. Sélectionnez le groupe de cohérence miroir que vous souhaitez resynchroniser, puis sélectionnez menu:More[Resynchroniser manuellement].
++
+Le système affiche une confirmation.
+
+. Sélectionnez *Yes* pour confirmer.
+
+
+.Résultats
+Le système effectue les actions suivantes :
+
+* Lance la resynchronisation des données sur toutes les paires mises en miroir au sein du groupe de cohérence miroir sélectionné.
+* Met à jour les données modifiées de la baie de stockage locale vers la baie de stockage distante.
+

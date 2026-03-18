@@ -1,0 +1,158 @@
+---
+permalink: san-getstarted/santricity-overview.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, 
+summary: 'Les systèmes E-Series incluent le logiciel SANtricity pour le provisionnement du stockage et d"autres tâches.' 
+---
+= Découvrez le logiciel SANtricity
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Les systèmes E-Series incluent le logiciel SANtricity pour le provisionnement du stockage et d'autres tâches.
+
+Ce site explique comment utiliser les interfaces de gestion SANtricity suivantes :
+
+* System Manager – une interface web permettant de gérer une baie de stockage individuelle au sein de votre réseau.
+* Unified Manager -- une interface web permettant de visualiser et de gérer toutes les baies de stockage de votre réseau.
+
+
+
+NOTE: Les baies de stockage EF600/EF600C et EF300/EF300C ne prennent pas en charge la mise en miroir synchrone ni les volumes fins.
+
+
+
+== SANtricity System Manager
+
+System Manager est un logiciel de gestion web intégré à chaque contrôleur. Pour accéder à l'interface utilisateur, saisissez l'adresse IP du contrôleur dans votre navigateur. Un assistant d'installation vous aide à démarrer avec la configuration du système.
+
+System Manager offre une variété de fonctionnalités de gestion, notamment :
+
+|===
+
+
+ a| 
+image:../media/sam1130_icon_performance.gif["Performances"] *Performances*
+ a| 
+Consultez jusqu'à 30 jours de données de performance, notamment la latence d'E/S, les IOPS, le taux d'utilisation du processeur et le débit.
+
+
+
+ a| 
+image:../media/sam1130_icon_volumes.gif["Stockage"] *Stockage*
+ a| 
+Provisionnez le stockage à l'aide de pools ou de groupes de volumes, et créez des charges de travail d'application.
+
+
+
+ a| 
+image:../media/sam1130_icon_async_mirroring.gif["Protection des données"] *Protection des données*
+ a| 
+Effectuez des sauvegardes et une restauration après sinistre à l'aide d'instantanés, de copies de volumes et de mises en miroir à distance.
+
+
+
+ a| 
+image:../media/sam1130_icon_controllers.gif["Matériel"] *Matériel*
+ a| 
+Vérifiez l'état des composants et effectuez certaines fonctions liées à ces composants, telles que l'attribution de disques de secours à chaud.
+
+
+
+ a| 
+image:../media/sam1130_icon_alerts.gif["Alertes"] *Alertes*
+ a| 
+Avertir les administrateurs des événements importants survenant sur la baie de stockage. Les alertes peuvent être envoyées par e-mail, SNMP traps et syslog.
+
+
+
+ a| 
+image:../media/sam1140_icon_active_directory.gif["Gestion des accès"] *Gestion des accès*
+ a| 
+Configurez l'authentification des utilisateurs qui exige que les utilisateurs se connectent au système avec des identifiants attribués.
+
+
+
+ a| 
+image:../media/sam1130_icon_settings.gif["Paramètres système"] *Paramètres système*
+ a| 
+Configurez d'autres fonctionnalités de performance du système, telles que le cache SSD et l'autoload balancing.
+
+
+
+ a| 
+image:../media/sam1130_icon_support.gif["Support"] *Soutien*
+ a| 
+Consultez les données de diagnostic, gérez les mises à niveau et configurez AutoSupport, qui surveille l'état d'une baie de stockage et envoie des demandes d'assistance technique automatiques.
+
+|===
+
+
+== SANtricity Unified Manager
+
+Unified Manager est un logiciel web utilisé pour gérer l'ensemble de votre domaine. Depuis une vue centrale, vous pouvez voir l'état de toutes les baies E-Series et EF-Series récentes, telles que E4000, E2800, EF280, EF300, E5700, EF570, EF600, EF300C et EF600C. Vous pouvez également effectuer des opérations par lots sur les baies de stockage sélectionnées.
+
+Unified Manager est installé sur un serveur d'administration avec le Web Services Proxy. Pour accéder à Unified Manager, vous ouvrez un navigateur et saisissez l'URL pointant vers le serveur où le Web Services Proxy est installé.
+
+Unified Manager offre diverses fonctionnalités de gestion, notamment :
+
+|===
+
+
+ a| 
+image:../media/artboard_9.png["Découvrir la baie de stockage"] *Découvrez les baies de stockage*
+ a| 
+Recherchez et ajoutez les baies de stockage que vous souhaitez gérer sur le réseau de votre organisation. Vous pourrez ensuite consulter l'état de toutes les baies de stockage depuis une seule page.
+
+
+
+ a| 
+image:../media/artboard_11.png["Lancement"] *Lancement*
+ a| 
+Ouvrez une instance de System Manager pour effectuer des opérations de gestion individuelles sur une baie de stockage particulière.
+
+
+
+ a| 
+image:../media/sam1130_icon_system.gif["Paramètres d'importation"] *Paramètres d'importation*
+ a| 
+Effectuez une importation par lots d'une baie de stockage vers plusieurs baies, y compris les paramètres des alertes, AutoSupport et des services d'annuaire.
+
+
+
+ a| 
+image:../media/sam1130_icon_async_mirroring.gif["Mise en miroir"] *Mise en miroir*
+ a| 
+Configurez des paires en miroir asynchrones ou synchrones entre deux baies de stockage.
+
+
+
+ a| 
+image:../media/artboard_10.png["Gérer les groupes"] *Gérer les groupes*
+ a| 
+Organisez les baies de stockage en groupes pour une gestion plus facile.
+
+
+
+ a| 
+image:../media/sam1130_icon_upgrade_center.gif["Centre de mise à niveau"] *Centre de mise à niveau*
+ a| 
+Mettez à niveau le logiciel SANtricity OS sur plusieurs baies de stockage.
+
+
+
+ a| 
+image:../media/sam1140_icon_certs.gif["Certificats"] *Certificats*
+ a| 
+Créez des demandes de signature de certificats (CSRs), importez des certificats et gérez les certificats existants pour plusieurs baies de stockage.
+
+
+
+ a| 
+image:../media/sam1140_icon_active_directory.gif["Gestion des accès"] *Gestion des accès*
+ a| 
+Configurez l'authentification des utilisateurs qui exige qu'ils se connectent à Unified Manager avec des identifiants attribués.
+
+|===

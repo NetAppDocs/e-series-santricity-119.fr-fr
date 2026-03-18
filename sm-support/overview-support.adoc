@@ -1,0 +1,34 @@
+---
+permalink: sm-support/overview-support.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, support, center 
+summary: 'Utilisez le Support Center pour effectuer des opérations de diagnostic, de récupération et de collecte d"informations qui pourraient être demandées par le support technique.' 
+---
+= Obtenez de l'aide dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La page Support donne accès aux ressources de support technique.
+
+
+
+== Quelles tâches d'assistance sont disponibles ?
+
+Dans la section Assistance, vous pouvez consulter les contacts du support technique, effectuer des diagnostics, configurer AutoSupport, consulter le journal des événements et effectuer des mises à niveau logicielles.
+
+En savoir plus :
+
+* link:autosupport-feature-overview.html["Présentation de la fonctionnalité AutoSupport"]
+* link:overview-event-log.html["Aperçu du journal des événements"]
+* link:overview-upgrade-center.html["Présentation du Upgrade Center"]
+
+
+
+
+== Comment puis-je contacter le support technique ?
+
+Depuis la page principale, cliquez sur menu : Support [Support Center > Support Resources tab]. Les coordonnées du support technique sont indiquées en haut à droite de l’interface.

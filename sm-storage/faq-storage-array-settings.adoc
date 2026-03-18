@@ -1,0 +1,99 @@
+---
+permalink: sm-storage/faq-storage-array-settings.html 
+sidebar: sidebar 
+keywords:  
+summary: Cette FAQ peut vous aider si vous cherchez simplement une réponse rapide à une question. 
+---
+= FAQ sur les paramètres de la baie de stockage pour SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Cette FAQ peut vous aider si vous cherchez simplement une réponse rapide à une question.
+
+
+
+== Qu'est-ce que l'équilibrage de charge automatique ?
+
+La fonction d'équilibrage de charge automatique assure un équilibrage automatisé des E/S et garantit que le trafic d'E/S entrant provenant des hôtes est géré et équilibré dynamiquement entre les deux contrôleurs.
+
+La fonction d'équilibrage de charge automatique offre une gestion améliorée des ressources d'E/S en réagissant dynamiquement aux variations de charge au fil du temps et en ajustant automatiquement la propriété du contrôleur de volume pour corriger tout problème de déséquilibre de charge lorsque les charges de travail se déplacent entre les contrôleurs.
+
+La charge de travail de chaque contrôleur est surveillée en permanence et, grâce à la coopération des pilotes multipath installés sur les hôtes, elle peut être automatiquement rééquilibrée en cas de besoin. Lorsque la charge de travail est automatiquement rééquilibrée entre les contrôleurs, l'administrateur de stockage est soulagé de la tâche d'ajuster manuellement la propriété des contrôleurs de volume pour tenir compte des variations de charge sur la baie de stockage.
+
+Lorsque l'équilibrage de charge automatique est activé, il effectue les fonctions suivantes :
+
+* Surveille et équilibre automatiquement l'utilisation des ressources du contrôleur.
+* Ajuste automatiquement la propriété du contrôleur de volume en cas de besoin, optimisant ainsi la bande passante d'E/S entre les hôtes et la baie de stockage.
+
+
+[NOTE]
+====
+Tout volume affecté à l'utilisation du cache SSD d'un contrôleur n'est pas éligible à un transfert automatique d'équilibrage de charge.
+
+====
+
+
+== Qu'est-ce que le cache du contrôleur ?
+
+Le cache du contrôleur est un espace mémoire physique qui rationalise deux types d'opérations d'E/S (entrée/sortie) : entre les contrôleurs et les hôtes, et entre les contrôleurs et les disques.
+
+Pour les transferts de données en lecture et en écriture, les hôtes et les contrôleurs communiquent via des connexions haut débit. Cependant, les communications depuis le back-end du contrôleur vers les disques sont plus lentes, car les disques sont des périphériques relativement lents.
+
+Lorsque le cache du contrôleur reçoit des données, le contrôleur confirme aux applications hôtes qu'il détient désormais les données. Ainsi, les applications hôtes n'ont pas besoin d'attendre que l'E/S soit écrite sur le disque. Au lieu de cela, les applications peuvent continuer leurs opérations. Les données mises en cache sont également immédiatement accessibles aux applications serveur, éliminant le besoin de lectures disque supplémentaires pour accéder aux données.
+
+Le cache du contrôleur influe de plusieurs manières sur les performances globales de la baie de stockage :
+
+* Le cache agit comme un tampon, de sorte que les transferts de données entre l’hôte et le disque n’ont pas besoin d’être synchronisés.
+* Les données pour une opération de lecture ou d'écriture depuis l'hôte peuvent se trouver en cache suite à une opération précédente, ce qui élimine la nécessité d'accéder au disque.
+* Si la mise en cache en écriture est utilisée, l'hôte peut envoyer des commandes d'écriture ultérieures avant que les données d'une opération d'écriture précédente ne soient écrites sur le disque.
+* Si le préchargement du cache est activé, l'accès en lecture séquentielle est optimisé. Le préchargement du cache rend plus probable qu'une opération de lecture trouve ses données dans le cache, au lieu de lire les données depuis le disque.
+
+
+[CAUTION]
+====
+*Risque de perte de données* -- Si vous activez l’option *Mise en cache en écriture sans batteries* et que vous ne disposez pas d’une alimentation universelle de secours, vous pourriez perdre des données. De plus, vous pourriez perdre des données si vous n’avez pas de batteries pour le contrôleur et que vous activez l’option *Mise en cache en écriture sans batteries*.
+
+====
+
+
+== Qu'est-ce que le vidage du cache ?
+
+Lorsque la quantité de données non écrites dans le cache atteint un certain niveau, le contrôleur écrit périodiquement les données mises en cache sur un disque. Ce processus d'écriture est appelé « flushing ».
+
+Le contrôleur utilise deux algorithmes pour vider le cache : l’un basé sur la demande et l’autre sur l’ancienneté. Le contrôleur utilise un algorithme basé sur la demande jusqu’à ce que la quantité de données mises en cache descende en dessous du seuil de vidage du cache. Par défaut, un vidage commence lorsque 80 % du cache est utilisé.
+
+Dans System Manager, vous pouvez définir le seuil « Start demand cache flushing » pour optimiser le type d’E/S utilisé dans votre environnement. Dans un environnement principalement composé d’opérations d’écriture, vous devez définir un pourcentage élevé pour « Start demand cache flushing » afin d’augmenter la probabilité que toute nouvelle requête d’écriture puisse être traitée par le cache sans avoir à accéder au disque. Un réglage à pourcentage élevé limite le nombre de vidages du cache, de sorte que davantage de données restent en cache, ce qui augmente la probabilité de hits du cache.
+
+Dans un environnement où les E/S sont irrégulières (avec des pics de données), vous pouvez utiliser un faible vidage du cache afin que le système vide le cache fréquemment entre les pics de données. Dans un environnement d'E/S diversifié qui traite une variété de charges, ou lorsque le type de charges est inconnu, définissez le seuil à 50 % comme un bon compromis. Sachez que si vous choisissez un pourcentage de démarrage inférieur à 80 %, vous pourriez constater une baisse des performances car les données nécessaires à une lecture hôte pourraient ne pas être disponibles. Choisir un pourcentage plus faible augmente également le nombre d'écritures disque nécessaires pour maintenir le niveau du cache, ce qui accroît la charge système.
+
+L'algorithme basé sur l'âge spécifie la période pendant laquelle les données en écriture peuvent rester dans le cache avant d'être éligibles pour être vidées sur les disques. Les contrôleurs utilisent l'algorithme basé sur l'âge jusqu'à ce que le seuil de vidage du cache soit atteint. La valeur par défaut est de 10 secondes, mais cette période n'est comptée que pendant les périodes d'inactivité. Vous ne pouvez pas modifier le délai de vidage dans System Manager ; vous devez utiliser la commande *Set Storage Array* dans l'interface de ligne de commande (CLI).
+
+[CAUTION]
+====
+*Risque de perte de données* -- Si vous activez l’option *Mise en cache en écriture sans batteries* et que vous ne disposez pas d’une alimentation universelle de secours, vous pourriez perdre des données. De plus, vous pourriez perdre des données si vous n’avez pas de batteries pour le contrôleur et que vous activez l’option *Mise en cache en écriture sans batteries*.
+
+====
+
+
+== Quelle est la taille d’un bloc de cache ?
+
+Le contrôleur de la baie de stockage organise son cache en « blocs », c’est-à-dire des portions de mémoire qui peuvent être de 8, 16 ou 32 Kio. Tous les volumes du système de stockage partagent le même espace cache ; par conséquent, les volumes ne peuvent avoir qu’une seule taille de bloc de cache.
+
+Les applications utilisent différentes tailles de bloc, ce qui peut avoir un impact sur les performances de stockage. Par défaut, la taille de bloc dans System Manager est de 32 KiB, mais vous pouvez définir la valeur à 8, 16, 32 KiBs. Une taille plus petite est un bon choix pour les systèmes de fichiers ou les applications de base de données. Une taille plus grande est un bon choix pour les applications qui nécessitent un transfert de données important, des E/S séquentielles ou une bande passante élevée, comme le multimédia.
+
+
+
+== Quand dois-je synchroniser les horloges des baies de stockage ?
+
+Vous devez synchroniser manuellement les horloges du contrôleur de la baie de stockage si vous constatez que les horodatages affichés dans SANtricity System Manager ne sont pas alignés avec les horodatages affichés sur votre client de gestion (l’ordinateur qui accède à SANtricity System Manager via le navigateur). Cette tâche est nécessaire uniquement si NTP (Network Time Protocol) n’est pas activé dans SANtricity System Manager.
+
+[NOTE]
+====
+Nous vous recommandons vivement d'utiliser un serveur NTP plutôt que de synchroniser manuellement les horloges. NTP synchronise automatiquement les horloges avec un serveur externe à l'aide de SNTP (Simple Network Time Protocol).
+
+====
+Vous pouvez vérifier l'état de la synchronisation dans la boîte de dialogue « Synchronize Storage Array Clocks », accessible depuis la page System. Si les heures affichées dans la boîte de dialogue ne correspondent pas, effectuez une synchronisation. Vous pouvez consulter régulièrement cette boîte de dialogue, qui indique si les affichages de l'heure des horloges du contrôleur se sont désynchronisés et ne sont plus synchronisés.

@@ -1,0 +1,37 @@
+---
+permalink: um-manage/overview-manage-groups.html 
+sidebar: sidebar 
+keywords: SANtricity, Unified Manager, E-Series, manage, groups 
+summary: Depuis la page Manage Groups, vous pouvez créer un ensemble de groupes de baies de stockage pour une gestion simplifiée. 
+---
+= Découvrez la présentation des groupes dans SANtricity Unified Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Depuis la page Manage Groups, vous pouvez créer un ensemble de groupes de baies de stockage pour une gestion simplifiée.
+
+
+
+== Que sont les groupes de tableaux ?
+
+Vous pouvez gérer votre infrastructure physique et virtualisée en regroupant un ensemble de baies de stockage. Vous pourriez vouloir regrouper des baies de stockage pour faciliter l'exécution de tâches de surveillance ou de génération de rapports.
+
+Il existe deux types de groupes :
+
+* *Groupe All* -- Le groupe All est le groupe par défaut et comprend toutes les baies de stockage détectées dans votre organisation. Le groupe All est accessible depuis la vue principale.
+* *Groupe créé par l'utilisateur* -- Un groupe créé par l'utilisateur comprend les baies de stockage que vous sélectionnez manuellement pour les ajouter à ce groupe. Les groupes créés par l'utilisateur sont accessibles depuis la vue principale.
+
+
+
+
+== Comment configurer les groupes ?
+
+Depuis la page Manage Groups, vous pouvez créer un groupe puis y ajouter des arrays.
+
+En savoir plus :
+
+* link:create-storage-array-group.html["Configurer le groupe de baies de stockage"]
+

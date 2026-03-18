@@ -1,0 +1,84 @@
+---
+permalink: sm-mirroring/synchronous-mirroring-terminology.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, synchronous, mirroring, terms 
+summary: 'Découvrez comment les termes de mise en miroir synchrone s"appliquent à votre baie de stockage.' 
+---
+= Découvrez la terminologie de la mise en miroir synchrone dans le logiciel SANtricity
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Découvrez comment les termes de mise en miroir synchrone s'appliquent à votre baie de stockage.
+
+[cols="25h,~"]
+|===
+| Terme | Description 
+
+
+ a| 
+baie de stockage locale
+ a| 
+La baie de stockage locale est la baie de stockage sur laquelle vous agissez.
+
+Lorsque vous voyez *Primary* dans la colonne Rôle local, cela indique que la baie de stockage contient le volume qui détient le rôle principal dans la relation de mise en miroir. Lorsque vous voyez *Secondary* dans la colonne Rôle local, cela indique que la baie de stockage contient le volume qui détient le rôle secondaire dans la relation de mise en miroir.
+
+
+
+ a| 
+Paire en miroir
+ a| 
+Une paire en miroir est composée de deux volumes, un volume primaire et un volume secondaire.
+
+
+
+ a| 
+Volume primaire
+ a| 
+Le volume principal d'une paire en miroir est le volume source à mettre en miroir.
+
+
+
+ a| 
+Objectif de point de récupération (RPO)
+ a| 
+Recovery Point Objective (RPO) représente un objectif qui indique la différence jugée acceptable entre le volume primaire et le volume secondaire dans une paire en miroir. Un RPO de zéro indique qu'aucune différence entre le volume primaire et le volume secondaire ne peut être tolérée. Un RPO supérieur à zéro indique que le volume secondaire est moins à jour ou en retard par rapport au volume primaire.
+
+
+
+ a| 
+baie de stockage distante
+ a| 
+Le système de stockage distant est généralement désigné comme le site secondaire, qui contient généralement une réplique des données dans une configuration en miroir.
+
+
+
+ a| 
+Capacité réservée
+ a| 
+La capacité réservée correspond à la capacité physique allouée qui est utilisée pour toute opération de service de copie et tout objet de stockage. Elle n'est pas directement lisible par l'hôte.
+
+
+
+ a| 
+Changement de rôle
+ a| 
+Le changement de rôle consiste à attribuer le rôle principal au volume secondaire et vice versa.
+
+
+
+ a| 
+Volume secondaire
+ a| 
+Le volume secondaire d'une paire miroir est généralement situé sur un site secondaire et contient une réplique des données.
+
+
+
+ a| 
+Synchronisation
+ a| 
+La synchronisation a lieu lors de la synchronisation initiale entre la baie de stockage locale et la baie de stockage distante. La synchronisation a également lieu lorsque les volumes principal et secondaire se désynchronisent après une interruption de communication. Lorsque la liaison de communication fonctionne à nouveau, toutes les données non répliquées sont synchronisées avec la baie de stockage du volume secondaire.
+
+|===

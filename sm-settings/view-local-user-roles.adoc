@@ -1,0 +1,37 @@
+---
+permalink: sm-settings/view-local-user-roles.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, view, local, user, roles, 
+summary: 'L"onglet « Rôles des utilisateurs locaux » permet de consulter la correspondance entre les profils utilisateur et les rôles par défaut. Ces correspondances font partie du RBAC (role-based access controls) appliqué dans la baie de stockage.' 
+---
+= Afficher les rôles des utilisateurs locaux dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'onglet « Rôles des utilisateurs locaux » permet de consulter la correspondance entre les profils utilisateur et les rôles par défaut. Ces correspondances font partie du RBAC (role-based access controls) appliqué dans la baie de stockage.
+
+.Avant de commencer
+Vous devez être connecté avec un profil utilisateur disposant des autorisations d'administrateur de sécurité. Sinon, les fonctions de gestion des accès ne s'affichent pas.
+
+.À propos de cette tâche
+Les profils utilisateur et les correspondances ne peuvent pas être modifiés. Seuls les mots de passe peuvent être modifiés.
+
+.Étapes
+. Sélectionnez le menu : Settings [Gestion des accès].
+. Sélectionnez l’onglet *Rôles de l’utilisateur local*.
++
+Les profils des utilisateurs sont présentés dans le tableau:
+
++
+** *Administrateur racine* (admin) -- Super administrateur ayant accès à toutes les fonctions du système. Ce profil utilisateur inclut tous les rôles.
+** *Administrateur de stockage* (stockage) -- L’administrateur responsable de tout le provisionnement du stockage. Ce profil utilisateur inclut les rôles suivants : Storage Admin, Support Admin et Monitor.
+** *Security admin* (security) -- Utilisateur responsable de la configuration de la sécurité, y compris la gestion des accès, la gestion des certificats et les fonctions de lecteur sécurisé. Ce profil utilisateur inclut les rôles suivants : Security Admin et Monitor.
+** *Administrateur du support* (support) -- L’utilisateur responsable des ressources matérielles, des données de panne et des mises à jour du micrologiciel. Ce profil utilisateur inclut les rôles suivants : Support Admin et Monitor.
+** *Moniteur* (moniteur) -- Un utilisateur disposant d'un accès en lecture seule au système. Ce profil utilisateur inclut uniquement le rôle de Moniteur.
+
+
+

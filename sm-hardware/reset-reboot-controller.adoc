@@ -1,0 +1,32 @@
+---
+permalink: sm-hardware/reset-reboot-controller.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, reset, reboot, controller 
+summary: 'Certains problèmes nécessitent une réinitialisation (redémarrage) du contrôleur. Vous pouvez réinitialiser le contrôleur même si vous n’y avez pas accès physiquement.' 
+---
+= Réinitialiser (redémarrer) un contrôleur dans SANtricity System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Certains problèmes nécessitent une réinitialisation (redémarrage) du contrôleur. Vous pouvez réinitialiser le contrôleur même si vous n'y avez pas accès physiquement.
+
+.Avant de commencer
+* La baie de stockage doit comporter deux contrôleurs. Le contrôleur que vous ne réinitialisez pas doit être en ligne (dans l'état optimal).
+* Assurez-vous qu'aucun volume n'est utilisé ou que vous avez un pilote multipath installé sur tous les hôtes utilisant ces volumes.
+
+
+.Étapes
+. Sélectionnez *Hardware*.
+. Si le graphique affiche les lecteurs, cliquez sur l’onglet *Controllers & Components*.
++
+Le graphique change pour afficher les contrôleurs au lieu des disques.
+
+. Cliquez sur le contrôleur que vous souhaitez réinitialiser.
++
+Le menu contextuel du contrôleur apparaît.
+
+. Sélectionnez *Réinitialiser* et confirmez que vous souhaitez effectuer l'opération.
+

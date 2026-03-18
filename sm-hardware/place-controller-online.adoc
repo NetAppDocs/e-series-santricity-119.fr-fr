@@ -1,0 +1,32 @@
+---
+permalink: sm-hardware/place-controller-online.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, place, controller, online 
+summary: Si un contrôleur est hors ligne ou en mode service, vous pouvez le remettre en ligne. 
+---
+= Mettre un contrôleur en ligne dans SANtricity System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Si un contrôleur est hors ligne ou en mode service, vous pouvez le remettre en ligne.
+
+.Étapes
+. Sélectionnez *Hardware*.
+. Si le graphique affiche les lecteurs, cliquez sur l’onglet *Controllers & Components*.
++
+Le graphique change pour afficher les contrôleurs au lieu des disques.
+
+. Cliquez sur un contrôleur qui est soit hors ligne, soit en mode maintenance.
++
+Le menu contextuel du contrôleur apparaît.
+
+. Sélectionnez *Place online*, et confirmez que vous souhaitez effectuer l'opération.
+
+
+.Résultats
+La détection d'un chemin préféré restauré par le pilote multipath peut prendre jusqu'à 10 minutes.
+
+Les volumes initialement gérés par ce contrôleur sont automatiquement réattribués à ce dernier lors de la réception de requêtes d'E/S pour chaque volume. Dans certains cas, il peut être nécessaire de redistribuer manuellement les volumes avec la commande *Redistribute volumes*.

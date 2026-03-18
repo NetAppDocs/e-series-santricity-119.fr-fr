@@ -1,0 +1,65 @@
+---
+permalink: sm-storage/start-snapshot-image-rollback-for-base-volume.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, start, snapshot, image, rollback, base, volume 
+summary: 'Vous pouvez effectuer une restauration pour que le contenu d"un volume de base corresponde à celui enregistré dans une image instantanée. La restauration ne modifie pas le contenu des images instantanées associées au volume de base.' 
+---
+= Démarrer le retour arrière de l'image instantanée pour un volume de base dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez effectuer une opération de restauration pour modifier le contenu d'un volume de base afin qu'il corresponde au contenu enregistré dans une image de snapshot.
+
+L'opération de restauration ne modifie pas le contenu des images de snapshot associées au volume de base.
+
+.Avant de commencer
+* Une capacité réservée suffisante est disponible pour lancer une opération de restauration.
+* L'image instantanée sélectionnée est optimale et le volume sélectionné est optimal.
+* Le volume sélectionné n'a pas déjà une opération de restauration en cours.
+
+
+.À propos de cette tâche
+La séquence de démarrage de la restauration permet de lancer une restauration sur une image instantanée d'un volume de base tout en offrant des options pour ajouter de la capacité de stockage. Vous ne pouvez pas lancer plus d'une opération de restauration pour un volume de base à la fois.
+
+[NOTE]
+====
+L'hôte peut immédiatement accéder au nouveau volume de base restauré, mais le volume de base existant ne permet pas à l'hôte un accès en lecture-écriture après le début de la restauration. Vous pouvez créer un instantané du volume de base juste avant de lancer la restauration afin de préserver le volume de base initial pour une éventuelle récupération.
+
+====
+.Étapes
+. Sélectionnez le menu : Storage[Snapshots].
+. Sélectionnez l’onglet *Snapshot Images*.
+. Sélectionnez l'image snapshot, puis sélectionnez menu : Rollback [Start].
++
+La boîte de dialogue Confirmer le démarrage du retour arrière apparaît.
+
+. *Facultatif :* Sélectionnez l’option *Augmenter la capacité* si nécessaire.
++
+La boîte de dialogue Increase Reserved Capacity s'affiche.
+
++
+.. Utilisez la boîte de sélection pour ajuster le pourcentage de capacité.
++
+Si la capacité disponible n'existe pas sur le pool ou le groupe de volumes qui contient l'objet de stockage que vous avez sélectionné et que la baie de stockage dispose d'une capacité non attribuée, vous pouvez ajouter de la capacité. Vous pouvez créer un nouveau pool ou groupe de volumes, puis réessayer cette opération en utilisant la nouvelle capacité disponible sur ce pool ou groupe de volumes.
+
+.. Cliquez sur *Increase*.
+
+
+. Confirmez que vous souhaitez effectuer cette opération, puis cliquez sur *Rollback*.
+
+
+.Résultats
+System Manager effectue les actions suivantes :
+
+* Restaure le volume avec le contenu enregistré sur l'image instantanée sélectionnée.
+* Rend les volumes restaurés immédiatement accessibles à l’hôte. Vous n’avez pas besoin d’attendre la fin de l’opération de restauration.
+
+
+.Après avoir terminé
+Sélectionnez le menu : Home [View Operations in Progress] pour consulter la progression de l’opération de restauration.
+
+Si l'opération de restauration échoue, l'opération est suspendue. Vous pouvez reprendre l'opération suspendue et, si elle échoue toujours, suivre la procédure Recovery Guru pour corriger le problème ou contacter l'assistance technique.

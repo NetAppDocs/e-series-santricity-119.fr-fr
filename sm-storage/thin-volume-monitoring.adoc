@@ -1,0 +1,36 @@
+---
+permalink: sm-storage/thin-volume-monitoring.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, thin, volume, monitoring 
+summary: 'Vous pouvez surveiller les volumes peu épais pour l"espace et générer des alertes appropriées afin de prévenir les conditions de manque de capacité.' 
+---
+= Découvrez la surveillance des volumes fins dans le logiciel SANtricity
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez surveiller les volumes peu épais pour l'espace et générer des alertes appropriées afin de prévenir les conditions de manque de capacité.
+
+Les environnements à provisionnement fin peuvent allouer plus d'espace logique que leur espace de stockage physique sous-jacent. Vous pouvez sélectionner menu:Storage[Volumes > Thin Volume Monitoring] pour surveiller la croissance de vos volumes fins avant qu'ils n'atteignent la limite maximale de capacité allouée.
+
+Vous pouvez utiliser la vue Thin Monitoring pour effectuer les actions suivantes :
+
+* Définissez la limite qui restreint la capacité allouée à laquelle un volume mince peut s'étendre automatiquement.
+* Définissez le point de pourcentage auquel une alerte (seuil d'avertissement dépassé) est envoyée à la zone Notifications de la page d'accueil lorsqu'un volume léger approche de la limite de capacité maximale allouée.
+
+
+Pour augmenter la capacité d'un volume mince, augmentez sa capacité signalée.
+
+[NOTE]
+====
+System Manager ne propose pas d'option pour créer des volumes légers. Si vous souhaitez créer des volumes légers, utilisez la Command Line Interface (CLI).
+
+====
+[NOTE]
+====
+Les volumes minces ne sont pas disponibles sur le système de stockage EF600/EF600C ou EF300/EF300C.
+
+====

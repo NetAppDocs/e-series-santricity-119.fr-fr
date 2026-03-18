@@ -1,0 +1,37 @@
+---
+permalink: sm-support/retrieve-trace-buffers.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, retrieve, trace, buffers 
+summary: Vous pouvez récupérer les tampons de traces des contrôleurs et envoyer le fichier au support technique pour analyse. 
+---
+= Récupérer les tampons de trace dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez récupérer les tampons de traces des contrôleurs et envoyer le fichier au support technique pour analyse.
+
+.À propos de cette tâche
+Le micrologiciel utilise les tampons de traces pour enregistrer les traitements, notamment les conditions d'exception, qui peuvent s'avérer utiles pour le débogage. Vous pouvez récupérer les tampons de traces sans interrompre le fonctionnement de la baie de stockage et avec un impact minimal sur les performances.
+
+[NOTE]
+====
+N’effectuez cette opération que sur instruction du support technique.
+
+====
+.Étapes
+. Sélectionnez le menu : Support [Support Center > Diagnostics] onglet.
+. Sélectionnez *Retrieve Trace Buffers*.
+. Cochez la case à cocher à côté de chaque contrôleur pour lequel vous souhaitez récupérer les tampons de trace.
++
+Vous pouvez sélectionner un ou les deux contrôleurs. Si le message d'état du contrôleur à droite d'une case à cocher est Failed ou Disabled, la case à cocher est désactivée.
+
+. Cliquez sur *Oui*.
++
+Le fichier est enregistré dans le dossier Téléchargements de votre navigateur sous le nom de fichier `trace-buffers.7z`.
+
+. Suivez les instructions fournies par le support technique pour leur envoyer le fichier.
+

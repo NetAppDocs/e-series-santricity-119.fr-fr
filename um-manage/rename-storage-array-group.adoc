@@ -1,0 +1,31 @@
+---
+permalink: um-manage/rename-storage-array-group.html 
+sidebar: sidebar 
+keywords: SANtricity, Unified Manager, E-Series, rename, storage, array, group 
+summary: 'Vous pouvez changer le nom d"un groupe de baies de stockage lorsque le nom actuel n"est plus pertinent ou applicable.' 
+---
+= Renommer un groupe de baies de stockage dans SANtricity Unified Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez changer le nom d'un groupe de baies de stockage lorsque le nom actuel n'est plus pertinent ou applicable.
+
+.À propos de cette tâche
+Gardez ces consignes à l'esprit.
+
+* Un nom peut contenir des lettres, des chiffres et les caractères spéciaux suivants : trait de soulignement (_), tiret (-) et dièse (#). Si vous choisissez d’autres caractères, un message d’erreur s’affiche. Vous êtes invité à choisir un autre nom.
+* Limitez le nom à 30 caractères. Tout espace au début ou à la fin du nom est supprimé.
+* Utilisez un nom unique, significatif, facile à comprendre et à mémoriser.
+* Évitez les noms arbitraires ou les noms qui perdraient rapidement leur signification à l'avenir.
+
+
+.Étapes
+. Dans la vue principale, sélectionnez *Manage*, puis sélectionnez le groupe de baies de stockage que vous souhaitez renommer.
+. Sélectionnez menu : Manage Groups [Rename storage array group].
+. Dans le champ *Nom du groupe*, saisissez un nouveau nom pour le groupe.
+. Cliquez sur *Renommer.*
+

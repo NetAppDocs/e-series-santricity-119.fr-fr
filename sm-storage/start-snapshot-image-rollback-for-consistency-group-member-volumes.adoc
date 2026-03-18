@@ -1,0 +1,102 @@
+---
+permalink: sm-storage/start-snapshot-image-rollback-for-consistency-group-member-volumes.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, start, snapshot, image, rollback, snapshot, consistency, group, member, volumes 
+summary: 'Vous pouvez effectuer une opération de restauration pour modifier le contenu des volumes membres du groupe de cohérence d"instantané afin qu"il corresponde au contenu enregistré dans une image d"instantané.' 
+---
+= Démarrez la restauration de l'image instantanée pour les volumes membres du groupe de cohérence des instantanés dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez effectuer une opération de restauration pour modifier le contenu des volumes membres du groupe de cohérence d'instantané afin qu'il corresponde au contenu enregistré dans une image d'instantané.
+
+L'opération de restauration ne modifie pas le contenu des images instantanées qui sont associées au groupe de cohérence.
+
+.Avant de commencer
+* Une capacité réservée suffisante est disponible pour lancer une opération de restauration.
+* L'image instantanée sélectionnée est optimale et le volume sélectionné est optimal.
+* Le volume sélectionné n'a pas déjà une opération de restauration en cours.
+
+
+.À propos de cette tâche
+La séquence de démarrage de restauration permet de lancer une restauration à partir d'une image instantanée d'un groupe de cohérence d'instantanés tout en offrant des options pour augmenter la capacité de stockage. Vous ne pouvez pas lancer plus d'une opération de restauration pour un groupe de cohérence d'instantanés à la fois.
+
+[NOTE]
+====
+L'hôte a un accès immédiat aux nouveaux volumes restaurés, mais les volumes membres existants ne permettent plus l'accès en lecture-écriture par l'hôte après le début de la restauration. Vous pouvez créer une image instantanée des volumes membres juste avant de lancer la restauration afin de préserver les volumes de base antérieurs à la restauration à des fins de récupération.
+
+====
+Le processus de démarrage du retour arrière d'une image instantanée d'un groupe de cohérence de snapshots est une procédure en plusieurs étapes.
+
+
+
+== Étape 1 : Sélectionner les membres
+
+Vous devez sélectionner les volumes membres à restaurer.
+
+.Étapes
+. Sélectionnez le menu : Storage[Snapshots].
+. Sélectionnez l’onglet *Snapshot Images*.
+. Sélectionnez l'image d'instantané du groupe de cohérence de l'instantané, puis sélectionnez menu : Rollback[Démarrer].
++
+La boîte de dialogue « Start Rollback » s'affiche.
+
+. Sélectionnez le ou les volumes membres.
+. Cliquez sur *Suivant*, et effectuez l'une des actions suivantes :
++
+** Si l'un des volumes membres sélectionnés est associé à plus d'un objet de capacité réservée qui stocke des images instantanées, la boîte de dialogue « Review Capacity » s'affiche. Accédez à <<Étape 2 : Examiner la capacité>>.
+** Si aucun des volumes membres sélectionnés n'est associé à plus d'un objet de capacité réservée qui stocke des images instantanées, la boîte de dialogue Modifier la priorité s'affiche. Accédez à <<Étape 3 : Modifier la priorité>>.
+
+
+
+
+
+
+== Étape 2 : Examiner la capacité
+
+Si vous avez sélectionné des volumes membres associés à plus d’un objet de capacité réservée, tels qu’un groupe d’instantanés et un volume de capacité réservée, vous pouvez examiner et augmenter la capacité réservée pour le(s) volume(s) restauré(s).
+
+.Étapes
+. À côté de tout volume membre ayant une capacité réservée très faible (ou nulle), cliquez sur le lien *Augmenter la capacité* dans la colonne *Modifier*.
++
+La boîte de dialogue Increase Reserved Capacity s'affiche.
+
+. Utilisez la boîte de sélection pour ajuster le pourcentage de capacité, puis cliquez sur *Augmenter*.
++
+Si la capacité libre n'existe pas sur le pool ou le groupe de volumes qui contient l'objet de stockage que vous avez sélectionné et que la baie de stockage dispose d'une capacité non attribuée, vous pouvez ajouter de la capacité. Vous pouvez créer un nouveau pool ou groupe de volumes et réessayer cette opération en utilisant la nouvelle capacité libre sur ce pool ou groupe de volumes.
+
+. Cliquez sur *Suivant*, puis accédez à <<Étape 3 : Modifier la priorité>>.
++
+La boîte de dialogue Modifier la priorité apparaît.
+
+
+
+
+
+== Étape 3 : Modifier la priorité
+
+Vous pouvez modifier la priorité de l'opération de restauration si nécessaire.
+
+.À propos de cette tâche
+La priorité de restauration détermine le nombre de ressources système allouées à l'opération de restauration, au détriment des performances du système.
+
+.Étapes
+. Utilisez le curseur pour ajuster la priorité de rollback selon vos besoins.
+. Confirmez que vous souhaitez effectuer cette opération, puis cliquez sur *Finish*.
+
+
+.Résultats
+System Manager effectue les actions suivantes :
+
+* Restaure les volumes membres du groupe de cohérence avec le contenu enregistré sur l'image d'instantané sélectionnée.
+* Rend les volumes restaurés immédiatement accessibles à l’hôte. Vous n’avez pas besoin d’attendre la fin de l’opération de restauration.
+
+
+.Après avoir terminé
+Sélectionnez le menu : Home [View Operations in Progress] pour consulter la progression de l’opération de restauration.
+
+Si l'opération de restauration échoue, l'opération est suspendue. Vous pouvez reprendre l'opération suspendue et, si elle échoue toujours, suivre la procédure Recovery Guru pour corriger le problème ou contacter l'assistance technique.

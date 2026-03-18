@@ -1,0 +1,38 @@
+---
+permalink: sm-settings/set-host-connectivity-reporting.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, set, host, connectivity, reporting, 
+summary: Vous pouvez activer le signalement de la connectivité hôte afin que la baie de stockage surveille en permanence la connexion entre les contrôleurs et les hôtes configurés, et vous alerte si la connexion est interrompue. Cette fonctionnalité est activée par défaut. 
+---
+= Définir les rapports de connectivité hôte dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez activer le signalement de la connectivité hôte afin que la baie de stockage surveille en permanence la connexion entre les contrôleurs et les hôtes configurés, et vous alerte si la connexion est interrompue. Cette fonctionnalité est activée par défaut.
+
+.À propos de cette tâche
+Si vous désactivez le signalement de la connectivité hôte, le système ne surveille plus la connectivité ni les problèmes de pilotes multipath avec un hôte connecté à la baie de stockage.
+
+[NOTE]
+====
+La désactivation du signalement de la connectivité hôte désactive également l'équilibrage de charge automatique, qui surveille et équilibre l'utilisation des ressources du contrôleur.
+
+====
+.Étapes
+. Sélectionnez menu : Paramètres [System].
+. Faites défiler vers le bas jusqu'à *Paramètres supplémentaires*, puis cliquez sur *Activer/Désactiver le reporting de connectivité hôte*.
++
+Le texte situé sous cette option indique si elle est actuellement activée ou désactivée.
+
++
+Une boîte de dialogue de confirmation s'ouvre.
+
+. Cliquez sur *Yes* pour continuer.
++
+En sélectionnant cette option, vous basculez la fonctionnalité entre activée/désactivée.
+
+

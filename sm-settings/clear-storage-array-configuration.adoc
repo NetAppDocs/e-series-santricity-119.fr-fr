@@ -1,0 +1,115 @@
+---
+permalink: sm-settings/clear-storage-array-configuration.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, clear, storage, array, configuration, 
+summary: 'Utilisez l"opération Clear Configuration lorsque vous souhaitez supprimer tous les pools, groupes de volumes, volumes, définitions d"hôtes et affectations d"hôtes de la baie de stockage.' 
+---
+= Effacer la configuration de la baie de stockage dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Utilisez l'opération Clear Configuration lorsque vous souhaitez supprimer tous les pools, groupes de volumes, volumes, définitions d'hôtes et affectations d'hôtes de la baie de stockage.
+
+.Avant de commencer
+Avant d'effacer la configuration de la baie de stockage, sauvegardez les données.
+
+.À propos de cette tâche
+Il existe deux options Clear Storage Array Configuration :
+
+* *Volume* -- Généralement, vous pouvez utiliser l’option Volume pour reconfigurer une baie de stockage de test en baie de stockage de production. Par exemple, vous pouvez configurer une baie de stockage pour les tests, puis, une fois les tests terminés, supprimer la configuration de test et configurer la baie de stockage pour un environnement de production.
+* *Baie de stockage* -- L'option Baie de stockage permet généralement de déplacer une baie de stockage vers un autre service ou groupe. Par exemple, vous pouvez utiliser une baie de stockage dans le service Ingénierie, et maintenant le service Ingénierie va recevoir une nouvelle baie de stockage, donc vous souhaitez déplacer la baie de stockage actuelle vers le service Administration où elle sera reconfigurée.
++
+L'option Storage Array supprime certains paramètres supplémentaires.
+
+
+
+[cols="1a,1a,1a"]
+|===
+|  | Volume | Baie de stockage 
+
+
+ a| 
+Désactive ARVM
+ a| 
+X
+ a| 
+X
+
+
+
+ a| 
+Supprime les pools et les groupes de volumes
+ a| 
+X
+ a| 
+X
+
+
+
+ a| 
+Supprime les volumes
+ a| 
+X
+ a| 
+X
+
+
+
+ a| 
+Supprime les hôtes et les clusters d'hôtes
+ a| 
+X
+ a| 
+X
+
+
+
+ a| 
+Supprime les affectations d'hôtes
+ a| 
+X
+ a| 
+X
+
+
+
+ a| 
+Supprime le nom de la baie de stockage
+ a| 
+ a| 
+X
+
+
+
+ a| 
+Réinitialise les paramètres du cache de la baie de stockage aux valeurs par défaut
+ a| 
+ a| 
+X
+
+|===
+[CAUTION]
+====
+*Risque de perte de données* -- Cette opération efface toutes les données de votre baie de stockage. (Il ne s'agit pas d'un effacement sécurisé.) Vous ne pouvez pas annuler cette opération après son démarrage. N'effectuez cette opération que sur instruction du support technique.
+
+====
+.Étapes
+. Sélectionnez menu : Paramètres [System].
+. Sélectionnez *Effacer la configuration de la baie de stockage*.
+. Dans la liste déroulante, sélectionnez *Volume* ou *Storage Array*.
+. *Facultatif :* Si vous souhaitez enregistrer la configuration (pas les données), utilisez les liens de la boîte de dialogue.
+. Confirmez que vous souhaitez effectuer l'opération.
+
+
+.Résultats
+* La configuration actuelle est supprimée, détruisant toutes les données existantes sur la baie de stockage.
+* Tous les lecteurs sont non attribués.
++
+
+NOTE: La baie de stockage démarrera en mode de récupération. Vous devez désactiver le mode de récupération avant d'utiliser la baie de stockage. Voir  https://docs.netapp.com/us-en/e-series-santricity/sm-support/clear-recovery-mode.html["Effacer le mode de récupération"^] pour plus d'informations.
+
+

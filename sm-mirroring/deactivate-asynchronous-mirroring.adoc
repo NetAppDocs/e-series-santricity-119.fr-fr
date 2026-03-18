@@ -1,0 +1,37 @@
+---
+permalink: sm-mirroring/deactivate-asynchronous-mirroring.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, deactivate, asynchronous, mirroring, remote, 
+summary: 'Vous pouvez désactiver la mise en miroir asynchrone sur les baies de stockage locales et distantes pour rétablir l"utilisation normale des ports dédiés sur les baies de stockage.' 
+---
+= Désactiver la mise en miroir asynchrone dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez désactiver la mise en miroir asynchrone sur les baies de stockage locales et distantes pour rétablir l'utilisation normale des ports dédiés sur les baies de stockage.
+
+.Avant de commencer
+* Vous devez avoir supprimé toutes les relations de mise en miroir. Vérifiez que tous les groupes de cohérence de mise en miroir et les paires de mise en miroir ont été supprimés des baies de stockage locales et distantes.
+* La baie de stockage locale et la baie de stockage distante doivent être connectées via un réseau Fibre Channel ou une interface iSCSI.
+
+
+.À propos de cette tâche
+Lorsque vous désactivez la mise en miroir asynchrone, aucune activité de mise en miroir ne peut avoir lieu sur les baies de stockage locales et distantes.
+
+.Étapes
+. Sélectionnez menu : Storage[Asynchronous Mirroring].
+. Sélectionnez le menu : Uncommon Tasks [Deactivate].
++
+Le système affiche une confirmation.
+
+. Sélectionnez *Yes* pour confirmer.
+
+
+.Résultats
+* Les canaux hôtes HBA du contrôleur qui étaient dédiés à la communication de mise en miroir asynchrone peuvent désormais accepter les requêtes de lecture et d'écriture de l'hôte.
+* Aucun des volumes de cette baie de stockage ne peut participer à des relations de miroir en tant que volumes primaires ou secondaires.
+

@@ -1,0 +1,48 @@
+---
+permalink: sm-storage/base-volumes-reserved-capacity-and-snapshot-groups.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, base volumes, reserved capacity, snapshot groups 
+summary: La fonction Snapshots utilise les volumes de base, la capacité réservée et les groupes de snapshots. 
+---
+= Découvrez les volumes de base, la capacité réservée et les groupes d'instantanés dans SANtricity System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La fonction Snapshots utilise les volumes de base, la capacité réservée et les groupes de snapshots.
+
+
+
+== Volumes de base
+
+Un  est le volume utilisé comme source pour une image instantanée. Un volume de base peut être soit un volume épais, soit un volume mince, et peut résider soit dans un pool, soit dans un groupe de volumes.
+
+Pour prendre des instantanés du volume de base, vous pouvez créer une image instantanée à tout moment ou automatiser le processus en définissant une planification régulière pour les instantanés.
+
+La figure suivante montre la relation entre les objets snapshot et le volume de base.
+
+image::../media/sam1130-dwg-snapshots-images-overview.gif[Objets Snapshot et volume de base]
+
+^1^ Volume de base ; ^2^ Objets Snapshot dans le groupe (images et capacité réservée) ; ^3^ Capacité réservée pour le groupe de snapshot.
+
+
+
+== Capacité réservée et groupes de snapshots
+
+System Manager organise les images instantanées en _groupes d'instantanés_. Lorsque System Manager établit le groupe d'instantanés, il crée automatiquement une _capacité réservée_ associée pour stocker les images instantanées du groupe et suivre les modifications ultérieures apportées aux instantanés supplémentaires.
+
+Si le volume de base se trouve dans un groupe de volumes, la capacité réservée peut se trouver dans un pool ou un groupe de volumes. Si le volume de base se trouve dans un pool, la capacité réservée doit se trouver dans le même pool que le volume de base.
+
+Les groupes d'instantanés ne nécessitent aucune intervention de l'utilisateur, mais vous pouvez ajuster la capacité réservée d'un groupe d'instantanés à tout moment. De plus, vous pourriez être invité à créer de la capacité réservée lorsque les conditions suivantes sont remplies :
+
+* Chaque fois que vous prenez un instantané d'un volume de base ne possédant pas encore de groupe d'instantanés, System Manager crée automatiquement un groupe d'instantanés. Cette action crée également une capacité réservée pour le volume de base, qui est utilisée pour stocker les images d'instantanés ultérieures.
+* Chaque fois que vous créez une planification de snapshot pour un volume de base, System Manager crée automatiquement un snapshot group.
+
+
+
+
+== Suppression automatique
+
+Lorsque vous travaillez avec des instantanés, utilisez l'option par défaut pour activer la suppression automatique. La suppression automatique supprime automatiquement l'image d'instantané la plus ancienne lorsque le groupe d'instantanés atteint la limite de 32 images. Si vous désactivez la suppression automatique, les limites des groupes d'instantanés sont finalement dépassées et vous devez intervenir manuellement pour configurer les paramètres des groupes d'instantanés et gérer la capacité réservée.

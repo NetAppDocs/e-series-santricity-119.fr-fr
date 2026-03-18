@@ -1,0 +1,42 @@
+---
+permalink: sm-storage/delete-pool-or-volume-group.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, delete, pool, volume, group 
+summary: Vous pouvez supprimer un pool ou un groupe de volumes pour créer plus de capacité non attribuée, que vous pouvez reconfigurer pour répondre aux besoins de stockage de votre application. 
+---
+= Supprimer un pool ou un groupe de volumes dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez supprimer un pool ou un groupe de volumes pour créer plus de capacité non attribuée, que vous pouvez reconfigurer pour répondre aux besoins de stockage de votre application.
+
+.Avant de commencer
+* Vous devez avoir sauvegardé les données sur tous les volumes du pool ou du groupe de volumes.
+* Vous devez avoir arrêté toutes les entrées/sorties (I/O).
+* Vous devez démonter tous les systèmes de fichiers sur les volumes.
+* Vous devez avoir supprimé toutes les relations de miroir dans le pool ou le groupe de volumes.
+* Vous devez avoir interrompu toute opération de copie de volume en cours pour le pool ou le groupe de volumes.
+* Le pool ou le groupe de volumes ne doit pas participer à une opération de mise en miroir asynchrone.
+* Les disques du groupe de volumes ne doivent pas avoir de réservation persistante.
+
+
+.Étapes
+. Sélectionnez le menu : Storage [Pools & Volume Groups].
+. Sélectionnez un pool ou un groupe de volumes dans la liste.
++
+Vous ne pouvez sélectionner qu'un seul pool ou groupe de volumes à la fois. Faites défiler la liste pour voir d'autres pools ou groupes de volumes.
+
+. Sélectionnez le menu : Uncommon Tasks[Delete] et confirmez.
+
+
+.Résultats
+System Manager effectue les actions suivantes :
+
+* Supprime toutes les données dans le pool ou le groupe de volumes.
+* Supprime tous les disques associés au pool ou au groupe de volumes.
+* Désaffecte les disques associés, ce qui vous permet de les réutiliser dans de nouveaux ou existants pools ou groupes de volumes.
+

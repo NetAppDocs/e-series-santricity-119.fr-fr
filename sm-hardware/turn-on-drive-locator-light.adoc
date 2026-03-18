@@ -1,0 +1,30 @@
+---
+permalink: sm-hardware/turn-on-drive-locator-light.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, turn, drive, locator, light, LEDs 
+summary: 'Depuis la page Matériel, vous pouvez activer le voyant de localisation pour trouver l"emplacement physique d"un disque dans la baie de stockage.' 
+---
+= Activez le voyant de localisation du lecteur dans SANtricity System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Depuis la page Matériel, vous pouvez activer le voyant de localisation pour trouver l'emplacement physique d'un disque dans la baie de stockage.
+
+.À propos de cette tâche
+Vous pouvez localiser des disques uniques ou multiples affichés sur la page Matériel.
+
+.Étapes
+. Sélectionnez *Hardware*.
+. Pour localiser un ou plusieurs disques, procédez comme suit :
++
+** *Disque unique* -- Sur le schéma de l’étagère, repérez le disque que vous souhaitez positionner physiquement dans la baie. (Si le schéma affiche les contrôleurs, cliquez sur l’onglet *Disques*.) Cliquez sur le disque pour afficher son menu contextuel, puis sélectionnez *Activer le voyant de localisation*.
++
+Le voyant de localisation du disque s'allume. Une fois que vous avez localisé physiquement le disque, retournez à la boîte de dialogue et sélectionnez *Éteindre*.
+
+** *Plusieurs lecteurs* -- Dans les champs de filtre, sélectionnez un type de lecteur physique dans la liste déroulante de gauche et un type de lecteur logique dans la liste déroulante de droite. Le nombre de lecteurs correspondant à vos critères s'affiche à l'extrême droite des champs. Ensuite, vous pouvez soit cliquer sur *Activer les voyants de localisation*, soit sélectionner *Localiser tous les lecteurs filtrés* dans le menu contextuel. Lorsque vous avez localisé physiquement les lecteurs, retournez à la boîte de dialogue et sélectionnez *Éteindre*.
+
+
+

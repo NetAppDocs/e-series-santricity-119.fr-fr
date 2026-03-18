@@ -1,0 +1,37 @@
+---
+permalink: sm-hardware/initialize-format-drive.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, initialize, format, drive, 
+summary: 'Si vous déplacez des disques attribués d"une baie de stockage à une autre, vous devez initialiser (formater) les disques avant qu"ils puissent être utilisés dans la nouvelle baie de stockage.' 
+---
+= Initialiser (formater) les disques dans SANtricity System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Si vous déplacez des disques attribués d'une baie de stockage à une autre, vous devez initialiser (formater) les disques avant qu'ils puissent être utilisés dans la nouvelle baie de stockage.
+
+.À propos de cette tâche
+L'initialisation supprime les informations de configuration précédentes d'un disque et le ramène à l'état Non attribué. Le disque est alors disponible pour être ajouté à un nouveau pool ou groupe de volumes dans la nouvelle baie de stockage.
+
+Utilisez l'opération d'initialisation de lecteur lorsque vous déplacez un seul lecteur. Vous n'avez pas besoin d'initialiser les lecteurs si vous déplacez un groupe de volumes entier d'une baie de stockage à une autre.
+
+[CAUTION]
+====
+*Risque de perte de données* -- Lorsque vous initialisez un disque, toutes les données sur le disque sont perdues. N’effectuez cette opération que sur instruction du support technique.
+
+====
+.Étapes
+. Sélectionnez *Hardware*.
+. Si le graphique affiche les contrôleurs, cliquez sur l’onglet *Lecteurs*.
++
+Le graphique change pour afficher les disques au lieu des contrôleurs.
+
+. Cliquez sur le lecteur que vous souhaitez initialiser.
++
+Le menu contextuel du lecteur apparaît.
+
+. Sélectionnez *Initialiser*, et confirmez que vous souhaitez effectuer l'opération.
+

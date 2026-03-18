@@ -1,0 +1,167 @@
+---
+permalink: sm-support/view-events-using-the-event-log.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, view, events, 
+summary: Vous pouvez consulter le journal des événements, qui fournit un historique des événements qui se sont produits sur la baie de stockage. 
+---
+= Afficher les événements à l'aide du journal des événements dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez consulter le journal des événements, qui fournit un historique des événements qui se sont produits sur la baie de stockage.
+
+.Étapes
+. Sélectionnez le menu : Support[Event Log].
++
+La page du journal des événements s'affiche.
+
++
+.Détails de la page
+[%collapsible]
+====
+[cols="25h,~"]
+|===
+| Article | Description 
+
+
+ a| 
+Afficher tous les champs
+ a| 
+Permet de basculer entre tous les événements et uniquement les événements critiques et d'avertissement.
+
+
+
+ a| 
+Champ de filtre
+ a| 
+Filtre les événements. Utile pour afficher uniquement les événements liés à un composant spécifique, à un événement spécifique, etc.
+
+
+
+ a| 
+Sélectionnez l'icône des colonnes.
+ a| 
+Vous permet de sélectionner d'autres colonnes à afficher. D'autres colonnes fournissent des informations supplémentaires sur l'événement.
+
+
+
+ a| 
+Cases à cocher
+ a| 
+Permet de sélectionner les événements à enregistrer. La case à cocher dans l'en-tête du tableau sélectionne tous les événements.
+
+
+
+ a| 
+Colonne Date/Time
+ a| 
+La date et l'heure de l'événement, selon l'horloge du contrôleur.
+
+
+NOTE: Le journal des événements trie initialement les événements par numéro de séquence. Généralement, cette séquence correspond à la date et à l'heure. Cependant, les deux horloges du contrôleur de la baie de stockage peuvent être désynchronisées. Dans ce cas, des incohérences peuvent apparaître dans le journal des événements par rapport aux événements et à la date et l'heure affichées.
+
+
+
+ a| 
+Colonne de priorité
+ a| 
+Ces valeurs de priorité existent :
+
+** *Critique* -- Un problème affecte la baie de stockage. Cependant, si vous agissez immédiatement, vous pourriez éviter de perdre l'accès aux données. Les événements critiques sont utilisés pour les notifications d'alerte. Tous les événements critiques sont envoyés à tout client de gestion de réseau (par le biais de traps SNMP) ou au destinataire de l'e-mail que vous avez configuré.
+** *Avertissement* -- Une erreur s'est produite qui a dégradé les performances et la capacité de la baie de stockage à se remettre d'une autre erreur.
+** *Information* -- Informations non critiques relatives à la baie de stockage.
+
+
+
+
+ a| 
+Colonne Type de composant
+ a| 
+Le composant affecté par l'événement. Le composant peut être matériel, comme un disque ou un contrôleur, ou logiciel, comme le micrologiciel du contrôleur.
+
+
+
+ a| 
+Colonne Emplacement du composant
+ a| 
+L'emplacement physique du composant dans la baie de stockage.
+
+
+
+ a| 
+Colonne Description
+ a| 
+Une description de l'événement.
+
+*Exemple* -- `Drive write failure - retries exhausted`
+
+
+
+ a| 
+Colonne Sequence Number
+ a| 
+Un numéro de 64 bits identifiant de manière unique une entrée de journal spécifique pour une baie de stockage. Ce numéro est incrémenté de un à chaque nouvelle entrée du journal des événements. Pour afficher ces informations, cliquez sur l’icône *Select columns*.
+
+
+
+ a| 
+Colonne Type d'événement
+ a| 
+Un numéro à 4 chiffres qui identifie chaque type d'événement enregistré. Pour afficher ces informations, cliquez sur l'icône *Sélectionner les colonnes*.
+
+
+
+ a| 
+Colonne des codes spécifiques à l'événement
+ a| 
+Ces informations sont utilisées par le support technique. Pour afficher ces informations, cliquez sur l’icône *Select columns*.
+
+
+
+ a| 
+Colonne de la catégorie d'événement
+ a| 
+** **Défaillance** – Un composant de la baie de stockage est tombé en panne ; par exemple, panne disque ou panne de batterie.
+** **Changement d'état** – Un élément de la baie de stockage dont l'état a changé ; par exemple, un volume est passé à l'état Optimal ou un contrôleur est passé à l'état Offline.
+** **Interne** – Opérations internes du contrôleur ne nécessitant pas d'intervention de l'utilisateur ; par exemple, le contrôleur a terminé start-of-day.
+** **Commande** – Une commande qui a été envoyée à la baie de stockage ; par exemple, un hot spare a été affecté.
+** **Erreur** – Une condition d’erreur a été détectée sur la baie de stockage ; par exemple, un contrôleur est incapable de se synchroniser et de purger le cache, ou une erreur de redondance est détectée sur la baie de stockage.
+** **Général** – Tout événement ne correspondant à aucune autre catégorie. Pour afficher ces informations, cliquez sur l’icône **Select columns**.
+
+
+
+
+ a| 
+Colonne Logged By
+ a| 
+Nom du contrôleur ayant enregistré l'événement. Pour afficher ces informations, cliquez sur l'icône **Select columns**.
+
+|===
+====
+. Pour récupérer de nouveaux événements de la baie de stockage, cliquez sur **Actualiser**.
++
+L'enregistrement d'un événement et son affichage dans la page Journal des événements peuvent prendre plusieurs minutes.
+
+. Pour enregistrer le journal des événements dans un fichier :
++
+.. Sélectionnez la case à cocher à côté de chaque événement que vous souhaitez enregistrer.
+.. Cliquez sur *Enregistrer*.
++
+Le fichier est enregistré dans le dossier Téléchargements de votre navigateur sous le nom `major-event-log-timestamp.log`.
+
+
+
+. Pour effacer les événements du journal des événements :
++
+Le journal des événements conserve environ 8 000 événements avant de remplacer un événement par un nouvel événement. Si vous souhaitez conserver les événements, vous pouvez les enregistrer et les effacer du journal des événements.
+
++
+.. Commencez par enregistrer le journal des événements.
+.. Cliquez sur *Clear All*, et confirmez que vous souhaitez effectuer l'opération.
+
+
+

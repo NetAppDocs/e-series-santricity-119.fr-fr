@@ -1,0 +1,130 @@
+---
+permalink: sm-storage/performance-terminology.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, performance, terms 
+summary: 'Découvrez comment les termes de performance s"appliquent à votre baie de stockage.' 
+---
+= Découvrez la terminologie des performances dans le logiciel SANtricity
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Découvrez comment les termes de performance s'appliquent à votre baie de stockage.
+
+[cols="25h,~"]
+|===
+| Terme | Description 
+
+
+ a| 
+Application
+ a| 
+Une application est un programme logiciel, tel que SQL ou Exchange.
+
+
+
+ a| 
+Processeur
+ a| 
+CPU est l’abréviation de « central processing unit ». CPU indique le pourcentage de la capacité de traitement de la baie de stockage utilisée.
+
+
+
+ a| 
+Hôte
+ a| 
+Un hôte est un serveur qui envoie des E/S à un volume sur une baie de stockage.
+
+
+
+ a| 
+Op E/S par sec
+ a| 
+IOPS signifie opérations d'entrée/sortie par seconde.
+
+
+
+ a| 
+Latence
+ a| 
+La latence est l'intervalle de temps entre une requête, telle qu'une commande de lecture ou d'écriture, et la réponse de l'hôte ou de la baie de stockage.
+
+
+
+ a| 
+LUN
+ a| 
+Un numéro d'unité logique (LUN) est le numéro attribué à l'espace d'adressage qu'un hôte utilise pour accéder à un volume. Le volume est présenté à l'hôte comme une capacité sous la forme d'un LUN.
+
+Chaque hôte possède son propre espace d'adressage LUN. Par conséquent, le même LUN peut être utilisé par différents hôtes pour accéder à des volumes différents.
+
+
+
+ a| 
+Mio
+ a| 
+Mio est l'abréviation de mébioctet (mega binary byte). Un Mio équaut à 2, soit 1,048,576 octets. Comparer avec MB, qui signifie une valeur en base 10. Un MB équivaut à 1,024 octets.
+
+
+
+ a| 
+Objet
+ a| 
+Un objet est tout composant de stockage logique ou physique.
+
+Les objets logiques comprennent les groupes de volumes, les pools et les volumes. Les objets physiques comprennent la baie de stockage, les contrôleurs de baie, les hôtes et les disques.
+
+
+
+ a| 
+Pool
+ a| 
+Un pool est un ensemble de disques regroupés logiquement. Vous pouvez utiliser un pool pour créer un ou plusieurs volumes accessibles à un hôte. (Vous créez des volumes à partir d’un pool ou d’un groupe de volumes.)
+
+
+
+ a| 
+Lire
+ a| 
+Read est l'abréviation de « read operation », qui se produit lorsque l'hôte demande des données à la baie de stockage.
+
+
+
+ a| 
+Volume
+ a| 
+Un volume est un conteneur dans lequel les applications, les bases de données et les systèmes de fichiers stockent des données. Il s'agit du composant logique créé pour permettre à l'hôte d'accéder au stockage sur la baie de stockage.
+
+Un volume est créé à partir de la capacité disponible dans un pool ou un groupe de volumes. Un volume possède une capacité définie. Bien qu'un volume puisse être composé de plusieurs disques, il apparaît comme un seul composant logique pour l'hôte.
+
+
+
+ a| 
+Nom du volume
+ a| 
+Le nom d'un volume est une chaîne de caractères qui lui est attribuée lors de sa création. Vous pouvez accepter le nom par défaut ou fournir un nom plus descriptif indiquant le type de données stockées dans le volume.
+
+
+
+ a| 
+Groupe de volumes
+ a| 
+Un groupe de volumes est un conteneur pour des volumes partageant des caractéristiques communes. Un groupe de volumes possède une capacité et un niveau RAID définis. Vous pouvez utiliser un groupe de volumes pour créer un ou plusieurs volumes accessibles à un hôte. (Vous créez des volumes à partir d’un groupe de volumes ou d’un pool.)
+
+
+
+ a| 
+Charge de travail
+ a| 
+Une charge de travail est un objet de stockage qui prend en charge une application. Vous pouvez définir une ou plusieurs charges de travail, ou instances, par application. Pour certaines applications, le système configure la charge de travail pour qu'elle contienne des volumes ayant des caractéristiques de volume sous-jacentes similaires. Ces caractéristiques de volume sont optimisées en fonction du type d'application que la charge de travail prend en charge. Par exemple, si vous créez une charge de travail qui prend en charge une application Microsoft SQL Server, puis créez des volumes pour cette charge de travail, les caractéristiques de volume sous-jacentes sont optimisées pour prendre en charge Microsoft SQL Server.
+
+
+
+ a| 
+Écrire
+ a| 
+Write est l'abréviation de « write operation », lorsque des données sont envoyées de l'hôte vers la baie pour stockage.
+
+|===

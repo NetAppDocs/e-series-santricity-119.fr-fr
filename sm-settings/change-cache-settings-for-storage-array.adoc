@@ -1,0 +1,51 @@
+---
+permalink: sm-settings/change-cache-settings-for-storage-array.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, change, cache, settings, 
+summary: Pour tous les volumes de la baie de stockage, vous pouvez ajuster les paramètres de mémoire cache pour le vidage et la taille de bloc. 
+---
+= Modifier les paramètres de cache de la baie de stockage dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Pour tous les volumes de la baie de stockage, vous pouvez ajuster les paramètres de mémoire cache pour le vidage et la taille de bloc.
+
+.À propos de cette tâche
+La mémoire cache est une zone de stockage temporaire volatile sur le contrôleur, qui a un temps d'accès plus rapide que celui du support de stockage. Pour optimiser les performances du cache, vous pouvez ajuster les paramètres suivants :
+
+[cols="25h,~"]
+|===
+| Paramètre du cache | Description 
+
+
+ a| 
+Démarrer le vidage du cache à la demande
+ a| 
+Le seuil de vidage du cache à la demande spécifie le pourcentage de données non écrites dans le cache qui déclenche un vidage du cache (écriture sur disque). Par défaut, le vidage du cache commence lorsque les données non écrites atteignent 80 % de capacité. Un pourcentage plus élevé est un bon choix pour les environnements avec principalement des opérations d'écriture, afin que les nouvelles requêtes d'écriture puissent être traitées par le cache sans avoir à accéder au disque. Des réglages plus faibles sont préférables dans les environnements où l'I/O est irrégulière (avec des pics de données), afin que le système vide fréquemment le cache entre les pics de données. Cependant, un pourcentage de démarrage inférieur à 80 % peut entraîner une baisse des performances.
+
+
+
+ a| 
+Taille du bloc de cache
+ a| 
+La taille des blocs de cache détermine la taille maximale de chaque bloc de cache, qui est une unité d'organisation pour la gestion du cache. Par défaut, la taille du bloc est de 32 KiB. Le système permet que la taille des blocs de cache soit de 4, 8, 16 ou 32 KiBs. Les applications utilisent différentes tailles de blocs, ce qui a un impact sur les performances de stockage. Une taille plus petite est un bon choix pour les systèmes de fichiers ou les applications de base de données. Une taille plus grande est idéale pour les applications qui génèrent des E/S séquentielles, comme le multimédia.
+
+|===
+.Étapes
+. Sélectionnez menu : Paramètres [System].
+. Faites défiler vers le bas jusqu'à *Paramètres supplémentaires*, puis cliquez sur *Modifier les paramètres du cache*.
++
+La boîte de dialogue Modifier les paramètres du cache s'ouvre.
+
+. Ajustez les valeurs suivantes :
++
+** *Démarrer le vidage du cache à la demande* -- Choisissez un pourcentage adapté aux E/S utilisées dans votre environnement. Si vous choisissez une valeur inférieure à 80%, vous risquez de constater une baisse des performances.
+** **Taille des blocs de cache -- **Choisissez une taille adaptée à vos applications.
+
+
+. Cliquez sur *Enregistrer*.
+

@@ -1,0 +1,55 @@
+---
+permalink: sm-mirroring/overview-mirroring-async.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, ARVM, asynchronous, mirroring, firmware, 
+summary: La fonction de mise en miroir asynchrone fournit un mécanisme au niveau du contrôleur, basé sur le firmware, pour la réplication des données entre une baie de stockage locale et une baie de stockage distante. 
+---
+= Découvrez la mise en miroir asynchrone dans le logiciel SANtricity
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La fonction de mise en miroir asynchrone fournit un mécanisme au niveau du contrôleur, basé sur le firmware, pour la réplication des données entre une baie de stockage locale et une baie de stockage distante.
+
+
+
+== Qu'est-ce que la mise en miroir asynchrone ?
+
+La _mise en miroir asynchrone_ capture l'état du volume principal à un moment donné et copie uniquement les données qui ont changé depuis la dernière capture d'image. Le site principal peut être mis à jour immédiatement et le site secondaire peut être mis à jour selon la bande passante disponible. Les informations sont mises en cache et envoyées ultérieurement, lorsque les ressources réseau deviennent disponibles.
+
+La mise en miroir asynchrone est créée volume par volume, mais gérée au niveau du groupe, ce qui permet d'associer un volume miroir distant distinct à n'importe quel volume principal sur une baie de stockage donnée. Ce type de mise en miroir est idéal pour répondre à la demande d'opérations ininterrompues et, de manière générale, il est beaucoup plus efficace sur le réseau pour les processus périodiques.
+
+En savoir plus :
+
+* link:how-asynchronous-mirroring-works.html["Fonctionnement de la mise en miroir asynchrone"]
+* link:asynchronous-terminology.html["Terminologie de la mise en miroir asynchrone"]
+* link:asynchronous-mirror-status.html["État du miroir asynchrone"]
+* link:volume-ownership-sync.html["Propriété du volume"]
+* link:role-change-of-a-mirror-consistency-group.html["Changement de rôle d'un groupe de cohérence miroir"]
+
+
+
+
+== Comment configurer la mise en miroir asynchrone ?
+
+Vous devez utiliser l'interface Unified Manager pour effectuer la configuration initiale de la mise en miroir entre les baies. Une fois celle-ci configurée, vous pouvez gérer les paires mises en miroir et les groupes de cohérence dans System Manager.
+
+En savoir plus :
+
+* link:requirements-for-using-asynchronous-mirroring.html["Exigences relatives à l'utilisation de la mise en miroir asynchrone"]
+* link:workflow-for-mirroring-a-volume-asynchronously.html["Flux de travail pour la mise en miroir asynchrone d'un volume"]
+* link:../um-manage/create-asynchronous-mirrored-pair-um.html["Créer une paire miroir asynchrone (dans Unified Manager)"]
+
+
+
+
+== Informations connexes
+
+En savoir plus sur les concepts liés à la mise en miroir asynchrone :
+
+* link:what-do-i-need-to-know-before-creating-a-mirror-consistency-group.html["Ce que vous devez savoir avant de créer un groupe de cohérence miroir"]
+* link:asynchronous-mirroring-what-do-i-need-to-know-before-creating-a-mirrored-pair.html["Ce que vous devez savoir avant de créer une paire miroir"]
+* link:how-does-asynchronous-mirroring-differ-from-synchronous-mirroring-async.html["En quoi la mise en miroir asynchrone diffère de la mise en miroir synchrone"]
+

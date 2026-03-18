@@ -1,0 +1,195 @@
+---
+permalink: sm-support/review-the-possible-software-and-firmware-upgrade-errors.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, software, firmware, upgrade, errors 
+summary: Des erreurs peuvent survenir lors de la mise à niveau du logiciel du contrôleur ou de la mise à niveau du firmware des disques. 
+---
+= Découvrez les erreurs de mise à niveau du logiciel et du firmware SANtricity
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Des erreurs peuvent survenir lors de la mise à niveau du logiciel du contrôleur ou de la mise à niveau du firmware des disques.
+
+[cols="25h,~,~"]
+|===
+| Erreur de téléchargement du firmware | Description | Action recommandée 
+
+
+ a| 
+Lecteurs attribués défaillants
+ a| 
+Échec de la mise à niveau d'un disque attribué dans la baie de stockage.
+ a| 
+L'une des causes possibles de cette défaillance est que le disque ne possède pas la signature appropriée. Assurez-vous que le disque concerné est un disque autorisé. Contactez le support technique pour plus d'informations.
+
+Lors du remplacement d'un disque, assurez-vous que le disque de remplacement possède une capacité égale ou supérieure à celle du disque défectueux que vous remplacez.
+
+Vous pouvez remplacer le disque défaillant pendant que la baie de stockage reçoit des E/S.
+
+
+
+ a| 
+Disques de secours à chaud intégrés
+ a| 
+Si le disque est marqué comme hot spare et est utilisé pour un groupe de volumes, le processus de mise à niveau du firmware échoue.
+ a| 
+Cette erreur doit être corrigée avant de pouvoir mettre à niveau le firmware. Lancez System Manager et utilisez le Recovery Guru pour résoudre le problème.
+
+
+
+ a| 
+Groupes de volumes incomplets
+ a| 
+Si un lecteur faisant partie d'un groupe de volumes est contourné, retiré ou ne répond plus, il est considéré comme un groupe de volumes incomplet. Un groupe de volumes incomplet empêche les mises à niveau du firmware.
+ a| 
+Si un ou plusieurs groupes de volumes ou pools de disques sont incomplets, vous devez corriger cette erreur avant de pouvoir mettre à niveau le firmware. Lancez System Manager et utilisez le Recovery Guru pour résoudre le problème.
+
+
+
+ a| 
+Opérations exclusives (autres que l'analyse des médias/de la parité en arrière-plan) actuellement en cours sur n'importe quel groupe de volumes
+ a| 
+Impossible de mettre à niveau le firmware si des opérations exclusives sont en cours sur un volume.
+ a| 
+Si une ou plusieurs opérations exclusives sont en cours, les opérations doivent être terminées avant que le firmware puisse être mis à niveau. Utilisez System Manager pour surveiller la progression des opérations.
+
+
+
+ a| 
+Volumes manquants
+ a| 
+Impossible de mettre à niveau le firmware si un volume est manquant.
+ a| 
+Vous devez corriger le problème de volume manquant avant que le firmware puisse être mis à niveau. Lancez System Manager et utilisez le Recovery Guru pour résoudre le problème.
+
+
+
+ a| 
+L'un ou l'autre contrôleur dans un état autre qu'Optimal
+ a| 
+Impossible de mettre à niveau le firmware si l’un des contrôleurs est dans un état autre qu’optimal.
+ a| 
+L'un des contrôleurs de la baie de stockage nécessite une intervention. Cette condition doit être corrigée avant que le firmware puisse être mis à niveau. Lancez System Manager et utilisez le Recovery Guru pour résoudre le problème.
+
+
+
+ a| 
+Échec de la vérification du contrôleur de base de données SPM
+ a| 
+Impossible de mettre à niveau le firmware car la base de données de mappages des partitions de stockage est corrompue.
+ a| 
+Une erreur de la base de données de mappage des partitions de stockage s'est produite sur un contrôleur. Contactez le support technique pour résoudre ce problème.
+
+
+
+ a| 
+Validation de la base de données de configuration (si pris en charge par la version du contrôleur de la baie de stockage)
+ a| 
+Impossible de mettre à niveau le firmware car la base de données de configuration est corrompue.
+ a| 
+Une erreur de base de données de configuration s'est produite sur un contrôleur. Contactez le support technique pour résoudre ce problème.
+
+
+
+ a| 
+Contrôles liés au MEL
+ a| 
+Impossible de mettre à niveau le firmware car le journal des événements contient des erreurs.
+ a| 
+Contactez le support technique pour résoudre ce problème.
+
+
+
+ a| 
+Plus de 10 événements MEL informatifs ou critiques liés au DDE ont été signalés au cours des 7 derniers jours
+ a| 
+Impossible de mettre à niveau le firmware car plus de 10 événements MEL d'information ou critiques DDE ont été signalés au cours des sept derniers jours.
+ a| 
+Contactez le support technique pour résoudre ce problème.
+
+
+
+ a| 
+Plus de 2 événements MEL critiques Page 2C ont été signalés au cours des 7 derniers jours
+ a| 
+Impossible de mettre à niveau le firmware car plus de deux événements MEL critiques de page 2C ont été signalés au cours des sept derniers jours.
+ a| 
+Contactez le support technique pour résoudre ce problème.
+
+
+
+ a| 
+Plus de 2 incidents critiques MEL de canaux de disques dégradés ont été signalés au cours des 7 derniers jours
+ a| 
+Impossible de mettre à niveau le firmware car plus de deux événements MEL critiques de canal de disque dégradé ont été signalés au cours des sept derniers jours.
+ a| 
+Contactez le support technique pour résoudre ce problème.
+
+
+
+ a| 
+Plus de 4 entrées MEL critiques au cours des 7 derniers jours
+ a| 
+Impossible de mettre à niveau le firmware car plus de quatre entrées de journal d'événements critiques ont été signalées au cours des sept derniers jours.
+ a| 
+Contactez le support technique pour résoudre ce problème.
+
+
+
+ a| 
+Une adresse IP de gestion valide est requise.
+ a| 
+Une adresse IP de contrôleur valide est requise pour effectuer cette opération.
+ a| 
+Contactez le support technique pour résoudre ce problème.
+
+
+
+ a| 
+La commande exige qu'une adresse IP de gestion active soit fournie pour chaque contrôleur.
+ a| 
+Une adresse IP de contrôleur pour chaque contrôleur associé à la baie de stockage est requise pour cette opération.
+ a| 
+Contactez le support technique pour résoudre ce problème.
+
+
+
+ a| 
+Type de fichier de téléchargement non géré renvoyé.
+ a| 
+Le fichier de téléchargement spécifié n'est pas pris en charge.
+ a| 
+Contactez le support technique pour résoudre ce problème.
+
+
+
+ a| 
+Une erreur s'est produite lors de la procédure de téléchargement ou de téléversement du firmware.
+ a| 
+Le téléchargement du firmware a échoué car le contrôleur ne peut pas traiter la requête. Vérifiez que la baie de stockage est optimale et réessayez l'opération.
+ a| 
+Si cette erreur se reproduit après avoir vérifié que la baie de stockage est optimale, contactez le support technique pour résoudre ce problème.
+
+
+
+ a| 
+Une erreur s'est produite lors de la procédure d'activation du firmware.
+ a| 
+L'activation du firmware a échoué car le contrôleur ne peut pas traiter la requête. Vérifiez que la baie de stockage est optimale et réessayez l'opération.
+ a| 
+Si cette erreur se reproduit après avoir vérifié que la baie de stockage est optimale, contactez le support technique pour résoudre ce problème.
+
+
+
+ a| 
+Le délai d'attente a été dépassé lors de l'attente du redémarrage du contrôleur {0}.
+ a| 
+Le logiciel de gestion ne parvient pas à se reconnecter au contrôleur {0} après un redémarrage. Vérifiez qu'il existe un chemin de connexion opérationnel vers la baie de stockage et réessayez l'opération si elle ne s'est pas terminée avec succès.
+ a| 
+Si cette erreur se reproduit après avoir vérifié que la baie de stockage est optimale, contactez le support technique pour résoudre ce problème.
+
+|===
+Vous pouvez corriger certaines de ces conditions à l'aide du Recovery Guru dans System Manager. Cependant, pour certaines de ces conditions, vous pourriez avoir besoin de contacter le support technique. Les informations concernant le dernier téléchargement du firmware du contrôleur sont disponibles depuis la baie de stockage. Ces informations aident le support technique à comprendre les conditions d'erreur qui ont empêché la mise à niveau et le téléchargement du firmware.

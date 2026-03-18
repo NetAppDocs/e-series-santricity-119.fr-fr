@@ -1,0 +1,35 @@
+---
+permalink: sm-storage/ssd-cache-restrictions.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, ssd, cache, restrictions 
+summary: 'Découvrez les restrictions liées à l"utilisation du cache SSD sur votre baie de stockage.' 
+---
+= Découvrez les restrictions du cache SSD dans le logiciel SANtricity
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Découvrez les restrictions liées à l'utilisation du cache SSD sur votre baie de stockage.
+
+
+
+== Restrictions
+
+* Tout volume affecté à l'utilisation du cache SSD d'un contrôleur n'est pas éligible à un transfert automatique d'équilibrage de charge.
+* Actuellement, un seul SSD Cache est pris en charge par storage array.
+* La capacité maximale utilisable du cache SSD sur une baie de stockage est de 10 TB.
+* Le cache SSD n'est pas pris en charge sur les images instantanées.
+* Si vous importez ou exportez des volumes dont le SSD Cache est activé ou désactivé, les données mises en cache ne sont pas importées ou exportées.
+* Vous ne pouvez pas supprimer le dernier disque dans un cache SSD sans d'abord supprimer le cache SSD.
+
+
+
+
+== Restrictions liées à la sécurité du lecteur
+
+* Vous pouvez activer la sécurité sur le cache SSD uniquement lors de la création du cache SSD. Vous ne pouvez pas activer la sécurité ultérieurement comme vous pouvez le faire sur un volume.
+* Si vous mélangez des disques compatibles avec la sécurité avec des disques non compatibles avec la sécurité dans le cache SSD, vous ne pouvez pas activer la sécurité du disque pour ces disques.
+* Les volumes sécurisés doivent disposer d'un cache SSD activé pour la sécurité.
+

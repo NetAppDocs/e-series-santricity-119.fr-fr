@@ -1,0 +1,282 @@
+---
+permalink: sm-storage/create-volume-group.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, create, volume, group 
+summary: 'Un groupe de volumes permet de créer un ou plusieurs volumes accessibles à l"hôte. Un groupe de volumes est un conteneur pour des volumes partageant des caractéristiques communes, telles que le niveau RAID et la capacité.' 
+---
+= Créer un groupe de volumes dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Un groupe de volumes permet de créer un ou plusieurs volumes accessibles à l'hôte. Un groupe de volumes est un conteneur pour des volumes partageant des caractéristiques communes, telles que le niveau RAID et la capacité.
+
+Avec des disques de plus grande capacité et la possibilité de répartir les volumes entre les contrôleurs, créer plus d’un volume par groupe de volumes est un bon moyen d’utiliser votre capacité de stockage et de protéger vos données.
+
+.Avant de commencer
+Examinez ces directives avant de créer un groupe de volumes :
+
+* Il vous faut au moins un lecteur non attribué.
+* Des limites existent quant au nombre de disques que vous pouvez avoir dans un seul groupe de volumes. Ces limites varient selon le niveau RAID.
+* Pour activer la protection contre la perte d'étagère/tiroir, vous devez créer un groupe de volumes qui utilise des disques situés dans au moins trois étagères ou tiroirs, sauf si vous utilisez RAID 1, où deux étagères/tiroirs constituent le minimum.
+* Si vous possédez une baie de stockage EF600 ou EF300 et que vous prévoyez de créer manuellement un groupe de volumes, assurez-vous que chaque contrôleur ait accès à un nombre égal de disques dans les 12 premiers emplacements et à un nombre égal de disques dans les 12 derniers emplacements. Cette configuration aide les contrôleurs à utiliser plus efficacement les deux bus PCIe côté disque. Actuellement, System Manager permet la sélection des disques sous la fonctionnalité Avancé lors de la création d'un groupe de volumes.
+* Examinez comment votre choix de niveau RAID affecte la capacité résultante du groupe de volumes :
++
+** Si vous choisissez RAID 1, vous devez ajouter deux disques à la fois pour vous assurer qu'une paire en miroir est sélectionnée. La mise en miroir et le striping (appelés RAID 10 ou RAID 1+0) sont obtenus lorsque quatre disques ou plus sont sélectionnés.
+** Si vous sélectionnez RAID 5, vous devez ajouter un minimum de trois disques pour créer le groupe de volumes.
+** Si vous sélectionnez RAID 6, vous devez ajouter un minimum de cinq disques pour créer le groupe de volumes.
+
+
+
+
+.Étapes
+. Sélectionnez le menu : Storage [Pools & Volume Groups].
+. Cliquez sur menu : Create[Volume group].
++
+La boîte de dialogue Create Volume Group s'affiche.
+
+. Saisissez un nom pour le groupe de volumes.
+. Sélectionnez le niveau RAID qui correspond le mieux à vos besoins en matière de stockage des données et de protection.
++
+Le tableau des candidats au groupe de volumes s'affiche et affiche uniquement les candidats qui prennent en charge le niveau RAID sélectionné.
+
+. *Facultatif :* Si vous avez plus d'un type de disque dans votre baie de stockage, sélectionnez le type de disque que vous souhaitez utiliser.
++
+Le tableau des candidats de groupes de volumes s'affiche et présente uniquement les candidats qui prennent en charge le type de disque et le niveau RAID sélectionnés.
+
+. *Facultatif :* Vous pouvez sélectionner soit la méthode automatique, soit la méthode manuelle pour définir quels lecteurs utiliser dans le groupe de volumes. La méthode automatique est la sélection par défaut.
++
+Pour sélectionner les lecteurs manuellement, cliquez sur le lien *Manually select drives (advanced)*. Lorsque vous cliquez dessus, il devient *Automatically select drives (advanced)*.
+
++
+La méthode manuelle vous permet de sélectionner les disques spécifiques qui composent le groupe de volumes. Vous pouvez sélectionner des disques non affectés spécifiques pour obtenir la capacité requise. Si la baie de stockage contient des disques avec différents types de supports ou différents types d'interfaces, vous pouvez choisir uniquement la capacité non configurée pour un seul type de disque afin de créer le nouveau groupe de volumes.
+
++
+[NOTE]
+====
+Seuls les experts qui comprennent la redondance des disques et les configurations optimales de disques devraient utiliser la méthode manuelle.
+
+====
+. En fonction des caractéristiques des lecteurs affichées, sélectionnez les lecteurs que vous souhaitez utiliser dans le groupe de volumes, puis cliquez sur *Create*.
++
+Les caractéristiques du lecteur affichées dépendent du fait que vous ayez sélectionné la méthode automatique ou la méthode manuelle.
+
++
+.Caractéristiques du lecteur de la méthode automatique
+[%collapsible]
+====
+[cols="25h,~"]
+|===
+| Caractéristique | Utiliser 
+
+
+ a| 
+Capacité libre
+ a| 
+Affiche la capacité disponible en Gio. Sélectionnez un groupe de volumes dont la capacité correspond aux besoins de stockage de votre application.
+
+
+
+ a| 
+Lecteurs totaux
+ a| 
+Affiche le nombre de disques disponibles pour ce groupe de volumes. Sélectionnez un groupe de volumes candidat avec le nombre de disques que vous souhaitez.
+
+
+
+ a| 
+Taille du bloc de disque (EF300 et EF600 uniquement)
+ a| 
+Indique la taille des blocs (taille des secteurs) que les disques du groupe peuvent écrire. Les valeurs possibles sont :
+
+** 512 -- taille de secteur de 512 octets.
+** 4K -- taille de secteur de 4 096 octets.
+
+
+
+
+ a| 
+Prise en charge de la sécurité
+ a| 
+Indique si ce candidat de groupe de volumes est composé entièrement de disques compatibles avec la sécurité, qui peuvent être soit des disques Full Disk Encryption (FDE), soit des disques Federal Information Processing Standard (FIPS).
+
+** Vous pouvez protéger votre groupe de volumes avec Drive Security, mais tous les disques doivent être compatibles avec la sécurité pour utiliser cette fonctionnalité.
+** Si vous souhaitez créer un groupe de volumes FDE uniquement, recherchez *Oui - FDE* dans la colonne Secure-Capable. Si vous souhaitez créer un groupe de volumes FIPS uniquement, recherchez *Oui - FIPS* ou *Oui - FIPS (Mixte)*. « Mixte » indique un mélange de disques de niveau 140-2 et 140-3. Si vous utilisez un mélange de ces niveaux, sachez que le groupe de volumes fonctionnera alors au niveau de sécurité le plus bas (140-2).
+** Vous pouvez créer un groupe de volumes composé de disques qui peuvent ou non être sécurisables, ou qui présentent un mélange de niveaux de sécurité. Si les disques du groupe de volumes incluent des disques qui ne sont pas sécurisables, vous ne pouvez pas rendre le groupe de volumes sécurisé.
+
+
+
+
+ a| 
+Activer la sécurité ?
+ a| 
+Permet d'activer la fonction de sécurité du lecteur pour les lecteurs compatibles. Si le groupe de volumes est compatible avec la sécurité et que vous avez configuré une clé de sécurité, vous pouvez activer la sécurité du lecteur en cochant la case à cocher.
+
+
+NOTE: La seule façon de supprimer Drive Security après son activation est de supprimer le groupe de volumes et d'effacer les disques.
+
+
+
+ a| 
+Compatible DA
+ a| 
+Indique si Data Assurance (DA) est disponible pour ce groupe. Data Assurance (DA) vérifie et corrige les erreurs pouvant survenir lors du transfert des données des contrôleurs vers les disques.
+
+Si vous souhaitez utiliser DA, sélectionnez un groupe de volumes compatible avec DA. (Pour les disques compatibles DA, DA est automatiquement activé sur les volumes créés dans le pool.)
+
+Un groupe de volumes peut contenir des disques compatibles DA ou non compatibles DA, mais tous les disques doivent être compatibles DA pour que vous puissiez utiliser cette fonctionnalité.
+
+
+
+ a| 
+Resource Provisioning Capable (EF300 et EF600 uniquement)
+ a| 
+Indique si l'allocation de ressources est disponible pour ce groupe. L'allocation de ressources est une fonctionnalité disponible dans les baies de stockage EF300 et EF600, qui permet de mettre les volumes en service immédiatement, sans processus d'initialisation en arrière-plan.
+
+
+
+ a| 
+Protection contre la perte de tiroir
+ a| 
+Indique si la protection contre la perte de baies est disponible. La protection contre la perte de baies garantit l'accessibilité aux données sur les volumes d'un groupe de volumes en cas de perte totale de communication avec une baie.
+
+
+
+ a| 
+Protection contre la perte des tiroirs
+ a| 
+Indique si la protection contre la perte de tiroir est disponible, ce qui n'est proposé que si vous utilisez une baie de disques contenant des tiroirs. La protection contre la perte de tiroir garantit l'accessibilité aux données sur les volumes d'un groupe de volumes en cas de perte totale de communication avec un seul tiroir d'une baie de disques.
+
+
+
+ a| 
+Tailles de blocs de volume prises en charge (EF300 et EF600 uniquement)
+ a| 
+Affiche les tailles de blocs pouvant être créées pour les volumes du groupe :
+
+** 512n -- 512 octets natif.
+** 512e -- 512 bytes émulés.
+** 4K -- 4,096 octets.
+
+
+|===
+====
++
+.Caractéristiques du lecteur de la méthode manuelle
+[%collapsible]
+====
+[cols="25h,~"]
+|===
+| Caractéristique | Utiliser 
+
+
+ a| 
+Type de média
+ a| 
+Indique le type de média. Les types de média suivants sont pris en charge :
+
+** disque dur
+** Disque SSD (Solid State Disk)
+
+
+Tous les disques d'un groupe de volumes doivent être du même type de support (soit tous des SSD, soit tous des disques durs). Les groupes de volumes ne peuvent pas contenir un mélange de types de supports ou de types d'interfaces.
+
+
+
+ a| 
+Taille du bloc de disque (EF300 et EF600 uniquement)
+ a| 
+Indique la taille des blocs (taille des secteurs) que les disques du groupe peuvent écrire. Les valeurs possibles sont :
+
+** 512 -- taille de secteur de 512 octets.
+** 4K -- taille de secteur de 4 096 octets.
+
+
+
+
+ a| 
+Capacité du disque
+ a| 
+Indique la capacité du lecteur.
+
+** Dans la mesure du possible, sélectionnez des disques dont la capacité est égale à la capacité des disques actuellement présents dans le groupe de volumes.
+** Si vous devez ajouter des disques non attribués de capacité inférieure, sachez que la capacité utilisable de chaque disque actuellement dans le groupe de volumes est réduite. Par conséquent, la capacité de chaque disque est la même dans l'ensemble du groupe de volumes.
+** Si vous devez ajouter des disques non attribués de plus grande capacité, sachez que la capacité utilisable des disques non attribués que vous ajoutez est réduite afin qu'elle corresponde aux capacités actuelles des disques du groupe de volumes.
+
+
+
+
+ a| 
+Plateau
+ a| 
+Indique l'emplacement du lecteur dans le tiroir.
+
+
+
+ a| 
+Fente
+ a| 
+Indique l'emplacement de l'emplacement du lecteur.
+
+
+
+ a| 
+Vitesse (tr/min)
+ a| 
+Indique la vitesse du lecteur.
+
+
+
+ a| 
+Taille du secteur logique
+ a| 
+Indique la taille et le format du secteur.
+
+
+
+ a| 
+Prise en charge de la sécurité
+ a| 
+Indique si ce candidat de groupe de volumes est composé entièrement de disques compatibles avec la sécurité, qui peuvent être soit des disques Full Disk Encryption (FDE), soit des disques Federal Information Processing Standard (FIPS).
+
+** Vous pouvez protéger votre groupe de volumes avec Drive Security, mais tous les disques doivent être compatibles avec la sécurité pour utiliser cette fonctionnalité.
+** Si vous souhaitez créer un groupe de volumes FDE uniquement, recherchez *Oui - FDE* dans la colonne Secure-Capable. Si vous souhaitez créer un groupe de volumes FIPS uniquement, recherchez *Oui - FIPS* ou *Oui - FIPS (Mixte)*. « Mixte » indique un mélange de disques de niveau 140-2 et 140-3. Si vous utilisez un mélange de ces niveaux, sachez que le groupe de volumes fonctionnera alors au niveau de sécurité le plus bas (140-2).
+** Vous pouvez créer un groupe de volumes composé de disques qui peuvent ou non être sécurisables, ou qui présentent un mélange de niveaux de sécurité. Si les disques du groupe de volumes incluent des disques qui ne sont pas sécurisables, vous ne pouvez pas rendre le groupe de volumes sécurisé.
+
+
+
+
+ a| 
+Compatible DA
+ a| 
+Indique si Data Assurance (DA) est disponible pour ce groupe. Data Assurance (DA) vérifie et corrige les erreurs pouvant survenir lors de la transmission des données des contrôleurs aux disques.
+
+Si vous souhaitez utiliser DA, sélectionnez un groupe de volumes compatible avec DA. (Pour les disques compatibles DA, DA est automatiquement activé sur les volumes créés dans le pool.)
+
+Un groupe de volumes peut contenir des disques compatibles DA ou non compatibles DA, mais tous les disques doivent être compatibles DA pour que vous puissiez utiliser cette fonctionnalité.
+
+
+
+ a| 
+Tailles de blocs de volume prises en charge (EF300 et EF600 uniquement)
+ a| 
+Affiche les tailles de blocs pouvant être créées pour les volumes du groupe :
+
+** 512n -- 512 octets natif.
+** 512e -- 512 bytes émulés.
+** 4K -- 4,096 octets.
+
+
+
+
+ a| 
+Resource Provisioning Capable (EF300 et EF600 uniquement)
+ a| 
+Indique si l'allocation de ressources est disponible pour ce groupe. L'allocation de ressources est une fonctionnalité disponible dans les baies de stockage EF300 et EF600, qui permet de mettre les volumes en service immédiatement, sans processus d'initialisation en arrière-plan.
+
+|===
+====
+

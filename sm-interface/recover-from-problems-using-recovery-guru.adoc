@@ -1,0 +1,41 @@
+---
+permalink: sm-interface/recover-from-problems-using-recovery-guru.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, Recovery Guru 
+summary: Le Recovery Guru est un composant de System Manager qui diagnostique les problèmes de la baie de stockage et recommande des procédures de récupération pour résoudre les problèmes. 
+---
+= Récupérez des problèmes à l'aide du Recovery Guru de SANtricity System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+The Recovery Guru est un composant de SANtricity System Manager qui diagnostique les problèmes des baies de stockage et recommande des procédures de récupération pour résoudre les problèmes.
+
+.Étapes
+. Sélectionnez *Home*.
+. Cliquez sur le lien intitulé *Récupérer de _n_ problèmes* au centre en haut de la fenêtre.
++
+La boîte de dialogue Recovery Guru s'affiche.
+
+. Sélectionnez le premier problème affiché dans la liste récapitulative, puis suivez les instructions de la procédure de récupération pour corriger le problème. Le cas échéant, utilisez les instructions de remplacement pour remplacer les composants défaillants. Répétez cette étape pour chaque problème répertorié.
++
+Plusieurs problèmes au sein d'une baie de stockage peuvent être liés. Dans ce cas, l'ordre dans lequel les problèmes sont corrigés peut affecter le résultat. Sélectionnez et corrigez les problèmes dans l'ordre dans lequel ils sont listés dans la liste récapitulative.
+
++
+Les pannes multiples d'un bloc d'alimentation sont regroupées et répertoriées comme un seul problème dans la liste récapitulative. Les pannes multiples d'un bloc de ventilateurs sont également répertoriées comme un seul problème.
+
+. Pour vous assurer que la procédure de récupération a réussi, cliquez sur *Recheck*.
++
+Si vous avez sélectionné un problème pour un groupe miroir asynchrone ou un membre d'un groupe miroir asynchrone, cliquez d'abord sur *Clear* pour effacer le défaut du contrôleur, puis sur *Recheck* pour supprimer l'événement du Recovery Guru.
+
++
+Une fois tous les problèmes résolus, l'icône de la baie de stockage passe de Needs Attention à Optimal. Pour certains problèmes, une icône Fixing s'affiche pendant une opération, comme une reconstruction.
+
+. *Facultatif :* Pour enregistrer les informations de Recovery Guru dans un fichier, cliquez sur l’icône *Save*.
++
+Le fichier est enregistré dans le dossier Téléchargements de votre navigateur sous le nom `recovery-guru-failure-yyyy-mm-dd-hh-mm-ss-mmm.html`.
+
+. Pour imprimer les informations de Recovery Guru, cliquez sur l’icône *Print*.
+

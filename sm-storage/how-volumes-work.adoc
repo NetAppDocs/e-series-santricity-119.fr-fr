@@ -1,0 +1,65 @@
+---
+permalink: sm-storage/how-volumes-work.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, volume, copy, 
+summary: 'Les volumes sont des conteneurs de données qui gèrent et organisent l"espace de stockage sur votre baie de stockage.' 
+---
+= Fonctionnement des volumes dans le logiciel SANtricity
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Les volumes sont des conteneurs de données qui gèrent et organisent l'espace de stockage sur votre baie de stockage.
+
+Vous créez des volumes à partir de la capacité de stockage disponible sur votre baie de stockage et facilitez l'organisation et l'utilisation des ressources de votre système. Ce concept est similaire à l'utilisation de dossiers/répertoires sur un ordinateur pour organiser les fichiers pour un accès facile et rapide.
+
+Les volumes constituent la seule couche de données visible par les hôtes. Dans un environnement SAN, les volumes sont associés à des numéros d'unité logique (LUN), qui sont visibles par les hôtes. Les LUN contiennent les données utilisateur accessibles à l'aide d'un ou de plusieurs protocoles d'accès hôte pris en charge par la baie de stockage, y compris FC, iSCSI et SAS.
+
+
+
+== Types de volumes que vous pouvez créer à partir de pools et de groupes de volumes
+
+Les volumes tirent leur capacité des pools ou des groupes de volumes. Vous pouvez créer les types de volumes suivants à partir des pools ou des groupes de volumes existant sur votre baie de stockage.
+
+* *À partir des pools* -- Vous pouvez créer des volumes à partir d'un pool en tant que _volumes entièrement provisionnés (épais)_ ou _volumes provisionnés de manière légère (mince)._
++
+[NOTE]
+====
+L'interface du System Manager ne propose pas d'option pour créer des volumes légers. Si vous souhaitez créer des volumes légers, utilisez la Command Line Interface (CLI).
+
+====
+* *À partir des groupes de volumes* -- Vous pouvez créer des volumes à partir d'un groupe de volumes uniquement en tant que _volumes entièrement provisionnés (épais)_.
+
+
+Les volumes épais et les volumes minces puisent leur capacité dans la baie de stockage de différentes manières :
+
+* La capacité d'un volume épais est allouée lors de la création du volume.
+* La capacité d'un volume mince est allouée sous forme de données lors de l'écriture sur le volume.
+
+
+Le provisionnement fin permet d'éviter le gaspillage de capacité allouée et peut permettre aux entreprises de réduire les coûts de stockage initiaux. Cependant, le provisionnement complet présente l’avantage d’une latence moindre, car tout le stockage est alloué en une seule fois lors de la création de volumes épais.
+
+[NOTE]
+====
+Les systèmes de stockage EF600/EF600C et EF300/EF300C ne prennent pas en charge le provisionnement fin.
+
+====
+
+
+== Caractéristiques des volumes
+
+Chaque volume d'un pool ou d'un groupe de volumes peut avoir ses propres caractéristiques en fonction du type de données qui y seront stockées. Certaines de ces caractéristiques incluent :
+
+* *Taille du segment* – Un segment correspond à la quantité de données, en kilo-octets (Kio), qui est stockée sur un disque avant que la baie de stockage ne passe au disque suivant dans la bande (groupe RAID). La taille du segment est égale ou inférieure à la capacité du groupe de volumes. La taille du segment est fixe et ne peut pas être modifiée pour les pools.
+* *Capacité* -- Vous créez un volume à partir de la capacité libre disponible dans un pool ou un groupe de volumes. Avant de créer un volume, le pool ou le groupe de volumes doit déjà exister et il doit disposer d'une capacité libre suffisante pour créer le volume.
+* *Propriété du contrôleur* -- Toutes les baies de stockage peuvent comporter un ou deux contrôleurs. Sur une baie à contrôleur unique, la charge de travail d'un volume est gérée par un seul contrôleur. Sur une baie à deux contrôleurs, un volume aura un contrôleur privilégié (A ou B) qui « possède » le volume. Dans une configuration à deux contrôleurs, la propriété du volume est automatiquement ajustée à l'aide de la fonction d'équilibrage de charge automatique pour corriger tout problème d'équilibrage de charge lorsque les charges de travail se déplacent entre les contrôleurs. L'équilibrage de charge automatique assure un équilibrage automatisé de la charge de travail d'E/S et garantit que le trafic d'E/S entrant provenant des hôtes est géré et équilibré dynamiquement entre les deux contrôleurs.
+* *Attribution de volume* -- Vous pouvez autoriser des hôtes à accéder à un volume lors de sa création ou ultérieurement. L’accès des hôtes est géré par un numéro d’unité logique (LUN). Les hôtes détectent les LUN qui sont, à leur tour, attribués aux volumes. Si vous attribuez un volume à plusieurs hôtes, utilisez un logiciel de clustering pour garantir que le volume soit disponible pour tous les hôtes.
++
+Le type d'hôte peut imposer des limites spécifiques quant au nombre de volumes auxquels il peut accéder. Tenez compte de cette limitation lors de la création de volumes destinés à un hôte particulier.
+
+* *Nom descriptif* -- Vous pouvez nommer un volume comme vous le souhaitez, mais nous recommandons de choisir un nom descriptif.
+
+
+Lors de la création d'un volume, une capacité lui est allouée et il se voit attribuer un nom, une taille de segment (pour les groupes de volumes uniquement), une propriété de contrôleur et une affectation du volume à un hôte. Les données du volume sont automatiquement équilibrées entre les contrôleurs, selon les besoins.

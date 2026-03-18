@@ -1,0 +1,101 @@
+---
+permalink: sm-storage/change-cache-settings.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, cache settings 
+summary: 'Vous pouvez modifier les paramètres du cache de lecture et du cache d"écriture pour influer sur les performances d"E/S globales d"un volume.' 
+---
+= Modifiez les paramètres de cache d'un volume dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez modifier les paramètres du cache de lecture et du cache d'écriture pour influer sur les performances d'E/S globales d'un volume.
+
+.À propos de cette tâche
+Gardez ces consignes à l'esprit lorsque vous modifiez les paramètres de cache d'un volume :
+
+* Après avoir ouvert la boîte de dialogue Modifier les paramètres du cache, vous pouvez voir une icône affichée à côté des propriétés du cache sélectionnées. Cette icône indique que le contrôleur a temporairement suspendu les opérations de mise en cache.
++
+Cette action peut se produire lors de la charge d'une nouvelle batterie, lorsqu'un contrôleur a été retiré, ou si le contrôleur a détecté une incompatibilité de taille de cache. Une fois le problème résolu, les propriétés de cache sélectionnées dans la boîte de dialogue deviennent actives. Si les propriétés de cache sélectionnées ne deviennent pas actives, contactez l'assistance technique.
+
+* Vous pouvez modifier les paramètres de cache d'un seul volume ou de plusieurs volumes sur une baie de stockage. Vous pouvez modifier les paramètres de cache de tous les volumes standard ou de tous les volumes légers en même temps.
+
+
+.Étapes
+. Sélectionnez le menu : Storage[Volumes].
+. Sélectionnez un volume quelconque, puis sélectionnez menu:More[Change cache settings].
++
+La boîte de dialogue Modifier les paramètres du cache s'affiche. Tous les volumes de la baie de stockage apparaissent dans cette boîte de dialogue.
+
+. Sélectionnez l'onglet *Basic* pour modifier les paramètres de mise en cache en lecture et en écriture.
++
+.Détails du champ
+[%collapsible]
+====
+[cols="25h,~"]
+|===
+| Paramètre du cache | Description 
+
+
+ a| 
+Mise en cache de lecture
+ a| 
+Le cache de lecture est une mémoire tampon qui stocke les données qui ont été lues à partir des disques. Les données pour une opération de lecture peuvent déjà se trouver dans le cache à la suite d'une opération précédente, ce qui élimine le besoin d'accéder aux disques. Les données restent dans le cache de lecture jusqu'à ce qu'elles soient vidées.
+
+
+
+ a| 
+Mise en cache d'écriture
+ a| 
+Le cache d'écriture est une mémoire tampon qui stocke les données de l'hôte n'ayant pas encore été écrites sur les disques. Les données restent dans le cache d'écriture jusqu'à ce qu'elles soient écrites sur les disques. La mise en cache en écriture peut améliorer les performances d'E/S.
+
+
+NOTE: Le cache est automatiquement vidé après la désactivation de la fonction *Write caching* pour un volume.
+
+|===
+====
+. Sélectionnez l'onglet *Advanced* pour modifier les paramètres avancés des volumes épais. Les paramètres de cache avancés sont disponibles uniquement pour les volumes épais.
++
+.Détails du champ
+[%collapsible]
+====
+[cols="25h,~"]
+|===
+| Paramètre du cache | Description 
+
+
+ a| 
+Préchargement dynamique du cache de lecture
+ a| 
+La prélecture dynamique en cache permet au contrôleur de copier des blocs de données séquentiels supplémentaires dans le cache pendant la lecture de blocs de données depuis un disque vers le cache. Cette mise en cache augmente la probabilité que les futures requêtes de données puissent être satisfaites à partir du cache. La prélecture dynamique en cache est importante pour les applications multimédias qui utilisent des E/S séquentielles. Le débit et la quantité de données préchargées dans le cache s'ajustent automatiquement en fonction du débit et de la taille des requêtes de lecture de l'hôte. L'accès aléatoire n'entraîne pas de prélecture de données dans le cache. Cette fonctionnalité ne s'applique pas lorsque la mise en cache en lecture est désactivée.
+
+Pour un volume mince, la prélecture dynamique du cache est toujours désactivée et ne peut pas être modifiée.
+
+
+
+ a| 
+Mise en cache d'écriture sans batteries
+ a| 
+L'option de mise en cache en écriture sans piles permet de poursuivre la mise en cache même lorsque les piles sont manquantes, défectueuses, complètement déchargées ou pas entièrement chargées. Il n'est généralement pas recommandé de choisir la mise en cache en écriture sans piles, car des données pourraient être perdues en cas de coupure de courant. En général, la mise en cache en écriture est désactivée temporairement par le contrôleur jusqu'à ce que les piles soient chargées ou qu'une pile défectueuse soit remplacée.
+
+
+CAUTION: *Risque de perte de données* -- Si vous sélectionnez cette option et que vous ne disposez pas d'une alimentation universelle de protection, vous risquez de perdre des données. De même, vous pourriez perdre des données si vous n'avez pas de batteries pour le contrôleur et que vous activez l'option *Mise en cache d'écriture sans batteries*.
+
+Ce paramètre est disponible uniquement si vous avez activé la mise en cache en écriture. Ce paramètre n'est pas disponible pour les volumes légers.
+
+
+
+ a| 
+Mise en cache d'écriture avec mise en miroir
+ a| 
+La mise en cache en écriture avec mise en miroir se produit lorsque les données écrites dans la mémoire cache d'un contrôleur sont également écrites dans la mémoire cache de l'autre contrôleur. Ainsi, si un contrôleur tombe en panne, l'autre peut terminer toutes les opérations d'écriture en attente. La mise en miroir du cache d'écriture est disponible uniquement si la mise en cache en écriture est activée et si deux contrôleurs sont présents. La mise en cache en écriture avec mise en miroir est le paramètre par défaut lors de la création d'un volume.
+
+Ce paramètre est disponible uniquement si vous avez activé la mise en cache en écriture. Ce paramètre n'est pas disponible pour les volumes légers.
+
+|===
+====
+. Cliquez sur *Enregistrer* pour modifier les paramètres du cache.
+

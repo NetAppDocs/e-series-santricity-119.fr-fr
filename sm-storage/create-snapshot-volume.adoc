@@ -1,0 +1,188 @@
+---
+permalink: sm-storage/create-snapshot-volume.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, create, snapshot, volume 
+summary: 'Vous créez un volume de snapshot pour permettre à l"hôte d"accéder à une image snapshot d"un volume ou d"un groupe de cohérence. Vous pouvez désigner le volume de snapshot comme étant en lecture seule ou en lecture-écriture.' 
+---
+= Créer un volume instantané dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous créez un volume de snapshot pour permettre à l'hôte d'accéder à une image snapshot d'un volume ou d'un groupe de cohérence. Vous pouvez désigner le volume de snapshot comme étant en lecture seule ou en lecture-écriture.
+
+.À propos de cette tâche
+La séquence de création de volume d'instantané permet de créer un volume d'instantané à partir d'une image d'instantané et offre des options pour allouer de la capacité réservée si le volume est accessible en lecture/écriture. Un volume d'instantané peut être désigné comme l'un des suivants :
+
+* Un volume de snapshot en lecture seule permet à une application hôte d'accéder en lecture à une copie des données contenues dans l'image du snapshot, mais sans la possibilité de modifier l'image du snapshot. Un volume de snapshot en lecture seule ne possède pas de capacité réservée associée.
+* Un volume de snapshot en lecture-écriture permet à l'application hôte d'accéder en écriture à une copie des données contenues dans l'image du snapshot. Il dispose de sa propre capacité réservée qui est utilisée pour enregistrer toute modification ultérieure apportée par l'application hôte au volume de base sans affecter l'image du snapshot référencée.
+
+
+Le processus de création d'un volume instantané est une procédure en plusieurs étapes.
+
+
+
+== Étape 1 : Examiner les membres pour un volume de snapshot
+
+Sélectionnez une image instantanée d'un volume de base ou une image instantanée d'un groupe de cohérence. Si vous sélectionnez une image instantanée d'un groupe de cohérence, les volumes membres du groupe de cohérence s'affichent pour consultation.
+
+.Étapes
+. Sélectionnez le menu : Storage[Snapshots].
+. Sélectionnez l’onglet *Snapshot Volumes*.
+. Sélectionnez *Create*.
++
+La boîte de dialogue Créer un volume d'instantané apparaît.
+
+. Sélectionnez l'image instantanée (volume ou groupe de cohérence d'instantanés) que vous souhaitez convertir en volume d'instantanés, puis cliquez sur *Suivant*. Utilisez une entrée de texte dans le champ *Filtre* pour affiner la liste.
++
+Si la sélection concerne une image d’instantané de groupe de cohérence, la boîte de dialogue « Examiner les membres » s’affiche.
+
++
+Dans la boîte de dialogue Review Members, examinez la liste des volumes sélectionnés pour la conversion en volumes instantanés, puis cliquez sur *Suivant*.
+
+. Allez à <<Étape 2 : Attribuer le volume de snapshot à l’hôte>>.
+
+
+
+
+== Étape 2 : Attribuer le volume de snapshot à l’hôte
+
+Sélectionnez un hôte ou un groupe d'hôtes spécifique pour l'assigner au volume de snapshot. Cette attribution accorde à un hôte ou à un groupe d'hôtes l'accès au volume de snapshot. Vous pouvez choisir d'assigner un hôte ultérieurement, si nécessaire.
+
+.Avant de commencer
+* Des hôtes ou des clusters d'hôtes valides existent sous la page Hôtes.
+* Les identifiants de port hôte doivent avoir été définis pour l'hôte.
+* Avant de créer un volume activé DA, vérifiez que la connexion hôte prévue prend en charge la fonctionnalité Data Assurance (DA). Si l'une des connexions hôtes des contrôleurs de votre baie de stockage ne prend pas en charge DA, les hôtes associés ne peuvent pas accéder aux données sur les volumes activés DA.
+
+
+.À propos de cette tâche
+Lorsque vous attribuez des volumes, gardez ces directives à l'esprit :
+
+* Le système d'exploitation d'un hôte peut avoir des limites spécifiques sur le nombre de volumes auxquels l'hôte peut accéder.
+* Vous pouvez définir une affectation d'hôte pour chaque volume d'instantané dans la baie de stockage.
+* Les volumes attribués sont partagés entre les contrôleurs de la baie de stockage.
+* Un même numéro d'unité logique (LUN) ne peut pas être utilisé deux fois par un hôte ou un cluster d'hôtes pour accéder à un volume de snapshot. Vous devez utiliser un LUN unique.
+
+
+[NOTE]
+====
+L'attribution d'un volume à un hôte échoue si vous tentez d'attribuer un volume à un cluster d'hôtes qui entre en conflit avec une attribution établie pour un hôte dans le cluster d'hôtes.
+
+====
+.Étapes
+. Dans la boîte de dialogue *Attribuer à un hôte*, sélectionnez l'hôte ou le cluster d'hôtes que vous souhaitez attribuer au nouveau volume. Si vous souhaitez créer le volume sans attribuer d'hôte, sélectionnez *Attribuer ultérieurement* dans la liste déroulante.
+. Sélectionnez le mode d'accès. Choisissez l'une des options suivantes :
++
+** *Lecture/écriture* -- Cette option permet à l'hôte d'accéder en lecture/écriture au volume de l'instantané et nécessite une capacité réservée.
+** *Lecture seule* -- Cette option offre à l'hôte un accès en lecture seule au volume de l'instantané et ne nécessite pas de capacité réservée.
+
+
+. Cliquez sur *Suivant*, et effectuez l'une des actions suivantes :
++
+** Si votre volume d'instantané est en lecture/écriture, la boîte de dialogue « Vérifier la capacité » s'affiche. Accédez à <<Étape 3 : Réserver de la capacité pour un volume d’instantané>>.
+** Si votre volume d'instantané est en lecture seule, la boîte de dialogue Modifier la priorité s'affiche. Accédez à <<Étape 4 : Modifier les paramètres d’un volume snapshot>>.
+
+
+
+
+
+
+== Étape 3 : Réserver de la capacité pour un volume d’instantané
+
+Associez de la capacité réservée à un volume de snapshot en lecture/écriture. System Manager suggère les volumes et la capacité en fonction des propriétés du volume de base ou du groupe de cohérence de snapshot. Vous pouvez accepter la configuration de capacité réservée recommandée ou personnaliser le stockage alloué.
+
+.À propos de cette tâche
+Vous pouvez augmenter ou diminuer la capacité réservée au volume de snapshot selon vos besoins. Si vous constatez que la capacité réservée au snapshot est supérieure à vos besoins, vous pouvez réduire sa taille afin de libérer de l'espace nécessaire à d'autres volumes logiques.
+
+.Étapes
+. Utilisez la boîte de sélection pour allouer la capacité réservée au volume de l'instantané.
++
+Le tableau Volume Candidate affiche uniquement les candidats qui prennent en charge la capacité réservée spécifiée.
+
++
+Effectuez l'une des actions suivantes :
+
++
+** *Acceptez les paramètres par défaut*.
++
+Utilisez cette option recommandée pour allouer la capacité réservée pour le volume de snapshot avec les paramètres par défaut.
+
+** *Attribuez vos propres paramètres de capacité réservée pour répondre à vos besoins de stockage des données*.
++
+Si vous modifiez le paramètre de capacité réservée par défaut, cliquez sur *Actualiser les candidats* pour actualiser la liste des candidats pour la capacité réservée que vous avez spécifiée.
+
++
+Allouez la capacité réservée en utilisant les directives suivantes.
+
++
+*** Le réglage par défaut de la capacité réservée est de 40% de la capacité du volume de base, et cette capacité est généralement suffisante.
+*** La capacité nécessaire varie en fonction de la fréquence et de la taille des écritures d'I/O sur les volumes, ainsi que de la quantité et de la durée de la collecte d'images instantanées.
+
+
+
+
+. *Facultatif :* Si vous créez le volume d’instantané pour un groupe de cohérence d’instantané, l’option « Modifier le candidat » apparaît dans le tableau des candidats à la capacité réservée. Cliquez sur *Modifier le candidat* pour sélectionner un autre candidat à la capacité réservée.
+. Cliquez sur *Suivant*, puis accédez à <<Étape 4 : Modifier les paramètres d’un volume snapshot>>.
+
+
+
+
+== Étape 4 : Modifier les paramètres d’un volume snapshot
+
+Modifiez les paramètres d'un volume d'instantané, tels que son nom, la mise en cache, les seuils d'alerte de capacité réservée, et ainsi de suite.
+
+.À propos de cette tâche
+Vous pouvez ajouter le volume au cache de disque à semi-conducteurs (SSD) comme moyen d'améliorer les performances en lecture seule. Le cache SSD consiste en un ensemble de disques SSD que vous regroupez logiquement dans votre baie de stockage.
+
+.Étapes
+. Acceptez ou modifiez les paramètres du volume de snapshot selon les besoins.
++
+.Détails du champ
+[%collapsible]
+====
+[cols="25h,~"]
+|===
+| Paramètre | Description 
+
+
+ a| 
+*Paramètres de volume Snapshot*
+
+
+
+ a| 
+Nom
+ a| 
+Spécifiez le nom du volume de snapshot.
+
+
+
+ a| 
+Activer le cache SSD
+ a| 
+Choisissez cette option pour activer la mise en cache en lecture seule sur les SSD.
+
+
+
+ a| 
+*Paramètres de capacité réservée*
+
+
+
+ a| 
+Alertez-moi quand...
+ a| 
+*Apparaît uniquement pour un volume snapshot en lecture/écriture*.
+
+Utilisez la case de sélection pour ajuster le point de pourcentage auquel le système envoie une notification d'alerte lorsque la capacité réservée pour un groupe d'instantanés est presque pleine.
+
+Lorsque la capacité réservée pour le groupe d'instantanés dépasse le seuil spécifié, utilisez l'avis préalable pour augmenter la capacité réservée ou supprimer les objets inutiles avant que l'espace restant ne soit épuisé.
+
+|===
+====
+. Vérifiez la configuration du volume d'instantané. Cliquez sur *Retour* pour apporter des modifications.
+. Lorsque vous êtes satisfait de la configuration de votre volume snapshot, cliquez sur *Finish*.
+

@@ -1,0 +1,355 @@
+---
+permalink: sm-storage/decide-to-use-a-pool-or-volume-group.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, pool, volume group 
+summary: 'Vous pouvez créer des volumes à l"aide d"un pool ou d"un groupe de volumes. Le choix optimal dépend principalement des exigences clés en matière de stockage, telles que la charge d"E/S prévue, les exigences de performance et les exigences de protection des données.' 
+---
+= Découvrez les pools et les groupes de volumes dans le logiciel SANtricity
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez créer des volumes à l'aide d'un pool ou d'un groupe de volumes. Le choix optimal dépend principalement des exigences clés en matière de stockage, telles que la charge d'E/S prévue, les exigences de performance et les exigences de protection des données.
+
+
+
+== Raisons de choisir un pool ou un groupe de volumes
+
+*Choisissez un pool*
+
+* Si vous avez besoin de reconstructions de disques plus rapides et d'une administration du stockage simplifiée, si vous avez besoin de volumes fins et/ou si votre charge de travail est très aléatoire.
+* Si vous souhaitez répartir les données de chaque volume de manière aléatoire sur un ensemble de disques qui composent le pool.
++
+Vous ne pouvez pas définir ni modifier le niveau RAID des pools ou des volumes dans les pools. Les pools utilisent le niveau RAID 6.
+
+
+
+*Choisissez un groupe de volumes*
+
+* Si vous avez besoin d'une bande passante système maximale, de la possibilité de régler les paramètres de stockage et d'une charge de travail hautement séquentielle.
+* Si vous souhaitez répartir les données sur les disques en fonction d'un niveau RAID. Vous pouvez spécifier le niveau RAID lors de la création du groupe de volumes.
+* Si vous souhaitez écrire les données de chaque volume de manière séquentielle sur l'ensemble des disques qui composent le groupe de volumes.
+
+
+[NOTE]
+====
+Étant donné que les pools peuvent coexister avec les groupes de volumes, une baie de stockage peut contenir à la fois des pools et des groupes de volumes.
+
+====
+
+
+== Différences de caractéristiques entre les pools et les groupes de volumes
+
+Le tableau suivant fournit une comparaison des fonctionnalités entre les groupes de volumes et les pools.
+
+[cols="1a,1a,1a"]
+|===
+| Utiliser | Pool | Groupe de volumes 
+
+
+ a| 
+Charge de travail aléatoire
+ a| 
+Mieux
+ a| 
+Intéressante
+
+
+
+ a| 
+charge de travail séquentielle
+ a| 
+Intéressante
+ a| 
+Mieux
+
+
+
+ a| 
+Temps de reconstruction du disque
+ a| 
+Plus rapide
+ a| 
+Plus lent
+
+
+
+ a| 
+Performance (mode optimal)
+ a| 
+Bon : Idéal pour les petites tailles de bloc et les charges de travail aléatoires.
+ a| 
+Bon : Idéal pour les charges de travail séquentielles à grands blocs
+
+
+
+ a| 
+Performances (mode de reconstruction du disque)
+ a| 
+Meilleur : Généralement meilleur que RAID 6
+ a| 
+Dégradé : jusqu'à 40 % de baisse de performance
+
+
+
+ a| 
+Pannes de disques multiples
+ a| 
+Protection des données : reconstructions plus rapides et prioritaires
+ a| 
+Moins de protection des données : reconstructions plus lentes, risque accru de perte de données
+
+
+
+ a| 
+Ajout de disques
+ a| 
+Plus rapide : ajoutez au pool à la volée
+ a| 
+Plus lent : nécessite une opération Dynamic Capacity Expansion
+
+
+
+ a| 
+Prise en charge des volumes minces
+ a| 
+Oui
+ a| 
+Non
+
+
+
+ a| 
+Prise en charge des disques SSD
+ a| 
+Oui
+ a| 
+Oui
+
+
+
+ a| 
+Administration simplifiée
+ a| 
+Oui : aucun disque de secours à chaud ni paramètre RAID à configurer
+ a| 
+Non : il faut allouer des hot spares et configurer le RAID
+
+
+
+ a| 
+Performances réglables
+ a| 
+Non
+ a| 
+Oui
+
+|===
+
+
+== Comparaison fonctionnelle des pools et des groupes de volumes
+
+La fonction et l'objectif d'un pool et d'un groupe de volumes sont identiques. Ces deux objets sont un ensemble de disques regroupés logiquement dans une baie de stockage et sont utilisés pour créer des volumes auxquels un hôte peut accéder.
+
+Le tableau suivant vous aide à décider si un pool ou un groupe de volumes convient le mieux à vos besoins de stockage.
+
+[cols="1a,1a,1a"]
+|===
+| Fonction | Pool | Groupe de volumes 
+
+
+ a| 
+Différents niveaux RAID pris en charge
+ a| 
+Non. Toujours RAID 6 dans System Manager.
+ a| 
+Oui. RAID 0, 1, 10, 5 et 6 disponibles.
+
+
+
+ a| 
+Volumes minces pris en charge
+ a| 
+Oui
+ a| 
+Non
+
+
+
+ a| 
+Chiffrement de disque (FDE) pris en charge
+ a| 
+Oui
+ a| 
+Oui
+
+
+
+ a| 
+Assurance des données (DA) prise en charge
+ a| 
+Oui
+ a| 
+Oui
+
+
+
+ a| 
+Protection contre la perte de tiroir prise en charge
+ a| 
+Oui
+ a| 
+Oui
+
+
+
+ a| 
+Protection contre la perte de tiroir prise en charge
+ a| 
+Oui
+ a| 
+Oui
+
+
+
+ a| 
+Prise en charge des vitesses de disque mixtes
+ a| 
+Il est recommandé d'utiliser la même valeur, mais ce n'est pas obligatoire. Le disque le plus lent détermine la vitesse de tous les disques.
+ a| 
+Il est recommandé d'utiliser la même valeur, mais ce n'est pas obligatoire. Le disque le plus lent détermine la vitesse de tous les disques.
+
+
+
+ a| 
+Capacité de disque mixte prise en charge
+ a| 
+Il est recommandé qu'elles soient identiques, mais ce n'est pas obligatoire. Le plus petit disque détermine la capacité de tous les disques.
+ a| 
+Il est recommandé qu'elles soient identiques, mais ce n'est pas obligatoire. Le plus petit disque détermine la capacité de tous les disques.
+
+
+
+ a| 
+Nombre minimum de lecteurs
+ a| 
+11
+ a| 
+Cela dépend du niveau RAID. RAID 0 nécessite 1. RAID 1 ou 10 nécessite 2 (un nombre pair est requis). RAID 5 minimum est 3. RAID 6 minimum est 5.
+
+
+
+ a| 
+Nombre maximal de lecteurs
+ a| 
+Jusqu'à la limite maximale pour la baie de stockage
+ a| 
+RAID 1 et 10--jusqu’à la limite maximale de la baie de stockage RAID 5, 6--30 disques
+
+
+
+ a| 
+Peut choisir des disques individuels lors de la création d'un volume
+ a| 
+Non
+ a| 
+Oui
+
+
+
+ a| 
+Peut spécifier la taille du segment lors de la création d'un volume
+ a| 
+Oui. 128K pris en charge.
+ a| 
+Oui
+
+
+
+ a| 
+Peut spécifier les caractéristiques d'E/S lors de la création d'un volume
+ a| 
+Non
+ a| 
+Oui. Système de fichiers, base de données, multimédia et personnalisés pris en charge.
+
+
+
+ a| 
+Protection contre les pannes de disque
+ a| 
+Utilise la capacité de préservation sur chaque disque du pool, ce qui rend la reconstruction plus rapide.
+ a| 
+Utilise un disque de secours à chaud. La reconstruction est limitée par les IOPs du disque.
+
+
+
+ a| 
+Avertissement lors de l’atteinte de la limite de capacité
+ a| 
+Oui. Il est possible de configurer une alerte lorsque la capacité utilisée atteint un pourcentage de la capacité maximale.
+ a| 
+Non
+
+
+
+ a| 
+Migration vers une autre baie de stockage prise en charge
+ a| 
+Non. Nécessite que vous migriez d'abord vers un groupe de volumes.
+ a| 
+Oui
+
+
+
+ a| 
+Taille de segment dynamique (DSS)
+ a| 
+Non
+ a| 
+Oui
+
+
+
+ a| 
+Peut modifier le niveau RAID
+ a| 
+Non
+ a| 
+Oui
+
+
+
+ a| 
+Extension du volume (augmentation de la capacité)
+ a| 
+Oui
+ a| 
+Oui
+
+
+
+ a| 
+Extension de capacité (ajout de capacité)
+ a| 
+Oui
+ a| 
+Oui
+
+
+
+ a| 
+Réduction de capacité
+ a| 
+Oui
+ a| 
+Non
+
+|===
+[NOTE]
+====
+Les types de disques mixtes (HDD, SSD) ne sont pas pris en charge pour les pools ni pour les groupes de volumes.
+
+====

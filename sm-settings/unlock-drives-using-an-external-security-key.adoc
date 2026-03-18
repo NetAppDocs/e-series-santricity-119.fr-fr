@@ -1,0 +1,82 @@
+---
+permalink: sm-settings/unlock-drives-using-an-external-security-key.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, unlock, drives, external, key, management, 
+summary: 'Si vous avez configuré la gestion des clés externes et que vous déplacez ultérieurement des disques sécurisés d"une baie de stockage à une autre, vous devez réattribuer la clé de sécurité à la nouvelle baie de stockage pour accéder aux données chiffrées sur les disques.' 
+---
+= Déverrouillez les disques lors de l'utilisation de la gestion externe des clés dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Si vous avez configuré la gestion des clés externes et que vous déplacez ultérieurement des disques sécurisés d'une baie de stockage à une autre, vous devez réattribuer la clé de sécurité à la nouvelle baie de stockage pour accéder aux données chiffrées sur les disques.
+
+.Avant de commencer
+* Sur la baie source (celle où vous retirez les disques), vous avez exporté les groupes de volumes et retiré les disques. Sur la baie cible, vous avez réinstallé les disques.
++
+
+NOTE: La fonction d'exportation/importation n'est pas prise en charge dans l'interface utilisateur de System Manager ; vous devez utiliser la ligne de commandes (CLI) pour exporter/importer un groupe de volumes vers une autre baie de stockage.
+
++
+Des instructions détaillées pour la migration d'un groupe de volumes sont fournies dans le https://kb.netapp.com/["Base de connaissances NetApp"^]. Veillez à suivre les instructions appropriées pour les baies plus récentes gérées par System Manager ou pour les systèmes hérités.
+
+* La fonction de sécurité du disque doit être activée. Sinon, une boîte de dialogue « Cannot Create Security Key » s'affiche pendant cette tâche. Si nécessaire, contactez votre fournisseur de stockage pour obtenir des instructions sur l'activation de la fonction de sécurité du disque.
+* Vous devez connaître l'adresse IP et le numéro de port du serveur de gestion des clés.
+* Vous disposez d'un fichier de certificat client signé pour les contrôleurs de la baie de stockage et vous avez copié ce fichier sur l'hôte depuis lequel vous accédez à System Manager. Un certificat client valide les contrôleurs de la baie de stockage, afin que le serveur de gestion des clés puisse faire confiance à leurs requêtes Key Management Interoperability Protocol (KMIP).
+* Vous devez récupérer un fichier de certificat auprès du serveur de gestion des clés, puis le copier sur l'hôte depuis lequel vous accédez à System Manager. Un certificat de serveur de gestion des clés valide le serveur de gestion des clés, afin que la baie de stockage puisse faire confiance à son adresse IP. Vous pouvez utiliser un certificat racine, intermédiaire ou serveur pour le serveur de gestion des clés.
+
+
+[NOTE]
+====
+Pour plus d'informations sur le certificat serveur, consultez la documentation de votre serveur de gestion de clés.
+
+====
+.À propos de cette tâche
+Lorsque vous utilisez la gestion de clés externe, la clé de sécurité est stockée à l'extérieur sur un serveur conçu pour protéger les clés de sécurité. Une clé de sécurité est une chaîne de caractères partagée par le contrôleur et les disques pour l'accès en lecture/écriture. Lorsque les disques sont physiquement retirés de la baie et installés dans une autre, ils ne peuvent pas fonctionner tant que vous n'avez pas fourni la clé de sécurité correcte.
+
+[NOTE]
+====
+Vous pouvez créer une clé interne à partir de la mémoire persistante du contrôleur ou une clé externe à partir d'un serveur de gestion de clés. Cette rubrique décrit le déverrouillage des données lorsque la gestion de clés _externe_ est utilisée. Si vous avez utilisé la gestion de clés _interne_, consultez link:unlock-drives-using-an-internal-security-key.html["Déverrouillez les disques lors de l'utilisation de la gestion interne des clés"]. Si vous effectuez une mise à niveau du contrôleur et remplacez tous les contrôleurs par le matériel le plus récent, vous devez suivre des étapes différentes, comme décrit dans le centre de documentation E-Series et SANtricity, dans link:https://docs.netapp.com/us-en/e-series/upgrade-controllers/upgrade-unlock-drives-task.html["Déverrouiller les lecteurs"].
+
+====
+Une fois que vous réinstallez des disques sécurisés dans une autre baie, cette baie détecte les disques et affiche une condition « Nécessite une intervention » ainsi qu’un statut « Clé de sécurité requise ». Pour déverrouiller les données des disques, vous importez le fichier de clé de sécurité et saisissez la phrase secrète pour la clé. (Cette phrase secrète n’est pas la même que le mot de passe Administrateur de la baie de stockage.) Au cours de ce processus, vous configurez la baie de stockage pour utiliser un serveur de gestion de clés externe, puis la clé de sécurité sera accessible. Vous devez fournir les informations de contact du serveur pour que la baie de stockage puisse se connecter et récupérer la clé de sécurité.
+
+Si d'autres disques sécurisés sont installés dans la nouvelle baie de stockage, ils peuvent utiliser une clé de sécurité différente de celle que vous importez. Lors du processus d'importation, l'ancienne clé de sécurité est utilisée uniquement pour déverrouiller les données des disques que vous installez. Lorsque le processus de déverrouillage réussit, les disques nouvellement installés sont réassociés à la clé de sécurité de la baie de stockage cible.
+
+.Étapes
+. Sélectionnez menu : Paramètres [System].
+. Sous *Security key management*, sélectionnez *Create External Key*.
+. Terminez l'assistant avec les informations de connexion préalables et les certificats.
+. Cliquez sur *Tester la communication* pour garantir l'accès au serveur de gestion des clés externe.
+. Sélectionnez *Déverrouiller les lecteurs sécurisés*.
++
+La boîte de dialogue Déverrouiller les lecteurs sécurisés s'ouvre. Les lecteurs nécessitant une clé de sécurité sont affichés dans le tableau.
+
+. *Facultatif :* placez le curseur de la souris sur un numéro de lecteur pour voir l’emplacement du lecteur (numéro d’étagère et numéro de baie).
+. Cliquez sur *Parcourir*, puis sélectionnez le fichier de clé de sécurité qui correspond au lecteur que vous souhaitez déverrouiller.
++
+Le fichier clé que vous avez sélectionné apparaît dans la boîte de dialogue.
+
+. Saisissez la phrase de passe associée à ce fichier clé.
++
+Les caractères que vous saisissez sont masqués.
+
+. Cliquez sur *Unlock*.
++
+Si l'opération de déverrouillage réussit, la boîte de dialogue affiche : "Les lecteurs sécurisés associés ont été déverrouillés."
+
+
+
+.Résultats
+Lorsque tous les disques sont verrouillés puis déverrouillés, chaque contrôleur de la baie de stockage redémarrera. Cependant, si la baie de stockage cible contient déjà des disques déverrouillés, alors les contrôleurs ne redémarreront pas.
+
+.Après avoir terminé
+Sur la baie de destination (la baie avec les disques nouvellement installés), vous pouvez maintenant importer des groupes de volumes.
+
+
+NOTE: La fonction d'exportation/importation n'est pas prise en charge dans l'interface utilisateur de System Manager ; vous devez utiliser la ligne de commandes (CLI) pour exporter/importer un groupe de volumes vers une autre baie de stockage.
+
+Des instructions détaillées pour la migration d'un groupe de volumes sont fournies dans le https://kb.netapp.com/["Base de connaissances NetApp"^].

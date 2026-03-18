@@ -1,0 +1,52 @@
+---
+permalink: sm-settings/how-certificates-work-sam.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, certificates, 
+summary: Les certificats sont des fichiers numériques qui identifient les entités en ligne, telles que les sites web et les serveurs, pour des communications sécurisées sur internet. 
+---
+= Fonctionnement des certificats dans SANtricity System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Les certificats sont des fichiers numériques qui identifient les entités en ligne, telles que les sites web et les serveurs, pour des communications sécurisées sur internet.
+
+Les certificats garantissent que les communications web sont transmises de manière chiffrée, privée et non altérée, uniquement entre le serveur et le client spécifiés. À l'aide de System Manager, vous pouvez gérer les certificats entre le navigateur sur un système d'administration hôte (agissant en tant que client) et les contrôleurs dans un système de stockage (agissant en tant que serveurs).
+
+Un certificat peut être signé par une autorité de confiance, ou il peut être auto-signé. La « signature » signifie simplement que quelqu'un a validé l'identité du propriétaire et déterminé que ses appareils peuvent être dignes de confiance. Les baies de stockage sont livrées avec un certificat auto-signé généré automatiquement sur chaque contrôleur. Vous pouvez continuer à utiliser les certificats auto-signés, ou vous pouvez obtenir des certificats signés par une autorité de certification pour une connexion plus sécurisée entre les contrôleurs et les systèmes hôtes.
+
+[NOTE]
+====
+Bien que les certificats signés par une autorité de certification offrent une meilleure protection (par exemple, en empêchant les attaques de type homme du milieu), ils nécessitent également des frais qui peuvent être élevés si vous avez un grand réseau. À l'inverse, les certificats auto-signés sont moins sécurisés, mais ils sont gratuits. Par conséquent, les certificats auto-signés sont le plus souvent utilisés pour les environnements de test internes, et non dans les environnements de production.
+
+====
+
+
+== Certificats signés
+
+Un certificat signé est validé par une autorité de certification (CA), qui est un organisme tiers de confiance. Les certificats signés incluent des détails sur le propriétaire de l'entité (généralement un serveur ou un site web), la date d'émission et d'expiration du certificat, les domaines valides pour l'entité, et une signature numérique composée de lettres et de chiffres.
+
+Lorsque vous ouvrez un navigateur et saisissez une adresse web, votre système effectue en arrière-plan une vérification de certificat afin de déterminer si vous vous connectez à un site web qui inclut un certificat valide signé par une CA. Généralement, un site sécurisé avec un certificat signé inclut une icône de cadenas et une désignation https dans l'adresse. Si vous tentez de vous connecter à un site web qui ne contient pas de certificat signé par une CA, votre navigateur affiche un avertissement indiquant que le site n'est pas sécurisé.
+
+L'autorité de certification (CA) prend des mesures pour vérifier votre identité lors du processus de demande. Elle peut envoyer un courriel à votre entreprise enregistrée, vérifier l'adresse de votre entreprise et effectuer une vérification HTTP ou DNS. Une fois le processus de demande terminé, la CA vous envoie des fichiers numériques à charger sur un système de gestion d'hôte. Ces fichiers incluent généralement une chaîne de confiance, comme suit :
+
+* *Racine* – Au sommet de la hiérarchie se trouve le certificat racine, qui contient une clé privée utilisée pour signer d'autres certificats. La racine identifie une organisation d'autorité de certification (CA) particulière. Si vous utilisez la même CA pour tous vos périphériques réseau, vous n'avez besoin que d'un seul certificat racine.
+* *Intermédiaire* -- Les certificats intermédiaires sont dérivés du certificat racine. L’autorité de certification émet un ou plusieurs certificats intermédiaires qui servent d’intermédiaires entre un certificat racine protégé et les certificats du serveur.
+* *Serveur* -- À la base de la chaîne se trouve le certificat serveur, qui identifie votre entité spécifique, comme un site web ou un autre appareil. Chaque contrôleur dans une storage array nécessite un certificat serveur distinct.
+
+
+
+
+== Certificats auto-signés
+
+Chaque contrôleur de la baie de stockage inclut un certificat auto-signé préinstallé. Un certificat auto-signé est similaire à un certificat signé par une autorité de certification (CA), sauf qu'il est validé par le propriétaire de l'entité au lieu d'un tiers. Comme un certificat signé par une CA, un certificat auto-signé contient sa propre clé privée et garantit également que les données sont chiffrées et envoyées via une connexion HTTPS entre un serveur et un client. Cependant, un certificat auto-signé n'utilise pas la même chaîne de confiance qu'un certificat signé par une CA.
+
+Les certificats auto-signés ne sont pas « `de confiance` » pour les navigateurs. Chaque fois que vous tentez de vous connecter à un site web qui contient uniquement un certificat auto-signé, le navigateur affiche un message d'avertissement. Vous devez cliquer sur un lien dans le message d'avertissement qui vous permet de continuer vers le site web ; ce faisant, vous acceptez essentiellement le certificat auto-signé.
+
+
+
+== Certificats utilisés pour le serveur de gestion des clés
+
+Si vous utilisez un serveur de gestion de clés externe avec la fonctionnalité Drive Security, vous pouvez également gérer les certificats pour l'authentification entre ce serveur et les contrôleurs.

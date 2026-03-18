@@ -1,0 +1,14 @@
+---
+permalink: sm-interface/index.html 
+sidebar: sidebar 
+keywords: santricity, system, manager, 
+summary: SANtricity System Manager 11.9 
+---
+= SANtricity System Manager 11.9
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SANtricity System Manager est une interface web qui vous permet de gérer une matrice de stockage dans une seule vue.

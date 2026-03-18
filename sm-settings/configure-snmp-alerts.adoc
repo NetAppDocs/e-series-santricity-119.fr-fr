@@ -1,0 +1,80 @@
+---
+permalink: sm-settings/configure-snmp-alerts.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, configure, snmp, alerts, 
+summary: 'Pour configurer les alertes SNMP (Simple Network Management Protocol), vous devez identifier au moins un serveur sur lequel le système de surveillance des événements de la baie de stockage peut envoyer des traps SNMP. La configuration requiert un nom de communauté ou un nom d"utilisateur, ainsi qu"une adresse IP pour le serveur.' 
+---
+= Configurer les alertes SNMP dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Pour configurer les alertes Simple Network Management Protocol (SNMP), vous devez identifier au moins un serveur où le moniteur d'événements de la baie de stockage peut envoyer des traps SNMP. La configuration requiert un nom de communauté ou un nom d'utilisateur, ainsi qu'une adresse IP pour le serveur.
+
+.Avant de commencer
+* Un serveur réseau doit être configuré avec une application de service SNMP. Vous avez besoin de l'adresse réseau de ce serveur (soit une adresse IPv4, soit une adresse IPv6), afin que le moniteur d'événements puisse envoyer des messages d'alerte à cette adresse. Vous pouvez utiliser plusieurs serveurs (jusqu'à 10 serveurs sont autorisés).
+* Le fichier MIB (Management Information Base) a été copié et compilé sur le serveur avec l'application de service SNMP. Ce fichier MIB définit les données surveillées et gérées.
++
+Si vous ne possédez pas le fichier MIB, vous pouvez l'obtenir sur le site d'assistance NetApp :
+
++
+** Allez à https://mysupport.netapp.com/site/global/dashboard["Support NetApp"^].
+** Cliquez sur l'onglet *Downloads*, puis sélectionnez *Downloads*.
+** Cliquez sur *E-Series SANtricity OS Controller Software*.
+** Sélectionnez *Download Latest Release*.
+** Connectez-vous.
+** Acceptez la déclaration de mise en garde et le contrat de licence.
+** Faites défiler vers le bas jusqu'à ce que vous voyiez le fichier MIB pour votre type de controller, puis cliquez sur le lien pour télécharger le fichier.
+
+
+
+
+.À propos de cette tâche
+Cette tâche décrit comment identifier le serveur SNMP pour les destinations de trap, puis tester votre configuration.
+
+.Étapes
+. Sélectionnez menu : Paramètres[Alertes].
+. Sélectionnez l’onglet *SNMP*.
++
+Lors de la première configuration, l'onglet SNMP affiche « Configure Communities/Users. »
+
+. Sélectionnez *Configure Communities/Users*.
++
+La boîte de dialogue Sélectionner la version SNMP s'ouvre.
+
+. Sélectionnez la version SNMP pour les alertes, soit *SNMPv2c* ou *SNMPv3*.
++
+Selon votre sélection, la boîte de dialogue Configurer les communautés ou la boîte de dialogue Configurer les utilisateurs SNMPv3 s'ouvre.
+
+. Suivez les instructions appropriées pour SNMPv2c (communities) ou SNMPv3 (users) :
++
+** *SNMPv2c (communautés)* -- Dans la boîte de dialogue Configurer les communautés, saisissez une ou plusieurs chaînes de communauté pour les serveurs réseau. Un nom de communauté est une chaîne qui identifie un ensemble connu de stations de gestion, et est généralement créé par un administrateur réseau. Il se compose uniquement de caractères ASCII imprimables. Vous pouvez ajouter jusqu'à 256 communautés. Lorsque vous avez terminé, cliquez sur *Save*.
+** *SNMPv3 (utilisateurs)* -- Dans la boîte de dialogue Configurer les utilisateurs SNMPv3, cliquez sur *Ajouter*, puis saisissez les informations suivantes :
++
+*** *Nom d'utilisateur* -- Saisissez un nom pour identifier l'utilisateur, qui peut comporter jusqu'à 31 caractères.
+*** *ID du moteur* -- Sélectionnez l’ID du moteur, qui est utilisé pour générer les clés d’authentification et de chiffrement des messages, et doit être unique sur le domaine administratif. Dans la plupart des cas, vous devez sélectionner *Local*. Si vous avez une configuration non standard, sélectionnez *Personnalisé* ; un autre champ apparaît où vous devez saisir l’ID du moteur faisant autorité sous forme de chaîne hexadécimale, avec un nombre pair de caractères compris entre 10 et 32.
+*** *Identifiants d'authentification* -- Sélectionnez un protocole d'authentification, qui garantit l'identité des utilisateurs. Ensuite, saisissez un mot de passe d'authentification, requis lorsque le protocole d'authentification est défini ou modifié. Le mot de passe doit comporter entre 8 et 128 caractères.
+*** *Identifiants de confidentialité* -- Sélectionnez un protocole de confidentialité, utilisé pour chiffrer le contenu des messages. Ensuite, saisissez un mot de passe de confidentialité, requis lorsque le protocole de confidentialité est défini ou modifié. Le mot de passe doit comporter entre 8 et 128 caractères. Lorsque vous avez terminé, cliquez sur *Ajouter*, puis sur *Fermer*.
+
+
+
+
+. Sur la page Alertes, avec l'onglet SNMP sélectionné, cliquez sur *Add Trap Destinations*.
++
+La boîte de dialogue Ajouter des destinations de piège s'ouvre.
+
+. Saisissez une ou plusieurs destinations de trap, sélectionnez leurs noms de communauté ou noms d'utilisateur associés, puis cliquez sur *Add*.
++
+** *Destination du piège* -- Entrez une adresse IPv4 ou IPv6 du serveur exécutant un service SNMP.
+** *Nom de la communauté ou nom d'utilisateur* -- Dans la liste déroulante, sélectionnez le nom de la communauté (SNMPv2c) ou le nom d'utilisateur (SNMPv3) pour cette destination de trap. (Si vous n'en avez défini qu'un seul, le nom apparaît déjà dans ce champ.)
+** *Envoyer une alerte d'échec d'authentification* -- Sélectionnez cette option (la case à cocher) si vous souhaitez alerter la destination du piège lorsqu'une requête SNMP est rejetée en raison d'un nom de communauté ou d'un nom d'utilisateur non reconnu. Après avoir cliqué sur *Ajouter*, les destinations de piège et les noms associés apparaissent dans l'onglet *SNMP* de la page *Alertes*.
+
+
+. Pour vérifier qu'un piège est valide, sélectionnez une destination de piège dans le tableau, puis cliquez sur *Tester la destination du piège* pour envoyer un piège de test à l'adresse configurée.
+
+
+.Résultats
+Le moniteur d'événements envoie des traps SNMP au(x) serveur(s) chaque fois qu'un événement nécessitant une alerte se produit.

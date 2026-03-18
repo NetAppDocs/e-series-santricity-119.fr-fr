@@ -1,0 +1,48 @@
+---
+permalink: sm-storage/how-workloads-work.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, application, workloads, volume, 
+summary: 'Lors de la création d"un volume, vous sélectionnez une charge de travail applicative afin de personnaliser la configuration de la baie de stockage pour une application spécifique.' 
+---
+= Fonctionnement des charges de travail dans le logiciel SANtricity
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Lors de la création d'un volume, vous sélectionnez une charge de travail applicative afin de personnaliser la configuration de la baie de stockage pour une application spécifique.
+
+Une charge de travail est un objet de stockage qui prend en charge une application. Vous pouvez définir une ou plusieurs charges de travail, ou instances, par application. Pour certaines applications, le système configure la charge de travail pour qu'elle contienne des volumes ayant des caractéristiques de volume sous-jacentes similaires. Ces caractéristiques de volume sont optimisées en fonction du type d'application que la charge de travail prend en charge. Par exemple, si vous créez une charge de travail qui prend en charge une application Microsoft SQL Server, puis créez des volumes pour cette charge de travail, les caractéristiques de volume sous-jacentes sont optimisées pour prendre en charge Microsoft SQL Server.
+
+Lors de la création d'un volume, le système vous invite à répondre à des questions concernant l'utilisation de la charge de travail. Par exemple, si vous créez des volumes pour Microsoft Exchange, il vous est demandé combien de boîtes aux lettres vous avez besoin, quelles sont vos exigences moyennes en capacité de boîte aux lettres, et combien de copies de la base de données vous souhaitez. Le système utilise ces informations pour créer une configuration de volume optimale pour vous, qui peut être modifiée si nécessaire. Vous pouvez également ignorer cette étape dans la séquence de création du volume.
+
+
+
+== Types de charges de travail
+
+Vous pouvez créer deux types de charges de travail : charge de travail applicative et Autres.
+
+* *Spécifique à l'application*. Lorsque vous créez des volumes à l'aide d'une charge de travail applicative spécifique, le système peut recommander une configuration de volume optimisée afin de minimiser la contention entre la charge de travail applicative E/S et les autres trafics provenant de votre instance d'application. Les caractéristiques du volume, telles que le type d'E/S, la taille des segments, la propriété du contrôleur, ainsi que les caches de lecture et d'écriture, sont automatiquement recommandées et optimisées pour les charges de travail créées pour les types d'applications suivants.
++
+** Microsoft® SQL Server™
+** Microsoft® Serveur Exchange™
+** Applications de vidéosurveillance
+** VMware ESXi™ (pour les volumes à utiliser avec Virtual Machine File System)
++
+Vous pouvez consulter la configuration de volume recommandée et modifier, ajouter ou supprimer les volumes et caractéristiques recommandés par le système à l'aide de la boîte de dialogue Add/Edit Volumes.
+
+
+
+* *Autres* (ou applications ne prenant pas en charge la création de volumes spécifiques). Les autres charges de travail utilisent une configuration de volume que vous devez spécifier manuellement lorsque vous souhaitez créer une charge de travail non associée à une application spécifique, ou si le système ne dispose pas d'optimisation intégrée pour l'application que vous prévoyez d'utiliser sur la baie de stockage. Vous devez spécifier manuellement la configuration de volume à l'aide de la boîte de dialogue Ajouter/Modifier des volumes.
+
+
+
+
+== Vues d'application et de charge de travail
+
+Pour afficher les applications et les charges de travail, lancez SANtricity System Manager. Depuis cette interface, vous pouvez consulter les informations associées à une charge de travail applicative spécifique de plusieurs manières :
+
+* Vous pouvez sélectionner l'onglet *Applications & Workloads* dans la vignette Volumes pour afficher les volumes de la baie de stockage regroupés par charge de travail et par type d'application à laquelle la charge de travail est associée.
+* Vous pouvez sélectionner l'onglet *Applications & Workloads* dans la vignette Performances pour afficher les indicateurs de performance (latence, IOPS et Mo/s) des objets logiques. Les objets sont regroupés par application et charge de travail associée. En collectant ces données de performance à intervalles réguliers, vous pouvez établir des mesures de référence et analyser les tendances, ce qui peut vous aider lors de l'investigation de problèmes liés aux performances d'E/S.
+

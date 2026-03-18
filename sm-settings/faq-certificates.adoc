@@ -1,0 +1,66 @@
+---
+permalink: sm-settings/faq-certificates.html 
+sidebar: sidebar 
+keywords:  
+summary: Cette FAQ peut vous aider si vous cherchez simplement une réponse rapide à une question. 
+---
+= FAQ sur les certificats signés par une autorité de certification et les certificats auto-signés pour SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Cette FAQ peut vous aider si vous cherchez simplement une réponse rapide à une question.
+
+
+
+== Pourquoi la boîte de dialogue Cannot Access Other Controller s'affiche-t-elle ?
+
+Lorsque vous effectuez certaines opérations liées aux certificats CA (par exemple, importer un certificat), il se peut que vous voyiez une boîte de dialogue vous invitant à accepter un certificat auto-signé pour le deuxième contrôleur.
+
+Dans les baies de stockage à deux contrôleurs (configurations duplex), cette boîte de dialogue apparaît parfois si SANtricity System Manager ne peut pas communiquer avec le deuxième contrôleur ou si votre navigateur ne peut pas accepter le certificat à un certain moment de l'opération.
+
+Si cette boîte de dialogue s'ouvre, cliquez sur *Accepter le certificat auto-signé* pour continuer. Si une autre boîte de dialogue vous demande un mot de passe, saisissez votre mot de passe d'Administrateur utilisé pour accéder à System Manager.
+
+Si cette boîte de dialogue réapparaît et que vous ne pouvez pas terminer une tâche de certificat, essayez l'une des procédures suivantes :
+
+* Utilisez un autre type de navigateur pour accéder à ce contrôleur, acceptez le certificat et continuez.
+* Accédez au deuxième contrôleur avec withSystem Manager, acceptez le certificat auto-signé, puis retournez au premier contrôleur et continuez.
+
+
+
+
+== Comment savoir quels certificats doivent être téléchargés sur SANtricity System Manager pour la gestion des clés externes ?
+
+Pour la gestion des clés externes, vous importez deux types de certificats pour l'authentification entre la baie de stockage et le serveur de gestion des clés afin que les deux entités puissent se faire confiance.
+
+Un certificat client valide les contrôleurs de la baie de stockage, de sorte que le serveur de gestion des clés puisse faire confiance à leurs requêtes Key Management Interoperability Protocol (KMIP).
+
+Pour obtenir un certificat client, utilisez System Manager afin de compléter une CSR pour la baie de stockage. Vous pouvez également générer une CSR en externe à l'aide d'une paire de clés privée et publique.
+
+Vous pouvez ensuite charger la CSR sur un serveur de gestion de clés et générer un certificat client à partir de là. Une fois que vous avez un certificat client, copiez ce fichier sur l'hôte depuis lequel vous accédez à System Manager.
+
+Un certificat de serveur de gestion de clés valide le serveur de gestion de clés, de sorte que la baie de stockage puisse faire confiance à son adresse IP. Récupérez le fichier de certificat du serveur de gestion de clés, puis copiez ce fichier sur l’hôte depuis lequel vous accédez à System Manager.
+
+
+
+== Que dois-je savoir sur la vérification de la révocation des certificats ?
+
+SANtricity System Manager vous permet de vérifier les certificats révoqués en utilisant un serveur Online Certificate Status Protocol (OCSP), au lieu de télécharger des Certificate Revocation Lists (CRLs).
+
+Les certificats révoqués ne doivent plus être considérés comme fiables. Un certificat peut être révoqué pour plusieurs raisons ; par exemple, si la Certificate Authority (CA) a émis le certificat de manière inappropriée, si une clé privée a été compromise ou si l’entité identifiée n’a pas respecté les exigences de la politique.
+
+Une fois que vous avez établi une connexion à un serveur OCSP dans System Manager, la baie de stockage effectue une vérification de révocation chaque fois qu'elle se connecte à un serveur AutoSupport, à un serveur External Key Management Server (EKMS), à un serveur Lightweight Directory Access Protocol over SSL (LDAPS) ou à un serveur Syslog. La baie de stockage tente de valider les certificats de ces serveurs pour s'assurer qu'ils n'ont pas été révoqués. Le serveur retourne alors une valeur « good », « revoked » ou « unknown » pour ce certificat. Si le certificat est révoqué ou si la baie ne peut pas contacter le serveur OCSP, la connexion est refusée.
+
+[NOTE]
+====
+Spécifier une adresse de répondeur OCSP dans le Gestionnaire système ou dans l'interface de ligne de commandes (CLI) remplace l'adresse OCSP trouvée dans le fichier de certificat.
+
+====
+
+
+== Pour quels types de serveurs la vérification de révocation sera-t-elle activée ?
+
+La baie de stockage effectue une vérification de révocation chaque fois qu'elle se connecte à un AutoSupport serveur, un serveur de gestion de clés externes (EKMS), un serveur Lightweight Directory Access Protocol over SSL (LDAPS), ou un serveur Syslog.

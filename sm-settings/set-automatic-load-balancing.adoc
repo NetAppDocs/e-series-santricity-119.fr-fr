@@ -1,0 +1,49 @@
+---
+permalink: sm-settings/set-automatic-load-balancing.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, set, automatic, load, balancing, 
+summary: 'La fonction d"équilibrage de charge automatique assure une gestion et une répartition dynamiques du trafic d"E/S entrant des hôtes entre les deux contrôleurs. Cette fonction est activée par défaut, mais vous pouvez la désactiver depuis System Manager.' 
+---
+= Définissez l'équilibrage de charge automatique dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La fonction d'équilibrage de charge automatique assure une gestion et une répartition dynamiques du trafic d'E/S entrant provenant des hôtes entre les deux contrôleurs. Cette fonction est activée par défaut, mais vous pouvez la désactiver depuis SANtricity System Manager.
+
+.À propos de cette tâche
+Lorsque l'équilibrage de charge automatique est activé, il effectue les fonctions suivantes :
+
+* Surveille et équilibre automatiquement l'utilisation des ressources du contrôleur.
+* Ajuste automatiquement la propriété du contrôleur de volume en cas de besoin, optimisant ainsi la bande passante d'E/S entre les hôtes et la baie de stockage.
+
+
+Vous pourriez vouloir désactiver l'équilibrage de charge automatique sur votre baie de stockage pour les raisons suivantes :
+
+* Vous ne souhaitez pas modifier automatiquement la propriété du contrôleur d'un volume particulier pour équilibrer la charge de travail.
+* Vous évoluez dans un environnement hautement paramétré où la répartition de la charge est délibérément configurée pour atteindre une distribution spécifique entre les contrôleurs.
+
+
+.Étapes
+. Sélectionnez menu : Paramètres [System].
+. Faites défiler vers le bas jusqu'à *Paramètres supplémentaires*, puis cliquez sur *Activer/Désactiver l'équilibrage de charge automatique*.
++
+Le texte situé sous cette option indique si la fonctionnalité est actuellement activée ou désactivée.
+
++
+Une boîte de dialogue de confirmation s'ouvre.
+
+. Confirmez en cliquant sur *Oui* pour continuer.
++
+En sélectionnant cette option, vous basculez la fonctionnalité entre activée/désactivée.
+
++
+[NOTE]
+====
+Si cette fonctionnalité passe de désactivée à activée, la fonctionnalité de rapport de connectivité hôte est également activée automatiquement.
+
+====
+

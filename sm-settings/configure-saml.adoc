@@ -1,0 +1,222 @@
+---
+permalink: sm-settings/configure-saml.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, configure, saml, 
+summary: 'Pour configurer l"authentification pour Access Management, vous pouvez utiliser les fonctionnalités Security Assertion Markup Language (SAML) intégrées à la baie de stockage. Cette configuration établit une connexion entre un Identity Provider et le Storage Provider.' 
+---
+= Configurer SAML dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Pour configurer l'authentification pour Access Management, vous pouvez utiliser les fonctionnalités Security Assertion Markup Language (SAML) intégrées à la baie de stockage. Cette configuration établit une connexion entre un Identity Provider et le Storage Provider.
+
+.Avant de commencer
+* Vous devez être connecté avec un profil utilisateur disposant des autorisations d'administrateur de sécurité. Sinon, les fonctions de gestion des accès ne s'affichent pas.
+* Vous devez connaître l'adresse IP ou le nom de domaine de chaque contrôleur de la baie de stockage.
+* Un administrateur IdP a configuré un système IdP.
+* Un administrateur IdP s'est assuré que l'IdP prend en charge la capacité de renvoyer un Name ID lors de l'authentification.
+* Un administrateur s'est assuré que les horloges du serveur IdP et du contrôleur sont synchronisées (soit via un serveur NTP, soit en ajustant les paramètres d'horloge du contrôleur).
+* Un fichier de métadonnées IdP est téléchargé depuis le système IdP et est disponible sur le système local utilisé pour accéder à System Manager.
+
+
+.À propos de cette tâche
+Un fournisseur d'identité (IdP) est un système externe utilisé pour demander les identifiants d'un utilisateur et déterminer si cet utilisateur est authentifié avec succès. L'IdP peut être configuré pour fournir une authentification multifacteur et utiliser n'importe quelle base de données utilisateur, telle qu'Active Directory. Votre équipe de sécurité est responsable de la maintenance de l'IdP. Un fournisseur de services (SP) est un système qui contrôle l'authentification et l'accès des utilisateurs. Lorsque la gestion des accès est configurée avec SAML, la baie de stockage agit en tant que fournisseur de services pour demander l'authentification auprès du fournisseur d'identité. Pour établir une connexion entre l'IdP et la baie de stockage, vous partagez des fichiers de métadonnées entre ces deux entités. Ensuite, vous associez les entités utilisateur de l'IdP aux rôles de la baie de stockage. Enfin, vous testez la connexion et les connexions SSO avant d'activer SAML.
+
+[NOTE]
+====
+*SAML et services d'annuaire*. Si vous activez SAML alors que les services d'annuaire sont configurés comme méthode d'authentification, SAML remplace les services d'annuaire dans le Gestionnaire système. Si vous désactivez SAML ultérieurement, la configuration des services d'annuaire reprend sa configuration précédente.
+
+====
+[CAUTION]
+====
+*Modification et désactivation.* Une fois SAML activé, vous _ne pouvez pas_ le désactiver via l’interface utilisateur, ni modifier les paramètres IdP. Si vous devez désactiver ou modifier la configuration SAML, contactez le support technique pour obtenir de l’aide.
+
+====
+La configuration de l'authentification SAML est une procédure en plusieurs étapes.
+
+
+
+== Étape 1 : Téléversez le fichier de métadonnées IdP
+
+Pour fournir à la baie de stockage les informations de connexion IdP, vous importez les métadonnées IdP dans System Manager. Le système IdP a besoin de ces métadonnées pour rediriger les requêtes d'authentification vers la bonne URL et pour valider les réponses reçues. Vous n'avez besoin de télécharger qu'un seul fichier de métadonnées pour la baie de stockage, même s'il y a deux contrôleurs.
+
+.Étapes
+. Sélectionnez le menu : Settings [Gestion des accès].
+. Sélectionnez l’onglet *SAML*.
++
+La page affiche un aperçu des étapes de configuration.
+
+. Cliquez sur le lien *Importer le fichier Identity Provider (IdP)*.
++
+La boîte de dialogue Import Identity Provider File s'ouvre.
+
+. Cliquez sur *Parcourir* pour sélectionner et télécharger le fichier de métadonnées IdP que vous avez copié sur votre système local.
++
+Après avoir sélectionné le fichier, l'identifiant de l'entité IdP s'affiche.
+
+. Cliquez sur *Import*.
+
+
+
+
+== Étape 2 : Exporter les fichiers du Service Provider
+
+Pour établir une relation de confiance entre l'IdP et la baie de stockage, vous importez les métadonnées du Service Provider dans l'IdP. L'IdP a besoin de ces métadonnées pour établir une relation de confiance avec les contrôleurs et traiter les demandes d'autorisation. Le fichier contient des informations telles que le nom de domaine ou l'adresse IP du contrôleur, afin que l'IdP puisse communiquer avec les Service Providers.
+
+.Étapes
+. Cliquez sur le lien *Exporter les fichiers du Service Provider*.
++
+La boîte de dialogue Export Service Provider Files s'ouvre.
+
+. Saisissez l'adresse IP du contrôleur ou le nom DNS dans le champ *Controller A*, puis cliquez sur *Export* pour enregistrer le fichier de métadonnées sur votre système local. Si la baie de stockage comprend deux contrôleurs, répétez cette étape pour le second contrôleur dans le champ *Controller B*.
++
+Après avoir cliqué sur *Exporter*, les métadonnées du fournisseur de services sont téléchargées sur votre système local. Notez l'emplacement où le fichier est stocké.
+
+. Depuis le système local, localisez le ou les fichiers de métadonnées du Service Provider que vous avez exportés.
++
+Il existe un fichier au format XML pour chaque contrôleur.
+
+. Depuis le serveur IdP, importez le ou les fichiers de métadonnées du Service Provider pour établir la relation de confiance. Vous pouvez soit importer les fichiers directement, soit saisir manuellement les informations du controller à partir des fichiers.
+
+
+
+
+== Étape 3 : Mapper les rôles
+
+Pour fournir aux utilisateurs l'autorisation et l'accès à System Manager, vous devez associer les attributs utilisateur et les appartenances aux groupes de l'IdP aux rôles prédéfinis de la baie de stockage.
+
+.Avant de commencer
+* Un administrateur IdP a configuré les attributs des utilisateurs et l'appartenance aux groupes dans le système IdP.
+* Le fichier de métadonnées IdP est importé dans System Manager.
+* Un fichier de métadonnées Service Provider pour chaque contrôleur est importé dans le système IdP pour la relation de confiance.
+
+
+.Étapes
+. Cliquez sur le lien pour *mapper les rôles System Manager*.
++
+La boîte de dialogue Mappage des rôles s'ouvre.
+
+. Attribuez les attributs et les groupes d'utilisateurs IdP aux rôles prédéfinis. Un groupe peut avoir plusieurs rôles attribués.
++
+.Détails du champ
+[%collapsible]
+====
+[cols="25h,~"]
+|===
+| Paramètre | Description 
+
+
+ a| 
+*Cartographies*
+
+
+
+ a| 
+Attribut utilisateur
+ a| 
+Spécifiez l'attribut (par exemple, "member of") pour le groupe SAML à mapper.
+
+
+
+ a| 
+Valeur de l'attribut
+ a| 
+Spécifiez la valeur de l'attribut pour le groupe à mapper. Les expressions régulières sont prises en charge. Ces caractères spéciaux d'expression régulière doivent être échappés avec une barre oblique inverse (`\`) s'ils ne font pas partie d'un modèle d'expression régulière : \.[]{}()<>*+-=!?^$|
+
+
+
+ a| 
+Rôles
+ a| 
+Cliquez dans le champ et sélectionnez l'un des rôles de la baie de stockage à associer à l'attribut. Vous devez sélectionner individuellement chaque rôle que vous souhaitez inclure. Le rôle Monitor est requis en combinaison avec les autres rôles pour se connecter à System Manager. Le rôle Security Admin est également requis pour au moins un groupe.
+
+Les rôles associés incluent les autorisations suivantes :
+
+** *Administrateur de stockage* -- Accès complet en lecture/écriture aux objets de stockage (par exemple, volumes et disk pools), mais aucun accès à la configuration de sécurité.
+** *Administrateur de sécurité* -- Accès à la configuration de sécurité dans la gestion des accès, la gestion des certificats, la gestion du journal des audits et la possibilité d'activer ou de désactiver l'interface de gestion héritée (SYMbol).
+** *Administrateur support* -- Accès à toutes les ressources matérielles de la baie de stockage, aux données de panne, aux événements MEL et aux mises à niveau du micrologiciel du contrôleur. Aucun accès aux objets de stockage ni à la configuration de sécurité.
+** *Moniteur* -- Accès en lecture seule à tous les objets de stockage, mais aucun accès à la configuration de sécurité.
+
+
+|===
+====
++
+[NOTE]
+====
+Le rôle de Monitor est requis pour tous les utilisateurs, y compris l'administrateur. System Manager ne fonctionnera pas correctement pour tout utilisateur sans le rôle Monitor.
+
+====
+. Si vous le souhaitez, cliquez sur *Ajouter un autre mappage* pour saisir d'autres mappages groupe-rôle.
++
+[NOTE]
+====
+Les correspondances de rôles peuvent être modifiées après l’activation de SAML.
+
+====
+. Lorsque vous avez terminé avec les correspondances, cliquez sur *Enregistrer*.
+
+
+
+
+== Étape 4 : Tester la connexion SSO
+
+Pour garantir la communication entre le système IdP et la baie de stockage, vous pouvez éventuellement tester une connexion SSO. Ce test est également effectué lors de la dernière étape pour activer SAML.
+
+.Avant de commencer
+* Le fichier de métadonnées IdP est importé dans System Manager.
+* Un fichier de métadonnées Service Provider pour chaque contrôleur est importé dans le système IdP pour la relation de confiance.
+
+
+.Étapes
+. Sélectionnez le lien *Test SSO Login*.
++
+Une boîte de dialogue s'ouvre pour saisir les informations d'identification SSO.
+
+. Saisissez les identifiants de connexion d'un utilisateur disposant à la fois des autorisations Security Admin et Monitor.
++
+Une boîte de dialogue s'ouvre pendant que le système teste la connexion.
+
+. Recherchez le message « Test réussi ». Si le test réussit, passez à l'étape suivante pour activer SAML.
++
+Si le test ne se termine pas avec succès, un message d'erreur apparaît avec des informations supplémentaires. Assurez-vous que :
+
++
+** L'utilisateur appartient à un groupe disposant des autorisations de Security Admin et Monitor.
+** Les métadonnées que vous avez téléchargées pour le serveur IdP sont correctes.
+** Les adresses des contrôleurs dans les fichiers de métadonnées SP sont correctes.
+
+
+
+
+
+
+== Étape 5 : Activer SAML
+
+La dernière étape consiste à finaliser la configuration SAML pour l'authentification des utilisateurs. Durant ce processus, le système vous invite également à tester une connexion SSO. La procédure de test de connexion SSO est décrite à l'étape précédente.
+
+.Avant de commencer
+* Le fichier de métadonnées IdP est importé dans System Manager.
+* Un fichier de métadonnées Service Provider pour chaque contrôleur est importé dans le système IdP pour la relation de confiance.
+* Au moins un mappage de rôle Monitor et un mappage de rôle Security Admin sont configurés.
+
+
+[CAUTION]
+====
+*Modification et désactivation.* Une fois SAML activé, vous _ne pouvez pas_ le désactiver via l’interface utilisateur, ni modifier les paramètres IdP. Si vous devez désactiver ou modifier la configuration SAML, contactez le support technique pour obtenir de l’aide.
+
+====
+.Étapes
+. Dans l'onglet *SAML*, sélectionnez le lien *Enable SAML*.
++
+La boîte de dialogue Confirmer l’activation de SAML s’ouvre.
+
+. Tapez `enable`, puis cliquez sur *Activer*.
+. Saisissez les identifiants utilisateur pour un test de connexion SSO.
+
+
+.Résultats
+Après que le système a activé SAML, il met fin à toutes les sessions actives et commence à authentifier les utilisateurs via SAML.

@@ -1,0 +1,41 @@
+---
+permalink: sm-support/enable-or-disable-autosupport-features.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, enable, disable, autosupport, 
+summary: Vous activez la fonctionnalité AutoSupport et les fonctionnalités individuelles AutoSupport lors de la configuration initiale, ou vous pouvez les activer ou les désactiver ultérieurement. 
+---
+= Activer ou désactiver les fonctionnalités AutoSupport dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous activez la fonctionnalité AutoSupport et les fonctionnalités individuelles AutoSupport lors de la configuration initiale, ou vous pouvez les activer ou les désactiver ultérieurement.
+
+.Avant de commencer
+Si vous souhaitez activer soit AutoSupport OnDemand soit les diagnostics à distance, la méthode de livraison AutoSupport doit être définie sur HTTPS.
+
+.À propos de cette tâche
+Vous pouvez désactiver la fonctionnalité AutoSupport à tout moment, mais il est fortement conseillé de la laisser activée. L’activation de la fonctionnalité AutoSupport peut considérablement accélérer le diagnostic et la résolution des problèmes en cas de dysfonctionnement de votre baie de stockage.
+
+La fonctionnalité AutoSupport est composée de trois fonctionnalités individuelles que vous activez séparément.
+
+* *Basic AutoSupport* -- Permet à votre baie de stockage de collecter et d'envoyer automatiquement des données au support technique.
+* *AutoSupport OnDemand* -- Permet au support technique de demander la retransmission d’un envoi AutoSupport précédent en cas de besoin pour le dépannage d’un problème. Toutes les transmissions sont initiées depuis la baie de stockage, et non depuis le serveur AutoSupport. La baie de stockage se connecte périodiquement au serveur AutoSupport pour déterminer s’il existe des demandes de retransmission en attente et y répond en conséquence.
+* *Diagnostic à distance* -- Permet au support technique de demander une nouvelle intervention AutoSupport à jour lorsque cela est nécessaire pour résoudre un problème. Toutes les transmissions sont initiées depuis la baie de stockage, et non depuis le serveur AutoSupport. La baie de stockage se connecte périodiquement au serveur AutoSupport pour déterminer s'il y a de nouvelles demandes en attente et y répond en conséquence.
+
+
+.Étapes
+. Sélectionnez le menu : Support [Support Center > AutoSupport] onglet.
+. Sélectionnez *Activer/Désactiver AutoSupport Features*.
+. Cochez les cases à côté des fonctionnalités AutoSupport que vous souhaitez activer.
++
+Les fonctionnalités sont interdépendantes, comme l'indique l'indentation des éléments dans la boîte de dialogue. Par exemple, vous devez activer AutoSupport OnDemand avant de pouvoir activer les diagnostics à distance.
+
+. Cliquez sur *Enregistrer*.
++
+Si vous désactivez AutoSupport, une notification apparaît sur la page d'accueil. Vous pouvez ignorer la notification en cliquant sur *Ignore*.
+
+

@@ -1,0 +1,19 @@
+---
+permalink: sm-hardware/change-view-order-of-shelves.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, change, view, order, shelves 
+summary: 'Vous pouvez modifier l"ordre des étagères affichées sur la page Matériel pour qu"il corresponde à l"ordre physique des étagères dans une armoire.' 
+---
+= Modifier l'ordre d'affichage des étagères dans SANtricity System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez modifier l'ordre des étagères affichées sur la page Matériel pour qu'il corresponde à l'ordre physique des étagères dans une armoire.
+
+.Étapes
+. Sélectionnez *Hardware*.
+. En haut à droite de la vue d'une étagère, sélectionnez les flèches vers le haut ou vers le bas pour réorganiser l'ordre des étagères affichées sur la page Hardware.
+

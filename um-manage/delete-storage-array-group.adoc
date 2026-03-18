@@ -1,0 +1,24 @@
+---
+permalink: um-manage/delete-storage-array-group.html 
+sidebar: sidebar 
+keywords: SANtricity, Unified Manager, E-Series, delete, storage, array, group 
+summary: Vous pouvez supprimer un ou plusieurs groupes de baies de stockage qui ne sont plus nécessaires. 
+---
+= Supprimer un groupe de baies de stockage dans SANtricity Unified Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez supprimer un ou plusieurs groupes de baies de stockage qui ne sont plus nécessaires.
+
+.À propos de cette tâche
+Cette opération supprime uniquement le groupe de baies de stockage. Les baies de stockage associées au groupe supprimé restent accessibles via la vue Gérer tout ou tout autre groupe auquel elles sont associées.
+
+.Étapes
+. Depuis la page Manage, sélectionnez menu : Manage Groups[Delete storage array group].
+. Sélectionnez un ou plusieurs groupes de baies de stockage que vous souhaitez supprimer.
+. Cliquez sur *Delete*.
+

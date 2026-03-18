@@ -1,0 +1,45 @@
+---
+permalink: um-certificates/export-saml-service-provider-files.html 
+sidebar: sidebar 
+keywords: SANtricity, Unified Manager, E-Series, export, saml, Service Provider, files, 
+summary: 'Si nécessaire, vous pouvez exporter les métadonnées du Service Provider pour la baie de stockage et réimporter le fichier dans le système Identity Provider (IdP).' 
+---
+= Exporter les fichiers du fournisseur de services SAML dans SANtricity Unified Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Si nécessaire, vous pouvez exporter les métadonnées du Service Provider pour la baie de stockage et réimporter le fichier dans le système Identity Provider (IdP).
+
+.Avant de commencer
+* Vous devez être connecté avec un profil utilisateur disposant des autorisations d'administrateur de sécurité. Sinon, les fonctions de gestion des accès ne s'affichent pas.
+* SAML est configuré et activé.
+
+
+.À propos de cette tâche
+Cette tâche consiste à exporter les métadonnées du contrôleur. L'IdP a besoin de ces métadonnées pour établir une relation de confiance avec le contrôleur et pour traiter les demandes d'authentification. Le fichier contient des informations telles que le nom de domaine du contrôleur ou son adresse IP que l'IdP peut utiliser pour envoyer des requêtes.
+
+.Étapes
+. Sélectionnez le menu : Settings [Gestion des accès].
+. Sélectionnez l’onglet *SAML*.
+. Sélectionnez *Export*.
++
+La boîte de dialogue Export Service Provider Files s'ouvre.
+
+. Cliquez sur *Exporter* pour enregistrer le fichier de métadonnées sur votre système local.
++
+[NOTE]
+====
+Le champ du nom de domaine est en lecture seule.
+
+====
++
+Notez l'emplacement où le fichier est stocké.
+
+. Depuis le système local, localisez le fichier de métadonnées du Service Provider au format XML que vous avez exporté.
+. Depuis le serveur IdP, importez le fichier de métadonnées du Service Provider. Vous pouvez soit importer le fichier directement, soit saisir manuellement les informations du controller.
+. Cliquez sur *Close*.
+

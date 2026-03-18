@@ -1,0 +1,39 @@
+---
+permalink: sm-mirroring/change-role-between-volumes-in-a-mirrored-pair.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, change, role, volumes, mirrored, pair, 
+summary: 'Vous pouvez effectuer une inversion de rôle entre les deux volumes d"une paire en miroir qui participent à une mise en miroir synchrone à des fins administratives ou en cas de sinistre sur la baie de stockage locale.' 
+---
+= Modifiez le rôle entre les volumes d'une paire en miroir dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez effectuer une inversion de rôle entre les deux volumes d'une paire miroir qui participent à une mise en miroir synchrone. Cette tâche peut être nécessaire à des fins administratives ou en cas de sinistre sur la baie de stockage locale.
+
+.À propos de cette tâche
+Vous pouvez soit rétrograder le volume principal en rôle secondaire, soit promouvoir le volume secondaire en rôle principal. Tout hôte accédant au volume principal dispose d'un accès en lecture/écriture au volume. Lorsque le volume principal devient un volume secondaire, seules les écritures distantes initiées par le contrôleur principal sont écrites sur le volume.
+
+.Étapes
+. Sélectionnez le menu : Storage[Synchronous Mirroring].
+. Sélectionnez la paire en miroir qui contient les volumes pour lesquels vous souhaitez modifier le rôle, puis sélectionnez menu:More[Change Role].
++
+Le système affiche une confirmation.
+
+. Confirmez que vous souhaitez changer le rôle des volumes, puis sélectionnez *Change Role*.
++
+[NOTE]
+====
+Si la baie de stockage locale ne peut pas communiquer avec la baie de stockage distante, le système affiche la boîte de dialogue Cannot Contact Storage Array lors d'une demande de changement de rôle, mais la baie de stockage distante est injoignable. Cliquez sur *Yes* pour forcer le changement de rôle.
+
+====
+
+
+.Résultats
+System Manager effectue l'action suivante :
+
+* Si le volume associé dans la paire miroir est accessible, les rôles entre les volumes changent. System Manager promeut le volume secondaire dans la paire miroir au rôle principal ou rétrograde le volume principal dans la paire miroir au rôle secondaire (selon votre sélection).
+

@@ -1,0 +1,53 @@
+---
+permalink: um-certificates/resolve-untrusted-certificates-certificate-page.html 
+sidebar: sidebar 
+keywords: SANtricity, Unified Manager, E-Series, resolve, untrusted, certificates 
+summary: 'Des certificats non approuvés se produisent lorsqu"une baie de stockage tente d"établir une connexion sécurisée à SANtricity Unified Manager, mais la connexion échoue à être confirmée comme sécurisée.' 
+---
+= Résoudre les certificats non approuvés
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Des certificats non approuvés se produisent lorsqu'une baie de stockage tente d'établir une connexion sécurisée à SANtricity Unified Manager, mais la connexion échoue à être confirmée comme sécurisée.
+
+À partir de la page Certificat, vous pouvez résoudre les problèmes de certificats non approuvés en important un certificat auto-signé depuis la baie de stockage ou en important un certificat d'autorité de certification (CA) délivré par un tiers de confiance.
+
+.Avant de commencer
+* Vous devez être connecté avec un profil utilisateur incluant les autorisations Security Admin.
+* Si vous prévoyez d'importer un certificat signé par une autorité de certification :
++
+** Vous avez généré une demande de signature de certificat (.CSR file) pour chaque contrôleur de la baie de stockage et l'avez envoyée à la CA.
+** L'autorité de certification a renvoyé des fichiers de certificats approuvés.
+** Les fichiers de certificat sont disponibles sur votre système local.
+
+
+
+
+.À propos de cette tâche
+Vous devrez peut-être installer des certificats d'autorité de certification (CA) de confiance supplémentaires si l'une des conditions suivantes est vraie :
+
+* Vous avez récemment ajouté une baie de stockage.
+* L'un ou les deux certificats sont expirés.
+* Un ou les deux certificats sont révoqués.
+* Un ou les deux certificats ne comportent pas de certificat racine ou intermédiaire.
+
+
+.Étapes
+. Sélectionnez *Certificate Management*.
+. Sélectionnez l’onglet *Trusted*.
++
+Cette page affiche tous les certificats signalés pour les baies de stockage.
+
+. Sélectionnez soit menu:Import[Certificates] pour importer un certificat CA, soit menu:Import[Self-Signed storage array certificates] pour importer un certificat auto-signé.
++
+Pour limiter l'affichage, vous pouvez utiliser le champ de filtrage *Afficher les certificats qui sont...* ou vous pouvez trier les lignes de certificats en cliquant sur l'un des en-têtes de colonne.
+
+. Dans la boîte de dialogue, sélectionnez le certificat, puis cliquez sur *Import*.
++
+Le certificat est téléchargé et validé.
+
+

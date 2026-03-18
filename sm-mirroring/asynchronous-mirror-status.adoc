@@ -1,0 +1,159 @@
+---
+permalink: sm-mirroring/asynchronous-mirror-status.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, asynchronous, mirror, status, consistency, group, 
+summary: 'L"état du miroir définit l"état des groupes de cohérence de miroir et des paires de volumes mis en miroir.' 
+---
+= Afficher l'état du miroir asynchrone dans SANtricity System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'état du miroir définit l'état des groupes de cohérence de miroir et des paires de volumes mis en miroir.
+
+
+
+== Statut des groupes de cohérence miroir
+
+[cols="25h,~"]
+|===
+| Statut | Description 
+
+
+ a| 
+Synchronisation (initial sync)
+ a| 
+L'état d'avancement de la synchronisation initiale des données qui a été effectuée entre les paires de volumes mis en miroir.
+
+Lors d'une synchronisation initiale, les volumes peuvent passer aux états suivants : Dégradé/Échec/Optimal/Inconnu.
+
+
+
+ a| 
+Synchronisation (interval sync)
+ a| 
+L'état d'avancement de la synchronisation périodique des données qui a été effectuée entre les paires de volumes mis en miroir.
+
+
+
+ a| 
+Système suspendu
+ a| 
+Synchronisation des données suspendue par le système de stockage sur toutes les paires en miroir au niveau du groupe de cohérence des miroirs.
+
+Au moins une paire en miroir du groupe de cohérence miroir est dans un état Arrêté ou Défaillant.
+
+
+
+ a| 
+Utilisateur suspendu
+ a| 
+Synchronisation des données suspendue par l'utilisateur sur toutes les paires en miroir au niveau du groupe de cohérence des miroirs.
+
+Cet état permet de réduire tout impact sur les performances de l'application hôte qui pourrait survenir lors de la copie de toute donnée modifiée sur la baie de stockage locale vers la baie de stockage distante.
+
+
+
+ a| 
+En pause
+ a| 
+Le processus de synchronisation des données a été temporairement interrompu en raison d'une erreur d'accès à la baie de stockage distante.
+
+
+
+ a| 
+Orphelin
+ a| 
+Un volume de paire miroir orphelin existe lorsqu'un volume membre dans un groupe de miroir de cohérence a été supprimé d'un côté du groupe de miroir de cohérence (soit du côté primaire, soit du côté secondaire), mais pas de l'autre côté.
+
+Les volumes de paires miroir orphelines sont détectés lorsque la communication inter-baies est rétablie et que les deux côtés de la configuration miroir réconcilient les paramètres du miroir.
+
+Vous pouvez supprimer une paire miroir pour corriger un état de paire miroir orpheline.
+
+
+
+ a| 
+Changement de rôle en attente/en cours
+ a| 
+Un changement de rôle entre les groupes de cohérence miroir est en attente ou en cours.
+
+Le changement d’inversion de rôle (vers un rôle principal ou secondaire) affecte toutes les paires miroir asynchrones au sein du groupe de cohérence de miroir sélectionné.
+
+Vous pouvez annuler un changement de rôle en attente, mais pas un changement de rôle en cours.
+
+
+
+ a| 
+Conflit de rôles
+ a| 
+Un conflit de rôles est survenu entre les groupes de cohérence miroir en raison d'un problème de communication entre la baie de stockage locale et la baie de stockage distante lors d'une opération de changement de rôle.
+
+Une fois le problème de communication résolu, un conflit de rôles survient. Utilisez le Recovery Guru pour corriger cette erreur.
+
+Une promotion forcée n'est pas autorisée lors de la résolution d'un conflit de rôles.
+
+|===
+
+
+== Statut des paires en miroir
+
+L'état d'une paire miroir indique si les données du volume principal et du volume secondaire sont synchronisées.
+
+[cols="25h,~"]
+|===
+| Statut | Description 
+
+
+ a| 
+Synchronisation
+ a| 
+L'avancement de la synchronisation initiale ou périodique des données qui a été effectuée entre les paires en miroir.
+
+Il existe deux types de synchronisation : la synchronisation initiale et la synchronisation périodique. La progression de la synchronisation initiale est également affichée dans la boîte de dialogue Long Running Operations.
+
+
+
+ a| 
+Optimal
+ a| 
+Les volumes de la paire en miroir sont synchronisés, ce qui indique que la connexion entre les baies de stockage est opérationnelle et que chaque volume est dans l'état de fonctionnement souhaité.
+
+
+
+ a| 
+Incomplet
+ a| 
+La paire miroir asynchrone est incomplète sur la baie de stockage distante car la séquence de création de la paire miroir a été lancée sur une baie de stockage non prise en charge avec System Manager et la paire miroir n'a pas été complétée sur le secondaire.
+
+Le processus de création d'une paire miroir est terminé lorsqu'un volume est ajouté au groupe de cohérence de miroir sur la baie de stockage distante. Ce volume devient le volume secondaire de la paire miroir asynchrone.
+
+La paire miroir se termine automatiquement si la baie de stockage distante est gérée par System Manager.
+
+
+
+ a| 
+Échec
+ a| 
+L'opération de mise en miroir asynchrone ne peut pas fonctionner normalement en raison d'une défaillance des volumes primaires, des volumes secondaires ou de la capacité réservée du miroir.
+
+
+
+ a| 
+Orphelin
+ a| 
+Un volume de paire miroir orphelin existe lorsqu'un volume membre dans un groupe de miroir de cohérence a été supprimé d'un côté du groupe de miroir de cohérence (soit du côté primaire, soit du côté secondaire), mais pas de l'autre côté.
+
+Les volumes de paires miroir orphelines sont détectés lorsque la communication est rétablie entre les deux baies de stockage et que les deux côtés de la configuration miroir réconcilient les paramètres du miroir.
+
+Vous pouvez supprimer une paire miroir pour corriger un état de paire miroir orpheline.
+
+
+
+ a| 
+Arrêté
+ a| 
+La paire miroir est à l'état arrêté car le groupe de cohérence du miroir est dans un état suspendu par le système.
+
+|===

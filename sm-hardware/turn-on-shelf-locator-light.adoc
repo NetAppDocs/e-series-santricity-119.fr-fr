@@ -1,0 +1,23 @@
+---
+permalink: sm-hardware/turn-on-shelf-locator-light.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, shelf, locator, light, LED 
+summary: 'Pour trouver l"emplacement physique d"une étagère affichée sur la page Matériel, vous pouvez allumer le voyant de localisation de l"étagère.' 
+---
+= Activez le voyant de localisation d'étagère dans SANtricity System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Pour trouver l’emplacement physique d’une étagère affichée sur la page Matériel, vous pouvez allumer le voyant de localisation de l’étagère.
+
+.Étapes
+. Sélectionnez *Hardware*.
+. Sélectionnez la liste déroulante pour le Controller Shelf ou le Drive Shelf, puis sélectionnez *Activer le voyant de localisation*.
++
+Le voyant de localisation de l'étagère s'allume.
+
+. Une fois que vous avez localisé physiquement l'étagère, retournez à la boîte de dialogue et sélectionnez *Désactiver*.
+

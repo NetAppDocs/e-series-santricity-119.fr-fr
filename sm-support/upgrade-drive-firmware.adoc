@@ -1,0 +1,195 @@
+---
+permalink: sm-support/upgrade-drive-firmware.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, upgrade, drive, firmware 
+summary: Vous pouvez mettre à niveau le firmware de vos disques pour vous assurer de disposer de toutes les dernières fonctionnalités et corrections de bugs. 
+---
+= Mise à niveau du firmware des disques dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez mettre à niveau le firmware de vos disques pour vous assurer de disposer de toutes les dernières fonctionnalités et corrections de bugs.
+
+.Avant de commencer
+* Vous avez sauvegardé vos données à l'aide d'une sauvegarde disque à disque, d'une copie de volume (vers un groupe de volumes non affecté par la mise à niveau du firmware prévue) ou d'un miroir distant.
+* La baie de stockage présente un état optimal.
+* Tous les disques ont un état optimal.
+* Aucune modification de configuration n'est en cours sur la baie de stockage.
+* Si les disques ne permettent qu'une mise à niveau hors ligne, toute activité d'E/S sur tous les volumes associés aux disques est arrêtée.
+
+
+.Étapes
+. Sélectionnez le menu : Support [Upgrade Center].
+. Téléchargez les nouveaux fichiers depuis le site Support vers votre client de gestion.
+. Sous mise à niveau du firmware des disques, cliquez sur *Démarrer la mise à niveau*.
++
+Une boîte de dialogue apparaît, qui répertorie les fichiers de firmware du lecteur actuellement utilisés.
+
+. Extrayez (décompressez) les fichiers que vous avez téléchargés depuis le site Support.
+. Cliquez sur *Parcourir* et sélectionnez les nouveaux fichiers de firmware des disques que vous avez téléchargés depuis le site de support.
++
+Les fichiers de firmware du disque ont un nom de fichier similaire à  `D_HUC101212CSS600_30602291_MS01_2800_0002` avec l’extension de  `.dlp`.
+
++
+Vous pouvez sélectionner jusqu'à quatre fichiers de firmware de disque, un à la fois. Si plusieurs fichiers de firmware sont compatibles avec le même disque, une erreur de conflit de fichier s'affiche. Décidez quel fichier de firmware de disque vous souhaitez utiliser pour la mise à niveau et supprimez l'autre.
+
+. Cliquez sur *Next*.
++
+La boîte de dialogue *Select Drives* apparaît, qui répertorie les lecteurs que vous pouvez mettre à niveau avec les fichiers sélectionnés.
+
++
+Seuls les disques compatibles apparaissent.
+
++
+Le firmware sélectionné pour le disque s'affiche dans la zone d'informations sur le firmware proposé. Si vous devez modifier le firmware, cliquez sur *Back* pour revenir à la boîte de dialogue précédente.
+
+. Sélectionnez le type de mise à niveau que vous souhaitez effectuer :
++
+** *En ligne (par défaut)* -- Affiche les disques qui peuvent prendre en charge un téléchargement de firmware _pendant que la baie de stockage traite des E/S_. Vous n'avez pas à arrêter les E/S vers les volumes associés utilisant ces disques lorsque vous sélectionnez cette méthode de mise à niveau. Ces disques sont mis à niveau un par un pendant que la baie de stockage traite des E/S sur ces disques.
+** *Hors ligne (parallèle)* -- Affiche les disques qui peuvent prendre en charge un téléchargement de firmware _uniquement lorsque toute activité d'E/S est arrêtée_ sur les volumes utilisant ces disques. Vous devez arrêter toute activité d'E/S sur les volumes utilisant les disques que vous mettez à niveau lorsque vous sélectionnez cette méthode de mise à niveau. Les disques qui ne disposent pas de redondance doivent être traités comme une opération hors ligne. Cette exigence inclut tout disque associé au cache SSD, à un groupe de volumes RAID 0, ou à tout pool ou groupe de volumes dégradé. La mise à niveau hors ligne (parallèle) est généralement plus rapide que la méthode en ligne (par défaut).
+
+
+. Dans la première colonne du tableau, sélectionnez le ou les disques que vous souhaitez mettre à niveau.
+. Cliquez sur *Démarrer* et confirmez que vous souhaitez effectuer l'opération.
++
+Pour interrompre la mise à niveau, cliquez sur *Arrêter*. Les téléchargements de firmware en cours sont terminés. Les téléchargements de firmware qui n'ont pas commencé sont annulés.
+
++
+[CAUTION]
+====
+L'arrêt de la mise à niveau du firmware des disques peut entraîner une perte de données ou rendre les disques indisponibles.
+
+====
+. *Facultatif :* Pour voir la liste de ce qui a été mis à niveau, cliquez sur *Enregistrer le journal*.
++
+Le fichier est enregistré dans le dossier Téléchargements de votre navigateur sous le nom `drive_upgrade_log-timestamp.txt`.
+
+. Si l'une des erreurs suivantes se produit pendant la procédure de mise à niveau, prenez les mesures recommandées appropriées.
+
+
+.Erreurs et actions recommandées
+[%collapsible]
+====
+[cols="40h,~"]
+|===
+| Si vous rencontrez cette erreur de téléchargement du firmware... | Ensuite, procédez comme suit... 
+
+
+ a| 
+Lecteurs attribués défaillants
+ a| 
+L'une des causes possibles de cette défaillance est que le disque ne possède pas la signature appropriée. Assurez-vous que le disque concerné est un disque autorisé. Contactez le support technique pour plus d'informations.
+
+Lors du remplacement d'un disque, assurez-vous que le disque de remplacement possède une capacité égale ou supérieure à celle du disque défectueux que vous remplacez.
+
+Vous pouvez remplacer le disque défaillant pendant que la baie de stockage reçoit des E/S.
+
+
+
+ a| 
+Vérifier la baie de stockage
+ a| 
+* Assurez-vous qu'une adresse IP a été attribuée à chaque contrôleur.
+* Vérifiez que tous les câbles connectés au contrôleur ne sont pas endommagés.
+* Assurez-vous que tous les câbles sont bien connectés.
+
+
+
+
+ a| 
+Disques de secours à chaud intégrés
+ a| 
+Cette erreur doit être corrigée avant de pouvoir mettre à niveau le firmware. Lancez System Manager et utilisez le Recovery Guru pour résoudre le problème.
+
+
+
+ a| 
+Groupes de volumes incomplets
+ a| 
+Si un ou plusieurs groupes de volumes ou pools de disques sont incomplets, vous devez corriger cette erreur avant de pouvoir mettre à niveau le firmware. Lancez System Manager et utilisez le Recovery Guru pour résoudre le problème.
+
+
+
+ a| 
+Opérations exclusives (autres que l'analyse des médias/de la parité en arrière-plan) actuellement en cours sur n'importe quel groupe de volumes
+ a| 
+Si une ou plusieurs opérations exclusives sont en cours, les opérations doivent être terminées avant que le firmware puisse être mis à niveau. Utilisez System Manager pour surveiller la progression des opérations.
+
+
+
+ a| 
+Volumes manquants
+ a| 
+Vous devez corriger le problème de volume manquant avant que le firmware puisse être mis à niveau. Lancez System Manager et utilisez le Recovery Guru pour résoudre le problème.
+
+
+
+ a| 
+L'un ou l'autre contrôleur dans un état autre qu'Optimal
+ a| 
+L'un des contrôleurs de la baie de stockage nécessite une intervention. Cette condition doit être corrigée avant que le firmware puisse être mis à niveau. Lancez System Manager et utilisez le Recovery Guru pour résoudre le problème.
+
+
+
+ a| 
+Informations de partition de stockage incohérentes entre les Controller Object Graphs
+ a| 
+Une erreur s'est produite lors de la validation des données sur les contrôleurs. Contactez le support technique pour résoudre ce problème.
+
+
+
+ a| 
+Échec de la vérification du contrôleur de base de données SPM
+ a| 
+Une erreur de la base de données de mappage des partitions de stockage s'est produite sur un contrôleur. Contactez le support technique pour résoudre ce problème.
+
+
+
+ a| 
+Validation de la base de données de configuration \(si prise en charge par la version du contrôleur de la baie de stockage\)
+ a| 
+Une erreur de base de données de configuration s'est produite sur un contrôleur. Contactez le support technique pour résoudre ce problème.
+
+
+
+ a| 
+Contrôles liés au MEL
+ a| 
+Contactez le support technique pour résoudre ce problème.
+
+
+
+ a| 
+Plus de 10 événements MEL informatifs ou critiques liés au DDE ont été signalés au cours des 7 derniers jours
+ a| 
+Contactez le support technique pour résoudre ce problème.
+
+
+
+ a| 
+Plus de 2 événements MEL critiques Page 2C ont été signalés au cours des 7 derniers jours
+ a| 
+Contactez le support technique pour résoudre ce problème.
+
+
+
+ a| 
+Plus de 2 incidents critiques MEL de canaux de disques dégradés ont été signalés au cours des 7 derniers jours
+ a| 
+Contactez le support technique pour résoudre ce problème.
+
+
+
+ a| 
+Plus de 4 entrées MEL critiques au cours des 7 derniers jours
+ a| 
+Contactez le support technique pour résoudre ce problème.
+
+|===
+====
+.Après avoir terminé
+La mise à niveau du firmware des disques est terminée. Vous pouvez reprendre les opérations normales.

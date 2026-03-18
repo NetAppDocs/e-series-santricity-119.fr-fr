@@ -1,0 +1,100 @@
+---
+permalink: sm-storage/copy-volume.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, copy volume 
+summary: 'Vous pouvez copier des données d"un volume à un autre volume dans la même baie de stockage et créer un duplicata physique, à un instant donné (clone), d"un volume source.' 
+---
+= Copier un volume dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez copier des données d'un volume à un autre volume dans la même baie de stockage et créer un duplicata physique, à un instant donné (clone), d'un volume source.
+
+.Avant de commencer
+* Toute activité d'E/S vers le volume source et le volume cible doit être arrêtée.
+* Tous les systèmes de fichiers sur le volume source et le volume cible doivent être démontés.
+* Si vous avez déjà utilisé le volume cible dans une opération Copy Volume, vous n'avez plus besoin de ces données ou vous les avez sauvegardées.
+
+
+.À propos de cette tâche
+Le volume source est le volume qui accepte les entrées/sorties de l’hôte et stocke les données de l’application. Lorsqu’une Copy Volume est lancée, les données du volume source sont copiées dans leur intégralité vers le volume cible.
+
+Le volume cible est un volume standard qui conserve une copie des données du volume source. Le volume cible est identique au volume source une fois l'opération de copie de volume terminée. Le volume cible doit avoir une capacité égale ou supérieure à celle du volume source ; cependant, il peut avoir un niveau RAID différent.
+
+.Plus d'informations sur les copies en ligne et hors ligne
+[%collapsible]
+====
+*Copie en ligne*
+
+Une copie en ligne crée une image instantanée de n'importe quel volume d'une baie de stockage, tout en permettant l'écriture sur ce volume pendant que la copie est en cours. Cette fonction est assurée par la création d'un instantané du volume et l'utilisation de cet instantané comme volume source réel pour la copie. Le volume pour lequel l'image instantanée est créée est appelé volume de base et il peut s'agir d'un volume standard ou d'un volume fin dans la baie de stockage.
+
+*Copie hors ligne*
+
+Une copie hors ligne lit les données du volume source et les copie vers un volume cible, tout en suspendant toutes les mises à jour du volume source pendant la copie en cours. Toutes les mises à jour du volume source sont suspendues pour éviter que des incohérences chronologiques ne soient créées sur le volume cible. La relation de copie hors ligne s'établit entre un volume source et un volume cible.
+
+====
+[NOTE]
+====
+Une opération Copy Volume écrase les données du volume cible et invalide tous les volumes instantanés associés au volume cible, le cas échéant.
+
+====
+.Étapes
+. Sélectionnez le menu : Storage[Volumes].
+. Sélectionnez le volume que vous souhaitez utiliser comme source pour l'opération Copy Volume, puis sélectionnez menu:Copy Services[Copy volume].
++
+La boîte de dialogue Copier le volume - Sélectionner la cible apparaît.
+
+. Sélectionnez le volume cible vers lequel vous souhaitez copier les données.
++
+Le tableau affiché dans cette boîte de dialogue répertorie tous les volumes cibles éligibles.
+
+. Utilisez la barre de défilement pour définir la priorité de copie pour l'opération Copy Volume.
++
+La priorité de copie détermine la quantité de ressources système utilisées pour effectuer l'opération Copy Volume par rapport aux requêtes d'E/S de service.
+
++
+.Plus d'informations sur les taux de priorité de copie
+[%collapsible]
+====
+Il existe cinq niveaux de priorité de copie :
+
+** Le plus bas
+** Faible
+** Moyen
+** Élevée
+** Le plus élevé
+
+
+Si la priorité de copie est définie sur le taux le plus bas, l'activité d'E/S est prioritaire et l'opération Copier le volume prend plus de temps. Si la priorité de copie est définie sur le taux le plus élevé, l'opération Copier le volume est prioritaire, mais l'activité d'E/S pour la baie de stockage peut être affectée.
+
+====
+. Choisissez si vous souhaitez créer une copie en ligne ou hors ligne. Pour créer une copie en ligne, cochez la case à cocher **Keep source volume online during copy operation**.
+. Effectuez l'une des opérations suivantes :
++
+** Pour effectuer une opération de copie , cliquez sur *Suivant* pour accéder à la boîte de dialogue *Capacité de réserve*.
+** Pour effectuer une copie , cliquez sur *Terminer* pour démarrer la copie hors ligne.
+
+
+. Si vous avez choisi de créer une copie en ligne, définissez la capacité réservée nécessaire pour stocker les données et autres informations de la copie en ligne, puis cliquez sur *Finish* pour démarrer la copie en ligne.
++
+Le tableau des volumes candidats affiche uniquement les candidats compatibles avec la capacité réservée spécifiée. La capacité réservée correspond à la capacité physique allouée utilisée pour toute opération de copie et tout objet de stockage. Elle n'est pas directement accessible par l'hôte.
+
++
+Allouez la capacité réservée en utilisant les directives suivantes :
+
++
+** Le réglage par défaut de la capacité réservée est de 40% de la capacité du volume de base, et cette capacité est généralement suffisante.
+** La capacité réservée varie cependant en fonction du nombre de modifications apportées aux données d'origine. Plus un objet de stockage reste actif longtemps, plus la capacité réservée doit être importante.
+
+
+
+
+.Résultats
+System Manager copie toutes les données du volume source vers le volume cible. Après la fin de l'opération de copie de volume, le volume cible devient automatiquement en lecture seule pour les hôtes.
+
+.Après avoir terminé
+Sélectionnez le menu : Home[View Operations in Progress] pour afficher la progression de l'opération Copy Volume. Cette opération peut être longue et pourrait affecter les performances du système.

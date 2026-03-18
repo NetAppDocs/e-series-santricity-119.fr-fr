@@ -1,0 +1,59 @@
+---
+permalink: um-manage/considerations-for-discovering-arrays.html 
+sidebar: sidebar 
+keywords: SANtricity, Unified Manager, E-Series, considerations, discovering, arrays 
+summary: Avant que Unified Manager puisse afficher et gérer les ressources de stockage, il doit détecter les baies de stockage que vous souhaitez gérer sur le réseau de votre organisation. Vous pouvez détecter plusieurs baies ou une seule baie. 
+---
+= Découvrez comment découvrir les baies de stockage dans SANtricity Unified Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Avant que SANtricity Unified Manager puisse afficher et gérer les ressources de stockage, il doit détecter les baies de stockage que vous souhaitez gérer sur le réseau de votre organisation. Vous pouvez détecter plusieurs baies ou une seule baie.
+
+
+
+== Découverte de plusieurs baies de stockage
+
+Si vous choisissez de détecter plusieurs baies, vous saisissez une plage d'adresses IP réseau, puis Unified Manager tente d'établir des connexions individuelles avec chaque adresse IP de cette plage. Toute baie de stockage atteinte avec succès apparaît sur la page Discover et peut être ajoutée à votre domaine de gestion.
+
+
+
+== Découverte d'une seule baie de stockage
+
+Si vous choisissez de découvrir une seule baie, vous entrez l'adresse IP unique de l'un des contrôleurs de la baie de stockage, puis la baie de stockage individuelle est ajoutée.
+
+[NOTE]
+====
+Unified Manager détecte et affiche uniquement l'adresse IP unique ou l'adresse IP dans une plage attribuée à un contrôleur. Si des contrôleurs alternatifs ou des adresses IP attribuées à ces contrôleurs se trouvent en dehors de cette adresse IP unique ou de cette plage d'adresses IP, alors Unified Manager ne les détectera ni ne les affichera. Cependant, une fois que vous ajoutez la baie de stockage, toutes les adresses IP associées seront détectées et affichées dans la vue Gérer.
+
+====
+
+
+== Identifiants utilisateur
+
+Dans le cadre du processus de découverte, vous devez fournir le mot de passe administrateur de chaque baie de stockage que vous souhaitez ajouter.
+
+
+
+== Certificats de services Web
+
+Dans le cadre du processus de découverte, Unified Manager vérifie que les baies de stockage détectées utilisent des certificats provenant d'une source fiable. Unified Manager utilise deux types d'authentification par certificat pour toutes les connexions qu'il établit avec le navigateur :
+
+* *Certificats approuvés*
++
+Pour les baies détectées par Unified Manager, vous devrez peut-être installer des certificats de confiance supplémentaires fournis par la Certificate Authority.
+
++
+Utilisez le bouton *Importer* pour importer ces certificats. Si vous vous êtes déjà connecté à cette baie, un ou les deux certificats du contrôleur sont soit expirés, révoqués, soit il manque un certificat racine ou intermédiaire dans leur chaîne de certificats. Vous devez remplacer le certificat expiré ou révoqué ou ajouter le certificat racine ou intermédiaire manquant avant de gérer la baie de stockage.
+
+* *Certificats auto-signés*
++
+Il est également possible d'utiliser des certificats auto-signés. Si l'administrateur tente de détecter des baies sans importer de certificats signés, Unified Manager affiche une boîte de dialogue d'erreur permettant à l'administrateur d'accepter le certificat auto-signé. Le certificat auto-signé de la baie de stockage sera marqué comme approuvé et la baie de stockage sera ajoutée à Unified Manager.
+
++
+Si vous ne faites pas confiance aux connexions à la baie de stockage, sélectionnez *Annuler* et validez la stratégie de certificat de sécurité de la baie de stockage avant d'ajouter la baie de stockage à Unified Manager.
+
+

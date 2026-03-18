@@ -1,0 +1,140 @@
+---
+permalink: sm-storage/create-snapshot-consistency-group.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, create, snapshot, consistency group 
+summary: Pour garantir la cohérence de vos copies, vous pouvez créer un ensemble de plusieurs volumes appelé groupe de cohérence de snapshot. 
+---
+= Créez un groupe de cohérence de snapshot dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Pour garantir que vous disposez de copies cohérentes, vous pouvez créer un ensemble de plusieurs volumes appelé _groupe de cohérence d'instantané_.
+
+Ce groupe permet de créer simultanément des images instantanées de tous les volumes afin d'assurer la cohérence. Chaque volume qui appartient à un groupe de cohérence d'instantanés est appelé _volume membre_. Lorsque vous ajoutez un volume à un groupe de cohérence d'instantanés, le système crée automatiquement un nouveau groupe d'instantanés correspondant à ce volume membre.
+
+.À propos de cette tâche
+La séquence de création de groupe de cohérence d'instantané vous permet de sélectionner les volumes membres du groupe et d'allouer de la capacité aux volumes membres.
+
+Le processus de création d'un groupe de cohérence est une procédure en plusieurs étapes.
+
+
+
+== Étape 1 : Ajouter des membres au groupe de cohérence de snapshot
+
+Sélectionnez les membres pour spécifier un ensemble de volumes qui composent le groupe de cohérence de snapshot. Toute action que vous effectuez sur le groupe de cohérence de snapshot s'étend uniformément aux volumes membres sélectionnés.
+
+.Avant de commencer
+Les volumes des membres doivent être optimaux.
+
+.Étapes
+. Sélectionnez le menu : Storage[Snapshots].
+. Cliquez sur l'onglet *Snapshot Consistency Groups*.
+. Sélectionnez le menu : Create[Snapshot consistency group].
++
+La boîte de dialogue Create Snapshot Consistency Group s'affiche.
+
+. Sélectionnez le ou les volumes à ajouter en tant que volumes membres au groupe de cohérence de snapshot.
+. Cliquez sur *Suivant*, puis accédez à <<Étape 2 : Réserver de la capacité pour le groupe de cohérence de snapshot>>.
+
+
+
+
+== Étape 2 : Réserver de la capacité pour le groupe de cohérence de snapshot
+
+Associez la capacité réservée au groupe de cohérence de snapshot. System Manager suggère les volumes et la capacité en fonction des propriétés du groupe de cohérence de snapshot. Vous pouvez accepter la configuration de capacité réservée recommandée ou personnaliser le stockage alloué.
+
+.À propos de cette tâche
+Dans la boîte de dialogue « Capacité réservée », le tableau des volumes candidats affiche uniquement les candidats qui prennent en charge la capacité réservée spécifiée. La capacité réservée est la capacité physique allouée qui est utilisée pour toute opération de service de copie et tout objet de stockage. Elle n'est pas directement lisible par l'hôte.
+
+.Étapes
+. Utilisez le champ de saisie pour allouer la capacité réservée au groupe de cohérence de snapshot. Effectuez l'une des actions suivantes :
++
+** *Acceptez les paramètres par défaut*.
++
+Utilisez cette option recommandée pour allouer la capacité réservée à chaque volume membre avec les paramètres par défaut.
+
+** *Attribuez vos propres paramètres de capacité réservée pour répondre à vos besoins de stockage des données.*
++
+Allouez la capacité réservée en utilisant les directives suivantes.
+
++
+*** Le paramètre par défaut pour la capacité réservée est de 40 % de la capacité du volume de base. Généralement, cette capacité est suffisante.
+*** La capacité nécessaire varie en fonction de la fréquence et de la taille des écritures d'I/O sur les volumes, ainsi que de la quantité et de la durée de la collecte d'images instantanées.
+
+
+
+
+. *Facultatif :* Si vous modifiez le paramètre de capacité réservée par défaut, cliquez sur *Actualiser les candidats* pour actualiser la liste des candidats pour la capacité réservée que vous avez spécifiée.
+. Cliquez sur *Suivant*, puis accédez à <<Étape 3 : Modifier les paramètres du groupe de cohérence de snapshot>>.
+
+
+
+
+== Étape 3 : Modifier les paramètres du groupe de cohérence de snapshot
+
+Acceptez ou choisissez les paramètres de suppression automatique et les seuils d'alerte de capacité réservée pour le groupe de cohérence de snapshot.
+
+.À propos de cette tâche
+La séquence de création de groupe de cohérence d'instantané vous permet de sélectionner les volumes membres du groupe et d'allouer de la capacité aux volumes membres.
+
+.Étapes
+. Acceptez ou modifiez les paramètres par défaut du groupe de cohérence selon le cas.
++
+.Détails du champ
+[%collapsible]
+====
+[cols="25h,~"]
+|===
+| Paramètre | Description 
+
+
+ a| 
+*Paramètres du groupe de cohérence des instantanés*
+
+
+
+ a| 
+Nom
+ a| 
+Spécifiez le nom du groupe de cohérence de l'instantané.
+
+
+
+ a| 
+Activer la suppression automatique des images instantanées lorsque...
+ a| 
+Laissez la case à cocher cochée si vous souhaitez que les images instantanées soient automatiquement supprimées après la limite spécifiée ; utilisez le champ numérique pour modifier la limite. Si vous décochez cette case à cocher, la création d'images instantanées s'arrête après 32 images.
+
+
+
+ a| 
+*Paramètres de capacité réservée*
+
+
+
+ a| 
+Alertez-moi quand...
+ a| 
+Utilisez le champ de saisie pour ajuster le point de pourcentage auquel le système envoie une notification d'alerte lorsque la capacité réservée pour un groupe de cohérence de snapshot est presque pleine.
+
+Lorsque la capacité réservée pour le groupe de cohérence de snapshot dépasse le seuil spécifié, utilisez l'avis préalable pour augmenter la capacité réservée ou supprimer les objets inutiles avant que l'espace restant ne soit épuisé.
+
+
+
+ a| 
+Politique de capacité entièrement réservée
+ a| 
+Choisissez l'une des politiques suivantes :
+
+** *Suppression de l'image d'instantané la plus ancienne* -- Le système supprime automatiquement l'image d'instantané la plus ancienne dans le groupe de cohérence d'instantanés, ce qui libère la capacité réservée à l'image d'instantané pour une réutilisation au sein du groupe.
+** *Rejeter les écritures sur le volume de base* -- Lorsque la capacité réservée atteint son pourcentage maximal défini, le système rejette toute requête d'écriture d'I/O sur le volume de base qui a déclenché l'accès à la capacité réservée.
+
+
+|===
+====
+. Une fois que vous êtes satisfait de la configuration de votre groupe de cohérence d'instantané, cliquez sur *Terminer*.
+

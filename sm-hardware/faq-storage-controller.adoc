@@ -1,0 +1,135 @@
+---
+permalink: sm-hardware/faq-storage-controller.html 
+sidebar: sidebar 
+keywords:  
+summary: Cette FAQ peut vous aider si vous cherchez simplement une réponse rapide à une question. 
+---
+= FAQ sur le contrôleur de stockage pour SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Cette FAQ peut vous aider si vous cherchez simplement une réponse rapide à une question.
+
+
+
+== Qu'est-ce que l'auto-négociation ?
+
+L'auto-négociation est la capacité d'une interface réseau à coordonner automatiquement ses propres paramètres de connexion (vitesse et duplex) avec une autre interface réseau.
+
+La négociation automatique est généralement le mode privilégié pour la configuration des ports de gestion ; toutefois, si la négociation échoue, des paramètres d'interface réseau incompatibles peuvent fortement impacter les performances du réseau. Dans les cas où cette situation est inacceptable, vous devez configurer manuellement les paramètres de l'interface réseau avec une configuration correcte. La négociation automatique est effectuée par les ports de gestion Ethernet du contrôleur. La négociation automatique n'est pas effectuée par les adaptateurs de bus hôte iSCSI.
+
+[NOTE]
+====
+Si la négociation automatique échoue, le contrôleur tente d'établir une connexion en 10BASE-T, half-duplex, qui est le plus petit dénominateur commun.
+
+====
+
+
+== Qu'est-ce que la configuration automatique d'adresse sans état IPv6 ?
+
+Avec la configuration automatique sans état, les hôtes n'obtiennent pas d'adresses ni d'autres informations de configuration auprès d'un serveur.
+
+L'autoconfiguration sans état d'IPv6 prend en charge les adresses locales de liaison, la multidiffusion et le protocole Neighbor Discovery (ND). IPv6 peut générer l'identifiant d'interface d'une adresse à partir de l'adresse de la couche liaison de données sous-jacente.
+
+L'autoconfiguration sans état et l'autoconfiguration avec état se complètent. Par exemple, l'hôte peut utiliser l'autoconfiguration sans état pour configurer ses propres adresses, mais utiliser l'autoconfiguration avec état pour obtenir d'autres informations. L'autoconfiguration avec état permet aux hôtes d'obtenir des adresses et d'autres informations de configuration auprès d'un serveur. Internet Protocol version 6 (IPv6) définit également une méthode permettant de renuméroter toutes les adresses IP d'un réseau en une seule fois. IPv6 définit une méthode permettant aux périphériques du réseau de configurer automatiquement leur adresse IP et d'autres paramètres sans avoir besoin d'un serveur.
+
+Les appareils effectuent ces étapes lors de l'utilisation de la configuration automatique sans état :
+
+. *Générer une adresse locale de liaison* -- Le périphérique génère une adresse locale de liaison, qui a 10 bits, suivis de 54 zéros, puis de l'identifiant d'interface de 64 bits.
+. *Testez l'unicité d'une adresse locale de liaison* -- Le nœud teste pour s'assurer que l'adresse locale de liaison qu'il génère n'est pas déjà utilisée sur le réseau local. Le nœud envoie un message de sollicitation de voisin en utilisant le protocole ND. En réponse, le réseau local écoute un message de publicité de voisin, ce qui indique qu'un autre appareil utilise déjà l'adresse locale de liaison. Si c'est le cas, soit une nouvelle adresse locale de liaison doit être générée, soit la configuration automatique échoue et une autre méthode doit être utilisée.
+. *Attribution d'une adresse locale de liaison* -- Si le périphérique réussit le test d'unicité, le périphérique attribue l'adresse locale de liaison à son interface IP. L'adresse locale de liaison peut être utilisée pour communiquer sur le réseau local, mais pas sur Internet.
+. *Contacter le routeur* -- Le nœud tente de contacter un routeur local pour obtenir des informations supplémentaires sur la poursuite de la configuration. Ce contact s'effectue soit en écoutant les messages d'annonce de routeur envoyés périodiquement par les routeurs, soit en envoyant un message de sollicitation de routeur spécifique pour demander à un routeur des informations sur la marche à suivre.
+. *Provide direction to the node* -- Le routeur fournit des instructions au nœud sur la façon de procéder à l’auto-configuration. Sinon, le routeur indique à l’hôte comment déterminer l’adresse Internet globale.
+. *Configurez l'adresse globale* -- L'hôte se configure avec son adresse Internet unique au niveau mondial. Cette adresse est généralement formée à partir d'un préfixe réseau fourni à l'hôte par le routeur.
+
+
+
+
+== Que choisir — DHCP ou configuration manuelle ?
+
+La méthode par défaut pour la configuration réseau est le protocole Dynamic Host Configuration Protocol (DHCP). Utilisez toujours cette option sauf si votre réseau ne dispose pas de serveur DHCP.
+
+
+
+== Qu'est-ce qu'un serveur DHCP ?
+
+Dynamic Host Configuration Protocol (DHCP) est un protocole qui automatise la tâche d'attribution d'une adresse IP (Internet Protocol).
+
+Chaque périphérique connecté à un réseau TCP/IP doit se voir attribuer une adresse IP unique. Ces périphériques incluent les contrôleurs de votre baie de stockage.
+
+Sans DHCP, un administrateur réseau saisit ces adresses IP manuellement. Avec DHCP, lorsqu'un client doit démarrer des opérations TCP/IP, le client diffuse une demande d'informations d'adresse. Le serveur DHCP reçoit la demande, attribue une nouvelle adresse pour une durée spécifiée appelée période de bail, et envoie l'adresse au client. Avec DHCP, un périphérique peut avoir une adresse IP différente chaque fois qu'il se connecte au réseau. Sur certains systèmes, l'adresse IP du périphérique peut changer même lorsque le périphérique est toujours connecté.
+
+
+
+== Comment configurer mon serveur DHCP ?
+
+Vous devez configurer un serveur Dynamic Host Configuration Protocol (DHCP) pour utiliser des adresses Internet Protocol (IP) statiques pour les contrôleurs de votre baie de stockage.
+
+Les adresses IP attribuées par votre serveur DHCP sont généralement dynamiques et peuvent changer en raison de leur durée de bail qui expire. Certains périphériques, par exemple les serveurs et les routeurs, doivent utiliser des adresses statiques. Les contrôleurs de votre baie de stockage ont également besoin d'adresses IP statiques.
+
+Pour plus d'informations sur la façon d'attribuer des adresses statiques, consultez la documentation de votre serveur DHCP.
+
+
+
+== Pourquoi dois-je modifier la configuration réseau du contrôleur ?
+
+Vous devez configurer la configuration réseau de chaque contrôleur--son adresse Internet Protocol (IP), son masque de sous-réseau (subnet mask) et sa passerelle--lorsque vous utilisez la gestion hors bande.
+
+Vous pouvez configurer le réseau à l'aide d'un serveur Dynamic Host Configuration Protocol (DHCP). Si vous n'utilisez pas de serveur Dynamic Host Configuration Protocol (DHCP), vous devez saisir la configuration réseau manuellement.
+
+
+
+== Où puis-je obtenir la configuration réseau ?
+
+Vous pouvez obtenir l'adresse de protocole Internet (IP), le masque de sous-réseau (subnet mask) et les informations de passerelle auprès de votre administrateur réseau.
+
+Vous avez besoin de ces informations lorsque vous configurez les ports sur les contrôleurs.
+
+
+
+== Que sont les réponses ICMP PING ?
+
+Internet Control Message Protocol (ICMP) est l'un des protocoles de la suite TCP/IP.
+
+Les  `ICMP echo request` et les (`ICMP echo reply` messages sont communément appelés  `ping` messages.  `Ping` est un outil de dépannage utilisé par les administrateurs système pour tester manuellement la connectivité entre les périphériques réseau, ainsi que pour tester la latence réseau et la perte de paquets. La commande  `ping` envoie un  `ICMP echo request` à un périphérique du réseau, et le périphérique répond immédiatement avec un (`ICMP echo reply`. Parfois, la politique de sécurité réseau d'une entreprise exige que  `ping` (`ICMP echo reply` soit désactivé sur tous les périphériques afin de les rendre plus difficiles à découvrir par des personnes non autorisées.
+
+
+
+== Quand dois-je actualiser la configuration du port ?
+
+Actualisez le serveur DHCP chaque fois que celui-ci est modifié ou mis à niveau, et que les informations DHCP relatives à la baie de stockage actuelle et à la baie de stockage que vous souhaitez utiliser ont changé.
+
+Plus précisément, actualisez la configuration du port ou le serveur iSNS à partir du serveur DHCP lorsque vous savez que le serveur DHCP attribuera des adresses différentes.
+
+[NOTE]
+====
+L'actualisation de la configuration d'un port est destructive pour toutes les connexions iSCSI sur ce port.
+
+====
+
+
+== Que dois-je faire après avoir configuré les ports de gestion ?
+
+Si vous avez modifié l'adresse IP de la baie de stockage, vous devrez peut-être mettre à jour la vue globale de la baie dans SANtricity Unified Manager.
+
+Pour mettre à jour la vue du tableau global dans Unified Manager, ouvrez l'interface et accédez au menu:Manage[Discover].
+
+Si vous utilisez encore le SANtricity Storage Manager, accédez à la fenêtre Enterprise Management Window (EMW), où vous devez supprimer et rajouter la nouvelle adresse IP.
+
+
+
+== Pourquoi le système de stockage est-il en mode non optimal ?
+
+Un système de stockage en mode non optimal est dû à un état de configuration système invalide. Malgré cet état, l'accès E/S normal aux volumes existants est pleinement pris en charge ; cependant, SANtricity System Manager interdira certaines opérations.
+
+Un système de stockage peut passer à une configuration système invalide pour l'une de ces raisons :
+
+* Le contrôleur n'est pas conforme, probablement parce qu'il possède un code d'identification de sous-modèle (SMID) incorrect ou qu'il a dépassé la limite des fonctionnalités premium.
+* Une opération de service interne est en cours, telle qu'un téléchargement de firmware de disque.
+* Le contrôleur a dépassé le seuil d'erreur de parité et s'est mis en verrouillage.
+* Une condition de confinement général s'est produite.
+

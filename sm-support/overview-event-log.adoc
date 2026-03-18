@@ -1,0 +1,41 @@
+---
+permalink: sm-support/overview-event-log.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, event, log 
+summary: Utilisez le journal des événements pour consulter un enregistrement historique des modifications et des événements qui se sont produits sur la baie de stockage. 
+---
+= Découvrez le journal des événements dans le logiciel SANtricity
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Le journal des événements fournit un historique des événements qui se sont produits sur la baie de stockage, ce qui aide le support technique à résoudre les événements ayant conduit aux pannes.
+
+Vous pouvez utiliser le journal des événements comme outil de diagnostic complémentaire à Recovery Guru pour le suivi des événements de la baie de stockage. Consultez toujours Recovery Guru en premier lorsque vous tentez de récupérer après des défaillances de composants dans la baie de stockage.
+
+
+
+== Catégories d'événements
+
+Les événements du journal des événements sont classés avec différents statuts. Les événements nécessitant une intervention de votre part présentent les statuts suivants :
+
+* Primordial
+* Avertissement
+
+
+Les événements qui sont informatifs et ne nécessitent aucune action immédiate sont les suivants :
+
+* Information
+
+
+
+
+== Événements critiques
+
+Les événements critiques indiquent un problème avec la baie de stockage. Si vous résolvez immédiatement l'événement critique, vous pourriez éviter une perte d'accès aux données.
+
+Lorsqu'un événement critique survient, il est consigné dans le journal des événements. Tous les événements critiques sont envoyés à la console de gestion SNMP ou au destinataire de courriel que vous avez configuré pour recevoir les notifications d'alerte. Si l'identifiant de l'étagère est inconnu au moment de l'événement, l'identifiant de l'étagère est indiqué comme « Shelf unknown ».
+
+Lorsque vous recevez un événement critique, consultez la procédure Recovery Guru pour obtenir une description détaillée de l'événement critique. Complétez la procédure Recovery Guru pour corriger l'événement critique. Pour corriger certains événements critiques, vous devrez peut-être contacter le support technique.

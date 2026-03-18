@@ -1,0 +1,71 @@
+---
+permalink: sm-storage/create-host-cluster.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, create, host, cluster 
+summary: 'Vous créez un cluster d"hôtes lorsque deux ou plusieurs hôtes nécessitent un accès E/S aux mêmes volumes.' 
+---
+= Créez un cluster hôte dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous créez un cluster d'hôtes lorsque deux ou plusieurs hôtes nécessitent un accès E/S aux mêmes volumes.
+
+.À propos de cette tâche
+Gardez ces consignes à l'esprit lors de la création d'un cluster d'hôtes :
+
+* Cette opération ne démarre que s'il y a au moins deux hôtes disponibles pour créer le cluster.
+* Les hôtes dans des clusters d'hôtes peuvent avoir des systèmes d'exploitation différents (hétérogènes).
+* Les hôtes NVMe dans des clusters d'hôtes ne peuvent pas être mélangés avec des hôtes non-NVMe.
+* Pour créer un volume compatible avec Data Assurance (DA), la connexion hôte que vous prévoyez d'utiliser doit prendre en charge DA.
++
+Si l'une des connexions hôtes sur les contrôleurs de votre baie de stockage ne prennent pas en charge DA, les hôtes associés ne peuvent pas accéder aux données sur les volumes activés DA.
+
+* Cette opération ne réussit pas si le nom que vous choisissez est déjà utilisé.
+* La longueur du nom ne peut pas dépasser 30 caractères.
+
+
+.Étapes
+. Sélectionnez le menu : Storage[Hosts].
+. Sélectionnez le menu : Create[Host Cluster].
++
+La boîte de dialogue Créer un cluster d'hôtes s'affiche.
+
+. Sélectionnez les paramètres du cluster hôte selon les besoins.
++
+.Détails du champ
+[%collapsible]
+====
+[cols="25h,~"]
+|===
+| Paramètre | Description 
+
+
+ a| 
+Nom
+ a| 
+Saisissez le nom du nouveau cluster hôte.
+
+
+
+ a| 
+Sélectionnez les hôtes pour partager l'accès au volume
+ a| 
+Sélectionnez deux hôtes ou plus dans la liste déroulante. Seuls les hôtes qui ne font pas déjà partie d'un cluster d'hôtes apparaissent dans la liste.
+
+|===
+====
+. Cliquez sur *Créer*.
++
+Si les hôtes sélectionnés sont connectés à des types d'interfaces dont les capacités Data Assurance (DA) diffèrent, une boîte de dialogue s'affiche indiquant que DA ne sera pas disponible sur le cluster d'hôtes. Cette indisponibilité empêche l'ajout de volumes activés DA au cluster d'hôtes. Sélectionnez *Oui* pour continuer ou *Non* pour annuler.
+
++
+DA augmente l'intégrité des données sur l'ensemble du système de stockage. DA permet à la baie de stockage de vérifier les erreurs qui pourraient survenir lorsque les données sont déplacées entre les hôtes et les disques. L'utilisation de DA pour le nouveau volume garantit que toute erreur est détectée.
+
+
+
+.Résultats
+Le nouveau cluster d'hôtes apparaît dans le tableau avec les hôtes assignés dans les lignes en dessous.

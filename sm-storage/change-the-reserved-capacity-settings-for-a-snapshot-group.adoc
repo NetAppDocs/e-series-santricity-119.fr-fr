@@ -1,0 +1,114 @@
+---
+permalink: sm-storage/change-the-reserved-capacity-settings-for-a-snapshot-group.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, reserved capacity, settings, snapshot, group 
+summary: 'Vous pouvez modifier les paramètres d"un groupe d"instantanés pour changer son nom, les paramètres de suppression automatique, le nombre maximal d"images d"instantané autorisées, le pourcentage auquel System Manager envoie une notification d"alerte de capacité réservée, ou la stratégie à utiliser lorsque la capacité réservée atteint son pourcentage maximal défini.' 
+---
+= ${post_edited_translations.segment}
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+${post_edited_translations.segment}
+
+${post_edited_translations.segment}
+
+.Étapes
+. Sélectionnez le menu : Storage [Pools & Volume Groups].
+. Cliquez sur l’onglet *Reserved Capacity*.
+. ${post_edited_translations.segment}
++
+${post_edited_translations.segment}
+
+. ${post_edited_translations.segment}
++
+.Détails du champ
+[%collapsible]
+====
+[cols="25h,~"]
+|===
+| Paramètre | Description 
+
+
+ a| 
+*Paramètres du groupe d'instantanés*
+
+
+
+ a| 
+Nom
+ a| 
+Nom du groupe d'instantanés. La spécification d'un nom pour le groupe d'instantanés est obligatoire.
+
+
+
+ a| 
+Suppression automatique
+ a| 
+Ce paramètre permet de limiter le nombre total d'images instantanées du groupe à une valeur maximale définie par l'utilisateur. Lorsque cette option est activée, System Manager supprime automatiquement l'image instantanée la plus ancienne du groupe à chaque création d'une nouvelle image instantanée, afin de respecter le nombre maximal d'images instantanées autorisé pour le groupe.
+
+
+
+ a| 
+Limite d'image instantanée
+ a| 
+Une valeur configurable qui spécifie le nombre maximal d'images instantanées autorisées pour un groupe d'instantanés.
+
+
+
+ a| 
+Calendrier des snapshots
+ a| 
+Si oui, une planification est définie pour la création automatique d'instantanés.
+
+
+
+ a| 
+*Paramètres de capacité réservée*
+
+
+
+ a| 
+Alertez-moi quand...
+ a| 
+Utilisez la boîte de sélection pour ajuster le point de pourcentage auquel System Manager envoie une notification d'alerte lorsque la capacité réservée pour un groupe d'instantanés est presque pleine.
+
+Lorsque la capacité réservée pour le groupe d'instantanés dépasse le seuil spécifié, System Manager envoie une alerte, vous laissant le temps d'augmenter la capacité réservée ou de supprimer les objets inutiles.
+
+
+
+ a| 
+Politique de capacité entièrement réservée
+ a| 
+Vous pouvez choisir l'une des politiques suivantes :
+
+** *Suppression de l'image instantanée la plus ancienne* -- System Manager purge automatiquement l'image instantanée la plus ancienne dans le groupe d'instantanés, ce qui libère la capacité réservée de l'image instantanée pour une réutilisation au sein du groupe.
+** ${post_edited_translations.segment}
+
+
+
+
+ a| 
+*Objets associés*
+
+
+
+ a| 
+Volume de base
+ a| 
+Nom du volume de base utilisé pour le groupe. Un volume de base est la source à partir de laquelle une image instantanée est créée. Il peut s'agir d'un volume épais ou mince et il est généralement attribué à un hôte. Le volume de base peut se trouver dans un groupe de volumes ou un pool de disques.
+
+
+
+ a| 
+Images instantanées
+ a| 
+Nombre d'images créées à partir de ce groupe. Une image instantanée est une copie logique des données d'un volume, capturée à un instant précis. À l'instar d'un point de restauration, les images instantanées permettent de revenir à un état de données fonctionnel. Bien que l'hôte puisse accéder à l'image instantanée, il ne peut pas la lire ou y écrire directement.
+
+|===
+====
+. Cliquez sur *Enregistrer* pour appliquer vos modifications aux paramètres du groupe d'instantanés.
+

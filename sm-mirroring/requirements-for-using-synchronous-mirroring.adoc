@@ -1,0 +1,87 @@
+---
+permalink: sm-mirroring/requirements-for-using-synchronous-mirroring.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, requirements, synchronous, mirroring, 
+summary: 'Si vous prévoyez d"utiliser la mise en miroir synchrone, gardez à l"esprit les exigences suivantes.' 
+---
+= Exigences relatives à l'utilisation de la mise en miroir synchrone dans le logiciel SANtricity
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Si vous prévoyez d'utiliser la mise en miroir synchrone, gardez à l'esprit les exigences suivantes.
+
+
+
+== Gestionnaire unifié
+
+Pour activer et configurer la mise en miroir entre deux baies, vous devez utiliser l'interface Unified Manager. Unified Manager est installé sur un système hôte avec le Web Services Proxy.
+
+* Le service Web Services Proxy doit être en cours d'exécution.
+* Unified Manager doit être exécuté sur votre hôte local via une connexion HTTPS.
+* Unified Manager doit afficher des certificats SSL valides pour la baie de stockage. Vous pouvez accepter un certificat auto-signé ou installer votre propre certificat de sécurité à l'aide de Unified Manager et en accédant à menu:Certificate[Certificate Management].
+
+
+
+
+== baies de stockage
+
+[NOTE]
+====
+La mise en miroir synchrone n'est pas disponible sur la baie de stockage EF300/EF300C ou EF600/EF600C.
+
+====
+* Vous devez disposer de deux baies de stockage.
+* Chaque baie de stockage doit comporter deux contrôleurs.
+* Les deux baies de stockage doivent être détectées dans Unified Manager.
+* Chaque contrôleur dans la matrice principale et la matrice secondaire doit avoir un port de gestion Ethernet configuré et doit être connecté à votre réseau.
+* Les baies de stockage ont une version minimale de firmware de 7.84. (Elles peuvent chacune exécuter des versions différentes du système d'exploitation.)
+* Vous devez connaître le mot de passe pour les baies de stockage locales et distantes.
+* Vous devez disposer d'une capacité libre suffisante sur la baie de stockage distante pour créer un volume secondaire égal ou supérieur au volume principal que vous souhaitez mettre en miroir.
+* Vos baies de stockage locales et distantes sont connectées via une structure Fibre Channel.
+
+
+
+
+== Connexions prises en charge
+
+La communication pour la mise en miroir synchrone est prise en charge uniquement sur les contrôleurs avec des ports hôtes Fibre Channel (FC).
+
+La mise en miroir synchrone utilise le port hôte portant le numéro le plus élevé sur chaque contrôleur, aussi bien sur la baie de stockage locale que sur la baie de stockage distante. Le port hôte 4 de l'adaptateur de bus hôte (HBA) du contrôleur est généralement réservé à la transmission des données du miroir.
+
+
+
+== Candidats à volume miroir
+
+* Le niveau RAID, les paramètres de mise en cache et la taille des segments peuvent être différents sur les volumes primaire et secondaire d'une paire miroir synchrone.
+* Dans une paire de volumes miroirs synchrones, les volumes primaire et secondaire doivent être des volumes standard. Ils ne peuvent pas être des volumes minces ou des volumes instantanés.
+* Le volume secondaire doit être au moins aussi grand que le volume primaire.
+* Seul le volume principal peut avoir des instantanés associés et/ou être le volume source ou cible dans une opération de copie de volume.
+* Un volume ne peut participer qu'à une seule relation miroir.
+* Le nombre de volumes pris en charge sur une baie de stockage donnée est limité. Assurez-vous que le nombre de volumes configurés sur votre baie de stockage est inférieur à la limite prise en charge. Lorsque la mise en miroir synchrone est activée, les deux volumes de capacité réservée créés sont comptabilisés dans la limite de volumes.
+
+
+
+
+== Capacité réservée
+
+* Une capacité réservée est nécessaire pour un volume principal et pour un volume secondaire afin de consigner les informations d'écriture pour récupérer après des réinitialisations du contrôleur et d'autres interruptions temporaires.
+* Les volumes de capacité réservée sont créés automatiquement lors de l'activation de la mise en miroir synchrone. Étant donné que le volume principal et le volume secondaire d'une paire en miroir nécessitent tous deux de la capacité réservée, vous devez vous assurer de disposer d'une capacité libre suffisante sur les deux baies de stockage participant à la relation de mise en miroir synchrone.
+
+
+
+
+== Fonction de sécurité du lecteur
+
+* Si vous utilisez des disques compatibles avec la sécurité, le volume principal et le volume secondaire doivent avoir des paramètres de sécurité compatibles. Cette restriction n'est pas appliquée ; vous devez donc la vérifier vous-même.
+* Si vous utilisez des disques sécurisés, le volume principal et le volume secondaire doivent utiliser le même type de disque. Cette restriction n'est pas appliquée ; vous devez donc la vérifier vous-même.
++
+** Si le volume principal utilise des disques à chiffrement de disque complet (FDE), le volume secondaire doit utiliser des disques FDE.
+** Si le volume principal utilise des disques validés Federal Information Processing Standards 140-2 (FIPS) 140-2, le volume secondaire doit utiliser des disques validés FIPS 140-2.
+
+
+* Si vous utilisez Data Assurance (DA), le volume principal et le volume secondaire doivent avoir les mêmes paramètres DA.
+

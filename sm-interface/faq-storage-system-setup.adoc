@@ -1,0 +1,88 @@
+---
+permalink: sm-interface/faq-storage-system-setup.html 
+sidebar: sidebar 
+keywords:  
+summary: Cette FAQ peut vous aider si vous cherchez simplement une réponse rapide à une question. 
+---
+= FAQ sur la configuration du système de stockage pour SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Cette FAQ peut vous aider si vous cherchez simplement une réponse rapide à une question.
+
+
+
+== Que se passe-t-il si je ne vois pas tous mes composants matériels ?
+
+Si vous ne voyez pas tous vos composants matériels dans la boîte de dialogue Vérifier le matériel, cela peut signifier qu'une baie de disques n'est pas correctement connectée ou qu'une baie incompatible est installée dans la storage array.
+
+Vérifiez que tous les châssis de disques sont correctement connectés. Si vous n'êtes pas certain des châssis de disques compatibles, contactez le support technique.
+
+
+
+== Que faire si je ne vois pas tous mes hôtes ?
+
+Si vous ne voyez pas vos hôtes connectés, la détection automatique a échoué, les hôtes sont mal connectés ou aucun hôte n'est actuellement connecté.
+
+Vous pouvez configurer les hôtes ultérieurement, une fois l'installation terminée. Vous pouvez créer des hôtes manuellement comme suit :
+
+* Vous pouvez créer manuellement des hôtes et leur associer les identifiants de port appropriés en accédant au menu : Storage[Hosts]. Les hôtes créés manuellement s’affichent également dans l’assistant *Initial Setup*.
+* La cible et l'hôte doivent être configurés pour le type de port hôte (par exemple, iSCSI ou NVMe sur RoCE), et une session vers le stockage doit être établie avant que la détection automatique ne fonctionne.
+
+
+
+
+== Comment l'identification des applications m'aide-t-elle à gérer ma baie de stockage ?
+
+Lorsque vous identifiez des applications, SANtricity System Manager recommande automatiquement une configuration de volume qui optimise le stockage des données en fonction du type d'application.
+
+L'optimisation des volumes par application peut rendre les opérations de stockage des données plus efficaces. Des caractéristiques telles que le type d'E/S, la taille des segments, la propriété du contrôleur, ainsi que le cache de lecture et d'écriture sont incluses dans la configuration du volume. De plus, vous pouvez consulter les données de performance par application et par charge de travail afin d'évaluer la latence, les IOPS et les MiB/s des applications et de leurs charges de travail associées.
+
+
+
+== Qu'est-ce qu'une charge de travail ?
+
+Pour certaines applications de votre réseau, telles que SQL Server ou Exchange, vous pouvez définir une charge de travail qui optimise le stockage pour cette application.
+
+Une charge de travail est un objet de stockage qui prend en charge une application. Vous pouvez définir une ou plusieurs charges de travail, ou instances, par application. Pour certaines applications, le système configure la charge de travail pour qu'elle contienne des volumes ayant des caractéristiques de volume sous-jacentes similaires. Ces caractéristiques de volume sont optimisées en fonction du type d'application que la charge de travail prend en charge. Par exemple, si vous créez une charge de travail qui prend en charge une application Microsoft SQL Server, puis créez des volumes pour cette charge de travail, les caractéristiques de volume sous-jacentes sont optimisées pour prendre en charge Microsoft SQL Server.
+
+Lors de la création d'un volume, le système vous invite à répondre à des questions concernant l'utilisation d'une charge de travail. Par exemple, si vous créez des volumes pour Microsoft Exchange, il vous est demandé combien de boîtes aux lettres vous avez besoin, quelles sont vos exigences moyennes en capacité de boîte aux lettres, et combien de copies de la base de données vous souhaitez. Le système utilise ces informations pour créer une configuration de volume optimale pour vous, qui peut être modifiée selon les besoins.
+
+
+
+== Comment configurer la méthode de livraison pour AutoSupport ?
+
+Pour accéder aux tâches de configuration des méthodes de livraison AutoSupport, allez dans le menu : Support [Support Center], puis cliquez sur l’onglet *AutoSupport*.
+
+Les protocoles suivants sont pris en charge : HTTPS et SMTP.
+
+
+
+== Comment savoir si je dois accepter la configuration de pool recommandée ?
+
+Le fait d'accepter ou non la configuration de pool recommandée dépend de plusieurs facteurs.
+
+Déterminez le type de stockage le mieux adapté à vos besoins en répondant aux questions suivantes :
+
+* Préférez-vous plusieurs pools de plus petite capacité plutôt que les plus grands pools possibles ?
+* Préférez-vous les groupes de volumes RAID aux pools ?
+* Préférez-vous approvisionner manuellement vos disques plutôt que de vous voir recommander une configuration ?
+
+
+Si vous avez répondu Oui à l'une de ces questions, envisagez de rejeter la configuration de pool recommandée.
+
+
+
+== SANtricity System Manager n'a détecté aucun hôte. Que dois-je faire ?
+
+Si vous ne voyez pas vos hôtes connectés, la détection automatique a échoué, les hôtes sont mal connectés ou aucun hôte n'est actuellement connecté.
+
+Vous pouvez configurer les hôtes ultérieurement, une fois l'installation terminée. Vous pouvez créer des hôtes manuellement comme suit :
+
+* Vous pouvez créer manuellement des hôtes et leur associer les identifiants de port appropriés en accédant au menu : Storage[Hosts]. Les hôtes créés manuellement s’affichent également dans l’assistant *Initial Setup*.
+* La cible et l'hôte doivent être configurés pour le type de port hôte (par exemple, iSCSI ou NVMe sur RoCE), et une session vers le stockage doit être établie avant que la détection automatique ne fonctionne.
+

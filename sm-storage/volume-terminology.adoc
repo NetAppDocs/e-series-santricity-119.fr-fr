@@ -1,0 +1,254 @@
+---
+permalink: sm-storage/volume-terminology.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, volume, terms 
+summary: 'Découvrez comment les termes relatifs au volume s"appliquent à votre baie de stockage.' 
+---
+= Découvrez la terminologie relative aux volumes dans le logiciel SANtricity
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Découvrez comment les termes relatifs au volume s'appliquent à votre baie de stockage.
+
+
+
+== Tous les types de volume
+
+[cols="25h,~"]
+|===
+| Terme | Description 
+
+
+ a| 
+Capacité allouée
+ a| 
+Vous utilisez la capacité allouée pour créer des volumes et pour les opérations de copy services.
+
+Pour les volumes épais, la capacité allouée et la capacité déclarée sont identiques, mais différentes pour les volumes minces. Pour un volume épais, l'espace physiquement alloué est égal à l'espace qui est déclaré à l'hôte. Pour un volume mince, la capacité déclarée est la capacité qui est déclarée aux hôtes, tandis que la capacité allouée correspond à la quantité d'espace disque actuellement allouée pour l'écriture des données.
+
+
+
+ a| 
+Application
+ a| 
+Une application est un logiciel tel que SQL Server ou Exchange. Vous définissez une ou plusieurs charges de travail pour chaque application. Pour certaines applications, le système recommande automatiquement une configuration de volume qui optimise le stockage. Des caractéristiques telles que le type d'E/S, la taille des segments, la propriété du contrôleur, ainsi que les caches de lecture et d'écriture sont incluses dans la configuration du volume.
+
+
+
+ a| 
+Capacité
+ a| 
+La capacité correspond à la quantité de données que vous pouvez stocker dans un volume.
+
+
+
+ a| 
+Propriété du contrôleur
+ a| 
+La propriété du contrôleur définit le contrôleur désigné comme étant le propriétaire, ou contrôleur principal, du volume. Un volume peut avoir un contrôleur préféré (A ou B) qui « possède » le volume. La propriété du volume est automatiquement ajustée à l'aide de la fonction d'équilibrage de charge automatique pour corriger tout problème d'équilibrage de charge lorsque les charges de travail se déplacent entre les contrôleurs. L'équilibrage de charge automatique assure un équilibrage automatisé de la charge d'E/S et garantit que le trafic d'E/S entrant provenant des hôtes est géré et équilibré dynamiquement entre les deux contrôleurs.
+
+
+
+ a| 
+Préfetche de lecture du cache dynamique
+ a| 
+La prélecture dynamique en cache permet au contrôleur de copier des blocs de données séquentiels supplémentaires dans le cache pendant la lecture de blocs de données depuis un disque vers le cache. Cette mise en cache augmente la probabilité que les futures requêtes de données puissent être satisfaites à partir du cache. La prélecture dynamique en cache est importante pour les applications multimédias qui utilisent des E/S séquentielles. Le débit et la quantité de données préchargées dans le cache s'ajustent automatiquement en fonction du débit et de la taille des requêtes de lecture de l'hôte. L'accès aléatoire n'entraîne pas de prélecture de données dans le cache. Cette fonctionnalité ne s'applique pas lorsque la mise en cache en lecture est désactivée.
+
+Pour un volume mince, la prélecture dynamique du cache est toujours désactivée et ne peut pas être modifiée.
+
+
+
+ a| 
+Zone de capacité libre
+ a| 
+Une zone de capacité libre est la capacité libre qui peut résulter de la suppression d'un volume ou du non-utilisation de toute la capacité libre disponible lors de la création d'un volume. Lorsque vous créez un volume dans un groupe de volumes qui possède une ou plusieurs zones de capacité libre, la capacité du volume est limitée à la plus grande zone de capacité libre dans ce groupe de volumes. Par exemple, si un groupe de volumes dispose d'une capacité libre totale de 15 Gio et que la plus grande zone de capacité libre est de 10 Gio, le plus grand volume que vous pouvez créer est de 10 Gio.
+
+En consolidant la capacité libre, vous pouvez créer des volumes supplémentaires à partir de la capacité libre maximale dans un groupe de volumes.
+
+
+
+ a| 
+Hôte
+ a| 
+Un hôte est un serveur qui envoie des E/S à un volume sur une baie de stockage.
+
+
+
+ a| 
+Cluster hôte
+ a| 
+Un cluster d'hôtes est un groupe d'hôtes. Vous créez un cluster d'hôtes pour faciliter l'attribution des mêmes volumes à plusieurs hôtes.
+
+
+
+ a| 
+disque de secours à chaud
+ a| 
+Les disques de secours à chaud ne sont pris en charge qu'avec les groupes de volumes. Un disque de secours à chaud ne contient aucune donnée et sert de disque de secours en cas de panne d'un disque dans les volumes RAID 1, RAID 3, RAID 5 ou RAID 6 d'un groupe de volumes. Le disque de secours à chaud ajoute un niveau supplémentaire de redondance à votre baie de stockage.
+
+
+
+ a| 
+LUN
+ a| 
+Un numéro d'unité logique (LUN) est le numéro attribué à l'espace d'adressage qu'un hôte utilise pour accéder à un volume. Le volume est présenté à l'hôte comme une capacité sous la forme d'un LUN.
+
+Chaque hôte possède son propre espace d'adressage LUN. Par conséquent, le même LUN peut être utilisé par différents hôtes pour accéder à des volumes différents.
+
+
+
+ a| 
+Analyse des médias
+ a| 
+Une analyse du support permet de détecter les erreurs du support du lecteur avant qu'elles ne soient constatées lors d'une opération de lecture ou d'écriture normale sur les lecteurs. Une analyse du support s'effectue en arrière-plan et examine toutes les données et informations de redondance dans les volumes utilisateur définis.
+
+
+
+ a| 
+Espace de noms
+ a| 
+Un espace de noms est un espace de stockage NVM formaté pour un accès par blocs. Il est analogue à une unité logique dans SCSI, qui correspond à un volume dans la baie de stockage.
+
+
+
+ a| 
+Pool
+ a| 
+Un pool est un ensemble de disques regroupés logiquement. Vous pouvez utiliser un pool pour créer un ou plusieurs volumes accessibles à un hôte. (Vous créez des volumes à partir d’un pool ou d’un groupe de volumes.)
+
+
+
+ a| 
+Capacité du pool ou du groupe de volumes
+ a| 
+La capacité d'un pool, d'un volume ou d'un groupe de volumes correspond à la capacité d'une baie de stockage affectée à un pool ou à un groupe de volumes. Cette capacité est utilisée pour créer des volumes et répondre aux différents besoins de capacité des opérations de services de copie et des objets de stockage.
+
+
+
+ a| 
+Cache de lecture
+ a| 
+Le cache de lecture est une mémoire tampon qui stocke les données qui ont été lues à partir des disques. Les données pour une opération de lecture peuvent déjà se trouver dans le cache à la suite d'une opération précédente, ce qui élimine le besoin d'accéder aux disques. Les données restent dans le cache de lecture jusqu'à ce qu'elles soient vidées.
+
+
+
+ a| 
+Capacité déclarée
+ a| 
+La capacité déclarée est la capacité qui est signalée à l'hôte et à laquelle l'hôte peut accéder.
+
+Pour les volumes épais, la capacité déclarée et la capacité allouée sont identiques, mais elles sont différentes pour les volumes minces. Pour un volume épais, l'espace physiquement alloué est égal à l'espace qui est déclaré à l'hôte. Pour un volume mince, la capacité déclarée est la capacité qui est déclarée aux hôtes, tandis que la capacité allouée est la quantité d'espace disque actuellement allouée pour l'écriture des données.
+
+
+
+ a| 
+Taille du segment
+ a| 
+Un segment correspond à la quantité de données, exprimée en kilo-octets (KiB), stockée sur un disque avant que la baie de stockage ne passe au disque suivant dans la bande (groupe RAID). La taille du segment est inférieure ou égale à la capacité du groupe de volumes. La taille du segment est fixe et ne peut pas être modifiée pour les pools.
+
+
+
+ a| 
+Répartition en bandes
+ a| 
+Le striping est une méthode de stockage des données sur la baie de stockage. Le striping divise le flux de données en blocs d'une certaine taille (appelée « taille de bloc ») puis écrit ces blocs un par un sur les disques. Ce mode de stockage des données est utilisé pour répartir et stocker les données sur plusieurs disques physiques. Le striping est synonyme de RAID 0 et répartit les données sur tous les disques d'un groupe RAID sans parité.
+
+
+
+ a| 
+Volume
+ a| 
+Un volume est un conteneur dans lequel les applications, les bases de données et les systèmes de fichiers stockent des données. Il s'agit du composant logique créé pour permettre à l'hôte d'accéder au stockage sur la baie de stockage.
+
+
+
+ a| 
+Attribution de volume
+ a| 
+L'affectation de volume correspond à la manière dont les LUN hôtes sont attribués à un volume.
+
+
+
+ a| 
+Nom du volume
+ a| 
+Le nom d'un volume est une chaîne de caractères qui lui est attribuée lors de sa création. Vous pouvez accepter le nom par défaut ou fournir un nom plus descriptif indiquant le type de données stockées dans le volume.
+
+
+
+ a| 
+Groupe de volumes
+ a| 
+Un groupe de volumes est un conteneur pour des volumes partageant des caractéristiques communes. Un groupe de volumes possède une capacité et un niveau RAID définis. Vous pouvez utiliser un groupe de volumes pour créer un ou plusieurs volumes accessibles à un hôte. (Vous créez des volumes à partir d’un groupe de volumes ou d’un pool.)
+
+
+
+ a| 
+Charge de travail
+ a| 
+Une charge de travail est un objet de stockage qui prend en charge une application. Vous pouvez définir une ou plusieurs charges de travail, ou instances, par application. Pour certaines applications, le système configure la charge de travail pour qu'elle contienne des volumes ayant des caractéristiques de volume sous-jacentes similaires. Ces caractéristiques de volume sont optimisées en fonction du type d'application que la charge de travail prend en charge. Par exemple, si vous créez une charge de travail qui prend en charge une application Microsoft SQL Server, puis créez des volumes pour cette charge de travail, les caractéristiques de volume sous-jacentes sont optimisées pour prendre en charge Microsoft SQL Server.
+
+
+
+ a| 
+Cache d'écriture
+ a| 
+Le cache d'écriture est une mémoire tampon qui stocke les données de l'hôte n'ayant pas encore été écrites sur les disques. Les données restent dans le cache d'écriture jusqu'à ce qu'elles soient écrites sur les disques. La mise en cache en écriture peut améliorer les performances d'E/S.
+
+
+
+ a| 
+Mise en cache d'écriture avec mise en miroir
+ a| 
+La mise en cache en écriture avec mise en miroir se produit lorsque les données écrites dans la mémoire cache d'un contrôleur sont également écrites dans la mémoire cache de l'autre contrôleur. Ainsi, si un contrôleur tombe en panne, l'autre peut terminer toutes les opérations d'écriture en attente. La mise en miroir du cache d'écriture est disponible uniquement si la mise en cache en écriture est activée et si deux contrôleurs sont présents. La mise en cache en écriture avec mise en miroir est le paramètre par défaut lors de la création d'un volume.
+
+
+
+ a| 
+Mise en cache de l'écriture sans batteries
+ a| 
+L'option de mise en cache en écriture sans piles permet de poursuivre la mise en cache même lorsque les piles sont manquantes, défectueuses, complètement déchargées ou pas entièrement chargées. Il n'est généralement pas recommandé de choisir la mise en cache en écriture sans piles, car des données pourraient être perdues en cas de coupure de courant. En général, la mise en cache en écriture est désactivée temporairement par le contrôleur jusqu'à ce que les piles soient chargées ou qu'une pile défectueuse soit remplacée.
+
+|===
+
+
+== Spécifique aux volumes fins
+
+[NOTE]
+====
+System Manager ne propose pas d'option pour créer des volumes légers. Si vous souhaitez créer des volumes légers, utilisez la ligne de commandes (CLI).
+
+====
+[NOTE]
+====
+Les volumes minces ne sont pas disponibles sur le système de stockage EF600/EF600C ou EF300/EF300C.
+
+====
+[cols="25h,~"]
+|===
+| Terme | Description 
+
+
+ a| 
+Limite de capacité allouée
+ a| 
+La limite de capacité allouée est la limite supérieure de la taille que peut atteindre la capacité physique allouée à un volume mince.
+
+
+
+ a| 
+Capacité écrite
+ a| 
+La capacité écrite correspond à la quantité de capacité qui a été écrite à partir de la capacité réservée allouée pour les volumes minces.
+
+
+
+ a| 
+Seuil d'alerte
+ a| 
+Vous pouvez définir une alerte de seuil d'avertissement à émettre lorsque la capacité allouée pour un volume mince atteint le pourcentage de remplissage (le seuil d'avertissement).
+
+|===

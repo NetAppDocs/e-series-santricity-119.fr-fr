@@ -1,0 +1,129 @@
+---
+permalink: um-manage/discover-multiple-arrays.html 
+sidebar: sidebar 
+keywords: SANtricity, Unified Manager, E-Series, discover, multiple, storage, arrays 
+summary: Vous découvrez plusieurs baies pour détecter toutes les baies de stockage sur le sous-réseau où se trouve le serveur de gestion et pour ajouter automatiquement les baies découvertes à votre domaine de gestion. 
+---
+= Découvrez plusieurs baies de stockage dans SANtricity Unified Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous découvrez plusieurs baies pour détecter toutes les baies de stockage sur le sous-réseau où se trouve le serveur de gestion et pour ajouter automatiquement les baies découvertes à votre domaine de gestion.
+
+.Avant de commencer
+* Vous devez être connecté avec un profil utilisateur incluant les autorisations Security Admin.
+* La baie de stockage doit être correctement configurée.
+* Les mots de passe des baies de stockage doivent être configurés à l'aide de la vignette Access Management du System Manager.
+* Pour résoudre le problème des certificats non approuvés, vous devez disposer de fichiers de certificats approuvés provenant d'une Certificate Authority (CA), et les fichiers de certificats sont disponibles sur votre système local.
+
+
+La découverte des tableaux est une procédure en plusieurs étapes.
+
+
+
+== Étape 1 : Saisir l’adresse réseau
+
+Vous saisissez une plage d'adresses réseau pour effectuer une recherche sur le sous-réseau local. Tout système de stockage accessible apparaît sur la page Discover et peut être ajouté à votre domaine de gestion.
+
+Si vous devez interrompre l'opération de découverte pour une raison quelconque, cliquez sur *Stop Discovery*.
+
+.Étapes
+. Depuis la page Manage, sélectionnez *Add/Discover*.
++
+La boîte de dialogue Ajouter/Découvrir apparaît.
+
+. Sélectionnez le bouton radio *Découvrir toutes les baies de stockage dans une plage réseau*.
+. Saisissez l'adresse réseau de début et l'adresse réseau de fin pour effectuer une recherche sur votre sous-réseau local, puis cliquez sur *Démarrer la découverte*.
++
+Le processus de découverte démarre. Ce processus de découverte peut prendre plusieurs minutes pour se terminer. Le tableau de la page Découverte se remplit au fur et à mesure que les baies de stockage sont découvertes.
+
++
+[NOTE]
+====
+Si aucune baie gérable n'est détectée, vérifiez que les baies de stockage sont correctement connectées à votre réseau et que leurs adresses attribuées sont dans la plage. Cliquez sur *New Discovery Parameters* pour revenir à la page Add/Discover.
+
+====
+. Consultez la liste des baies de stockage détectées.
+. Cochez la case à côté de toute baie de stockage que vous souhaitez ajouter à votre domaine de gestion, puis cliquez sur *Suivant*.
++
+Unified Manager effectue une vérification d'identifiant sur chaque baie que vous ajoutez au domaine de gestion. Vous pourriez avoir besoin de résoudre tout certificat auto-signé et tout certificat non approuvé associé à cette baie.
+
+. Cliquez sur *Suivant* pour passer à l'étape suivante de l'assistant.
+
+
+
+
+== Étape 2 : Résoudre les certificats auto-signés lors de la découverte
+
+Dans le cadre du processus de découverte, le système vérifie que les baies de stockage utilisent des certificats délivrés par une source fiable.
+
+.Étapes
+. Effectuez l'une des opérations suivantes :
++
+** Si vous faites confiance aux connexions aux baies de stockage détectées, passez à l'étape suivante de l'assistant. Les certificats auto-signés seront marqués comme approuvés et les baies de stockage seront ajoutées à Unified Manager.
+** Si vous ne faites pas confiance aux connexions aux baies de stockage, sélectionnez *Annuler* et validez la stratégie de certificat de sécurité de chaque baie de stockage avant de les ajouter à Unified Manager.
+
+
+. Cliquez sur *Suivant* pour passer à l'étape suivante de l'assistant.
+
+
+
+
+== Étape 3 : Résoudre les certificats non approuvés lors de la découverte
+
+Des certificats non approuvés surviennent lorsqu'une baie de stockage tente d'établir une connexion sécurisée avec Unified Manager, mais que la connexion ne parvient pas à être confirmée comme sécurisée. Lors du processus de découverte de la baie, vous pouvez résoudre les certificats non approuvés en important un certificat d'autorité de certification (CA) (ou un certificat signé par une CA) émis par un tiers de confiance.
+
+Vous devrez peut-être installer des certificats d'autorité de certification (CA) de confiance supplémentaires si l'une des conditions suivantes est vraie :
+
+* Vous avez récemment ajouté une baie de stockage.
+* L'un ou les deux certificats sont expirés.
+* Un ou les deux certificats sont révoqués.
+* Un ou les deux certificats ne comportent pas de certificat racine ou intermédiaire.
+
+
+.Étapes
+. Sélectionnez la case à cocher à côté de toute baie de stockage pour laquelle vous souhaitez résoudre les certificats non approuvés, puis sélectionnez le bouton **Importer**.
++
+Une boîte de dialogue s'ouvre pour importer les fichiers de certificats de confiance.
+
+. Cliquez sur *Parcourir* pour sélectionner les fichiers de certificat pour les baies de stockage.
++
+Les noms de fichiers s'affichent dans la boîte de dialogue.
+
+. Cliquez sur *Import*.
++
+Les fichiers sont téléchargés et validés.
+
++
+[NOTE]
+====
+Les baies de stockage présentant des problèmes de certificats non fiables et non résolus ne seront pas ajoutées à Unified Manager.
+
+====
+. Cliquez sur *Suivant* pour passer à l'étape suivante de l'assistant.
+
+
+
+
+== Étape 4 : Fournir les mots de passe
+
+Vous devez saisir les mots de passe des baies de stockage que vous souhaitez ajouter à votre domaine de gestion.
+
+.Étapes
+. Saisissez le mot de passe de chaque baie de stockage que vous souhaitez ajouter à Unified Manager.
+. *Facultatif :* Associez les baies de stockage à un groupe : dans la liste déroulante, sélectionnez le groupe souhaité à associer aux baies de stockage sélectionnées.
+. Cliquez sur *Terminer*.
+
+
+.Après avoir terminé
+Les baies de stockage sont ajoutées à votre domaine de gestion et associées au groupe sélectionné (si spécifié).
+
+[NOTE]
+====
+La connexion d'Unified Manager aux baies de stockage spécifiées peut prendre plusieurs minutes.
+
+====

@@ -1,0 +1,24 @@
+---
+permalink: sm-storage/turn-on-locator-lights-in-a-pool-volume-group-or-ssd-cache.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, lights, LEDs 
+summary: 'Vous pouvez localiser les disques pour identifier physiquement tous les disques qui composent un pool, un groupe de volumes ou un SSD Cache sélectionné. Un voyant LED s"allume sur chaque disque du pool, du groupe de volumes ou du SSD Cache sélectionné.' 
+---
+= Activez les voyants de localisation dans un pool, un groupe de volumes ou un cache SSD dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez localiser les disques pour identifier physiquement tous les disques qui composent un pool, un groupe de volumes ou un SSD Cache sélectionné. Un voyant LED s'allume sur chaque disque du pool, du groupe de volumes ou du SSD Cache sélectionné.
+
+.Étapes
+. Sélectionnez le menu : Storage [Pools & Volume Groups].
+. Sélectionnez le pool, le groupe de volumes ou le SSD Cache que vous souhaitez localiser, puis cliquez sur menu:More[Turn on locator lights].
++
+Une boîte de dialogue apparaît indiquant que les voyants des disques composant le pool, le groupe de volumes ou le cache SSD sélectionné sont allumés.
+
+. Après avoir localisé avec succès les lecteurs, cliquez sur *Turn Off*.
+

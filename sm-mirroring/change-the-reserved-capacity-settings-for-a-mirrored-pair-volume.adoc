@@ -1,0 +1,47 @@
+---
+permalink: sm-mirroring/change-the-reserved-capacity-settings-for-a-mirrored-pair-volume.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, change, reserved, capacity, settings, mirrored, pair, volume, 
+summary: 'Vous pouvez modifier les paramètres d"un volume de paire miroir pour ajuster le point de pourcentage auquel System Manager envoie une notification d"alerte lorsque la capacité réservée pour un volume de paire miroir est presque pleine.' 
+---
+= Modifiez les paramètres de capacité réservée pour un volume de paire miroir dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez modifier les paramètres d'un volume de paire miroir pour ajuster le point de pourcentage auquel SANtricity System Manager envoie une notification d'alerte lorsque la capacité réservée pour un volume de paire miroir est presque pleine.
+
+.Étapes
+. Sélectionnez le menu : Storage [Pools & Volume Groups].
+. Sélectionnez l’onglet *Capacité réservée*.
+. Sélectionnez le volume de la paire en miroir que vous souhaitez modifier, puis cliquez sur *Afficher/Modifier les paramètres*.
++
+La boîte de dialogue Paramètres de capacité réservée du volume Mirrored Pair s'affiche.
+
+. Modifiez les paramètres de capacité réservée pour le volume de la paire en miroir selon les besoins.
++
+.Détails du champ
+[%collapsible]
+====
+[cols="25h,~"]
+|===
+| Paramètre | Description 
+
+
+ a| 
+Alertez-moi quand...
+ a| 
+Utilisez le champ de saisie pour ajuster le point de pourcentage auquel System Manager envoie une notification d'alerte lorsque la capacité réservée pour une paire en miroir est presque pleine.
+
+Lorsque la capacité réservée pour la paire en miroir dépasse le seuil spécifié, System Manager envoie une alerte, vous laissant le temps d’augmenter la capacité réservée.
+
+
+NOTE: Modifier le paramètre d'alerte pour une paire miroir modifie le paramètre d'alerte pour toutes les paires miroir appartenant au même groupe de cohérence de miroir.
+
+|===
+====
+. Cliquez sur *Enregistrer* pour appliquer vos modifications.
+

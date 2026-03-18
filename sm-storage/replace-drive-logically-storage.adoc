@@ -1,0 +1,61 @@
+---
+permalink: sm-storage/replace-drive-logically-storage.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, replace, drive, logically 
+summary: 'Si un disque tombe en panne ou si vous souhaitez le remplacer pour une autre raison, et si vous disposez d"un disque non attribué dans votre baie de stockage, vous pouvez remplacer logiquement le disque défaillant par le disque non attribué. Si vous ne disposez pas d"un disque non attribué, vous pouvez remplacer physiquement le disque.' 
+---
+= Remplacez un disque dur logiquement dans SANtricity System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Si un disque tombe en panne ou si vous souhaitez le remplacer pour une autre raison, et si vous disposez d'un disque non attribué dans votre baie de stockage, vous pouvez remplacer logiquement le disque défaillant par le disque non attribué. Si vous ne disposez pas d'un disque non attribué, vous pouvez remplacer physiquement le disque.
+
+.À propos de cette tâche
+Lorsque vous remplacez logiquement un lecteur par un lecteur non attribué, ce dernier est attribué et devient un membre permanent du pool ou du groupe de volumes associé. Vous utilisez l'option de remplacement logique pour remplacer les types de lecteurs suivants :
+
+* Pannes disque
+* Disques manquants
+* Disques SSD pour lesquels le Recovery Guru vous a informé qu'ils approchent de leur fin de vie
+* Disques durs pour lesquels le Recovery Guru vous a notifié d'une panne disque imminente
+* Disques attribués (disponibles uniquement pour les disques dans un groupe de volumes, pas dans un pool)
+
+
+Le disque de remplacement doit présenter les caractéristiques suivantes :
+
+* Dans l'état optimal
+* Dans l'état non attribué
+* Les mêmes attributs que le disque remplacé (type de support, type d’interface, etc.)
+* La même capacité FDE (recommandée, mais non requise)
+* La même capacité DA (recommandée, mais non requise)
+
+
+.Étapes
+. Sélectionnez *Hardware*.
+. Si le graphique affiche les contrôleurs, cliquez sur l’onglet *Lecteurs*.
++
+Le graphique change pour afficher les disques au lieu des contrôleurs.
+
+. Cliquez sur le lecteur que vous souhaitez remplacer logiquement.
++
+Le menu contextuel du lecteur apparaît.
+
+. Cliquez sur *Remplacer logiquement*.
+. *Facultatif :* Cochez la case à cocher *Fail drive after it is replaced* pour que le disque d’origine tombe en panne après son remplacement.
++
+Cette case à cocher est activée uniquement si le lecteur d'origine attribué n'est pas en panne ou manquant.
+
+. Dans le tableau *Select a replacement drive*, sélectionnez le disque de remplacement que vous souhaitez utiliser.
++
+Le tableau répertorie uniquement les disques compatibles avec celui que vous remplacez. Si possible, choisissez un disque qui maintiendra la protection contre la perte sur étagère et la protection contre la perte dans tiroir.
+
+. Cliquez sur *Remplacer*.
++
+Si le disque d'origine est en panne ou manquant, les données sont reconstruites sur le disque de remplacement à l'aide des informations de parité. Cette reconstruction commence automatiquement. Les voyants d'anomalie du disque s'éteignent et les voyants d'activité des disques du pool ou du groupe de volumes commencent à clignoter.
+
++
+Si le disque d'origine n'est pas en panne ou manquant, ses données sont copiées sur le disque de remplacement. Cette opération de copie commence automatiquement. Après la fin de l'opération de copie, le système fait passer le disque d'origine à l'état Non attribué, ou, si la case à cocher a été sélectionnée, à l'état Défaillant.
+
+

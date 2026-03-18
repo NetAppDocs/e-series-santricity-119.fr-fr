@@ -1,0 +1,58 @@
+---
+permalink: sm-settings/access-management-tokens-create.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, access management, create tokens 
+summary: 'Vous pouvez créer des jetons d"accès, qui sont utilisés pour s"authentifier avec l"API REST ou la ligne de commandes à la place d"un nom d"utilisateur et d"un mot de passe.' 
+---
+= Créez des jetons d'accès dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez créer un jeton d'accès pour vous authentifier auprès de l'API REST ou de l'interface de ligne de commandes (CLI) à la place d'un nom d'utilisateur et d'un mot de passe.
+
+
+NOTE: Les jetons n'ont pas de mot de passe, vous devez donc les gérer avec soin.
+
+.Étapes
+. Sélectionnez le menu : Settings [Gestion des accès].
+. Sélectionnez l’onglet *Jetons d’accès*.
+. Sélectionnez *Afficher/Modifier les paramètres des jetons d'accès*. Dans la boîte de dialogue, assurez-vous que la case *Activer les jetons d'accès* est cochée. Cliquez sur *Enregistrer* pour fermer la boîte de dialogue.
+. Sélectionnez *Créer un jeton d'accès*.
+. Dans la boîte de dialogue, sélectionnez la durée pendant laquelle le jeton sera valide.
++
+
+NOTE: Après l'expiration du jeton, les tentatives d'authentification de l'utilisateur échoueront.
+
+. Cliquez sur *Créer.*
+. Dans la boîte de dialogue, sélectionnez l'une des options suivantes :
++
+** *Copier* pour enregistrer le texte du jeton dans le presse-papiers.
+** *Download* pour enregistrer le texte du jeton dans un fichier.
++
+
+NOTE: Veillez à sauvegarder le texte du jeton. C'est votre seule occasion de voir le texte avant de fermer la boîte de dialogue.
+
+
+
+. Cliquez sur *Close*.
+. Utilisez le jeton comme suit :
++
+** *API REST* : Pour utiliser un jeton dans une requête d’API REST, ajoutez un en-tête HTTP à vos requêtes. Par exemple :
+`Authorization: Bearer _<access-token-value>_`
+** *Secure CLI* : Pour utiliser un jeton dans la ligne de commandes, ajoutez la valeur du jeton sur la ligne de commandes ou utilisez le chemin d’accès à un fichier contenant la valeur du jeton. Par exemple :
++
+*** Valeur du jeton sur la ligne de commandes `-t _access-token-value_`
+*** Chemin d'accès à un fichier contenant la valeur du jeton : `-T _access-token-file_`
++
+
+NOTE: La CLI invite l'utilisateur à saisir une valeur de jeton d'accès sur la ligne de commandes si aucun nom d'utilisateur, mot de passe ou jeton n'est spécifié.
+
+
+
+
+
+

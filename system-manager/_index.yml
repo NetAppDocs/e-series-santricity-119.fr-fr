@@ -1,0 +1,69 @@
+---
+indexpage:
+  title: Gestion d'une seule baie avec SANtricity System Manager 11.9
+  summary: La documentation du logiciel SANtricity vous permet d'installer, de configurer
+    et de maintenir votre baie de stockage.
+  keywords: santricity, install, setup, maintain, storage array
+  lead: La documentation du logiciel SANtricity vous permet d'installer, de configurer
+    et de maintenir votre baie de stockage.
+  tiles:
+  - title: Configurer la baie
+    links:
+    - title: Configuration initiale
+      url: "../sm-interface/setup-wizard-overview.html"
+    - title: Mot de passe administrateur
+      url: "../sm-interface/administrator-password-protection.html"
+    - title: Alertes
+      url: "../sm-settings/how-alerts-work.html"
+    - title: AutoSupport
+      url: "../sm-support/autosupport-feature-overview.html"
+  - title: Créer un stockage
+    links:
+    - title: Pools
+      url: "../sm-storage/create-pool-manually.html"
+    - title: Groupes de volumes
+      url: "../sm-storage/create-volume-group.html"
+    - title: Cache SSD
+      url: "../sm-storage/create-ssd-cache.html"
+    - title: Volumes
+      url: "../sm-storage/create-volumes.html"
+  - title: Gérer le matériel
+    links:
+    - title: Tiroirs
+      url: "../sm-hardware/hardware-page-overview.html"
+    - title: Contrôleurs
+      url: "../sm-hardware/controller-states.html"
+    - title: Disques
+      url: "../sm-hardware/drive-states.html"
+    - title: Certificats
+      url: "../sm-settings/how-certificates-work-sam.html"
+  - title: Mise en miroir, instantanés et stockage distant
+    links:
+    - title: Mise en miroir asynchrone
+      url: "../sm-mirroring/how-asynchronous-mirroring-works.html"
+    - title: Mise en miroir synchrone
+      url: "../sm-mirroring/how-synchronous-mirroring-works.html"
+    - title: Stockage d'instantanés
+      url: "../sm-storage/overview-snapshots.html"
+    - title: stockage à distance
+      url: "../sm-storage/rtv-how-remote-storage-works.html"
+  - title: Diagnostics
+    links:
+    - title: Collecter les données de support
+      url: "../sm-support/collect-support-data-manually.html"
+    - title: Vérifier les erreurs de mise à niveau
+      url: "../sm-support/review-the-possible-software-and-firmware-upgrade-errors.html"
+    - title: Notifications de problèmes
+      url: "../sm-interface/problem-notification.html"
+    - title: Opérations en cours
+      url: "../sm-interface/view-and-act-on-operations-in-progress.html"
+  - title: Rétablissement et événements
+    links:
+    - title: Journal des secteurs illisibles
+      url: "../sm-support/view-unreadable-sectors-log.html"
+    - title: Recovery Guru
+      url: "../sm-interface/recover-from-problems-using-recovery-guru.html"
+    - title: Journal des événements
+      url: "../sm-support/overview-event-log.html"
+    - title: Fichiers de support de récupération
+      url: "../sm-support/retrieve-recovery-support-files.html"

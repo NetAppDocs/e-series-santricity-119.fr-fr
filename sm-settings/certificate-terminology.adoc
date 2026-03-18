@@ -1,0 +1,110 @@
+---
+permalink: sm-settings/certificate-terminology.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, certificate, terms, 
+summary: 'Les conditions suivantes s"appliquent à la gestion des certificats.' 
+---
+= Découvrez la terminologie des certificats dans le logiciel SANtricity
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Les conditions suivantes s'appliquent à la gestion des certificats.
+
+[cols="25h,~"]
+|===
+| Terme | Description 
+
+
+ a| 
+CA
+ a| 
+Une autorité de certification (CA) est une entité de confiance qui délivre des documents électroniques, appelés certificats numériques, pour la sécurité d'Internet. Ces certificats identifient les propriétaires de sites web, ce qui permet d'établir des connexions sécurisées entre les clients et les serveurs.
+
+
+
+ a| 
+RSE
+ a| 
+Une demande de signature de certificat (CSR) est un message envoyé par un demandeur à une autorité de certification (CA). La CSR valide les informations requises par la CA pour émettre un certificat.
+
+
+
+ a| 
+Certificat
+ a| 
+Un certificat identifie le propriétaire d'un site à des fins de sécurité, ce qui empêche les attaquants d'usurper l'identité du site. Le certificat contient des informations sur le propriétaire du site et l'identité de l'entité de confiance qui certifie (signe) ces informations.
+
+
+
+ a| 
+Chaîne de certificats
+ a| 
+Une hiérarchie de fichiers qui ajoute une couche de sécurité aux certificats. Généralement, la chaîne comprend un certificat racine au sommet de la hiérarchie, un ou plusieurs certificats intermédiaires et les certificats serveur qui identifient les entités.
+
+
+
+ a| 
+Certificat client
+ a| 
+Pour la gestion des clés de sécurité, un certificat client valide les contrôleurs de la baie de stockage, afin que le serveur de gestion des clés puisse faire confiance à leurs adresses IP.
+
+
+
+ a| 
+Certificat intermédiaire
+ a| 
+Dans la chaîne de certificats, un ou plusieurs certificats intermédiaires sont dérivés du certificat racine. L'autorité de certification (CA) émet un ou plusieurs certificats intermédiaires qui servent d'intermédiaires entre un certificat racine protégé et les certificats serveur.
+
+
+
+ a| 
+Certificat du serveur de gestion des clés
+ a| 
+Pour la gestion des clés de sécurité, un certificat de serveur de gestion des clés valide le serveur, de sorte que la baie de stockage puisse faire confiance à son adresse IP.
+
+
+
+ a| 
+Magasin de clés
+ a| 
+Un magasin de clés est un référentiel sur votre système de gestion d’hôte qui contient des clés privées, ainsi que leurs clés publiques et certificats correspondants. Ces clés et certificats identifient vos propres entités, telles que les contrôleurs.
+
+
+
+ a| 
+Serveur OCSP
+ a| 
+Le serveur Online Certificate Status Protocol (OCSP) détermine si l'autorité de certification (CA) a révoqué des certificats avant leur date d'expiration prévue, puis bloque l'utilisateur d'accéder à un serveur si le certificat est révoqué.
+
+
+
+ a| 
+Certificat racine
+ a| 
+Le certificat racine se situe au sommet de la hiérarchie de la chaîne de certificats et contient une clé privée utilisée pour signer d'autres certificats. Le certificat racine identifie une organisation CA particulière. Si vous utilisez la même CA pour tous vos périphériques réseau, vous n'avez besoin que d'un seul certificat racine.
+
+
+
+ a| 
+Certificat signé
+ a| 
+Un certificat validé par une autorité de certification (CA). Ce fichier de données contient une clé privée et garantit que les données sont envoyées sous forme chiffrée entre un serveur et un client via une connexion HTTPS. De plus, un certificat signé inclut des détails sur le propriétaire de l'entité (généralement un serveur ou un site web) et une signature numérique composée de lettres et de chiffres. Un certificat signé utilise une chaîne de confiance et est donc le plus souvent utilisé dans des environnements de production. Également appelé « certificat signé par une CA » ou « certificat de gestion ».
+
+
+
+ a| 
+Certificat auto-signé
+ a| 
+Un certificat auto-signé est validé par le propriétaire de l'entité. Ce fichier de données contient une clé privée et garantit que les données sont envoyées sous forme chiffrée entre un serveur et un client via une connexion HTTPS. Il inclut également une signature numérique composée de lettres et de chiffres. Un certificat auto-signé n'utilise pas la même chaîne de confiance qu'un certificat signé par une CA, et est donc le plus souvent utilisé dans les environnements de test. Également appelé certificat « préinstallé ».
+
+
+
+ a| 
+Certificat serveur
+ a| 
+Le certificat serveur se trouve à la fin de la chaîne de certificats. Il identifie votre entité spécifique, comme un site web ou un autre appareil. Chaque contrôleur dans un système de stockage requiert un certificat serveur distinct.
+
+|===

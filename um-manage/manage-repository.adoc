@@ -1,0 +1,58 @@
+---
+permalink: um-manage/manage-repository.html 
+sidebar: sidebar 
+keywords: SANtricity, Unified Manager, E-Series, manage, software, repository 
+summary: Le référentiel de logiciels répertorie tous les fichiers logiciels associés au Web Services Proxy. 
+---
+= Gérez le référentiel logiciel SANtricity dans Unified Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Le référentiel de logiciels répertorie tous les fichiers logiciels associés au Web Services Proxy.
+
+Si vous ne trouvez pas le fichier que vous souhaitez utiliser, vous pouvez utiliser l'option Gérer le référentiel de logiciels pour importer un ou plusieurs fichiers SANtricity OS sur le système hôte où le Web Services Proxy et Unified Manager sont en cours d'exécution. Vous pouvez également choisir de supprimer un ou plusieurs fichiers SANtricity OS disponibles dans le référentiel de logiciels.
+
+.Avant de commencer
+Si vous ajoutez des fichiers SANtricity OS, assurez-vous que les fichiers OS sont disponibles sur votre système local.
+
+.Étapes
+. Dans la vue principale, sélectionnez *Gérer*, puis sélectionnez menu:Upgrade Center[Manage Software Repository].
++
+La boîte de dialogue Gérer le référentiel de logiciels s'affiche.
+
+. Effectuez l'une des actions suivantes :
++
+[cols="25h,~"]
+|===
+| Option | Faites ceci.... 
+
+
+ a| 
+Importer
+ a| 
+.. Cliquez sur *Importer.*
+.. Cliquez sur *Parcourir*, puis accédez à l'emplacement où se trouvent les fichiers OS que vous souhaitez ajouter.
++
+Les fichiers du système d'exploitation ont un nom de fichier similaire à `N2800-830000-000.dlp`.
+
+.. Sélectionnez un ou plusieurs fichiers OS que vous souhaitez ajouter, puis cliquez sur *Importer*.
+
+
+
+
+ a| 
+Supprimer
+ a| 
+.. Sélectionnez un ou plusieurs fichiers OS que vous souhaitez supprimer du référentiel logiciel.
+.. Cliquez sur *Delete*.
+
+
+|===
+
+
+.Résultats
+Si vous avez sélectionné import, les fichiers sont téléchargés et validés. Si vous avez sélectionné delete, les fichiers sont retirés du répertoire logiciel.

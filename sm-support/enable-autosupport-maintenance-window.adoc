@@ -1,0 +1,35 @@
+---
+permalink: sm-support/enable-autosupport-maintenance-window.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, enable, autosupport, ASUP, maintenance window 
+summary: 'Activez la fenêtre de maintenance AutoSupport pour empêcher la création automatique de tickets en cas d"événements d"erreur. En mode de fonctionnement normal, la baie de stockage utilise AutoSupport pour ouvrir un ticket auprès du support client en cas de problème.' 
+---
+= Activez la fenêtre de maintenance AutoSupport dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Activez la fenêtre de maintenance AutoSupport pour empêcher la création automatique de tickets en cas d'événements d'erreur. En mode de fonctionnement normal, la baie de stockage utilise AutoSupport pour ouvrir un ticket auprès du support client en cas de problème.
+
+.Étapes
+. Sélectionnez le menu : Support [Support Center > AutoSupport] onglet.
+. Sélectionnez *Activer AutoSupport Maintenance window*.
+. Saisissez l'adresse e-mail pour recevoir une confirmation que la demande de fenêtre de maintenance a été traitée.
++
+Selon votre configuration, vous pouvez saisir jusqu'à cinq adresses e-mail. Si vous souhaitez ajouter plus d'une adresse, sélectionnez *Ajouter une autre adresse e-mail* pour ouvrir un autre champ.
+
+. Spécifiez la durée (en heures) pour activer la fenêtre de maintenance.
++
+La durée maximale prise en charge est de 72 heures.
+
+. Cliquez sur *Oui*.
++
+AutoSupport La création automatique de tickets lors d'événements d'erreur est temporairement suspendue pour la fenêtre de durée spécifiée.
+
+
+
+.Après avoir terminé
+La fenêtre de maintenance ne débute qu'une fois la requête du système de stockage traitée par les serveurs AutoSupport. Attendez d'avoir reçu un e-mail de confirmation avant d'effectuer toute opération de maintenance sur votre système de stockage.

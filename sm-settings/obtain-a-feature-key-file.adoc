@@ -1,0 +1,47 @@
+---
+permalink: sm-settings/obtain-a-feature-key-file.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, obtain, feature, key, file, 
+summary: 'Pour activer une fonctionnalité premium ou un pack de fonctionnalités sur votre baie de stockage, vous devez d"abord obtenir un fichier de clé de fonctionnalité. Une clé est associée à une seule baie de stockage.' 
+---
+= Obtenez un fichier de clé de fonctionnalité dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Pour activer une fonctionnalité premium ou un pack de fonctionnalités sur votre baie de stockage, vous devez d'abord obtenir un fichier de clé de fonctionnalité. Une clé est associée à une seule baie de stockage.
+
+.À propos de cette tâche
+Cette tâche décrit comment recueillir les informations nécessaires à la fonctionnalité, puis envoyer une demande de fichier de clé de fonctionnalité. Les informations requises comprennent :
+
+* Numéro de série du châssis
+* Identifiant d’activation de fonctionnalité
+* Code d'activation de la fonctionnalité
+
+
+.Étapes
+. Dans System Manager, repérez et notez le numéro de série du châssis. Vous pouvez afficher ce numéro de série en survolant la vignette Support Center avec votre souris.
+. Dans le Gestionnaire système, repérez l'identifiant d'activation de la fonctionnalité. Accédez au menu : Paramètres [Système], puis faites défiler jusqu'à *Modules complémentaires*. Recherchez l'*identifiant d'activation de la fonctionnalité*. Notez le numéro de l'identifiant d'activation de la fonctionnalité.
+. Repérez et notez le code d'activation de la fonctionnalité. Pour les packs de fonctionnalités, ce code est fourni dans les instructions correspondantes pour effectuer la conversion.
++
+Pour les fonctionnalités premium, vous pouvez accéder au code d'activation depuis le site d'assistance, comme suit :
+
++
+.. Connectez-vous à https://mysupport.netapp.com/site/global/dashboard["Support NetApp"^].
+.. Accédez à *Software Licenses* pour votre produit.
+.. Saisissez le numéro de série du châssis de la baie de stockage, puis cliquez sur *Go*.
+.. Recherchez les codes d'activation des fonctionnalités dans la colonne *License Key*.
+.. Notez le code d'activation de la fonctionnalité que vous souhaitez.
+
+
+. Demandez un fichier de clé de fonctionnalité en envoyant un e-mail ou un document texte à votre fournisseur de stockage avec les informations suivantes : numéro de série du châssis, identifiant d’activation et code d’activation de la fonctionnalité.
++
+Vous pouvez également aller sur http://partnerspfk.netapp.com["NetApp License Activation : Activation des fonctionnalités Premium de la baie de stockage"^] et saisir les informations requises pour obtenir la fonctionnalité ou le pack de fonctionnalités. (Les instructions sur ce site concernent les fonctionnalités premium, pas les packs de fonctionnalités.)
+
+
+
+.Après avoir terminé
+Lorsque vous disposez d'un fichier de clé de fonctionnalité, vous pouvez activer la fonctionnalité premium ou le pack de fonctionnalités.

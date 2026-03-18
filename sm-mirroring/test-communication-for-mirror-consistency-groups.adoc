@@ -1,0 +1,76 @@
+---
+permalink: sm-mirroring/test-communication-for-mirror-consistency-groups.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, test, communication, mirror, consistency, groups, 
+summary: 'Vous pouvez tester la liaison de communication pour diagnostiquer d"éventuels problèmes de communication entre la baie de stockage locale et la baie de stockage distante associée à un groupe de cohérence de miroir.' 
+---
+= Testez la communication pour les groupes de cohérence miroir dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez tester la liaison de communication pour diagnostiquer d'éventuels problèmes de communication entre la baie de stockage locale et la baie de stockage distante associée à un groupe de cohérence de miroir.
+
+.Avant de commencer
+Le groupe de cohérence miroir que vous souhaitez tester doit exister sur les baies de stockage locales et distantes.
+
+.À propos de cette tâche
+Vous pouvez exécuter quatre tests différents :
+
+* *Connectivité* -- Vérifie que les deux contrôleurs disposent d'un chemin de communication. Le test de connectivité envoie un message inter-baies entre les baies de stockage, puis vérifie que le groupe de cohérence miroir correspondant sur la baie de stockage distante existe. Il vérifie également que les volumes membres du groupe de cohérence miroir sur la baie de stockage distante correspondent aux volumes membres du groupe de cohérence miroir sur la baie de stockage locale.
+* *Latence* -- Envoie une commande SCSI Test Unit à chaque volume en miroir sur la baie de stockage distante associée au groupe de cohérence de miroir pour tester la latence minimale, moyenne et maximale.
+* *Bande passante* -- Envoie deux messages inter-baies à la baie de stockage distante pour tester la bande passante minimale, moyenne et maximale ainsi que la vitesse de liaison négociée du port sur la baie effectuant le test.
+* *Connexions des ports* -- Indique le port utilisé pour la mise en miroir sur la baie de stockage locale et le port qui reçoit les données mises en miroir sur la baie de stockage distante.
+
+
+.Étapes
+. Sélectionnez menu : Storage[Asynchronous Mirroring].
+. Sélectionnez l'onglet *Mirror Consistency Groups*, puis sélectionnez le mirror consistency group que vous souhaitez tester.
+. Sélectionnez *Test Communication*.
++
+La boîte de dialogue Test Communication s'affiche.
+
+. Sélectionnez un ou plusieurs tests de communication à effectuer entre les baies de stockage locales et distantes associées au groupe de cohérence de miroir sélectionné, puis cliquez sur *Tester*.
+. Examinez les informations affichées dans la fenêtre Results.
++
+[cols="35h,~"]
+|===
+| État du test de communication | Description 
+
+
+ a| 
+Normal sans erreurs
+ a| 
+Le groupe de cohérence du miroir communique correctement.
+
+
+
+ a| 
+Statut passé (mais pas normal)
+ a| 
+Vérifiez les éventuels problèmes de réseau ou de connexion et réessayez le test.
+
+
+
+ a| 
+Statut d'échec
+ a| 
+La cause de l'échec est indiquée. Consultez le Recovery Guru pour corriger le problème.
+
+
+
+ a| 
+Erreur de connexion au port
+ a| 
+Il se peut que le système de stockage local ne soit pas connecté ou que le système de stockage distant soit inaccessible. Consultez le Recovery Guru pour corriger le problème.
+
+|===
+
+
+.Résultats
+Une fois le test de communication terminé, cette boîte de dialogue affiche un statut Normal, un statut Réussi ou un statut Échec.
+
+Si le test de communication renvoie un statut « Échec », le test continue de s'exécuter après que vous ayez fermé cette boîte de dialogue jusqu'à ce que la communication entre les groupes de cohérence du miroir soit rétablie.

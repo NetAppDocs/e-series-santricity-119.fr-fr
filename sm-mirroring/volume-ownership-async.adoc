@@ -1,0 +1,28 @@
+---
+permalink: sm-mirroring/volume-ownership-async.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, volume, ownership, async, change, preferred, controller, owner, mirrored, pair, 
+summary: Vous pouvez changer le propriétaire du contrôleur préféré dans une paire en miroir. 
+---
+= Découvrez la notion de propriété des volumes dans la réplication asynchrone dans le logiciel SANtricity
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez changer le propriétaire du contrôleur préféré dans une paire en miroir.
+
+Si le volume principal de la paire en miroir appartient au contrôleur A, alors le volume secondaire appartiendra également au contrôleur A de la baie de stockage distante. Changer le propriétaire du volume principal modifiera automatiquement le propriétaire du volume secondaire afin que les deux volumes appartiennent au même contrôleur. Les modifications de propriété actuelles du côté principal sont automatiquement propagées aux modifications de propriété actuelles correspondantes du côté secondaire.
+
+Par exemple, un volume primaire appartient au contrôleur A, puis vous changez le propriétaire du contrôleur pour le contrôleur B. Dans ce cas, la prochaine écriture à distance modifie le propriétaire du contrôleur du volume secondaire du contrôleur A au contrôleur B. Comme les changements de propriété du contrôleur sur le côté secondaire sont contrôlés par le côté primaire, ils ne nécessitent aucune intervention particulière de l'administrateur de stockage.
+
+
+
+== Réinitialisations du contrôleur
+
+Une réinitialisation du contrôleur entraîne un changement de propriété du volume sur le côté principal, passant du contrôleur propriétaire préféré au contrôleur alternatif dans la baie de stockage.
+
+Il arrive qu'une écriture distante soit interrompue par une réinitialisation du contrôleur ou un cycle d'alimentation de la baie de stockage avant de pouvoir être écrite sur le volume secondaire. Le contrôleur n'a pas besoin d'effectuer une synchronisation complète de la paire miroir dans ce cas.
+
+Lorsqu'une écriture distante est interrompue lors d'une réinitialisation du contrôleur, le nouveau propriétaire du contrôleur principal lit les informations stockées dans un fichier journal sur le volume de capacité réservée du propriétaire du contrôleur préféré. Le nouveau propriétaire du contrôleur copie ensuite les blocs de données concernés du volume principal vers le volume secondaire, éliminant ainsi le besoin d'une synchronisation complète des volumes en miroir.

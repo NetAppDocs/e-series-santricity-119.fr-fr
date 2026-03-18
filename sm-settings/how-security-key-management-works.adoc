@@ -1,0 +1,58 @@
+---
+permalink: sm-settings/how-security-key-management-works.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, security, key, management, 
+summary: 'Lorsque vous implémentez la fonction Drive Security, les disques sécurisés (FIPS ou FDE) nécessitent une clé de sécurité pour l"accès aux données. Une clé de sécurité est une chaîne de caractères partagée entre ces types de disques et les contrôleurs d"une baie de stockage.' 
+---
+= Comment fonctionne la gestion des clés de sécurité dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Lorsque vous implémentez la fonction Drive Security, les disques sécurisés (FIPS ou FDE) nécessitent une clé de sécurité pour l'accès aux données. Une clé de sécurité est une chaîne de caractères partagée entre ces types de disques et les contrôleurs d'une baie de stockage.
+
+À chaque mise hors tension puis sous tension des disques, les disques sécurisés passent en état verrouillé jusqu'à ce que le contrôleur applique la clé de sécurité. Si un disque sécurisé est retiré de la baie de stockage, les données du disque sont verrouillées. Lors de la réinstallation du disque dans une autre baie de stockage, il recherche la clé de sécurité avant de rendre les données à nouveau accessibles. Pour déverrouiller les données, vous devez appliquer la clé de sécurité d'origine.
+
+Vous pouvez créer et gérer des clés de sécurité en utilisant l'une des méthodes suivantes :
+
+* Gestion interne des clés sur la mémoire persistante du contrôleur.
+* Gestion des clés externes sur un serveur de gestion des clés externes.
+
+
+
+
+== Gestion des clés internes
+
+Les clés internes sont conservées et « masquées » dans un emplacement inaccessible de la mémoire persistante du contrôleur. Pour mettre en œuvre la gestion des clés internes, procédez comme suit :
+
+. Installez des disques sécurisés dans la baie de stockage. Ces disques peuvent être des disques à chiffrement complet (FDE) ou des disques Federal Information Processing Standard (FIPS).
+. Assurez-vous que la fonction Drive Security est activée. Si nécessaire, contactez votre fournisseur de stockage pour obtenir des instructions sur l’activation de la fonction Drive Security.
+. Créez une clé de sécurité interne, ce qui implique de définir un identifiant et une phrase secrète. L'identifiant est une chaîne associée à la clé de sécurité, et est stockée sur le contrôleur et sur tous les disques associés à la clé. La phrase secrète est utilisée pour chiffrer la clé de sécurité à des fins de sauvegarde. Pour créer une clé interne, allez dans menu:Settings[System > Security key management > Create Internal Key].
+
+
+La clé de sécurité est stockée sur le contrôleur dans un emplacement caché et inaccessible. Vous pouvez ensuite créer des groupes ou des pools de volumes sécurisés, ou activer la sécurité sur des groupes et des pools de volumes existants.
+
+
+
+== Gestion des clés externes
+
+Les clés externes sont gérées sur un serveur de gestion de clés distinct, à l'aide d'un protocole Key Management Interoperability Protocol (KMIP). Pour mettre en œuvre la gestion de clés externes, procédez comme suit :
+
+. Installez des disques sécurisés dans la baie de stockage. Ces disques peuvent être des disques à chiffrement complet (FDE) ou des disques Federal Information Processing Standard (FIPS).
+. Assurez-vous que la fonction Drive Security est activée. Si nécessaire, contactez votre fournisseur de stockage pour obtenir des instructions sur l’activation de la fonction Drive Security.
+. Obtenez un fichier de certificat client signé. Un certificat client valide les contrôleurs de la baie de stockage, afin que le serveur de gestion des clés puisse faire confiance à leurs requêtes KMIP.
++
+.. Tout d'abord, vous complétez et téléchargez une demande de signature de certificat (CSR) client. Accédez au menu : Paramètres [Certificates > Key Management > Complete CSR].
+.. Ensuite, vous demandez un certificat client signé à une autorité de certification approuvée par le serveur de gestion des clés. (Vous pouvez également créer et télécharger un certificat client depuis le serveur de gestion des clés à l'aide du fichier CSR.)
+.. Une fois que vous disposez d'un fichier de certificat client, copiez ce fichier sur l'hôte où vous accédez à System Manager.
+.. Vous pouvez également générer une demande de signature de certificat en externe à l'aide d'une paire de clés privée et publique.
+
+
+. Récupérez un fichier de certificat auprès du serveur de gestion des clés, puis copiez ce fichier sur l’hôte depuis lequel vous accédez à System Manager. Un certificat de serveur de gestion des clés valide le serveur de gestion des clés, de sorte que la baie de stockage puisse faire confiance à son adresse IP. Vous pouvez utiliser un certificat racine, intermédiaire ou serveur pour le serveur de gestion des clés.
+. Créez une clé externe, ce qui implique de définir l'adresse IP du serveur de gestion des clés et le numéro de port utilisé pour les communications KMIP. Au cours de cette procédure, vous chargez également les fichiers de certificat. Pour créer une clé externe, accédez au menu : Settings[System > Security key management > Create External Key].
+
+
+Le système se connecte au serveur de gestion des clés avec les informations d'identification que vous avez saisies. Vous pouvez ensuite créer des groupes ou des pools de volumes sécurisés, ou activer la sécurité sur des groupes et des pools de volumes existants.

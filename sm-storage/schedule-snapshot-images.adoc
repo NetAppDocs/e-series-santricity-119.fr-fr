@@ -1,0 +1,223 @@
+---
+permalink: sm-storage/schedule-snapshot-images.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, schedule, snapshot, images 
+summary: Vous créez une planification de snapshots pour permettre la restauration en cas de problème avec le volume de base et pour effectuer des sauvegardes planifiées. Les snapshots des volumes de base ou des groupes de cohérence de snapshots peuvent être créés selon une planification quotidienne, hebdomadaire ou mensuelle, à tout moment de la journée. 
+---
+= Planifiez des images instantanées dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous créez une planification de snapshots pour permettre la restauration en cas de problème avec le volume de base et pour effectuer des sauvegardes planifiées. Les snapshots des volumes de base ou des groupes de cohérence de snapshots peuvent être créés selon une planification quotidienne, hebdomadaire ou mensuelle, à tout moment de la journée.
+
+.Avant de commencer
+Le volume de base doit être Optimal.
+
+.À propos de cette tâche
+Cette tâche décrit comment créer une planification de clichés instantanés pour un groupe de cohérence de clichés instantanés existant ou un volume de base existant.
+
+[NOTE]
+====
+Vous pouvez également créer une planification d'instantané en même temps que vous créez une image d'instantané d'un volume de base ou d'un groupe de cohérence.
+
+====
+.Étapes
+. Effectuez l'une des actions suivantes pour créer une planification d'instantané :
++
+** Sélectionnez le menu : Storage[Volumes].
++
+Sélectionnez l'objet (volume ou groupe de cohérence d'instantanés) pour cette planification d'instantané, puis sélectionnez menu:Copy Services[Create snapshot schedule].
+
+** Sélectionnez le menu : Storage[Snapshots].
++
+Sélectionnez l'onglet *Schedules*, puis cliquez sur *Créer*.
+
+
+
+. Sélectionnez l'objet (volume ou groupe de cohérence de snapshot) pour cette planification d'instantané, puis cliquez sur *Suivant*.
++
+La boîte de dialogue Créer une planification d'instantanés s'affiche.
+
+. Effectuez l'une des actions suivantes :
++
+** *Utilisez une planification précédemment définie à partir d'un autre objet instantané*.
++
+Assurez-vous que les options avancées sont affichées. Cliquez sur *Afficher plus d'options*. Cliquez sur *Importer la planification*, sélectionnez l'objet contenant la planification à importer, puis cliquez sur *Importer*.
+
+** *Modifiez les options de base ou avancées*.
++
+Dans le coin supérieur droit de la boîte de dialogue, cliquez sur *Afficher plus d’options* pour afficher toutes les options, puis reportez-vous au tableau suivant.
+
+
+
++
+.Détails du champ
+[%collapsible]
+====
+[cols="25h,~"]
+|===
+| Champ | Description 
+
+
+ a| 
+*Paramètres de base*
+
+
+
+ a| 
+Sélectionner les jours
+ a| 
+Sélectionnez des jours individuels de la semaine pour les images de snapshot.
+
+
+
+ a| 
+Heure de début
+ a| 
+Dans la liste déroulante, sélectionnez une nouvelle heure de début pour les instantanés quotidiens (les sélections sont proposées par incréments de 30 minutes). L'heure de début par défaut est fixée à une demi-heure après l'heure actuelle.
+
+
+
+ a| 
+Fuseau horaire
+ a| 
+Dans la liste déroulante, sélectionnez le fuseau horaire de votre array.
+
+
+
+ a| 
+*Paramètres avancés*
+
+
+
+ a| 
+Jour / mois
+ a| 
+Choisissez l'une des options suivantes :
+
+** *Quotidien / Hebdomadaire* -- Sélectionnez les jours individuellement pour les instantanés de synchronisation. Vous pouvez également sélectionner la case à cocher *Sélectionner tous les jours* en haut à droite si vous souhaitez un planning quotidien.
+** *Mensuel / Annuel* -- Sélectionnez les mois individuels pour les instantanés de synchronisation. Dans le champ *Jour(s)*, indiquez les jours du mois où les synchronisations doivent avoir lieu. Les valeurs valides sont *1* à *31* et *Last*. Vous pouvez séparer plusieurs jours par une virgule ou un point-virgule. Utilisez un tiret pour les dates inclusives. Par exemple : 1,3,4,10-15,Last. Vous pouvez également sélectionner la case à cocher *Sélectionner tous les mois* en haut à droite si vous souhaitez un planning mensuel.
+
+
+
+
+ a| 
+Heure de début
+ a| 
+Dans la liste déroulante, sélectionnez une nouvelle heure de début pour les instantanés quotidiens (les sélections sont proposées par incréments de 30 minutes). L'heure de début par défaut est fixée à une demi-heure après l'heure actuelle.
+
+
+
+ a| 
+Fuseau horaire
+ a| 
+Dans la liste déroulante, sélectionnez le fuseau horaire de votre array.
+
+
+
+ a| 
+Instantanés par jour / Temps entre les instantanés
+ a| 
+Sélectionnez le nombre d'images instantanées à créer par jour. Si vous en sélectionnez plusieurs, sélectionnez également l'heure entre les images instantanées. Pour plusieurs images instantanées, assurez-vous de disposer d'une capacité réservée adéquate.
+
+
+
+ a| 
+Créer une image instantanée maintenant ?
+ a| 
+Cochez cette case à cocher pour créer une image instantanée en plus des images automatiques que vous programmez.
+
+
+
+ a| 
+Date de début/fin ou aucune date de fin
+ a| 
+Saisissez la date de début pour que les synchronisations commencent. Indiquez également une date de fin ou sélectionnez *Aucune date de fin*.
+
+|===
+====
+. Effectuez l'une des actions suivantes :
++
+** Si l'objet est un groupe de cohérence, cliquez sur *Créer* pour accepter les paramètres et créer la planification.
+** Si l'objet est un volume, cliquez sur *Suivant* pour allouer la capacité réservée pour les images instantanées.
++
+Le tableau des volumes candidats affiche uniquement les candidats compatibles avec la capacité réservée spécifiée. La capacité réservée correspond à la capacité physique allouée utilisée pour toute opération de copie et tout objet de stockage. Elle n'est pas directement accessible par l'hôte.
+
+
+
+. Utilisez la zone de sélection pour allouer la capacité réservée aux images instantanées. Effectuez l'une des actions suivantes :
++
+** *Acceptez les paramètres par défaut.*
++
+Utilisez cette option recommandée pour allouer la capacité réservée pour les images de snapshot avec les paramètres par défaut.
+
+** *Attribuez vos propres paramètres de capacité réservée pour répondre à vos besoins de stockage des données.*
++
+Si vous modifiez le paramètre de capacité réservée par défaut, cliquez sur *Actualiser les candidats* pour actualiser la liste des candidats pour la capacité réservée que vous avez spécifiée.
+
++
+Allouez la capacité réservée en utilisant les directives suivantes :
+
++
+*** Le paramètre par défaut pour la capacité réservée est de 40 % de la capacité du volume de base. Généralement, cette capacité est suffisante.
+*** La capacité nécessaire varie en fonction de la fréquence et de la taille des écritures d'I/O sur les volumes, ainsi que de la quantité et de la durée de la collecte d'images instantanées.
+
+
+
+
+. Cliquez sur *Next*.
++
+La boîte de dialogue Modifier les paramètres apparaît.
+
+. Modifiez les paramètres de la planification des instantanés selon vos besoins, puis cliquez sur *Finish*.
++
+.Détails du champ
+[%collapsible]
+====
+[cols="25h,~"]
+|===
+| Paramètre | Description 
+
+
+ a| 
+*Limite d'images snapshot*
+
+
+
+ a| 
+Activer la suppression automatique des images instantanées lorsque...
+ a| 
+Laissez la case à cocher cochée si vous souhaitez que les images instantanées soient automatiquement supprimées après la limite spécifiée ; utilisez le champ numérique pour modifier la limite. Si vous décochez cette case à cocher, la création d'images instantanées s'arrête après 32 images.
+
+
+
+ a| 
+*Paramètres de capacité réservée*
+
+
+
+ a| 
+Alertez-moi quand...
+ a| 
+Utilisez la boîte de sélection pour ajuster le point de pourcentage auquel le système envoie une notification d'alerte lorsque la capacité réservée pour un horaire est presque pleine.
+
+Lorsque la capacité réservée pour le planning dépasse le seuil spécifié, utilisez le préavis pour augmenter la capacité réservée ou supprimer les objets inutiles avant que l'espace restant ne soit épuisé.
+
+
+
+ a| 
+Politique de capacité entièrement réservée
+ a| 
+Choisissez l'une des politiques suivantes :
+
+** *Suppression de l'image instantanée la plus ancienne* -- Le système supprime automatiquement l'image instantanée la plus ancienne, ce qui libère la capacité réservée à l'image instantanée pour une réutilisation au sein du groupe d'instantanés.
+** *Rejeter les écritures sur le volume de base* -- Lorsque la capacité réservée atteint son pourcentage maximal défini, le système rejette toute requête d'écriture d'I/O sur le volume de base qui a déclenché l'accès à la capacité réservée.
+
+
+|===
+====
+

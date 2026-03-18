@@ -1,0 +1,38 @@
+---
+permalink: sm-storage/snapshot-schedules-and-snapshot-consistency-groups.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, snapshot, schedules, snapshot, consistency groups 
+summary: 'Utilisez des planifications pour la collecte d"images instantanées et utilisez des groupes de cohérence d"instantanés pour gérer plusieurs volumes de base.' 
+---
+= Découvrez les planifications d'instantanés et les groupes de cohérence d'instantanés dans SANtricity System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Utilisez des planifications pour la collecte d'images instantanées et utilisez des groupes de cohérence d'instantanés pour gérer plusieurs volumes de base.
+
+Pour gérer facilement les opérations de snapshot des volumes de base, vous pouvez utiliser les fonctionnalités suivantes :
+
+* *Planification des instantanés* -- Automatisez les instantanés pour un seul volume de base.
+* *Groupe de cohérence de snapshot* -- Gérer plusieurs volumes de base comme une seule entité.
+
+
+
+
+== Calendrier des snapshots
+
+Si vous souhaitez prendre automatiquement des instantanés pour un volume de base, vous pouvez créer une planification. Par exemple, vous pouvez définir une planification qui prend des images d’instantané chaque samedi à minuit, le premier de chaque mois, ou à toute date et heure que vous décidez. Après que le maximum de 32 instantanés est atteint pour une seule planification, vous pouvez suspendre les instantanés planifiés, créer plus de capacité réservée, ou supprimer des instantanés. Les instantanés peuvent être supprimés manuellement ou en automatisant le processus de suppression. Après la suppression d’une image d’instantané, une capacité réservée supplémentaire est disponible pour une nouvelle utilisation.
+
+
+
+== groupe de cohérence de snapshot
+
+Vous créez un groupe de cohérence d'instantanés lorsque vous souhaitez garantir que des images d'instantanés sont prises sur plusieurs volumes en même temps. Les actions sur les images d'instantanés sont effectuées sur l'ensemble du groupe de cohérence d'instantanés. Par exemple, vous pouvez planifier des instantanés synchronisés de tous les volumes avec le même horodatage. Les groupes de cohérence d'instantanés sont idéaux pour les applications qui s'étendent sur plusieurs volumes, telles que les applications de base de données qui stockent les journaux sur un volume et les fichiers de base de données sur un autre volume.
+
+Les volumes inclus dans un groupe de cohérence d'instantané sont appelés volumes membres. Lorsque vous ajoutez un volume à un groupe de cohérence, System Manager crée automatiquement une nouvelle capacité réservée correspondant à ce volume membre. Vous pouvez définir une planification pour créer automatiquement une image d'instantané de chaque volume membre.
+
+image::../media/sam1130-dwg-snapshots-consistency-groups-overview.gif[Aperçu du groupe de cohérence Snapshot]
+
+^1^ Capacité réservée ; ^2^ Volume membre ; ^3^ Images instantanées du groupe de cohérence

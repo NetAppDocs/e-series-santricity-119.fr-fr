@@ -1,0 +1,34 @@
+---
+permalink: sm-storage/remove-member-volumes-from-a-consistency-group.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, remove, member volume, snapshot, consistency group 
+summary: 'Vous pouvez supprimer un volume membre d"un groupe de cohérence de snapshot existant.' 
+---
+= Supprimer un volume membre d'un groupe de cohérence de snapshot dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez supprimer un volume membre d'un groupe de cohérence de snapshot existant.
+
+.À propos de cette tâche
+Lorsque vous supprimez un volume membre d'un groupe de cohérence d'instantanés, System Manager supprime automatiquement les objets d'instantané associés à ce volume membre.
+
+.Étapes
+. Sélectionnez le menu : Storage[Snapshots].
+. Cliquez sur l'onglet *Snapshot Consistency Groups*.
+. Développez le groupe de cohérence de snapshot que vous souhaitez modifier en sélectionnant le signe plus (+) à côté.
+. Sélectionnez le volume membre que vous souhaitez supprimer, puis cliquez sur *Supprimer*.
+. Confirmez que vous souhaitez effectuer l'opération, puis cliquez sur *Remove*.
+
+
+.Résultats
+System Manager effectue les actions suivantes :
+
+* Supprime toutes les images instantanées et tous les volumes instantanés associés au volume membre.
+* Supprime le groupe de snapshots associé au volume membre.
+* Le volume membre n'est pas autrement modifié ou supprimé.
+

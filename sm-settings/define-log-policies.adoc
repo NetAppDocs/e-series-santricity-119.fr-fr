@@ -1,0 +1,71 @@
+---
+permalink: sm-settings/define-log-policies.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, define, audit, log, policies, 
+summary: 'Vous pouvez modifier la politique d"écrasement et les types d"événements enregistrés dans le journal des audits.' 
+---
+= Définir les politiques de journal des audits dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez modifier la politique d'écrasement et les types d'événements enregistrés dans le journal des audits.
+
+.Avant de commencer
+Vous devez être connecté avec un profil utilisateur disposant des autorisations d'administrateur de sécurité. Sinon, les fonctions de gestion des accès ne s'affichent pas.
+
+.À propos de cette tâche
+Cette tâche décrit comment modifier les paramètres du journal des audits, notamment la politique d'écrasement des anciens événements et la politique d'enregistrement des types d'événements.
+
+.Étapes
+. Sélectionnez le menu : Settings [Gestion des accès].
+. Sélectionnez l'onglet *journal des audits*.
+. Sélectionnez *Afficher/Modifier les paramètres*.
++
+La boîte de dialogue Paramètres du journal des audits s'ouvre.
+
+. Modifiez la politique d'écrasement ou les types d'événements enregistrés.
++
+.Détails du champ
+[%collapsible]
+====
+[cols="25h,~"]
+|===
+| Paramètre | Description 
+
+
+ a| 
+Politique de remplacement
+ a| 
+Détermine la politique d'écrasement des anciens événements lorsque la capacité maximale est atteinte :
+
+** *Autoriser l'écrasement des événements les plus anciens dans le journal des audits lorsque le journal des audits est plein* -- Écrase les anciens événements lorsque le journal des audits atteint 50 000 enregistrements.
+** *Exiger que les événements du journal des audits soient supprimés manuellement* -- Indique que les événements ne seront pas supprimés automatiquement ; un avertissement de seuil apparaît au pourcentage défini. Les événements doivent être supprimés manuellement.
++
+
+NOTE: Si la stratégie d'écrasement est désactivée et que les entrées du journal des audits atteignent la limite maximale, l'accès à System Manager est refusé aux utilisateurs ne disposant pas des autorisations Security Admin. Pour rétablir l'accès au système aux utilisateurs ne disposant pas des autorisations Security Admin, un utilisateur affecté au rôle Security Admin doit supprimer les anciens enregistrements d'événements.
+
++
+
+NOTE: Les politiques d'écrasement ne s'appliquent pas si un serveur syslog est configuré pour l'archivage des journaux des audits.
+
+
+
+
+
+ a| 
+Niveau des actions à consigner
+ a| 
+Détermine les types d'événements à consigner :
+
+** *Événements de modification d'enregistrement uniquement* -- Affiche uniquement les événements où une action de l'utilisateur implique une modification du système.
+** *Enregistrer tous les événements de modification et de lecture seule* -- Affiche tous les événements, y compris une action de l'utilisateur impliquant la lecture ou le téléchargement d'informations.
+
+
+|===
+====
+. Cliquez sur *Enregistrer*.
+

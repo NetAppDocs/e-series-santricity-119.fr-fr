@@ -1,0 +1,113 @@
+---
+permalink: um-manage/upgrade-controller-firmware.html 
+sidebar: sidebar 
+keywords: SANtricity, Unified Manager, E-Series, upgrade, os, operating system 
+summary: Mettez à niveau une ou plusieurs baies de stockage avec la dernière version du logiciel et de la NVSRAM pour vous assurer que vous disposez de toutes les dernières fonctionnalités et corrections de bogues. La NVSRAM du contrôleur est un fichier qui spécifie les paramètres par défaut des contrôleurs. 
+---
+= Mettre à niveau le système d'exploitation SANtricity
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mettez à niveau une ou plusieurs baies de stockage avec la dernière version du logiciel et de la NVSRAM pour vous assurer que vous disposez de toutes les dernières fonctionnalités et corrections de bogues. La NVSRAM du contrôleur est un fichier qui spécifie les paramètres par défaut des contrôleurs.
+
+.Avant de commencer
+* Les derniers fichiers du système d'exploitation SANtricity sont disponibles sur le système hôte où le proxy SANtricity Web Services et Unified Manager sont en cours d'exécution.
+* Vous savez si vous souhaitez activer votre mise à jour logicielle maintenant ou plus tard.
++
+Vous pourriez choisir de l'activer plus tard pour ces raisons :
+
++
+** *Heure de la journée* -- L’activation du logiciel peut prendre du temps, il est donc conseillé d’attendre que la charge d’E/S soit plus faible. Les contrôleurs basculent pendant l’activation, ce qui peut entraîner une baisse des performances jusqu’à la fin de la mise à niveau.
+** *Type de package* -- Vous pourriez vouloir tester le nouveau logiciel du système d'exploitation sur un système de stockage avant de mettre à niveau les fichiers sur d'autres systèmes de stockage.
+
+
+
+
+
+IMPORTANT: Les systèmes doivent exécuter SANtricity OS 11.70.5 pour pouvoir être mis à niveau vers 11.80.x ou une version ultérieure.
+
+.À propos de cette tâche
+++ ++
+
+[NOTE]
+====
+Risque de perte de données ou de dommage au système de stockage : n'apportez aucune modification au système de stockage pendant la mise à niveau. Maintenez l'alimentation du système de stockage.
+
+====
+.Étapes
+. Si votre baie de stockage ne contient qu'un seul contrôleur ou si aucun pilote multipath n'est utilisé, interrompez l'activité d'E/S vers la baie de stockage afin d'éviter les erreurs d'application. Si votre baie de stockage possède deux contrôleurs et qu'un pilote multipath est installé, il n'est pas nécessaire d'arrêter l'activité d'E/S.
+. Dans la vue principale, sélectionnez *Gérer*, puis sélectionnez une ou plusieurs baies de stockage que vous souhaitez mettre à niveau.
+. Sélectionnez le menu : Centre de mise à niveau [Upgrade SANtricity OS Software].
++
+La page de mise à niveau du logiciel SANtricity OS s'affiche.
+
+. Téléchargez le dernier package logiciel SANtricity OS depuis le site d'assistance NetApp sur votre ordinateur local.
++
+.. Cliquez sur *Ajouter un nouveau fichier au référentiel de logiciels*.
+.. Cliquez sur le lien pour trouver les derniers téléchargements de *SANtricity OS*.
+.. Cliquez sur le lien *Download Latest Release*.
+.. Suivez les instructions restantes pour télécharger le fichier SANtricity OS et le fichier NVSRAM sur votre machine locale.
+
+
++
+[NOTE]
+====
+Un firmware signé numériquement est requis dans la version 8.42 et les versions ultérieures. Si vous tentez de télécharger un firmware non signé, une erreur s'affiche et le téléchargement est annulé.
+
+====
+. Sélectionnez le fichier logiciel du système d'exploitation et le fichier NVSRAM que vous souhaitez utiliser pour mettre à niveau les contrôleurs :
++
+.. Dans la liste déroulante *Sélectionner un fichier logiciel SANtricity OS*, sélectionnez le fichier OS que vous avez téléchargé sur votre ordinateur local.
++
+S'il existe plusieurs fichiers, les fichiers sont triés du plus récent au plus ancien.
+
++
+[NOTE]
+====
+Le dépôt de logiciels répertorie tous les fichiers logiciels associés au Web Services Proxy. Si vous ne voyez pas le fichier que vous souhaitez utiliser, vous pouvez cliquer sur le lien *Ajouter un nouveau fichier au dépôt de logiciels* pour parcourir l’emplacement où se trouve le fichier OS que vous souhaitez ajouter.
+
+====
+.. Dans la liste déroulante *Select an NVSRAM file*, sélectionnez le fichier de contrôleur que vous souhaitez utiliser.
++
+S'il y a plusieurs fichiers, les fichiers sont triés du plus récent au plus ancien.
+
+
+
+. Dans le tableau Baies de stockage compatibles, examinez les baies de stockage compatibles avec le fichier logiciel du système d'exploitation que vous avez sélectionné, puis sélectionnez les baies que vous souhaitez mettre à niveau.
++
+** Les systèmes de stockage que vous avez sélectionnés dans la vue Gérer et qui sont compatibles avec le fichier de firmware sélectionné sont sélectionnés par défaut dans le tableau Système de stockage compatible.
+** Les baies de stockage qui ne peuvent pas être mises à jour avec le fichier de firmware sélectionné ne sont pas sélectionnables dans le tableau Compatible Storage Array, comme l'indique le statut *Incompatible*.
+
+
+. *Facultatif :* Pour transférer le fichier logiciel vers les systèmes de stockage sans les activer, sélectionnez la case à cocher *Transférer le logiciel du système d'exploitation vers les systèmes de stockage, le marquer comme mis en attente et l'activer ultérieurement*.
+. Cliquez sur *Start*.
+. Selon que vous ayez choisi d'activer maintenant ou plus tard, effectuez l'une des actions suivantes :
++
+** Tapez *TRANSFER* pour confirmer que vous souhaitez transférer les versions logicielles du système d'exploitation proposées sur les baies que vous avez sélectionnées pour la mise à niveau, puis cliquez sur *Transfer*.
++
+Pour activer le logiciel transféré, sélectionnez le menu : Upgrade Center [Activate Staged OS Software].
+
+** Tapez *UPGRADE* pour confirmer que vous souhaitez transférer et activer les versions logicielles du système d'exploitation proposées sur les baies que vous avez sélectionnées pour la mise à niveau, puis cliquez sur *Upgrade*.
++
+Le système transfère le fichier logiciel vers chaque système de stockage E-Series que vous avez sélectionné pour la mise à niveau, puis active ce fichier en lançant un redémarrage.
+
+
+
++
+Les actions suivantes se produisent lors de l'opération de mise à niveau :
+
++
+** Une vérification de l'état préalable est exécutée dans le cadre du processus de mise à niveau. La vérification de l'état préalable évalue tous les composants du système de stockage afin de garantir que la mise à niveau peut se dérouler.
+** Si une vérification de l'état échoue pour une baie de stockage, la mise à niveau s'interrompt. Vous pouvez cliquer sur les points de suspension (...) et sélectionner *Enregistrer le journal* pour consulter les erreurs. Vous pouvez également choisir d'ignorer l'erreur de vérification de l'état, puis cliquer sur *Continuer* pour poursuivre la mise à niveau.
+** Vous pouvez annuler l'opération de mise à niveau après la vérification de l'état.
+
+
+. *Facultatif :* Une fois la mise à niveau terminée, vous pouvez consulter la liste des éléments mis à niveau pour une baie de stockage spécifique en cliquant sur les points de suspension (...) et en sélectionnant *Enregistrer le journal*.
++
+Le fichier est enregistré dans le dossier Téléchargements de votre navigateur sous le nom `upgrade_log-<date>.json`.
+
+

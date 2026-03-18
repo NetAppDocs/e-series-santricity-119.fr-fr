@@ -1,0 +1,66 @@
+---
+permalink: sm-hardware/assign-hot-spares-hardware.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, assign, hot, spares, raid, 
+summary: Vous pouvez désigner un disque de secours à chaud comme disque de veille pour une protection des données supplémentaire dans les groupes de volumes RAID 1, RAID 5 ou RAID 6. Si un disque tombe en panne dans l’un de ces groupes de volumes, le contrôleur reconstruit les données du disque défaillant vers le disque de secours à chaud. 
+---
+= Attribuer des disques de secours dans SANtricity System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez désigner un disque de secours à chaud comme disque de veille pour une protection des données supplémentaire dans les groupes de volumes RAID 1, RAID 5 ou RAID 6. Si un disque tombe en panne dans l’un de ces groupes de volumes, le contrôleur reconstruit les données du disque défaillant vers le disque de secours à chaud.
+
+.Avant de commencer
+* Il est nécessaire de créer des groupes de volumes RAID 1, RAID 5 ou RAID 6. (Les disques de secours à chaud ne peuvent pas être utilisés pour les pools. Au lieu de cela, un pool utilise la capacité disponible de chaque disque pour la protection des données.)
+* Un disque qui répond aux critères suivants doit être disponible :
++
+** Non attribué, avec un statut optimal.
+** Même type de support que les disques du groupe de volumes (par exemple, SSDs).
+** Même type d'interface que les disques du groupe de volumes (par exemple, SAS).
+** Capacité égale ou supérieure à la capacité utilisée des disques du groupe de volumes.
+
+
+
+
+.À propos de cette tâche
+Cette procédure explique comment affecter manuellement un disque de secours à chaud depuis la page Matériel. La couverture recommandée est de deux disques de secours à chaud par ensemble de disques.
+
+[NOTE]
+====
+Il est également possible d'attribuer des disques de secours à chaud depuis l'assistant de configuration initiale. Vous pouvez déterminer si des disques de secours à chaud sont déjà attribués en recherchant les baies de disques affichées en rose sur la page Matériel.
+
+====
+.Étapes
+. Sélectionnez *Hardware*.
+. Si le graphique affiche les contrôleurs, cliquez sur l’onglet *Lecteurs*.
++
+Le graphique change pour afficher les disques au lieu des contrôleurs.
+
+. Sélectionnez un lecteur non attribué (affiché en gris) que vous souhaitez utiliser comme hot spare.
++
+Le menu contextuel du lecteur s'ouvre.
+
+. Sélectionnez *Attribuer un disque de secours*.
++
+Si le disque est sécurisé, la boîte de dialogue Secure Erase Drive? s’ouvre. Pour utiliser un disque sécurisé comme disque de secours à chaud, vous devez d’abord effectuer une opération Secure Erase afin de supprimer toutes ses données et de réinitialiser ses attributs de sécurité.
+
++
+[CAUTION]
+====
+*Risque de perte de données* -- Assurez-vous d'avoir sélectionné le bon lecteur. Après avoir terminé l'opération d'effacement sécurisé, vous ne pourrez plus récupérer aucune donnée.
+
+====
++
+Si le lecteur n'est *pas* activé pour la sécurité, la boîte de dialogue Confirmer l'attribution du lecteur de secours à chaud s'ouvre.
+
+. Vérifiez le texte dans la boîte de dialogue, puis confirmez l'opération.
++
+Le disque est affiché en rose sur la page Matériel, ce qui indique qu'il est désormais un disque de secours à chaud.
+
+
+
+.Résultats
+Si un disque appartenant à un groupe de volumes RAID 1, RAID 5 ou RAID 6 tombe en panne, le contrôleur utilise automatiquement les données de redondance pour reconstruire les données du disque défaillant sur le disque de secours.

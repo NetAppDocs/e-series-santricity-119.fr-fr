@@ -1,0 +1,44 @@
+---
+permalink: sm-settings/enable-or-disable-resource-provisioning-for-new-volumes.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, enable, disable, resource, provisioning, 
+summary: Si vous avez précédemment désactivé la fonctionnalité par défaut de provisionnement des ressources, vous pouvez accéder aux Paramètres et la réactiver pour tout nouveau groupe ou pool de volumes SSD que vous créez. Vous pouvez également désactiver ce paramètre à nouveau. 
+---
+= Activez ou désactivez l'allocation de ressources pour les nouveaux groupes de volumes ou pools dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Si vous avez précédemment désactivé la fonctionnalité par défaut de provisionnement des ressources, vous pouvez la réactiver pour tout nouveau groupe ou pool de volumes SSD que vous créez. Vous pouvez également désactiver ce paramètre à nouveau.
+
+L'allocation de ressources est une fonctionnalité disponible sur les baies de stockage EF300 et EF600, qui permet aux volumes d'être utilisés immédiatement sans processus d'initialisation en arrière-plan. Tous les blocs de disque affectés au volume sont désalloués (non mappés), ce qui peut améliorer la durée de vie des SSD et augmenter les performances d'écriture maximales.
+
+
+NOTE: Par défaut, l'allocation des ressources est activée sur les systèmes dont les disques prennent en charge DULBE.
+
+.Avant de commencer
+* Vous devez disposer d'une baie de stockage EF300 ou EF600.
+* Vous devez disposer de groupes ou de pools de volumes SSD, où tous les disques prennent en charge la capacité de récupération d'erreur NVMe Deallocated or Unwritten Logical Block Error Enable (DULBE).
++
+
+NOTE: DULBE n'est pas pris en charge sur les baies de stockage EF300C ou EF600C pour le moment.
+
+
+
+.À propos de cette tâche
+Lorsque vous réactivez l'allocation de ressources pour les nouveaux groupes ou pools de volumes, seuls les groupes et pools de volumes nouvellement créés sont concernés. Les groupes et pools de volumes existants pour lesquels l'allocation de ressources est activée restent inchangés.
+
+.Étapes
+. Sélectionnez menu : Paramètres [System].
+. Faites défiler vers le bas jusqu'à *Paramètres supplémentaires*, puis cliquez sur *Activer/Désactiver les volumes provisionnés de ressources*.
++
+La description du paramètre indique si l'approvisionnement en ressources est actuellement activé ou désactivé.
+
+. Dans la boîte de dialogue, confirmez l'opération.
+
+
+.Résultats
+L'activation ou la désactivation du provisionnement des ressources n'affecte que les nouveaux pools SSD ou groupes de volumes que vous créez. Les pools ou groupes de volumes existants restent inchangés.

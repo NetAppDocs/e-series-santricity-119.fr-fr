@@ -1,0 +1,77 @@
+---
+permalink: sm-settings/configure-mail-server-and-recipients-for-alerts.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, configure, mail, server, recipients, alerts, 
+summary: 'Pour configurer les alertes par courriel, vous devez indiquer l"adresse du serveur de messagerie et les adresses courriel des destinataires. Jusqu"à 20 adresses courriel sont autorisées.' 
+---
+= Configurez le serveur de messagerie et les destinataires des alertes dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Pour configurer les alertes par courriel, vous devez indiquer l'adresse du serveur de messagerie et les adresses courriel des destinataires. Jusqu'à 20 adresses courriel sont autorisées.
+
+.Avant de commencer
+* L'adresse du serveur de messagerie doit être disponible. L'adresse peut être une adresse IPv4 ou IPv6, ou un nom de domaine complet.
++
+[NOTE]
+====
+Pour utiliser un nom de domaine complet, vous devez configurer un serveur DNS sur les deux contrôleurs. Vous pouvez configurer un serveur DNS depuis la page Matériel.
+
+====
+* L'adresse électronique à utiliser comme expéditeur de l'alerte doit être disponible. Il s'agit de l'adresse qui apparaît dans le champ « De » du message d'alerte. Une adresse d'expéditeur est requise dans le protocole SMTP ; sans elle, une erreur se produit.
+* L'adresse électronique du ou des destinataires de l'alerte doit être disponible. Il s'agit généralement de l'adresse d'un administrateur réseau ou d'un administrateur de stockage. Vous pouvez saisir jusqu'à 20 adresses électroniques.
+
+
+.À propos de cette tâche
+Cette tâche décrit comment configurer le serveur de messagerie, saisir les adresses e-mail de l'expéditeur et des destinataires, et tester toutes les adresses e-mail saisies depuis la page Alertes.
+
+[NOTE]
+====
+Les alertes par e-mail peuvent également être configurées à partir de l'assistant de configuration initiale.
+
+====
+.Étapes
+. Sélectionnez menu : Paramètres[Alertes].
+. Sélectionnez l'onglet *Email*.
++
+Si aucun serveur de messagerie n'est encore configuré, l'onglet Email affiche « Configure Mail Server. »
+
+. Sélectionnez *Configurer le serveur de messagerie*.
++
+La boîte de dialogue Configurer le serveur de messagerie s'ouvre.
+
+. Saisissez les informations du serveur de messagerie, puis cliquez sur *Save*.
++
+** *Adresse du serveur de messagerie* -- Saisissez un domaine complet, une adresse IPv4 ou une adresse IPv6 du serveur de messagerie.
++
+[NOTE]
+====
+Pour utiliser un nom de domaine complet, vous devez configurer un serveur DNS sur les deux contrôleurs. Vous pouvez configurer un serveur DNS depuis la page Matériel.
+
+====
+** *Adresse de l'expéditeur de l'email* -- Saisissez une adresse email valide à utiliser comme expéditeur de l'email. Cette adresse apparaît dans le champ « De » du message email.
+** *Chiffrement* -- Si vous souhaitez chiffrer les messages, sélectionnez soit *SMTPS* soit *STARTTLS* pour le type de chiffrement, puis sélectionnez le numéro de port pour les messages chiffrés. Sinon, sélectionnez *None*.
+** *Nom d'utilisateur et mot de passe* -- Si nécessaire, saisissez un nom d'utilisateur et un mot de passe pour l'authentification auprès de l'expéditeur sortant et du serveur de messagerie.
+** *Inclure les coordonnées dans l'e-mail* -- Pour inclure les coordonnées de l'expéditeur dans le message d'alerte, sélectionnez cette option, puis saisissez un nom et un numéro de téléphone.
++
+Après avoir cliqué sur *Enregistrer*, les adresses électroniques apparaissent dans l'onglet Email de la page Alerts.
+
+
+
+. Sélectionnez *Add Emails*.
++
+La boîte de dialogue Ajouter des adresses e-mail s'ouvre.
+
+. Saisissez une ou plusieurs adresses e-mail pour les destinataires des alertes, puis cliquez sur *Add*.
++
+Les adresses électroniques apparaissent sur la page Alerts.
+
+. Si vous souhaitez vous assurer que les adresses e-mail sont valides, cliquez sur *Tester tous les e-mails* pour envoyer des messages de test aux destinataires.
+
+
+.Résultats
+Après avoir configuré les alertes par e-mail, le moniteur d'événements envoie des messages électroniques aux destinataires spécifiés chaque fois qu'un événement donnant lieu à une alerte se produit.

@@ -1,0 +1,42 @@
+---
+permalink: sm-mirroring/suspend-or-resume-mirror-consistency-group.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, suspend, resume, synchronization, mirror, consistency, group, 
+summary: 'Vous pouvez suspendre ou reprendre la synchronisation des données sur toutes les paires en miroir au sein d"un groupe de cohérence, ce qui est plus efficace que de suspendre ou de reprendre la synchronisation sur des paires en miroir individuelles.' 
+---
+= Suspendre ou reprendre la synchronisation des groupes de cohérence miroir dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez suspendre ou reprendre la synchronisation des données sur toutes les paires en miroir au sein d'un groupe de cohérence, ce qui est plus efficace que de suspendre ou de reprendre la synchronisation sur des paires en miroir individuelles.
+
+.À propos de cette tâche
+La suspension et la reprise de la synchronisation sur les groupes permettent de réduire tout impact sur les performances de l'application hôte, qui pourrait survenir lorsque des données modifiées sur la baie de stockage locale sont copiées vers la baie de stockage distante.
+
+L'état du groupe de cohérence miroir et de ses paires miroir reste suspendu jusqu'à ce que vous utilisiez l'option Reprendre pour reprendre l'activité de synchronisation.
+
+.Étapes
+. Sélectionnez menu : Storage[Asynchronous Mirroring].
+. Sélectionnez l’onglet *Mirror Consistency Groups*.
++
+Le tableau Mirrored Consistency Group s’affiche et présente tous les groupes de cohérence en miroir associés à la baie de stockage.
+
+. Sélectionnez le groupe de cohérence miroir que vous souhaitez suspendre ou reprendre, puis sélectionnez soit menu:Plus[Suspendre] soit menu:Plus[Reprendre].
++
+Le système affiche une confirmation.
+
+. Sélectionnez *Yes* pour confirmer.
+
+
+.Résultats
+System Manager effectue les actions suivantes :
+
+* Permet soit de suspendre, soit de reprendre le transfert de données entre toutes les paires en miroir d'un groupe de cohérence sans supprimer la relation de miroir.
+* Enregistre toutes les données qui ont été écrites sur le côté principal du groupe de cohérence du miroir pendant que le groupe de miroir est suspendu et écrit automatiquement les données sur le côté secondaire du groupe de cohérence du miroir lorsque le groupe de miroir est repris. Une synchronisation complète n'est pas requise.
+* Pour un groupe de cohérence de miroir _suspendu_, affiche *user-suspended* dans le tableau des groupes de cohérence de miroir.
+* Pour un groupe de cohérence de miroir _repris_, les données écrites sur les volumes primaires pendant que le groupe de cohérence de miroir était suspendu sont écrites sur les volumes secondaires immédiatement. La synchronisation périodique reprend si un intervalle de synchronisation automatique a été défini.
+

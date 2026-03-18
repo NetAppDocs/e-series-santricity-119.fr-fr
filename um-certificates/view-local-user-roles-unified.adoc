@@ -1,0 +1,38 @@
+---
+permalink: um-certificates/view-local-user-roles-unified.html 
+sidebar: sidebar 
+keywords: SANtricity, Unified Manager, E-Series, view, local, user, roles 
+summary: 'L"onglet « Rôles des utilisateurs locaux » permet de consulter la correspondance entre les utilisateurs et les rôles par défaut. Ces correspondances font partie des contrôles d"accès basés sur les rôles (RBAC) appliqués dans le Web Services Proxy pour SANtricity Unified Manager.' 
+---
+= Afficher les rôles des utilisateurs locaux
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'onglet « Rôles des utilisateurs locaux » permet de consulter la correspondance entre les utilisateurs et les rôles par défaut. Ces correspondances font partie des contrôles d'accès basés sur les rôles (RBAC) appliqués dans le Web Services Proxy pour SANtricity Unified Manager.
+
+.Avant de commencer
+Vous devez être connecté avec un profil utilisateur disposant des autorisations d'administrateur de sécurité. Sinon, les fonctions de gestion des accès ne s'affichent pas.
+
+.À propos de cette tâche
+Les utilisateurs et les correspondances ne peuvent pas être modifiés. Seuls les mots de passe peuvent être modifiés.
+
+.Étapes
+. Sélectionnez *gestion des accès*.
+. Sélectionnez l’onglet *Rôles de l’utilisateur local*.
++
+Les utilisateurs sont présentés dans le tableau:
+
++
+** *admin* -- Super administrateur ayant accès à toutes les fonctions du système. Cet utilisateur possède tous les rôles.
+** *storage* -- L'administrateur responsable de l'ensemble du provisionnement du stockage. Cet utilisateur possède les rôles suivants : Storage Admin, Support Admin et Monitor.
+** *security* -- L'utilisateur responsable de la configuration de la sécurité, notamment de la gestion des accès et de la gestion des certificats. Cet utilisateur inclut les rôles suivants : Security Admin et Monitor.
+** *support* -- L'utilisateur responsable des ressources matérielles, des données de panne et des mises à jour du micrologiciel. Cet utilisateur possède les rôles suivants : Support Admin et Monitor.
+** *monitor* -- Un utilisateur disposant d'un accès en lecture seule au système. Cet utilisateur possède uniquement le rôle Monitor.
+** *rw* (lecture/écriture) -- Cet utilisateur comprend les rôles suivants : Storage Admin, Support Admin et Monitor.
+** *ro* (lecture seule) -- Cet utilisateur inclut uniquement le rôle Monitor.
+
+
+

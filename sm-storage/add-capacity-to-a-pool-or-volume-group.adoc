@@ -1,0 +1,148 @@
+---
+permalink: sm-storage/add-capacity-to-a-pool-or-volume-group.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, add, capacity, pool, volume, group 
+summary: Vous pouvez ajouter des disques pour augmenter la capacité libre dans un pool ou un groupe de volumes existant. 
+---
+= Ajouter de la capacité à un pool ou à un groupe de volumes dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez ajouter des disques pour augmenter la capacité libre dans un pool ou un groupe de volumes existant.
+
+L'extension ajoute de la capacité libre au pool ou au groupe de volumes. Vous pouvez utiliser cette capacité libre pour créer des volumes supplémentaires. Les données des volumes restent accessibles pendant cette opération.
+
+.Avant de commencer
+* Les disques doivent être dans un état optimal.
+* Les disques doivent avoir le même type de lecteur (HDD ou SSD).
+* Le pool ou le groupe de volumes doit être dans un état optimal.
+* Le nombre maximal de volumes autorisés dans un groupe de volumes est de 256.
+* Le nombre maximal de volumes autorisés dans un pool dépend du modèle du système de stockage :
++
+** 2,048 volumes (séries EF600 et E5700)
+** 1 024 volumes (EF300)
+** 512 volumes (E4000 et E2800 series)
+
+
+* Si le pool ou le groupe de volumes contient uniquement des disques compatibles avec la sécurité, ajoutez uniquement des disques compatibles avec la sécurité pour continuer à utiliser les capacités de chiffrement de ces disques.
++
+Les disques sécurisés peuvent être soit des disques Full Disk Encryption (FDE), soit des disques Federal Information Processing Standard (FIPS).
+
+
+
+.À propos de cette tâche
+Pour les pools, vous pouvez ajouter un maximum de 60 disques à la fois. Pour les groupes de volumes, vous pouvez ajouter un maximum de deux disques à la fois. Si vous devez ajouter plus que le nombre maximal de disques, répétez la procédure. (Un pool ne peut pas contenir plus de disques que la limite maximale pour un système de stockage.)
+
+[NOTE]
+====
+Avec l'ajout de disques, votre capacité de préservation peut devoir être augmentée. Vous devriez envisager d'augmenter votre capacité réservée après une opération d'expansion.
+
+====
+[NOTE]
+====
+Évitez d'utiliser des disques compatibles Data Assurance (DA) pour ajouter de la capacité à un pool ou à un groupe de volumes qui n'est pas compatible DA. Le pool ou le groupe de volumes ne peut pas tirer parti des capacités du disque compatible DA. Envisagez d'utiliser des disques qui ne sont pas compatibles DA dans cette situation.
+
+====
+.Étapes
+. Sélectionnez le menu : Storage [Pools & Volume Groups].
+. Sélectionnez le pool ou le groupe de volumes auquel vous souhaitez ajouter des disques, puis cliquez sur *Add Capacity*.
++
+La boîte de dialogue Ajouter de capacité s'affiche. Seuls les disques non attribués compatibles avec le pool ou le groupe de volumes apparaissent.
+
+. Sous *Select drives to add capacity...*, sélectionnez un ou plusieurs disques que vous souhaitez ajouter au pool ou au groupe de volumes existant.
++
+Le micrologiciel du contrôleur organise les disques non attribués en affichant les meilleures options en haut. La capacité libre totale ajoutée au pool ou au groupe de volumes apparaît sous la liste dans *Capacité totale sélectionnée*.
+
++
+.Détails du champ
+[%collapsible]
+====
+[cols="25h,~"]
+|===
+| Champ | Description 
+
+
+ a| 
+Tiroir
+ a| 
+Indique l'emplacement du lecteur sur l'étagère.
+
+
+
+ a| 
+Compartiment
+ a| 
+Indique l'emplacement de la baie du lecteur.
+
+
+
+ a| 
+Capacité (Gio)
+ a| 
+Indique la capacité du lecteur.
+
+** Dans la mesure du possible, sélectionnez des disques dont la capacité est égale à la capacité des disques actuellement présents dans le pool ou le groupe de volumes.
+** Si vous devez ajouter des disques non attribués de capacité inférieure, sachez que la capacité utilisable de chaque disque actuellement dans le pool ou le groupe de volumes est réduite. Par conséquent, la capacité du disque est la même dans l'ensemble du pool ou du groupe de volumes.
+** Si vous devez ajouter des disques non attribués de plus grande capacité, sachez que la capacité utilisable des disques non attribués que vous ajoutez est réduite afin qu'elle corresponde aux capacités actuelles des disques du pool ou du groupe de volumes.
+
+
+
+
+ a| 
+Prise en charge de la sécurité
+ a| 
+Indique si le disque est compatible avec la sécurité.
+
+** Pour protéger votre pool ou groupe de volumes avec la fonction Drive Security, tous les disques doivent être sécurisables.
+** Il est possible de créer un pool ou un groupe de volumes avec un mélange de disques compatibles avec la sécurité et de disques non compatibles avec la sécurité, mais la fonction de sécurité des disques ne peut pas être activée.
+** Un pool ou un groupe de volumes composé uniquement de disques compatibles avec le chiffrement sécurisé ne peut pas accepter un disque non compatible avec le chiffrement sécurisé pour la mise de côté ou l'expansion, même si la capacité de chiffrement n'est pas utilisée.
+** Les disques signalés comme étant sécurisés peuvent être soit des disques Full Disk Encryption (FDE), soit des disques Federal Information Processing Standard (FIPS).
+** Un disque FIPS peut être de niveau 140-2 ou 140-3, le niveau 140-3 étant le niveau de sécurité le plus élevé. Si vous sélectionnez un mélange de disques de niveau 140-2 et 140-3, le pool ou le groupe de volumes fonctionnera alors au niveau de sécurité inférieur (140-2).
+
+
+
+
+ a| 
+Compatible DA
+ a| 
+Indique si le disque est compatible avec Data Assurance (DA).
+
+** Il est déconseillé d'utiliser des disques non compatibles avec Data Assurance (DA) pour augmenter la capacité d'un pool ou d'un groupe de volumes compatible DA. Le pool ou le groupe de volumes ne dispose alors plus des fonctionnalités DA, et il n'est plus possible d'activer DA sur les nouveaux volumes créés au sein du pool ou du groupe de volumes.
+** Il est déconseillé d'utiliser des disques compatibles Data Assurance (DA) pour ajouter de la capacité à un pool ou à un groupe de volumes non compatibles DA, car ce pool ou ce groupe de volumes ne peut pas tirer parti des capacités du disque compatible DA (les attributs du disque ne correspondent pas). Envisagez d'utiliser des disques qui ne sont pas compatibles DA dans cette situation.
+
+
+
+
+ a| 
+Compatible DULBE
+ a| 
+Indique si le disque dispose de l'option Deallocated or Unwritten Logical Block Error (DULBE). DULBE est une option sur les disques NVMe qui permet à la baie de stockage EF300 ou EF600 de prendre en charge les volumes provisionnés en ressources.
+
+|===
+====
+. Cliquez sur *Add*.
++
+Si vous ajoutez des disques à un pool ou à un groupe de volumes, une boîte de dialogue de confirmation s'affiche si vous avez sélectionné un disque qui fait que le pool ou le groupe de volumes ne possède plus un ou plusieurs des attributs suivants :
+
++
+** Protection contre la perte de tiroir ^*^
+** Protection contre la perte du tiroir ^*^
+** Fonctionnalité de chiffrement complet du disque
+** Capacité d'assurance des données
+** Fonctionnalité DULBE
+
+
+
+
+
+NOTE: ^*^ Actuellement, la boîte de dialogue de confirmation ne s'affiche pas lors de l'ajout de disques à un pool avec shelf loss protection ou drawer loss protection.
+
+. Pour continuer, cliquez sur *Oui* ; sinon, cliquez sur *Annuler*.
+
+
+.Résultats
+Une fois que vous ajoutez les disques non attribués à un pool ou à un groupe de volumes, les données de chaque volume du pool ou du groupe de volumes sont redistribuées pour inclure les disques supplémentaires.

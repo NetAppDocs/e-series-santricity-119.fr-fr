@@ -1,0 +1,96 @@
+---
+permalink: sm-settings/use-ca-signed-certificates-for-authentication-with-a-key-management-server.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, ca-signed, certificates, authentication, key, management, server, 
+summary: Pour assurer la sécurité des communications entre un serveur de gestion des clés et les contrôleurs de la baie de stockage, vous devez configurer les ensembles de certificats appropriés. 
+---
+= Utilisez des certificats signés par une autorité de certification pour l'authentification auprès d'un serveur de gestion de clés dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Pour assurer la sécurité des communications entre un serveur de gestion des clés et les contrôleurs de la baie de stockage, vous devez configurer les ensembles de certificats appropriés.
+
+.Avant de commencer
+Vous devez être connecté avec un profil utilisateur disposant des autorisations d'administrateur de sécurité. Sinon, les fonctions de certificat n'apparaissent pas.
+
+.À propos de cette tâche
+L'authentification entre les contrôleurs et un serveur de gestion des clés est une procédure en deux étapes.
+
+
+
+== Étape 1 : Remplissez et soumettez la CSR pour authentification auprès d’un serveur de gestion de clés
+
+Vous devez d'abord générer un fichier de demande de signature de certificat (CSR), puis utiliser ce fichier CSR pour demander un certificat client signé auprès d'une autorité de certification (CA) approuvée par le serveur de gestion des clés. Vous pouvez également créer et télécharger un certificat client depuis le serveur de gestion des clés en utilisant le fichier CSR téléchargé. Un certificat client valide les contrôleurs de la baie de stockage, de sorte que le serveur de gestion des clés puisse faire confiance à leurs requêtes Key Management Interoperability Protocol (KMIP).
+
+
+NOTE: Les fichiers CSR générés en externe à l'aide de paires de clés privées et publiques peuvent être importés via la boîte de dialogue Créer une clé de sécurité externe. Pour plus d'informations sur l'importation d'un fichier CSR généré en externe, voir https://docs.netapp.com/us-en/e-series-santricity/sm-settings/use-ca-signed-certificates-for-authentication-with-a-key-management-server.html#step-2-import-certificates-for-the-key-management-server["Étape 2 : Importer les certificats pour le serveur de gestion des clés"].
+
+.Étapes
+. Sélectionnez menu : Paramètres [Certificates].
+. Dans l'onglet Key Management, sélectionnez *Complete CSR*.
+. Saisissez les informations suivantes :
++
+** *Nom commun* -- Un nom qui identifie le client. Il est d’usage de faire correspondre ce qui figure dans le nom commun avec les exigences du serveur KMS concernant les conventions de nommage des certificats clients. Le nom commun aide généralement le KMS à identifier le certificat du client lorsqu’il est présenté lors d’une poignée de main.
+** *Organisation* -- Le nom complet et légal de votre entreprise ou organisation. Incluez les suffixes, tels que Inc. ou Corp.
+** *Unité organisationnelle (facultatif)* -- La division de votre organisation qui s'occupe du certificat.
+** *Ville/Localité* -- La ville ou la localité où se situe votre organisation.
+** *État/Région (facultatif)* -- L'état ou la région où se situe votre organisation.
+** *Code ISO du pays* -- Le code ISO (International Organization for Standardization) à deux chiffres, tel que US, où se situe votre organisation.
+
+
+. Cliquez sur *Download*.
++
+Un fichier CSR est enregistré sur votre système local.
+
+. Demandez un certificat client signé à l'autorité de certification approuvée par le serveur de gestion des clés.
++
+
+NOTE: Il est courant que le serveur de gestion des clés dispose d'une fonctionnalité qui génère directement des certificats signés, car il fonctionne comme sa propre CA.
+
+. Lorsque vous disposez d'un certificat client, rendez-vous sur <<Étape 2 : Importer les certificats pour le serveur de gestion des clés>>.
+
+
+
+
+== Étape 2 : Importer les certificats pour le serveur de gestion des clés
+
+L'étape suivante consiste à importer les certificats pour l'authentification entre la baie de stockage et le serveur de gestion des clés. Il existe deux types de certificats : le certificat client valide les contrôleurs de la baie de stockage, tandis que le certificat du serveur de gestion des clés valide le serveur. Vous devez charger à la fois le fichier de certificat client pour les contrôleurs et le fichier de certificat serveur pour le serveur de gestion des clés.
+
+.Avant de commencer
+* Vous disposez d'un fichier de certificat client signé (voir <<Étape 1 : Remplissez et soumettez la CSR pour authentification auprès d’un serveur de gestion de clés>>), et vous avez copié ce fichier sur l'hôte depuis lequel vous accédez à System Manager. Un certificat client valide les contrôleurs de la baie de stockage, afin que le serveur de gestion des clés puisse faire confiance à leurs requêtes Key Management Interoperability Protocol (KMIP).
+* Vous devez récupérer un fichier de certificat auprès du serveur de gestion des clés, puis le copier sur l'hôte depuis lequel vous accédez à System Manager. Un certificat de serveur de gestion des clés valide le serveur de gestion des clés, afin que la baie de stockage puisse faire confiance à son adresse IP. Vous pouvez utiliser un certificat racine, intermédiaire ou serveur pour le serveur de gestion des clés.
++
+[NOTE]
+====
+Pour plus d'informations sur le certificat serveur, consultez la documentation de votre serveur de gestion de clés.
+
+====
+
+
+.Étapes
+. Sélectionnez menu : Paramètres [Certificates].
+. Dans l’onglet Key Management, sélectionnez *Import*.
++
+Une boîte de dialogue s'ouvre pour importer les fichiers de certificat.
+
+. À côté de *Select client certificate*, cliquez sur le bouton *Browse* pour sélectionner le fichier de certificat client des contrôleurs de la baie de stockage.
++
+Le nom du fichier s'affiche dans la boîte de dialogue.
+
+. Si vous avez généré un fichier de certificat en externe à l'aide d'une paire de clés privée et publique, cliquez sur le bouton *Parcourir* situé à côté de *Select private key file* pour sélectionner le fichier de certificat destiné aux contrôleurs de la baie de stockage.
++
+Le nom du fichier s'affiche dans la boîte de dialogue.
+
+. À côté de *Sélectionner le certificat du serveur de gestion des clés*, cliquez sur le bouton *Parcourir* pour sélectionner le fichier de certificat du serveur pour votre serveur de gestion des clés. Vous pouvez choisir un certificat racine, intermédiaire ou serveur pour le serveur de gestion des clés.
++
+Le nom du fichier s'affiche dans la boîte de dialogue.
+
+. Cliquez sur *Import*.
++
+Les fichiers sont téléchargés et validés.
+
+

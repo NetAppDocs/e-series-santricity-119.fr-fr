@@ -1,0 +1,26 @@
+---
+permalink: sm-storage/workflow-for-creating-snapshot-images-and-snapshot-volumes.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, workflow, create, snapshot, images, snapshot, volumes 
+summary: Dans System Manager, vous pouvez créer des images instantanées et des volumes instantanés en suivant ces étapes. 
+---
+= Fonctionnement de la création d'images instantanées et de volumes instantanés dans SANtricity System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Dans SANtricity System Manager, vous pouvez créer des images snapshot et des volumes snapshot en suivant ces étapes.
+
+
+
+== Flux de travail pour la création d'images instantanées
+
+image::../media/sam1130-flw-snapshots-create-ss-images.gif[Workflow de création d'images instantanées]
+
+
+
+== Flux de travail pour la création de volumes instantanés
+
+image::../media/sam1130-flw-snapshots-create-ss-volumes.gif[Créer un workflow de volumes de snapshots]

@@ -1,0 +1,14 @@
+---
+permalink: sm-support/view-storage-array-information.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, view, storage, array, 
+summary: Vous pouvez consulter le profil de la baie de stockage et les versions du firmware de chaque composant de la baie de stockage. 
+---
+= Afficher les informations d'une baie de stockage dans SANtricity System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez consulter le profil de la baie de stockage et les versions du firmware de chaque composant de la baie de stockage.

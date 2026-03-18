@@ -1,0 +1,75 @@
+---
+permalink: sm-mirroring/complete-mirrored-pair-for-primary-volumes-created-on-legacy-system.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, complete, mirrored, pair, volumes, created, legacy, 
+summary: Si vous avez créé un volume principal sur une baie de stockage héritée qui ne peut pas être gérée par SANtricity System Manager, vous pouvez créer le volume secondaire sur cette baie avec System Manager. 
+---
+= Complétez une paire miroir pour les volumes principaux créés sur un système hérité dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Si vous avez créé un volume principal sur une baie de stockage héritée qui ne peut pas être gérée par SANtricity System Manager, vous pouvez créer le volume secondaire sur cette baie avec SANtricity System Manager.
+
+.À propos de cette tâche
+Vous pouvez effectuer une mise en miroir asynchrone entre des baies anciennes qui utilisent une interface différente et des baies plus récentes qui peuvent être gérées par System Manager.
+
+* Si vous effectuez une mise en miroir entre deux baies de stockage utilisant System Manager, vous pouvez ignorer cette tâche car vous avez déjà complété la paire en miroir dans la séquence de création de paire en miroir.
+* Effectuez cette tâche sur la baie de stockage distante.
+
+
+.Étapes
+. Sélectionnez menu : Storage[Asynchronous Mirroring].
+. Sélectionnez l’onglet *Mirrored Pair*.
++
+Le tableau des paires en miroir s'affiche et présente toutes les paires en miroir associées à la baie de stockage.
+
+. Trouvez le volume de la paire miroir avec un statut de Incomplet, puis cliquez sur le lien *Complete mirrored pair* affiché dans la colonne de la paire miroir.
+. Choisissez si vous souhaitez effectuer la séquence de création de la paire miroir automatiquement ou manuellement en sélectionnant l'un des boutons radio suivants :
++
+** *Automatique* -- Créer un nouveau volume secondaire.
++
+Acceptez les paramètres par défaut pour le côté distant de la paire miroir en sélectionnant un pool ou un groupe de volumes existant où vous souhaitez créer le volume secondaire. Utilisez cette option recommandée pour allouer la capacité réservée au volume secondaire avec les paramètres par défaut.
+
+** *Manuel* -- Sélectionnez un volume existant.
++
+Définissez vos propres paramètres pour le volume secondaire.
+
++
+... Cliquez sur *Suivant* pour sélectionner le volume secondaire.
+... Sélectionnez un volume existant que vous souhaitez utiliser comme volume secondaire, puis cliquez sur *Next* pour allouer la capacité réservée.
+... Allouez la capacité réservée. Procédez comme suit :
++
+**** Acceptez les paramètres par défaut.
++
+La valeur par défaut de la capacité réservée est de 20% de la capacité du volume de base, et cette capacité est généralement suffisante.
+
+**** Définissez vos propres paramètres de capacité réservée pour répondre à vos besoins de stockage des données liés à la mise en miroir asynchrone.
++
+La capacité nécessaire varie en fonction de la fréquence et de la taille des écritures d'E/S sur le volume principal et de la durée pendant laquelle vous devez conserver la capacité. En général, choisissez une capacité de réserve plus importante si l'une ou les deux conditions suivantes sont réunies :
+
++
+***** Vous comptez conserver la paire symétrique pendant une longue période.
+***** Un pourcentage important de blocs de données sera modifié sur le volume principal en raison d'une forte activité d'E/S. Utilisez les données historiques de performance ou d'autres utilitaires du système d'exploitation pour vous aider à déterminer l'activité d'E/S typique sur le volume principal.
+
+
+
+
+
+
+
+
+. Sélectionnez *Complete*.
+
+
+.Résultats
+System Manager effectue les actions suivantes :
+
+* Crée le volume secondaire sur la baie de stockage distante et alloue la capacité réservée pour le côté distant de la paire en miroir.
+* Démarre la synchronisation initiale entre la baie de stockage locale et la baie de stockage distante.
+* Si le volume dupliqué est un volume fin, seuls les blocs alloués sont transférés vers le volume secondaire lors de la synchronisation initiale. Ce transfert réduit la quantité de données qui doivent être transférées pour compléter la synchronisation initiale.
+* Crée la capacité réservée pour la paire en miroir sur la baie de stockage locale et sur la baie de stockage distante.
+

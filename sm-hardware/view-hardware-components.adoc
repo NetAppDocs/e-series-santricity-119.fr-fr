@@ -1,0 +1,71 @@
+---
+permalink: sm-hardware/view-hardware-components.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, view, hardware, components, filtering, 
+summary: La page Matériel propose des fonctions de tri et de filtrage qui facilitent la recherche de composants. 
+---
+= Afficher les composants matériels dans SANtricity System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La page Matériel propose des fonctions de tri et de filtrage qui facilitent la recherche de composants.
+
+.Étapes
+. Sélectionnez *Hardware*.
+. Utilisez les fonctions décrites dans le tableau suivant pour afficher les composants matériels.
+
+
+[cols="25h,~"]
+|===
+| Fonction | Description 
+
+
+ a| 
+Vues des disques, des contrôleurs et des composants
+ a| 
+Pour basculer entre l'affichage avant et arrière, sélectionnez soit *Disques* soit *Contrôleurs & composants* à l'extrême droite (le lien affiché dépend de l'affichage actuel). L'affichage *Disques* présente les disques et les baies de disques vides. L'affichage *Contrôleurs & composants* présente les contrôleurs, ainsi que les modules IOM (ESM), les modules d'alimentation/ventilateurs ou les baies de contrôleur vides. En bas de la page, vous pouvez également sélectionner *Afficher tous les disques*.
+
+
+
+ a| 
+Filtres de vue Drive
+ a| 
+Si la baie de stockage contient des disques aux attributs physiques et logiques différents, la page *Matériel* inclut des filtres d'affichage des disques. Ces champs de filtre vous aident à localiser rapidement des disques spécifiques en limitant les types de disques affichés sur la page. Sous *Afficher les disques qui sont…*, cliquez sur le champ de filtre de gauche (par défaut, *Tous types de disques*) pour afficher une liste déroulante des attributs physiques (par exemple, capacité et vitesse). Cliquez sur le champ de filtre de droite (par défaut, *N'importe où dans la baie de stockage*) pour afficher une liste déroulante des attributs logiques (par exemple, affectation au groupe de volumes). Vous pouvez utiliser ces filtres ensemble ou séparément.
+
+[NOTE]
+====
+Si la baie de stockage contient des disques présentant tous les mêmes attributs physiques, le champ *Any drive type* à gauche n'apparaît pas. Si tous les disques se trouvent au même emplacement logique, le champ *Anywhere in the storage array* à droite n'apparaît pas.
+
+====
+
+
+ a| 
+Légende
+ a| 
+Les composants sont affichés dans certaines couleurs pour indiquer l'état de leur rôle. Pour développer ou réduire la description de ces états, cliquez sur *Legend*.
+
+
+
+ a| 
+Afficher les détails de l'icône d'état
+ a| 
+Les indicateurs d'état peuvent inclure des descriptions textuelles pour les états de disponibilité. Cliquez sur *Afficher les détails de l'icône d'état* pour afficher ou masquer ce texte d'état.
+
+
+
+ a| 
+Icônes d'étagère/étagère
+ a| 
+Chaque vue d'étagère affiche une liste de commandes associées, ainsi que leurs propriétés et leur état. Cliquez sur *Shelf* pour afficher une liste déroulante de commandes. Vous pouvez également sélectionner une des icônes en haut pour consulter l'état et les propriétés de chaque composant : contrôleurs, IOMs (ESMs), alimentations, ventilateurs, température, batteries et SFPs.
+
+
+
+ a| 
+Ordre de l'étagère
+ a| 
+Vous pouvez réorganiser les étagères sur la page Matériel. Utilisez les flèches haut et bas en haut à droite de chaque vue d'étagère pour changer l'ordre haut/bas des étagères.
+
+|===

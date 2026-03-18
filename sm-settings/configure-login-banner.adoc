@@ -1,0 +1,37 @@
+---
+permalink: sm-settings/configure-login-banner.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, configure, login, banner, 
+summary: 'Vous pouvez créer une bannière de connexion qui s"affiche aux utilisateurs avant qu"ils n"établissent une session dans SANtricity System Manager. La bannière peut inclure un avis d"information et un message de consentement.' 
+---
+= Configurer la bannière de connexion dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez créer une bannière de connexion qui s'affiche aux utilisateurs avant qu'ils n'établissent une session dans SANtricity System Manager. La bannière peut inclure un avis d'information et un message de consentement.
+
+.À propos de cette tâche
+Lorsque vous créez une bannière, elle apparaît avant l'écran de connexion dans une boîte de dialogue.
+
+.Étapes
+. Sélectionnez menu : Paramètres [System].
+. Dans la section General, sélectionnez *Configure Login Banner*.
++
+La boîte de dialogue Configure Login Banner s'ouvre.
+
+. Saisissez le texte que vous souhaitez voir apparaître dans la bannière de connexion.
++
+[NOTE]
+====
+N’utilisez pas de balises HTML ou d’autres balises de balisage pour la mise en forme.
+
+====
+. Cliquez sur *Enregistrer*.
+
+
+.Résultats
+La prochaine fois que les utilisateurs se connecteront à System Manager, le texte s'ouvrira dans une boîte de dialogue. Les utilisateurs doivent cliquer sur *OK* pour continuer vers l'écran de connexion.

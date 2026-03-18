@@ -1,0 +1,56 @@
+---
+permalink: sm-settings/add-trap-destinations-for-snmp-alerts.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, add, trap, destinations, SNMP, alerts, 
+summary: 'Vous pouvez ajouter jusqu"à 10 serveurs pour l"envoi de traps SNMP.' 
+---
+= Ajouter des destinations de trap pour les alertes SNMP dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez ajouter jusqu'à 10 serveurs pour l'envoi de traps SNMP.
+
+.Avant de commencer
+* Le serveur réseau que vous souhaitez ajouter doit être configuré avec une application de service SNMP. Vous avez besoin de l'adresse réseau de ce serveur (soit une adresse IPv4, soit une adresse IPv6), afin que le moniteur d'événements puisse envoyer des messages de trap à cette adresse. Vous pouvez utiliser plusieurs serveurs (jusqu'à 10 serveurs sont autorisés).
+* Le fichier MIB (Management Information Base) a été copié et compilé sur le serveur avec l'application de service SNMP. Ce fichier MIB définit les données surveillées et gérées.
++
+Si vous ne possédez pas le fichier MIB, vous pouvez l'obtenir sur le site d'assistance NetApp :
+
++
+** Allez à https://mysupport.netapp.com/site/global/dashboard["Support NetApp"^].
+** Cliquez sur *Downloads*, puis sélectionnez *Downloads*.
+** Cliquez sur *E-Series SANtricity OS Controller Software*.
+** Sélectionnez *Download Latest Release*.
+** Connectez-vous.
+** Acceptez la déclaration de mise en garde et le contrat de licence.
+** Faites défiler vers le bas jusqu'à ce que vous voyiez le fichier MIB pour votre type de controller, puis cliquez sur le lien pour télécharger le fichier.
+
+
+
+
+.Étapes
+. Sélectionnez menu : Paramètres[Alertes].
+. Sélectionnez l’onglet *SNMP*.
++
+Les destinations de piège actuellement définies apparaissent dans le tableau.
+
+. Sélectionnez *Add Trap Desinations*.
++
+La boîte de dialogue Ajouter des destinations de piège s'ouvre.
+
+. Saisissez une ou plusieurs destinations de trap, sélectionnez leurs noms de communauté ou noms d'utilisateur associés, puis cliquez sur *Add*.
++
+** *Destination du piège* -- Entrez une adresse IPv4 ou IPv6 du serveur exécutant un service SNMP.
+** *Nom de la communauté ou nom d'utilisateur* -- Dans la liste déroulante, sélectionnez le nom de la communauté (SNMPv2c) ou le nom d'utilisateur (SNMPv3) pour cette destination de trap. (Si vous n'en avez défini qu'un seul, le nom apparaît déjà dans ce champ.)
+** *Envoyer une alerte d'échec d'authentification* -- Sélectionnez cette option (la case à cocher) si vous souhaitez alerter la destination du piège lorsqu'une requête SNMP est rejetée en raison d'un nom de communauté ou d'un nom d'utilisateur non reconnu. Après avoir cliqué sur *Ajouter*, les destinations de piège et les noms de communauté ou d'utilisateur associés apparaissent dans le tableau.
+
+
+. Pour vérifier qu'un piège est valide, sélectionnez une destination de piège dans le tableau, puis cliquez sur *Tester la destination du piège* pour envoyer un piège de test à l'adresse configurée.
+
+
+.Résultats
+Le moniteur d'événements envoie des traps SNMP au(x) serveur(s) chaque fois qu'un événement nécessitant une alerte se produit.

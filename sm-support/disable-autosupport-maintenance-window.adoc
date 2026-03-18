@@ -1,0 +1,31 @@
+---
+permalink: sm-support/disable-autosupport-maintenance-window.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, disable, autosupport, ASUP, maintenance window 
+summary: 'Désactivez la fenêtre de maintenance AutoSupport pour permettre la création automatique de tickets en cas d"événements d"erreur. Lorsque la fenêtre de maintenance AutoSupport est désactivée, la baie de stockage utilisera AutoSupport pour ouvrir un ticket auprès du support en cas de problème.' 
+---
+= Désactivez la fenêtre de maintenance AutoSupport dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Désactivez la fenêtre de maintenance AutoSupport pour permettre la création automatique de tickets en cas d'événements d'erreur. Lorsque la fenêtre de maintenance AutoSupport est désactivée, la baie de stockage utilisera AutoSupport pour ouvrir un ticket auprès du support en cas de problème.
+
+.Étapes
+. Sélectionnez le menu : Support [Support Center > AutoSupport] onglet.
+. Sélectionnez *Désactiver la fenêtre de maintenance AutoSupport*.
+. Saisissez l'adresse e-mail pour recevoir une confirmation que la demande de désactivation de la fenêtre de maintenance a été traitée.
++
+Selon votre configuration, vous pouvez saisir jusqu'à cinq adresses e-mail. Si vous souhaitez ajouter plus d'une adresse, sélectionnez *Ajouter une autre adresse e-mail* pour ouvrir un autre champ.
+
+. Cliquez sur *Oui*.
++
+AutoSupport la création automatique de tickets en cas d'erreur est activée.
+
+
+
+.Après avoir terminé
+La fenêtre de maintenance ne prendra fin que lorsque la requête de la baie de stockage aura été traitée par les serveurs AutoSupport. Attendez d'avoir reçu un courriel de confirmation avant de poursuivre.

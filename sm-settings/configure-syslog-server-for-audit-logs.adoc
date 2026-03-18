@@ -1,0 +1,53 @@
+---
+permalink: sm-settings/configure-syslog-server-for-audit-logs.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, configure, syslog, server, audit, logs, 
+summary: Pour archiver les journaux des audits sur un serveur syslog externe, vous pouvez configurer la communication entre ce serveur et la baie de stockage. Une fois la connexion établie, les journaux des audits sont automatiquement enregistrés sur le serveur syslog. 
+---
+= Configurez le serveur syslog pour les journaux des audits dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Pour archiver les journaux des audits sur un serveur syslog externe, vous pouvez configurer la communication entre ce serveur et la baie de stockage. Une fois la connexion établie, les journaux des audits sont automatiquement enregistrés sur le serveur syslog.
+
+.Avant de commencer
+* Vous devez être connecté avec un profil utilisateur disposant des autorisations d'administrateur de sécurité. Sinon, les fonctions de gestion des accès ne s'affichent pas.
+* L'adresse du serveur syslog, le protocole et le numéro de port doivent être disponibles. L'adresse du serveur peut être un domaine complet, une adresse IPv4 ou une adresse IPv6.
+* Si votre serveur utilise un protocole sécurisé (par exemple, TLS), un certificat d'autorité de certification (CA) doit être disponible sur votre système local. Les certificats d'autorité de certification (CA) identifient les propriétaires de sites web pour des connexions sécurisées entre les serveurs et les clients.
+
+
+.Étapes
+. Sélectionnez le menu : Settings [Gestion des accès].
+. Dans l'onglet journal des audits, sélectionnez *Configurer les serveurs Syslog*.
++
+La boîte de dialogue Configurer les serveurs Syslog s'ouvre.
+
+. Cliquez sur *Add*.
++
+La boîte de dialogue Ajouter un serveur Syslog s'ouvre.
+
+. Saisissez les informations pour le serveur, puis cliquez sur *Ajouter*.
++
+** *Adresse du serveur* -- Entrez un domaine complet, une adresse IPv4 ou une adresse IPv6.
+** *Protocole* -- Sélectionnez un protocole dans la liste déroulante (par exemple, TLS, UDP ou TCP).
+** *Télécharger le certificat (facultatif)* – Si vous avez sélectionné le protocole TLS et que vous n'avez pas encore téléchargé de certificat CA signé, cliquez sur *Parcourir* pour télécharger un fichier de certificat. Les journaux des audits ne sont pas archivés sur un serveur syslog sans certificat approuvé.
++
+[NOTE]
+====
+Si le certificat devient invalide ultérieurement, la négociation TLS échouera. Par conséquent, un message d'erreur sera consigné dans le journal des audits et les messages ne seront plus envoyés au serveur syslog. Pour résoudre ce problème, vous devez corriger le certificat sur le serveur syslog, puis accéder au menu : Paramètres [Audit Log > Configure Syslog Servers > Test All].
+
+====
+** *Port* -- Saisissez le numéro de port du récepteur syslog. Après avoir cliqué sur *Ajouter*, la boîte de dialogue Configurer les serveurs syslog s'ouvre et affiche votre serveur syslog configuré sur la page.
+
+
+. Pour tester la connexion du serveur avec la baie de stockage, sélectionnez *Test All*.
+
+
+.Résultats
+Après la configuration, tous les nouveaux journaux d'audit sont envoyés au serveur syslog. Les journaux précédents ne sont pas transférés. Pour configurer plus en détail les paramètres syslog relatifs aux alertes, voir https://docs.netapp.com/us-en/e-series-santricity/sm-settings/configure-syslog-server-for-alerts.html["Configurer le serveur syslog pour les alertes"].
+
+ NOTE: If multiple syslog servers are configured, all configured syslog servers will receive an audit log.

@@ -1,0 +1,36 @@
+---
+permalink: sm-settings/validate-security-key.html 
+sidebar: sidebar 
+keywords: SANtricity,System Manager, E-Series, validate, security, key, 
+summary: 'Vous pouvez valider la clé de sécurité pour vous assurer qu"elle n"a pas été corrompue et pour vérifier que vous avez une phrase de passe correcte.' 
+---
+= Valider la clé de sécurité dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez valider la clé de sécurité pour vous assurer qu'elle n'a pas été corrompue et pour vérifier que vous avez une phrase de passe correcte.
+
+.À propos de cette tâche
+Cette tâche décrit comment valider la clé de sécurité que vous avez créée précédemment. Il s'agit d'une étape importante pour s'assurer que le fichier de clé n'est pas corrompu et que la phrase de passe est correcte, ce qui garantit que vous pourrez accéder ultérieurement aux données du disque si vous déplacez un disque activé pour la sécurité d'une baie de stockage à une autre.
+
+.Étapes
+. Sélectionnez menu : Paramètres [System].
+. Sous *Security key management*, sélectionnez *Validate Key*.
++
+La boîte de dialogue Validate Security Key s'ouvre.
+
+. Cliquez sur *Parcourir*, puis sélectionnez le fichier clé (par exemple, `drivesecurity.slk`).
+. Saisissez la phrase de passe associée à la clé que vous avez sélectionnée.
++
+Lorsque vous sélectionnez un fichier de clé valide et une phrase secrète valide, le bouton *Validate* devient disponible.
+
+. Cliquez sur *Valider*.
++
+Les résultats de la validation s'affichent dans la boîte de dialogue.
+
+. Si les résultats affichent « Clé de sécurité validée avec succès », cliquez sur *Fermer*. Si un message d’erreur apparaît, suivez les instructions suggérées affichées dans la boîte de dialogue.
+

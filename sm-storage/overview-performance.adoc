@@ -1,0 +1,39 @@
+---
+permalink: sm-storage/overview-performance.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, performance 
+summary: La page Performance vous offre des moyens simples de surveiller les performances de votre baie de stockage. 
+---
+= Découvrez l’aperçu des performances dans SANtricity System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La page Performance vous offre des moyens simples de surveiller les performances de votre baie de stockage.
+
+
+
+== Que puis-je apprendre des données de performance ?
+
+Les graphiques et tableaux de performances affichent des données de performance en quasi temps réel, ce qui vous permet de déterminer si une baie de stockage rencontre des problèmes. Vous pouvez également enregistrer des données de performance afin de constituer une vue historique d'une baie de stockage et d'identifier quand un problème a commencé ou ce qui a causé un problème.
+
+En savoir plus :
+
+* link:performance-graphs-guidelines.html["Graphiques de performance et lignes directrices"]
+* link:performance-terminology.html["Termes de performance"]
+
+
+
+
+== Comment puis-je consulter les données de performance ?
+
+Les données de performance sont disponibles depuis la page d'accueil et depuis la page Storage.
+
+En savoir plus :
+
+* link:view-performance-data-graphical.html["Afficher les données de performance graphiques"]
+* link:view-and-save-performance-data-tabular.html["Afficher et enregistrer les données de performance sous forme de tableau"]
+* link:interpret-performance-data.html["Interpréter les données de performance"]
+

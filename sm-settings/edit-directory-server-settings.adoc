@@ -1,0 +1,152 @@
+---
+permalink: sm-settings/edit-directory-server-settings.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, edit, directory, server, settings, role, mappings, 
+summary: 'Si vous avez déjà configuré un serveur d"annuaire dans Access Management, vous pouvez modifier ses paramètres à tout moment. Les paramètres incluent les informations de connexion au serveur et les correspondances entre groupes et rôles.' 
+---
+= Modifiez les paramètres du serveur d'annuaire et les mappages de rôles dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Si vous avez déjà configuré un serveur d'annuaire dans Access Management, vous pouvez modifier ses paramètres à tout moment. Les paramètres incluent les informations de connexion au serveur et les correspondances entre groupes et rôles.
+
+.Avant de commencer
+* Vous devez être connecté avec un profil utilisateur disposant des autorisations d'administrateur de sécurité. Sinon, les fonctions de gestion des accès ne s'affichent pas.
+* Un serveur d'annuaire doit être défini.
+
+
+.Étapes
+. Sélectionnez le menu : Settings [Gestion des accès].
+. Sélectionnez l’onglet *Services d’annuaire*.
+. Si plus d'un serveur est défini, sélectionnez le serveur que vous souhaitez modifier dans le tableau.
+. Sélectionnez *Afficher/Modifier les paramètres*.
++
+La boîte de dialogue Paramètres du serveur d'annuaire s'ouvre.
+
+. Dans l'onglet Paramètres du serveur, modifiez les paramètres souhaités.
++
+.Détails du champ
+[%collapsible]
+====
+[cols="25h,~"]
+|===
+| Paramètre | Description 
+
+
+ a| 
+*Paramètres de configuration*
+
+
+
+ a| 
+Domaine(s)
+ a| 
+Le(s) nom(s) de domaine du ou des serveurs LDAP. Pour plusieurs domaines, saisissez les domaines dans une liste séparée par des virgules. Le nom de domaine est utilisé dans la connexion (_username_@_domain_) pour spécifier le serveur d'annuaire auquel s'authentifier.
+
+
+
+ a| 
+URL du serveur
+ a| 
+L'URL permettant d'accéder au serveur LDAP sous la forme de `ldap[s]://host:port`.
+
+
+
+ a| 
+Lier le compte (facultatif)
+ a| 
+Le compte utilisateur en lecture seule pour les requêtes de recherche contre le serveur LDAP et pour la recherche au sein des groupes.
+
+
+
+ a| 
+Mot de passe de liaison (facultatif)
+ a| 
+Le mot de passe du compte de liaison. (Ce champ apparaît lorsqu'un compte de liaison est saisi.)
+
+
+
+ a| 
+Tester la connexion au serveur avant d'enregistrer
+ a| 
+Vérifie que la baie de stockage peut communiquer avec la configuration du serveur LDAP. Le test s'effectue après avoir cliqué sur *Enregistrer* en bas de la boîte de dialogue. Si cette case est cochée et que le test échoue, la configuration n'est pas modifiée. Vous devez résoudre l'erreur ou décocher la case pour ignorer le test et rééditer la configuration.
+
+
+
+ a| 
+*Paramètres de privilège*
+
+
+
+ a| 
+DN de base de recherche
+ a| 
+Le contexte LDAP pour rechercher les utilisateurs, généralement sous la forme de `CN=Users, DC=cpoc, DC=local`.
+
+
+
+ a| 
+Attribut de nom d'utilisateur
+ a| 
+L'attribut lié à l'identifiant de l'utilisateur pour l'authentification. Par exemple : `sAMAccountName`.
+
+
+
+ a| 
+Attribut(s) du groupe
+ a| 
+Une liste d'attributs de groupe de l'utilisateur, utilisée pour la correspondance entre groupe et rôle. Par exemple : `memberOf, managedObjects`.
+
+|===
+====
+. Dans l'onglet Role Mapping, modifiez le mappage souhaité.
++
+.Détails du champ
+[%collapsible]
+====
+[cols="25h,~"]
+|===
+| Paramètre | Description 
+
+
+ a| 
+*Cartographies*
+
+
+
+ a| 
+Nom unique du groupe
+ a| 
+Le nom de domaine pour le groupe d'utilisateurs LDAP à mapper. Les expressions régulières sont prises en charge. Ces caractères spéciaux d'expression régulière doivent être échappés avec une barre oblique inverse (`\`) s'ils ne font pas partie d'un modèle d'expression régulière : \.[]{}()<>*+-=!?^$|
+
+
+
+ a| 
+Rôles
+ a| 
+Les rôles de la baie de stockage à associer au DN du groupe. Vous devez sélectionner individuellement chaque rôle que vous souhaitez inclure pour ce groupe. Le rôle Monitor est requis en combinaison avec les autres rôles pour se connecter à SANtricity System Manager. Les rôles de la baie de stockage incluent les éléments suivants :
+
+** *Administrateur de stockage* -- Accès complet en lecture/écriture aux objets de stockage (par exemple, volumes et disk pools), mais aucun accès à la configuration de sécurité.
+** *Administrateur de sécurité* -- Accès à la configuration de sécurité dans la gestion des accès, la gestion des certificats, la gestion du journal des audits et la possibilité d'activer ou de désactiver l'interface de gestion héritée (SYMbol).
+** *Administrateur support* -- Accès à toutes les ressources matérielles de la baie de stockage, aux données de panne, aux événements MEL et aux mises à niveau du micrologiciel du contrôleur. Aucun accès aux objets de stockage ni à la configuration de sécurité.
+** *Moniteur* -- Accès en lecture seule à tous les objets de stockage, mais aucun accès à la configuration de sécurité.
+
+
+|===
+====
++
+[NOTE]
+====
+Le rôle de Monitor est requis pour tous les utilisateurs, y compris l'administrateur. System Manager ne fonctionnera pas correctement pour tout utilisateur sans le rôle Monitor.
+
+====
+. Si vous le souhaitez, cliquez sur *Ajouter un autre mappage* pour saisir d'autres mappages groupe-rôle.
+. Cliquez sur *Enregistrer*.
+
+
+.Résultats
+Après avoir terminé cette tâche, toutes les sessions utilisateur actives sont terminées. Seule votre session utilisateur actuelle est conservée.

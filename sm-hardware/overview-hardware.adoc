@@ -1,0 +1,55 @@
+---
+permalink: sm-hardware/overview-hardware.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, hardware, page, 
+summary: 'Vous pouvez vérifier l"état des composants sur la page Matériel et effectuer certaines fonctions liées à ces composants.' 
+---
+= Afficher et gérer les composants matériels dans SANtricity System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez vérifier l'état des composants sur la page Matériel et effectuer certaines fonctions liées à ces composants.
+
+
+
+== Quels composants puis-je gérer ?
+
+Vous pouvez vérifier l'état des composants et effectuer certaines fonctions liées à ces composants :
+
+* **Étagères** -- Une étagère est un composant qui contient le matériel de la baie de stockage (contrôleurs, modules d'alimentation/ventilateurs et disques). Les étagères sont disponibles en trois tailles pour accueillir jusqu'à 12, 24 ou 60 disques.
+* **Contrôleurs** – Un _contrôleur_ est l’ensemble matériel et micrologiciel qui met en œuvre les fonctions de la baie de stockage et de gestion. Il comprend la mémoire cache, la prise en charge des disques et les ports de connexion à l’hôte.
+* **Disques** -- Un _disque_ peut être un disque dur (HDD) ou un disque SSD (SSD). Selon la taille du châssis, jusqu'à 12, 24 ou 60 disques peuvent être installés dans le châssis.
+
+
+En savoir plus :
+
+* link:hardware-page-overview.html["Page matériel"]
+* link:hardware-terminology.html["Terminologie matérielle"]
+
+
+
+
+== Comment puis-je afficher les composants matériels ?
+
+Accédez à la page Matériel, qui présente une représentation graphique des composants physiques de la baie de stockage. Vous pouvez basculer entre les vues avant et arrière des étagères de la baie en sélectionnant l’onglet *Drives* ou *Controllers* en haut à droite de la vue de l’étagère.
+
+En savoir plus :
+
+* link:view-shelf-component-status-and-settings.html["Afficher l'état et les paramètres des composants de l'étagère"]
+* link:view-controller-settings.html["Afficher les paramètres du contrôleur"]
+* link:view-drive-status-and-settings.html["Afficher l'état et les paramètres du lecteur"]
+
+
+
+
+= Informations connexes
+
+En savoir plus sur les concepts liés au matériel :
+
+* link:controller-states.html["États du contrôleur"]
+* link:drive-states.html["États du disque"]
+* link:what-is-shelf-loss-protection-and-drawer-loss-protection.html["Protection contre la perte d'étagères et la perte de tiroirs"]
+

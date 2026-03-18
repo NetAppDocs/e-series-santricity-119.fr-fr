@@ -1,0 +1,89 @@
+---
+permalink: sm-storage/change-ssd-cache-settings.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, ssd, cache, settings 
+summary: 'Vous pouvez modifier le nom du SSD Cache et consulter son état, sa capacité maximale et actuelle, l"état de la sécurité du disque et de l"assurance des données, ainsi que ses volumes et disques associés.' 
+---
+= Modifiez les paramètres du cache SSD dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez modifier le nom du SSD Cache et consulter son état, sa capacité maximale et actuelle, l'état de la sécurité du disque et de l'assurance des données, ainsi que ses volumes et disques associés.
+
+.Étapes
+. Sélectionnez le menu : Storage [Pools & Volume Groups].
+. Sélectionnez le SSD Cache que vous souhaitez modifier, puis cliquez sur *Afficher/Modifier les paramètres*.
++
+La boîte de dialogue Paramètres du cache SSD s'affiche.
+
+. Vérifiez ou modifiez les paramètres du SSD Cache selon vos besoins.
++
+.Détails du champ
+[%collapsible]
+====
+[cols="25h,~"]
+|===
+| Paramètre | Description 
+
+
+ a| 
+Nom
+ a| 
+Affiche le nom du cache SSD, que vous pouvez modifier. Un nom pour le cache SSD est requis.
+
+
+
+ a| 
+Caractéristiques
+ a| 
+Affiche l'état du cache SSD. Les états possibles sont :
+
+** Optimal
+** Inconnu
+** Dégradé
+** Échec (Un état d'échec entraîne un événement MEL critique.)
+** Suspendu
+
+
+
+
+ a| 
+Capacités
+ a| 
+Affiche la capacité actuelle et la capacité maximale autorisée pour le SSD Cache.
+
+La capacité maximale autorisée pour le cache SSD dépend de la taille du cache principal du contrôleur :
+
+** Jusqu'à 1 Gio
+** 1 Gio à 2 Gio
+** 2 Gio à 4 Gio
+** Plus de 4 Gio
+
+
+
+
+ a| 
+Sécurité et DA
+ a| 
+Affiche l'état de sécurité du lecteur et d'assurance des données pour le cache SSD.
+
+** *Secure-capable* -- Indique si le cache SSD est entièrement composé de disques secure-capable. Un disque secure-capable est un disque à chiffrement automatique qui peut protéger ses données contre tout accès non autorisé.
+** *Secure-enabled* -- Indique si la sécurité est activée sur le cache SSD.
+** *Compatible DA* -- Indique si le cache SSD est entièrement composé de disques compatibles DA. Un disque compatible DA peut vérifier et corriger les erreurs susceptibles de se produire lors de la communication de données entre l’hôte et la baie de stockage.
+
+
+
+
+ a| 
+Objets associés
+ a| 
+Affiche les volumes et les lecteurs associés au SSD Cache.
+
+|===
+====
+. Cliquez sur *Enregistrer*.
+

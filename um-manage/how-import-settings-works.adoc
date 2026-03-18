@@ -1,0 +1,51 @@
+---
+permalink: um-manage/how-import-settings-works.html 
+sidebar: sidebar 
+keywords: SANtricity, Unified Manager, E-Series, import, settings, 
+summary: 'Vous pouvez utiliser Unified Manager pour importer les paramètres d"une baie de stockage vers plusieurs baies de stockage. La fonction Import Settings est une opération par lots qui vous fait gagner du temps lorsque vous devez configurer plusieurs baies sur le réseau.' 
+---
+= Découvrez la configuration de plusieurs baies de stockage dans SANtricity Unified Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez utiliser SANtricity Unified Manager pour importer les paramètres d'une baie de stockage vers plusieurs baies de stockage. La fonction Import Settings est une opération par lots qui permet de gagner du temps lorsque vous devez configurer plusieurs baies dans le réseau.
+
+
+
+== Paramètres disponibles pour importation
+
+Les configurations suivantes peuvent être importées sur plusieurs arrays :
+
+* *Alertes* -- Méthodes d'alerte permettant d'envoyer des événements importants aux administrateurs, en utilisant le courrier électronique, un serveur syslog ou un serveur SNMP.
+* *AutoSupport* -- Une fonctionnalité qui surveille l'état d'une baie de stockage et envoie des dispatchs automatiques à l'assistance technique.
+* *Services d'annuaire* -- Une méthode d'authentification des utilisateurs gérée par un serveur LDAP (Lightweight Directory Access Protocol) et un service d'annuaire, tel que Microsoft Active Directory.
+* *Configuration du stockage* -- Configurations relatives aux éléments suivants :
++
+** Volumes (volumes épais et non-repository volumes uniquement)
+** Groupes de volumes et pools
+** Affectations de disques de secours à chaud
+
+
+* *Paramètres système* -- Configurations relatives aux éléments suivants :
++
+** Paramètres de numérisation des médias pour un volume
+** Paramètres SSD
+** Équilibrage de charge automatique (n'inclut pas les rapports de connectivité hôte)
+
+
+
+
+
+
+== Flux de travail de configuration
+
+Pour importer les paramètres, suivez ce workflow :
+
+. Sur la baie de stockage à utiliser comme source, configurez les paramètres à l'aide de System Manager.
+. Sur les baies de stockage à utiliser comme cibles, sauvegardez leur configuration à l'aide de System Manager.
+. Depuis Unified Manager, accédez à la page *Manage* et importez les paramètres.
+. Sur la page *Opérations*, consultez les résultats de l'opération Import Settings.
+

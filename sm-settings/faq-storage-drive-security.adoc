@@ -1,0 +1,141 @@
+---
+permalink: sm-settings/faq-storage-drive-security.html 
+sidebar: sidebar 
+keywords:  
+summary: Cette FAQ peut vous aider si vous cherchez simplement une réponse rapide à une question. 
+---
+= FAQ sur la sécurité des disques de stockage pour SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Cette FAQ peut vous aider si vous cherchez simplement une réponse rapide à une question.
+
+
+
+== Que dois-je savoir avant de créer une clé de sécurité ?
+
+Une clé de sécurité est partagée par les contrôleurs et les disques sécurisés au sein d'une baie de stockage. Si un disque sécurisé est retiré de la baie de stockage, la clé de sécurité protège les données contre tout accès non autorisé.
+
+Vous pouvez créer et gérer des clés de sécurité en utilisant l'une des méthodes suivantes :
+
+* Gestion interne des clés sur la mémoire persistante du contrôleur.
+* Gestion des clés externes sur un serveur de gestion des clés externes.
+
+
+
+
+=== Gestion des clés internes
+
+Les clés internes sont conservées et « cachées » dans un emplacement inaccessible de la mémoire persistante du contrôleur. Avant de créer une clé de sécurité interne, vous devez effectuer les opérations suivantes :
+
+. Installez des disques sécurisés dans la baie de stockage. Ces disques peuvent être des disques à chiffrement complet (FDE) ou des disques Federal Information Processing Standard (FIPS).
+. Assurez-vous que la fonction Drive Security est activée. Si nécessaire, contactez votre fournisseur de stockage pour obtenir des instructions sur l’activation de la fonction Drive Security.
+
+
+Vous pouvez ensuite créer une clé de sécurité interne, ce qui implique de définir un identifiant et une phrase secrète. L'identifiant est une chaîne associée à la clé de sécurité, et il est stocké sur le contrôleur et sur tous les disques associés à la clé. La phrase secrète est utilisée pour chiffrer la clé de sécurité à des fins de sauvegarde. Lorsque vous avez terminé, la clé de sécurité est stockée sur le contrôleur dans un emplacement inaccessible. Vous pouvez ensuite créer des groupes ou des pools de volumes sécurisés, ou activer la sécurité sur des groupes et des pools de volumes existants.
+
+
+
+=== Gestion des clés externes
+
+Les clés externes sont gérées sur un serveur de gestion de clés distinct, en utilisant le protocole Key Management Interoperability Protocol (KMIP). Avant de créer une clé de sécurité externe, vous devez effectuer les opérations suivantes :
+
+. Installez des disques sécurisés dans la baie de stockage. Ces disques peuvent être des disques à chiffrement complet (FDE) ou des disques Federal Information Processing Standard (FIPS).
+. Assurez-vous que la fonction Drive Security est activée. Si nécessaire, contactez votre fournisseur de stockage pour obtenir des instructions sur l’activation de la fonction Drive Security.
+. Obtenez un fichier de certificat client signé. Un certificat client valide les contrôleurs de la baie de stockage, afin que le serveur de gestion des clés puisse faire confiance à leurs requêtes KMIP.
++
+.. Tout d'abord, vous complétez et téléchargez une demande de signature de certificat (CSR) client. Accédez au menu : Paramètres [Certificates > Key Management > Complete CSR].
+.. Ensuite, vous demandez un certificat client signé à une autorité de certification approuvée par le serveur de gestion des clés. (Vous pouvez également créer et télécharger un certificat client depuis le serveur de gestion des clés en utilisant le fichier CSR téléchargé.)
+.. Une fois que vous disposez d'un fichier de certificat client, copiez ce fichier sur l'hôte où vous accédez à System Manager.
+
+
+. Récupérez un fichier de certificat auprès du serveur de gestion des clés, puis copiez ce fichier sur l’hôte depuis lequel vous accédez à System Manager. Un certificat de serveur de gestion des clés valide le serveur de gestion des clés, de sorte que la baie de stockage puisse faire confiance à son adresse IP. Vous pouvez utiliser un certificat racine, intermédiaire ou serveur pour le serveur de gestion des clés.
+
+
+Vous pouvez ensuite créer une clé externe, ce qui implique de définir l'adresse IP du serveur de gestion des clés et le numéro de port utilisé pour les communications KMIP. Durant cette procédure, vous chargez également les fichiers de certificat. Une fois l'opération terminée, le système se connecte au serveur de gestion des clés avec les informations d'identification saisies. Vous pouvez alors créer des groupes ou des pools de volumes sécurisés, ou activer la sécurité sur des volume existant des groupes et pools de volumes.
+
+
+
+== Pourquoi dois-je définir une phrase de passe ?
+
+La phrase de passe sert à chiffrer et déchiffrer le fichier de clé de sécurité stocké sur le client de gestion local. Sans la phrase de passe, la clé de sécurité ne peut être déchiffrée et utilisée pour déverrouiller les données d'un disque sécurisé si celui-ci est réinstallé dans une autre baie de stockage.
+
+
+
+== Pourquoi est-il important d'enregistrer les informations de clé de sécurité ?
+
+Si vous perdez les informations de la clé de sécurité et que vous n'en avez pas de sauvegarde, vous pourriez perdre des données lors du déplacement de disques sécurisés ou de la mise à niveau d'un contrôleur. Vous avez besoin de la clé de sécurité pour déverrouiller les données sur les disques.
+
+Veillez à noter l'identifiant de la clé de sécurité, la phrase secrète associée et l'emplacement sur l'hôte local où le fichier de clé de sécurité a été enregistré.
+
+
+
+== Que dois-je savoir avant de sauvegarder une clé de sécurité ?
+
+Si votre clé de sécurité d'origine est corrompue et que vous n'en avez pas de sauvegarde, vous perdrez l'accès aux données sur les disques s'ils sont migrés d'une baie de stockage à une autre.
+
+Avant de sauvegarder une clé de sécurité, gardez ces consignes à l'esprit :
+
+* Assurez-vous de connaître l'identifiant de la clé de sécurité et la phrase de passe du fichier de clé d'origine.
++
+[NOTE]
+====
+Seules les clés internes utilisent des identifiants. Lorsque vous avez créé l'identifiant, des caractères supplémentaires ont été générés automatiquement et ajoutés aux deux extrémités de la chaîne d'identifiant. Les caractères générés garantissent que l'identifiant est unique.
+
+====
+* Vous créez une nouvelle phrase secrète pour la sauvegarde. Cette phrase secrète n'a pas besoin de correspondre à la phrase secrète qui a été utilisée lors de la création ou de la dernière modification de la clé d'origine. La phrase secrète est uniquement appliquée à la sauvegarde que vous créez.
++
+[NOTE]
+====
+Il ne faut pas confondre la phrase de passe de Drive Security avec le mot de passe administrateur de la baie de stockage. La phrase de passe de Drive Security protège les sauvegardes d'une clé de sécurité. Le mot de passe administrateur protège l'ensemble de la baie de stockage contre tout accès non autorisé.
+
+====
+* Le fichier de clé de sécurité de sauvegarde est téléchargé sur votre client de gestion. Le chemin du fichier téléchargé peut dépendre de l’emplacement de téléchargement par défaut de votre navigateur. Veillez à bien noter où sont stockées vos informations de clé de sécurité.
+
+
+
+
+== Que dois-je savoir avant de déverrouiller des lecteurs sécurisés ?
+
+Pour déverrouiller les données d'un disque avec la sécurité activée, vous devez importer sa clé de sécurité.
+
+Avant de déverrouiller des disques sécurisés, gardez à l'esprit les consignes suivantes :
+
+* La baie de stockage doit déjà posséder une clé de sécurité. Les disques migrés seront réassociés à la baie de stockage cible.
+* Pour les disques que vous migrez, vous devez connaître l'identifiant de la clé de sécurité et la phrase secrète qui correspond au fichier de clé de sécurité.
+* Le fichier de clé de sécurité doit être disponible sur le client de gestion (le système avec un navigateur utilisé pour accéder à System Manager).
+* Si vous réinitialisez un disque NVMe verrouillé, vous devez saisir l'identifiant de sécurité du disque. Pour localiser l'identifiant de sécurité, vous devez retirer physiquement le disque et trouver la chaîne PSID (maximum de 32 caractères) sur l'étiquette du disque. Assurez-vous que le disque est réinstallé avant de commencer l'opération.
+
+
+
+
+== Qu’est-ce que l'accessibilité en lecture/écriture ?
+
+La fenêtre Paramètres du lecteur contient des informations sur les attributs de sécurité du lecteur. « Accès en lecture/écriture » est l’un des attributs qui s’affiche si les données d’un lecteur ont été verrouillées.
+
+Pour afficher les attributs de sécurité du lecteur, accédez à la page Matériel. Sélectionnez un lecteur, cliquez sur *Afficher les paramètres*, puis cliquez sur *Afficher plus de paramètres*. En bas de la page, la valeur de l'attribut Accès en lecture/écriture est *Oui* lorsque le lecteur est déverrouillé. La valeur de l'attribut Accès en lecture/écriture est *Non, clé de sécurité invalide* lorsque le lecteur est verrouillé. Vous pouvez déverrouiller un lecteur sécurisé en important une clé de sécurité (accédez à menu : Paramètres [Système > Déverrouiller les lecteurs sécurisés]).
+
+
+
+== Que dois-je savoir sur la validation de la clé de sécurité ?
+
+Après avoir créé une clé de sécurité, vous devez valider le fichier de clé pour vous assurer qu'il n'est pas corrompu.
+
+Si la validation échoue, procédez comme suit :
+
+* Si l'identifiant de la clé de sécurité ne correspond pas à l'identifiant sur le contrôleur, localisez le fichier de clé de sécurité correct, puis essayez à nouveau la validation.
+* Si le contrôleur ne parvient pas à déchiffrer la clé de sécurité pour la validation, il est possible que vous ayez saisi une phrase secrète incorrecte. Vérifiez la phrase secrète, saisissez-la à nouveau si nécessaire, puis réessayez la validation. Si le message d'erreur apparaît de nouveau, sélectionnez une sauvegarde du fichier de clé (si disponible) et réessayez la validation.
+* Si vous ne parvenez toujours pas à valider la clé de sécurité, le fichier d'origine est peut-être corrompu. Créez une nouvelle sauvegarde de la clé et validez cette copie.
+
+
+
+
+== Quelle est la différence entre la clé de sécurité interne et la gestion externe des clés de sécurité ?
+
+Lorsque vous mettez en œuvre la fonction Drive Security, vous pouvez utiliser une clé de sécurité interne ou une clé de sécurité externe pour verrouiller les données lorsqu'un disque sécurisé est retiré de la baie de stockage.
+
+Une clé de sécurité est une chaîne de caractères, qui est partagée entre les disques sécurisés et les contrôleurs d'une baie de stockage. Les clés internes sont maintenues dans la mémoire persistante du contrôleur. Les clés externes sont maintenues sur un serveur de gestion de clés distinct, en utilisant un protocole Key Management Interoperability Protocol (KMIP).

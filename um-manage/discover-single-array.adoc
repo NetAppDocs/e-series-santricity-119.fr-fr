@@ -1,0 +1,57 @@
+---
+permalink: um-manage/discover-single-array.html 
+sidebar: sidebar 
+keywords: SANtricity, Unified Manager, E-Series, discover, single, array 
+summary: 'Utilisez l"option Ajouter/Découvrir une seule baie de stockage pour découvrir et ajouter manuellement une seule baie de stockage au réseau de votre organisation.' 
+---
+= Découvrez une seule baie dans SANtricity Unified Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Utilisez l'option Add/Discover Single Storage Array pour découvrir et ajouter manuellement une seule baie de stockage au réseau de votre organisation.
+
+.Avant de commencer
+* La baie de stockage doit être correctement configurée.
+* Les mots de passe des baies de stockage doivent être configurés à l'aide de la vignette Access Management du System Manager.
+
+
+.Étapes
+. Depuis la page Manage, sélectionnez *Add/Discover*.
++
+La boîte de dialogue Ajouter/Découvrir apparaît.
+
+. Sélectionnez le bouton radio *Découvrir une seule baie de stockage*.
+. Saisissez l'adresse IP de l'un des contrôleurs de la baie de stockage, puis cliquez sur *Démarrer la découverte*.
++
+La connexion de Unified Manager à la baie de stockage spécifiée peut prendre plusieurs minutes.
+
++
+[NOTE]
+====
+Le message « Storage Array Not Accessible » s'affiche lorsque la connexion à l'adresse IP du contrôleur spécifié échoue.
+
+====
+. Si vous y êtes invité, résolvez tout certificat auto-signé.
++
+Dans le cadre du processus de découverte, le système vérifie que les baies de stockage détectées utilisent des certificats provenant d'une source fiable. S'il ne parvient pas à localiser un certificat numérique pour une baie de stockage, il vous invite à résoudre le certificat qui n'est pas signé par une autorité de certification (CA) reconnue en ajoutant une exception de sécurité.
+
+. Si vous y êtes invité, résolvez tous les certificats non approuvés.
++
+Les certificats non approuvés surviennent lorsqu'une baie de stockage tente d'établir une connexion sécurisée avec Unified Manager, mais que la connexion échoue à être confirmée comme sécurisée. Résolvez les certificats non approuvés en important un certificat d'autorité de certification (CA) délivré par un tiers de confiance.
+
+. Cliquez sur *Next*.
+. *Facultatif :* Associez la baie de stockage détectée à un groupe : dans la liste déroulante, sélectionnez le groupe souhaité à associer à la baie de stockage.
++
+Le groupe « All » est sélectionné par défaut.
+
+. Saisissez le mot de passe administrateur de la baie de stockage que vous souhaitez ajouter à votre domaine de gestion, puis cliquez sur *OK*.
+
+
+.Après avoir terminé
+La baie de stockage est ajoutée à Unified Manager et, si spécifié, elle est également ajoutée au groupe que vous avez sélectionné.
+
+Si la collecte de données de support automatique est activée, les données de support sont automatiquement collectées pour une baie de stockage que vous ajoutez.

@@ -1,0 +1,29 @@
+---
+permalink: sm-settings/default-host-operating-system-type.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, default, host, operating, system, 
+summary: 'Le type d"hôte par défaut est utilisé par la baie de stockage lorsque les hôtes sont initialement connectés. Il définit comment les contrôleurs de la baie de stockage fonctionnent avec le système d"exploitation de l"hôte lors de l"accès aux volumes.' 
+---
+= Découvrez le type de système d'exploitation hôte par défaut dans le logiciel SANtricity
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Le type d'hôte par défaut est utilisé par la baie de stockage lorsque les hôtes sont initialement connectés. Il définit comment les contrôleurs de la baie de stockage fonctionnent avec le système d'exploitation de l'hôte lors de l'accès aux volumes.
+
+Vous pouvez modifier le type d'hôte s'il est nécessaire de changer la façon dont la baie de stockage fonctionne, par rapport aux hôtes qui y sont connectés. En général, vous modifierez le type d'hôte par défaut avant de connecter des hôtes à la baie de stockage ou lorsque vous connectez des hôtes supplémentaires.
+
+Gardez ces consignes à l'esprit :
+
+* Si tous les hôtes que vous prévoyez de connecter à la baie de stockage ont le même système d'exploitation (environnement hôte homogène), alors modifiez le type d'hôte pour qu'il corresponde au système d'exploitation.
+* Si vous prévoyez de connecter à la baie de stockage des hôtes dotés de systèmes d'exploitation différents (environnement hôte hétérogène), modifiez le type d'hôte pour qu'il corresponde au système d'exploitation de la majorité des hôtes.
++
+Par exemple, si vous connectez huit hôtes différents à la baie de stockage et que six de ces hôtes exécutent un système d'exploitation Windows, vous devez sélectionner Windows comme type de système d'exploitation hôte par défaut.
+
+* Si la majorité des hôtes connectés ont un mélange de différents systèmes d'exploitation, changez le type d'hôte en Factory Default.
++
+Par exemple, si vous connectez huit hôtes différents à la baie de stockage, et que deux de ces hôtes exécutent un système d'exploitation Windows, trois exécutent un système d'exploitation VMware et trois autres exécutent un système d'exploitation Linux, vous devez sélectionner Factory Default comme type de système d'exploitation hôte par défaut.
+
+

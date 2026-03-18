@@ -1,0 +1,68 @@
+---
+permalink: sm-storage/convert-a-snapshot-volume-to-read-write-mode.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, convert, snapshot, volume, read-write mode 
+summary: 'Vous pouvez convertir un volume d"instantané en lecture seule ou un volume d"instantané de groupe de cohérence en mode lecture-écriture si nécessaire.' 
+---
+= Convertir le volume de snapshot en mode lecture-écriture dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez convertir un volume d'instantané en lecture seule ou un volume d'instantané de groupe de cohérence en mode lecture-écriture si nécessaire.
+
+Un volume de snapshot converti en accès lecture-écriture contient sa propre capacité réservée. Cette capacité est utilisée pour enregistrer toute modification ultérieure apportée par l'application hôte au volume de base sans affecter l'image de snapshot référencée.
+
+.Étapes
+. Sélectionnez le menu : Storage[Snapshots].
+. Sélectionnez l’onglet *Snapshot Volumes*.
++
+Le tableau des volumes instantanés s'affiche et présente tous les volumes instantanés associés à la baie de stockage.
+
+. Sélectionnez le volume d'instantané en lecture seule que vous souhaitez convertir, puis cliquez sur *Convertir en lecture/écriture*.
++
+La boîte de dialogue Convertir en lecture/écriture s'affiche avec l'étape *Réserver la capacité* activée. Le tableau Volumes candidats affiche uniquement les candidats qui prennent en charge la capacité réservée spécifiée.
+
+. Pour allouer la capacité réservée au volume snapshot en lecture-écriture, effectuez l'une des actions suivantes :
++
+** *Accepter les paramètres par défaut* -- Utilisez cette option recommandée pour allouer la capacité réservée pour le volume de snapshot avec les paramètres par défaut.
+** *Définissez vos propres paramètres de capacité réservée pour répondre à vos besoins de stockage des données* -- Allouez la capacité réservée en suivant les instructions ci-dessous.
++
+*** Le réglage par défaut de la capacité réservée est de 40% de la capacité du volume de base, et cette capacité est généralement suffisante.
+*** La capacité nécessaire varie en fonction de la fréquence et de la taille des écritures d'I/O sur le volume.
+
+
+
+
+. Sélectionnez *Suivant* pour consulter ou modifier les paramètres.
++
+La boîte de dialogue Modifier les paramètres apparaît.
+
+. Acceptez ou spécifiez les paramètres du volume d'instantané selon vos besoins, puis sélectionnez *Terminer* pour convertir le volume d'instantané.
++
+.Détails du champ
+[%collapsible]
+====
+[cols="25h,~"]
+|===
+| Paramètre | Description 
+
+
+ a| 
+*Paramètres de capacité réservée*
+
+
+
+ a| 
+Alertez-moi quand...
+ a| 
+Utilisez la case de sélection pour ajuster le point de pourcentage auquel le système envoie une notification d'alerte lorsque la capacité réservée pour un groupe d'instantanés est presque pleine.
+
+Lorsque la capacité réservée pour le volume de snapshot dépasse le seuil spécifié, le système envoie une alerte, vous permettant d'augmenter la capacité réservée ou de supprimer les objets inutiles.
+
+|===
+====
+

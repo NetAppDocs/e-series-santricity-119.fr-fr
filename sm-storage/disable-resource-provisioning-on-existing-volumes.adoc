@@ -1,0 +1,49 @@
+---
+permalink: sm-storage/disable-resource-provisioning-on-existing-volumes.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, disable, resource provisioning, 
+summary: Vous pouvez activer ou désactiver l’allocation de ressources sur un pool ou un groupe de volumes existant. 
+---
+= Activez ou désactivez l’allocation de ressources sur les groupes de volumes et les pools existants dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Pour tous les disques compatibles DULBE, vous pouvez activer ou désactiver la mise à disposition des ressources sur un volume existant dans un pool ou un groupe de volumes.
+
+L'allocation de ressources est une fonctionnalité disponible sur les baies de stockage EF300 et EF600, qui permet aux volumes d'être utilisés immédiatement sans processus d'initialisation en arrière-plan. Tous les blocs de disque affectés au volume sont désalloués (non mappés), ce qui peut améliorer la durée de vie des SSD et augmenter les performances d'écriture maximales.
+
+Par défaut, l'allocation des ressources est activée sur les systèmes dont les disques prennent en charge DULBE. Il n'est pas nécessaire d'activer l'allocation des ressources, sauf si vous l'avez désactivée précédemment.
+
+.Avant de commencer
+* Vous devez disposer d'une baie de stockage EF300 ou EF600.
++
+
+NOTE: DULBE n'est pas pris en charge sur les baies de stockage EF300C ou EF600C pour le moment.
+
+* Vous devez disposer de groupes ou de pools de volumes SSD dont tous les disques prennent en charge la capacité de récupération d'erreurs NVMe Deallocated or Unwritten Logical Block Error Enable (DULBE). Sinon, l'option de provisionnement des ressources n'est pas disponible.
+
+
+.À propos de cette tâche
+Lorsque vous activez l'allocation de ressources pour les groupes de volumes et pools existants, tous les volumes du groupe de volumes ou du pool sélectionné sont modifiés pour permettre la désallocation des blocs. Ce processus peut impliquer une opération en arrière-plan pour garantir une allocation cohérente à la granularité de l'unmap. Cette opération ne désalloue aucun espace. Une fois l'opération en arrière-plan terminée, le système d'exploitation doit désallouer les blocs inutilisés pour créer de l'espace libre.
+
+Lorsque vous désactivez l’allocation de ressources pour les groupes de volumes ou les pools existants, une opération en arrière-plan réécrit tous les blocs logiques de chaque volume. Les données existantes restent intactes. Les écritures mapperont ou alloueront les blocs sur les disques associés au groupe de volumes ou au pool.
+
+
+NOTE: Pour les nouveaux groupes de volumes et pools, vous pouvez activer ou désactiver l'approvisionnement en ressources à partir du menu : Settings [System > Additional Settings > Enable/Disable Resource-Provisioned Volumes].
+
+.Étapes
+. Sélectionnez le menu : Storage [Pools & Volume Groups].
+. Sélectionnez un pool ou un groupe de volumes dans la liste.
++
+Vous ne pouvez sélectionner qu'un seul pool ou groupe de volumes à la fois. Faites défiler la liste pour voir d'autres pools ou groupes de volumes.
+
+. Sélectionnez *Uncommon Tasks*, puis *Enable resource provisioning* ou *Disable resource provisioning*.
+. Dans la boîte de dialogue, confirmez l'opération.
+
+
+
+NOTE: *Si vous avez réactivé DULBE* -- Après la fin de l'opération en arrière-plan, vous devrez peut-être redémarrer l'hôte pour qu'il détecte les modifications de configuration DULBE, puis remonter tous les systèmes de fichiers.

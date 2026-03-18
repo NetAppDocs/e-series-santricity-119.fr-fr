@@ -1,0 +1,61 @@
+---
+permalink: sm-storage/comparison-between-thick-volumes-and-thin-volumes.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, comparison, thick volumes, thin volumes 
+summary: Un volume épais est toujours entièrement provisionné, ce qui signifie que toute la capacité est allouée lors de la création du volume. Un volume fin est toujours provisionné de manière dynamique, ce qui signifie que la capacité est allouée au fur et à mesure que les données sont écrites sur le volume. 
+---
+= Découvrez les volumes épais et minces dans le logiciel SANtricity
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Un volume épais est toujours entièrement provisionné, ce qui signifie que toute la capacité est allouée lors de la création du volume. Un volume fin est toujours provisionné de manière dynamique, ce qui signifie que la capacité est allouée au fur et à mesure que les données sont écrites sur le volume.
+
+[NOTE]
+====
+System Manager ne propose pas d'option pour créer des volumes légers. Si vous souhaitez créer des volumes légers, utilisez la Command Line Interface (CLI).
+
+====
+[cols="25h,~"]
+|===
+| Type de volume | Description 
+
+
+ a| 
+Volumes épais
+ a| 
+* Les volumes épais sont créés à partir d'un pool ou d'un groupe de volumes.
+* Avec des volumes épais, une grande quantité d'espace de stockage est fournie à l'avance en prévision des besoins futurs en stockage.
+* Les volumes épais sont créés avec la taille totale du volume pré-allouée sur le stockage physique au moment de la création du volume. Cette pré-allocation signifie que la création d'un volume de 100 Gio consomme effectivement 100 Gio de capacité allouée sur vos disques. Cependant, l'espace peut rester inutilisé, entraînant une sous-utilisation de la capacité de stockage.
+* Lors de la création de volumes épais, veillez à ne pas surdimensionner la capacité allouée à un seul volume. Le surdimensionnement de la capacité pour un seul volume peut rapidement consommer tout le stockage physique de votre système.
+* N'oubliez pas que la capacité de stockage est également nécessaire pour les services de copie (images instantanées, volumes instantanés, copies de volumes et mise en miroir asynchrone), donc ne consacrez pas toute la capacité aux volumes épais. Un espace insuffisant peut bloquer les écritures sur le pool ou le groupe de volumes. Vous recevez un avertissement de seuil d'alerte de capacité libre si cette situation se produit.
+
+
+
+
+ a| 
+volumes minces
+ a| 
+* Les volumes minces sont créés uniquement à partir d'un pool, pas à partir d'un groupe de volumes.
+* Les volumes fins doivent être RAID 6.
+* Les volumes minces ne sont pas disponibles sur le système de stockage EF600/EF600C ou EF300/EF300C.
+* Vous devez utiliser la CLI pour créer des volumes légers.
+* Contrairement aux volumes épais, l'espace nécessaire au volume mince n'est pas alloué lors de la création, mais est fourni sur demande à un moment ultérieur.
+* Un volume fin permet de surdimensionner sa taille. Autrement dit, vous pouvez attribuer une taille de LUN supérieure à celle du volume. Vous pouvez ensuite étendre le volume selon les besoins (en ajoutant des disques si nécessaire) sans augmenter la taille du LUN et donc sans déconnecter les utilisateurs.
+* Vous pouvez utiliser la récupération de blocs d'espace à provisionnement fin (UNMAP) pour récupérer des blocs d'un volume à provisionnement fin sur la baie de stockage via une commande SCSI UNMAP émise par l'hôte. Une baie de stockage prenant en charge le provisionnement fin peut réaffecter l'espace récupéré pour satisfaire les demandes d'allocation d'un autre volume à provisionnement fin au sein de la même baie de stockage, ce qui permet un meilleur rapport sur la consommation d'espace disque et une utilisation plus efficace des ressources.
+
+
+|===
+
+
+== Restrictions de volume minces
+
+Les volumes minces prennent en charge toutes les opérations que prennent en charge les volumes épais, à l’exception des opérations suivantes :
+
+* Vous ne pouvez pas modifier la taille du segment d'un volume mince.
+* Vous ne pouvez pas activer la vérification de redondance avant lecture pour un volume mince.
+* Vous ne pouvez pas utiliser un volume mince comme volume cible dans une opération Copy Volume.
+* Vous pouvez modifier la limite de capacité allouée et le seuil d'alerte d'un volume fin uniquement sur le côté principal d'une paire miroir asynchrone. Toute modification apportée à ces paramètres sur le côté principal est automatiquement propagée au côté secondaire.
+

@@ -1,0 +1,179 @@
+---
+permalink: sm-storage/capacity-terminology.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, capacity terms 
+summary: 'Découvrez comment les termes relatifs à la capacité s"appliquent à votre baie de stockage.' 
+---
+= Découvrez la terminologie relative à la capacité dans le logiciel SANtricity
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Découvrez comment les termes relatifs à la capacité s'appliquent à votre baie de stockage.
+
+
+
+== Objets de stockage
+
+La terminologie suivante décrit les différents types d'objets de stockage pouvant interagir avec votre baie de stockage.
+
+[cols="25h,~"]
+|===
+| Objet de stockage | Description 
+
+
+ a| 
+Hôte
+ a| 
+Un hôte est un serveur qui envoie des E/S à un volume sur une baie de stockage.
+
+
+
+ a| 
+LUN
+ a| 
+Un numéro d'unité logique (LUN) est le numéro attribué à l'espace d'adressage qu'un hôte utilise pour accéder à un volume. Le volume est présenté à l'hôte comme une capacité sous la forme d'un LUN.
+
+Chaque hôte possède son propre espace d'adressage LUN. Par conséquent, le même LUN peut être utilisé par différents hôtes pour accéder à des volumes différents.
+
+
+
+ a| 
+Groupe de cohérence miroir
+ a| 
+Un groupe de cohérence de miroir est un conteneur pour une ou plusieurs paires miroir. Pour les opérations de mise en miroir asynchrones, vous devez créer un groupe de cohérence de miroir.
+
+
+
+ a| 
+Paire de volumes en miroir
+ a| 
+Une paire en miroir est composée de deux volumes, un volume primaire et un volume secondaire.
+
+
+
+ a| 
+Pool
+ a| 
+Un pool est un ensemble de disques regroupés logiquement. Vous pouvez utiliser un pool pour créer un ou plusieurs volumes accessibles à un hôte. (Vous créez des volumes à partir d’un pool ou d’un groupe de volumes.)
+
+
+
+ a| 
+groupe de cohérence de snapshot
+ a| 
+Un groupe de cohérence d'instantanés est un ensemble de volumes traités comme une seule entité lors de la création d'une image d'instantané. Chacun de ces volumes possède sa propre image d'instantané, mais toutes les images sont créées au même moment.
+
+
+
+ a| 
+Groupe instantané
+ a| 
+Un groupe d'instantanés est une collection d'images instantanées provenant d'un seul volume de base.
+
+
+
+ a| 
+Volume instantané
+ a| 
+Un volume de snapshot permet à l'hôte d'accéder aux données de l'image snapshot. Le volume de snapshot contient sa propre capacité réservée, qui enregistre toute modification apportée au volume de base sans affecter l'image snapshot originale.
+
+
+
+ a| 
+Volume
+ a| 
+Un volume est un conteneur dans lequel les applications, les bases de données et les systèmes de fichiers stockent des données. Il s'agit du composant logique créé pour permettre à l'hôte d'accéder au stockage sur la baie de stockage.
+
+
+
+ a| 
+Groupe de volumes
+ a| 
+Un groupe de volumes est un conteneur pour des volumes partageant des caractéristiques communes. Un groupe de volumes possède une capacité et un niveau RAID définis. Vous pouvez utiliser un groupe de volumes pour créer un ou plusieurs volumes accessibles à un hôte. (Vous créez des volumes à partir d’un groupe de volumes ou d’un pool.)
+
+|===
+
+
+== Capacité de stockage
+
+La terminologie suivante décrit les différents types de capacité utilisés sur votre baie de stockage.
+
+[cols="25h,~"]
+|===
+| Type de capacité | Description 
+
+
+ a| 
+Capacité allouée
+ a| 
+La capacité allouée correspond à la capacité physique allouée à partir des disques dans un pool ou un groupe de volumes.
+
+Vous utilisez la capacité allouée pour créer des volumes et pour les opérations de copy services.
+
+
+
+ a| 
+Capacité libre
+ a| 
+La capacité libre est la capacité disponible dans un pool ou un groupe de volumes qui n'a pas encore été allouée à la création de volumes, aux opérations de services de copie et aux objets de stockage.
+
+
+
+ a| 
+Capacité du pool ou du groupe de volumes
+ a| 
+La capacité d'un pool, d'un volume ou d'un groupe de volumes correspond à la capacité d'une baie de stockage affectée à un pool ou à un groupe de volumes. Cette capacité est utilisée pour créer des volumes et répondre aux différents besoins de capacité des opérations de services de copie et des objets de stockage.
+
+
+
+ a| 
+Capacité inutilisable du pool
+ a| 
+La capacité inutilisable d'un pool correspond à l'espace dans un pool qui ne peut pas être utilisé en raison de tailles de disques incompatibles.
+
+
+
+ a| 
+Capacité de conservation
+ a| 
+La capacité de préservation correspond à la quantité de capacité (nombre de disques) réservée dans un pool pour prendre en charge d'éventuelles défaillances de disques.
+
+
+
+ a| 
+Capacité déclarée
+ a| 
+La capacité déclarée est la capacité qui est signalée à l'hôte et à laquelle l'hôte peut accéder.
+
+
+
+ a| 
+Capacité réservée
+ a| 
+La capacité réservée correspond à la capacité physique allouée qui est utilisée pour toute opération de service de copie et tout objet de stockage. Elle n'est pas directement lisible par l'hôte.
+
+
+
+ a| 
+Cache SSD
+ a| 
+Le cache SSD est un ensemble de disques SSD (Solid-State Disk) regroupés logiquement au sein de votre baie de stockage. La fonctionnalité SSD Cache met en cache les données les plus fréquemment consultées (« données chaudes ») sur des disques SSD à faible latence afin d'accélérer dynamiquement les charges de travail des applications.
+
+
+
+ a| 
+Capacité non attribuée
+ a| 
+La capacité non attribuée correspond à l'espace d'une baie de stockage qui n'a *pas* été affecté à un pool ou à un groupe de volumes.
+
+
+
+ a| 
+Capacité écrite
+ a| 
+La capacité écrite correspond à la quantité de capacité qui a été écrite à partir de la capacité réservée allouée pour les volumes minces.
+
+|===

@@ -1,0 +1,16 @@
+---
+permalink: sm-storage/export-import-volume-groups.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, export, import, volume group 
+summary: La migration de volume group vous permet d’exporter un volume group afin de pouvoir l’importer dans une autre storage array. 
+---
+= Exporter/Importer des groupes de volumes dans l'interface de ligne de commandes SANtricity
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La migration de volume group vous permet d’exporter un volume group afin de pouvoir l’importer dans une autre storage array.
+
+La fonction d'exportation/importation n'est pas prise en charge dans l'interface utilisateur de SANtricity System Manager. Vous devez utiliser la ligne de commandes (CLI) pour exporter/importer un groupe de volumes vers une autre baie de stockage.

@@ -1,0 +1,50 @@
+---
+permalink: sm-settings/overview-alerts.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, Alerts, 
+summary: Vous pouvez configurer System Manager pour envoyer des alertes de baie de stockage par e-mail, traps SNMP et messages syslog. 
+---
+= Découvrez les alertes dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez configurer SANtricity System Manager pour envoyer des alertes de la baie de stockage par e-mail, traps SNMP et messages syslog.
+
+
+
+== Que sont les alertes
+
+_Alerts_ informent les administrateurs des événements importants survenant sur la baie de stockage. Les événements peuvent inclure des problèmes tels qu'une panne de batterie, le passage d'un composant de l'état Optimal à Hors ligne, ou des erreurs de redondance au niveau du contrôleur. Tous les événements Critiques sont considérés comme « alertables », ainsi que certains événements d'Avertissement et d'Information.
+
+En savoir plus :
+
+* link:how-alerts-work.html["Comment fonctionnent les alertes"]
+* link:alerts-terminology.html["Terminologie des alertes"]
+
+
+
+
+== Comment configurer les alertes ?
+
+Vous pouvez configurer les alertes pour qu'elles soient envoyées sous forme de message à une ou plusieurs adresses e-mail, sous forme de trap SNMP à un serveur SNMP, ou sous forme de message à un serveur syslog. La configuration des alertes est disponible à partir du menu : Paramètres[Alertes].
+
+En savoir plus :
+
+* link:configure-mail-server-and-recipients-for-alerts.html["Configurer le serveur de messagerie et les destinataires des alertes"]
+* link:configure-syslog-server-for-alerts.html["Configurer le serveur syslog pour les alertes"]
+* link:configure-snmp-alerts.html["Configurer les alertes SNMP"]
+
+
+
+
+== Informations connexes
+
+Apprenez-en davantage sur les concepts liés aux alertes :
+
+* link:../sm-support/overview-event-log.html["Aperçu du journal des événements"]
+* link:why-are-timestamps-inconsistent-between-the-array-and-alerts.html["Horodatages incohérents"]
+

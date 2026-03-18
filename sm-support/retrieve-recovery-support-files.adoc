@@ -1,0 +1,44 @@
+---
+permalink: sm-support/retrieve-recovery-support-files.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, retrieve, recovery, support files 
+summary: Le support technique peut utiliser les fichiers de support de récupération pour résoudre les problèmes. Le Gestionnaire système enregistre automatiquement ces fichiers. 
+---
+= Récupérer les fichiers de support de récupération dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'assistance technique peut utiliser les fichiers de support de récupération pour résoudre les problèmes. SANtricity System Manager enregistre automatiquement ces fichiers.
+
+.Avant de commencer
+Le support technique a demandé que vous lui envoyiez des fichiers supplémentaires pour le dépannage.
+
+.À propos de cette tâche
+Les fichiers de support de récupération incluent les types de fichiers suivants :
+
+* Fichiers de données de support
+* Historique AutoSupport
+* Journal AutoSupport
+* fichiers de diagnostics SAS/RLS
+* Données du profil de récupération
+* Fichiers de capture de base de données
+
+
+.Étapes
+. Sélectionnez le menu : Support [Support Center > Diagnostics] onglet.
+. Sélectionnez *Retrieve Recovery Support Files*.
++
+Une boîte de dialogue affiche la liste de tous les fichiers de support de récupération collectés par votre baie de stockage. Pour trouver des fichiers spécifiques, vous pouvez trier n'importe quelle colonne ou saisir des caractères dans la case *Filter*.
+
+. Sélectionnez un fichier, puis cliquez sur *Download*.
++
+Le fichier est enregistré dans le dossier Downloads de votre navigateur.
+
+. Si vous devez enregistrer des fichiers supplémentaires, répétez l’étape précédente.
+. Cliquez sur *Close*.
+. Suivez les instructions fournies par le support technique pour leur envoyer le fichier.
+

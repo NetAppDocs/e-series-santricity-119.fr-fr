@@ -1,0 +1,114 @@
+---
+sidebar: sidebar 
+permalink: whats-new.html 
+keywords: whats new, new features, SANtricity 11.90 
+summary: Nouvelles fonctionnalités dans SANtricity OS. 
+---
+= Nouveautés de SANtricity OS 11.90
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+Le tableau suivant décrit les nouvelles fonctionnalités de SANtricity System Manager 11.9.
+
+
+
+== Nouvelles fonctionnalités dans la version 11.90R5
+
+Cette version corrige uniquement des bogues et n’intègre aucune nouvelle fonctionnalité. Pour plus d'informations sur les modifications de cette version, veuillez consulter le fichier README de SANtricity OS 11.90R5 E-Series.
+
+
+
+== Nouvelles fonctionnalités dans la version 11.90R4
+
+Cette version ne contient que des modifications mineures et aucune nouvelle fonctionnalité. Pour plus d'informations sur les modifications de cette version, veuillez consulter le fichier README de SANtricity OS 11.90R4 E-Series.
+
+
+
+== Nouvelles fonctionnalités dans la version 11.90R3
+
+[cols="35h,~"]
+|===
+| Nouvelle fonctionnalité | Description 
+
+
+ a| 
+Prise en charge du système d'exploitation SANtricity pour IOM12C et DCM3
+ a| 
+La prise en charge des châssis SAS-3 IOM12C et DCM3 est désormais disponible pour le micrologiciel du contrôleur 11.90R3 ou supérieur. Les châssis IOM12C et DCM3 remplacent les châssis IOM12B et DCM2.
+
+|===
+
+
+== Nouvelles fonctionnalités dans la version 11.90R2
+
+Cette version ne contient que des modifications mineures et aucune nouvelle fonctionnalité. Pour plus d'informations sur les modifications apportées à cette version, veuillez consulter le  https://library.netapp.com/ecm/ecm_download_file/ECMLP3334464["Notes de version E-Series 11.90"^].
+
+
+
+== Nouvelles fonctionnalités dans la version 11.90R1
+
+[cols="35h,~"]
+|===
+| Nouvelle fonctionnalité | Description 
+
+
+ a| 
+Nouveaux modèles de système de stockage – EF300C et EF600C
+ a| 
+Cette version introduit les systèmes de stockage tout flash NVMe EF300C et EF600C. Les EF300C et EF600C sont des versions flash haute capacité des systèmes de stockage EF300 et EF600 existants. Les disques SSD NVMe haute capacité de 30 To ou 60 To sont pris en charge avec les EF300C et EF600C. Les EF300C/EF600C sont compatibles uniquement pour une utilisation avec Dynamic Disk Pool, sans prise en charge RAID héritée.
+
+
+
+ a| 
+Prise en charge des interfaces SAS 12Gb sur EF4000
+ a| 
+Le contrôleur E4000 prend désormais en charge les cartes d'interface d'hôte SAS 12 Gb.
+
+|===
+
+
+== Nouvelles fonctionnalités dans la version 11.90
+
+[cols="35h,~"]
+|===
+| Nouvelle fonctionnalité | Description 
+
+
+ a| 
+Nouveau modèle de système de stockage – E4000
+ a| 
+Cette version introduit le système de stockage économique E4000. L'E4000 prend en charge 12 et 60 disques et une seule carte d'interface d'hôte (HIC) par contrôleur. Pour la version initiale, les cartes d'interface d'hôte prises en charge incluent iSCSI et Fibre Channel. Les systèmes de stockage E4000 et les autres systèmes de stockage E-Series peuvent être visualisés et gérés dans Unified Manager.
+
+
+
+ a| 
+Capacité accrue pour les Dynamic Disk Pools
+ a| 
+La capacité des Dynamic Disk Pools (DDP) a été portée à 12 Po lorsque la capacité de chaque disque individuel composant le pool est supérieure à 23 To. Si la capacité de chaque disque individuel est inférieure à 23 To, la capacité du DDP est de 6 Po.
+
+
+
+ a| 
+Les paramètres d'analyse des supports par défaut ont été augmentés
+ a| 
+La fréquence d'analyse des supports par défaut a été augmentée à 120 jours.
+
+
+
+ a| 
+La clé privée est désormais acceptée pour l’External Key Management
+ a| 
+Le fichier de demande de signature de certificat (CSR) généré en externe à l'aide de paires de clés privées et publiques peut désormais être importé via System Manager.
+
+
+
+ a| 
+La fonctionnalité de verrouillage de connexion est désormais disponible pour Web Services
+ a| 
+Configurable uniquement via l'API REST, un nouveau paramètre de verrouillage de connexion est désormais disponible pour les services Web intégrés et proxy.
+
+|===

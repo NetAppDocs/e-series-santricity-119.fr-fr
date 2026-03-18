@@ -1,0 +1,30 @@
+---
+permalink: sm-hardware/switch-between-front-and-back-views.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, switch, front, back, views, shelves 
+summary: La page Matériel peut afficher la vue de face ou la vue de dos des étagères. 
+---
+= Afficher les vues avant et arrière dans SANtricity System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La page Matériel peut afficher la vue de face ou la vue de dos des étagères.
+
+.À propos de cette tâche
+La vue arrière montre les contrôleurs/IOMs et les boîtiers des ventilateurs d'alimentation. La vue avant montre les disques.
+
+.Étapes
+. Sélectionnez *Hardware*.
+. Si le graphique affiche les lecteurs, cliquez sur l’onglet *Controllers & Components*.
++
+Le graphique change pour afficher les contrôleurs au lieu des disques.
+
+. Si le graphique affiche les contrôleurs, cliquez sur l’onglet *Lecteurs*.
++
+Le graphique change pour afficher les disques au lieu des contrôleurs.
+
+. Vous pouvez éventuellement sélectionner *Afficher tout le recto* ou *Afficher tout le verso*, situés en bas de la page.
+

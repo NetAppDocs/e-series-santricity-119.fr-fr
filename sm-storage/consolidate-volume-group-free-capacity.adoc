@@ -1,0 +1,56 @@
+---
+permalink: sm-storage/consolidate-volume-group-free-capacity.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, consolidate, free capacity, volume group 
+summary: 'Utilisez l"option Consolider la capacité libre pour consolider les extensions libres existantes sur un groupe de volumes sélectionné. En effectuant cette action, vous pouvez créer des volumes supplémentaires à partir de la capacité libre maximale d"un groupe de volumes.' 
+---
+= Consolider la capacité libre d'un groupe de volumes dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Utilisez l'option Consolider la capacité libre pour consolider les extensions libres existantes sur un groupe de volumes sélectionné. En effectuant cette action, vous pouvez créer des volumes supplémentaires à partir de la capacité libre maximale d'un groupe de volumes.
+
+.Avant de commencer
+* Le groupe de volumes doit contenir au moins une zone de capacité libre.
+* Tous les volumes du groupe de volumes doivent être en ligne et dans un état Optimal.
+* Aucune opération de modification de volume ne doit être en cours, comme la modification de la taille d'un segment de volume.
+
+
+.À propos de cette tâche
+Vous ne pouvez pas annuler l'opération après qu'elle a commencé. Vos données restent accessibles pendant l'opération de consolidation.
+
+Vous pouvez lancer la boîte de dialogue Consolider la capacité libre en utilisant l'une des méthodes suivantes :
+
+* Lorsqu'au moins une zone de capacité libre est détectée pour un groupe de volumes, la recommandation « Consolider la capacité libre » s'affiche dans la zone de notification de la page d'accueil. Cliquez sur le lien *Consolider la capacité libre* pour ouvrir la boîte de dialogue.
+* Vous pouvez également lancer la boîte de dialogue Consolider la capacité libre à partir de la page Pools & groupes de volumes, comme décrit dans la tâche suivante.
+
+
+.Plus d'informations sur les zones de capacité libre
+[%collapsible]
+====
+Une zone de capacité libre est la capacité libre qui peut résulter de la suppression d'un volume ou du non-utilisation de toute la capacité libre disponible lors de la création d'un volume. Lorsque vous créez un volume dans un groupe de volumes qui possède une ou plusieurs zones de capacité libre, la capacité du volume est limitée à la plus grande zone de capacité libre dans ce groupe de volumes. Par exemple, si un groupe de volumes dispose d'une capacité libre totale de 15 Gio et que la plus grande zone de capacité libre est de 10 Gio, le plus grand volume que vous pouvez créer est de 10 Gio.
+
+Vous consolidez la capacité libre d'un groupe de volumes pour améliorer les performances d'écriture. La capacité libre de votre groupe de volumes deviendra fragmentée au fil du temps à mesure que l'hôte écrit, modifie et supprime des fichiers. Finalement, la capacité disponible ne sera plus située dans un seul bloc adjacent, mais sera dispersée en petits fragments à travers le groupe de volumes. Cela provoque une fragmentation supplémentaire des fichiers, car l'hôte doit écrire de nouveaux fichiers sous forme de fragments pour les adapter aux plages disponibles de clusters libres.
+
+En regroupant l'espace libre sur un groupe de volumes sélectionné, vous constaterez une amélioration des performances du système de fichiers lors de l'écriture de nouveaux fichiers par l'hôte. Le processus de consolidation contribuera également à éviter que de nouveaux fichiers ne soient fragmentés à l'avenir.
+
+====
+.Étapes
+. Sélectionnez le menu : Storage [Pools & Volume Groups].
+. Sélectionnez le groupe de volumes avec une capacité libre que vous souhaitez consolider, puis sélectionnez menu:Uncommon Tasks[Consolidate volume group free capacity].
++
+La boîte de dialogue Consolidate Free Capacity s'affiche.
+
+. Tapez  `consolidate` pour confirmer que vous souhaitez effectuer cette opération.
+. Cliquez sur *Consolidate*.
++
+System Manager commence à consolider (défragmenter) les zones de capacité libre du groupe de volumes en une seule quantité contiguë pour les tâches de configuration de stockage ultérieures.
+
+
+
+.Après avoir terminé
+Sélectionnez menu : Home[View Operations in Progress] pour consulter la progression de l’opération Consolidate Free Capacity. Cette opération peut être longue et pourrait affecter les performances du système.

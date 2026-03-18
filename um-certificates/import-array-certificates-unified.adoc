@@ -1,0 +1,36 @@
+---
+permalink: um-certificates/import-array-certificates-unified.html 
+sidebar: sidebar 
+keywords: SANtricity, Unified Manager, E-Series, import, certificates, arrays 
+summary: 'Si nécessaire, vous pouvez importer des certificats pour les baies de stockage afin qu"elles puissent s"authentifier auprès du système hébergeant SANtricity Unified Manager. Les certificats peuvent être signés par une autorité de certification (CA) ou être auto-signés.' 
+---
+= Importer des certificats pour les baies dans SANtricity Unified Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Si nécessaire, vous pouvez importer des certificats pour les baies de stockage afin qu'elles puissent s'authentifier auprès du système hébergeant SANtricity Unified Manager. Les certificats peuvent être signés par une autorité de certification (CA) ou être auto-signés.
+
+.Avant de commencer
+* Vous devez être connecté avec un profil utilisateur disposant des autorisations d'administrateur de sécurité. Sinon, les fonctions de certificat n'apparaissent pas.
+* Si vous importez des certificats de confiance, les certificats doivent être importés pour les contrôleurs de la baie de stockage à l'aide de System Manager.
+
+
+.Étapes
+. Sélectionnez *Certificate Management*.
+. Sélectionnez l’onglet *Trusted*.
++
+Cette page affiche tous les certificats signalés pour les baies de stockage.
+
+. Sélectionnez soit le menu : Import[Certificates] pour importer un certificat CA, soit le menu : Import[Self-signed storage array certificates] pour importer un certificat auto-signé.
++
+Pour limiter l'affichage, vous pouvez utiliser le champ de filtrage *Afficher les certificats qui sont...* ou vous pouvez trier les lignes de certificats en cliquant sur l'un des en-têtes de colonne.
+
+. Dans la boîte de dialogue, sélectionnez le certificat et cliquez sur *Importer*.
++
+Le certificat est téléchargé et validé.
+
+

@@ -1,0 +1,38 @@
+---
+permalink: sm-settings/reset-management-certificates.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, reset, management, certificates, 
+summary: 'Vous pouvez rétablir les certificats sur les contrôleurs en passant des certificats signés par une autorité de certification (CA) aux certificats auto-signés d"usine.' 
+---
+= Réinitialiser les certificats de gestion dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez rétablir les certificats sur les contrôleurs en passant des certificats signés par une autorité de certification (CA) aux certificats auto-signés d'usine.
+
+.Avant de commencer
+* Vous devez être connecté avec un profil utilisateur disposant des autorisations d'administrateur de sécurité. Sinon, les fonctions de certificat n'apparaissent pas.
+* Les certificats signés par une autorité de certification doivent être préalablement importés.
+
+
+.À propos de cette tâche
+La fonction de réinitialisation supprime les fichiers de certificats signés par l'autorité de certification actuelle de chaque contrôleur. Les contrôleurs reviendront alors à l'utilisation de certificats auto-signés.
+
+.Étapes
+. Sélectionnez menu : Paramètres [Certificates].
+. Dans l'onglet Array Management, sélectionnez *Réinitialiser*.
++
+Une boîte de dialogue « Confirmer la réinitialisation des certificats de gestion » s'ouvre.
+
+. Tapez  `reset` dans le champ, puis cliquez sur *Réinitialiser*.
++
+Après l'actualisation de votre navigateur, il est possible que celui-ci bloque l'accès au site de destination et signale que le site utilise HTTP Strict Transport Security. Cette condition survient lorsque vous revenez à des certificats auto-signés. Pour supprimer la condition qui bloque l'accès au site de destination, vous devez effacer les données de navigation du navigateur.
+
+
+
+.Résultats
+Les contrôleurs reviennent à l'utilisation de certificats auto-signés. Par conséquent, le système invite les utilisateurs à accepter manuellement le certificat auto-signé pour leurs sessions.

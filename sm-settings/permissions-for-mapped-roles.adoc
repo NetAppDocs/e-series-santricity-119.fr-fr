@@ -1,0 +1,27 @@
+---
+permalink: sm-settings/permissions-for-mapped-roles.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, permissions, mapped, roles, 
+summary: 'Les fonctionnalités RBAC (contrôle d"accès basé sur les rôles) appliquées à la baie de stockage comprennent des profils utilisateur prédéfinis auxquels un ou plusieurs rôles sont associés. Chaque rôle inclut des autorisations pour accéder aux tâches dans SANtricity System Manager.' 
+---
+= Découvrez les autorisations pour les rôles mappés dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Les fonctionnalités RBAC (contrôle d'accès basé sur les rôles) appliquées à la baie de stockage comprennent des profils utilisateur prédéfinis auxquels un ou plusieurs rôles sont associés. Chaque rôle inclut des autorisations pour accéder aux tâches dans SANtricity System Manager.
+
+Les profils utilisateur et les rôles mappés sont accessibles depuis le menu : Paramètres [Gestion des accès > Rôles des utilisateurs locaux] dans l’interface utilisateur de l’un ou l’autre System Manager.
+
+Les rôles fournissent aux utilisateurs l'accès aux tâches, comme suit :
+
+* *Administrateur de stockage* -- Accès complet en lecture/écriture aux objets de stockage (par exemple, volumes et disk pools), mais aucun accès à la configuration de sécurité.
+* *Administrateur de sécurité* -- Accès à la configuration de sécurité dans la gestion des accès, la gestion des certificats, la gestion du journal des audits et la possibilité d'activer ou de désactiver l'interface de gestion héritée (SYMbol).
+* *Administrateur support* -- Accès à toutes les ressources matérielles de la baie de stockage, aux données de panne, aux événements MEL et aux mises à niveau du micrologiciel du contrôleur. Aucun accès aux objets de stockage ni à la configuration de sécurité.
+* *Moniteur* -- Accès en lecture seule à tous les objets de stockage, mais aucun accès à la configuration de sécurité.
+
+
+Si un utilisateur ne dispose pas des autorisations pour une certaine tâche, cette tâche est soit grisée, soit n'apparaît pas dans l'interface utilisateur.

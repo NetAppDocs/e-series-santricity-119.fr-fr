@@ -1,0 +1,101 @@
+---
+permalink: sm-storage/types-of-copy-volume-operations.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, copy, volume, 
+summary: 'Vous pouvez effectuer une opération de copie de volume hors ligne ou une opération de copie de volume en ligne. Une opération hors ligne lit les données d"un volume source et les copie vers un volume cible. Une opération en ligne utilise un volume instantané comme source et copie ses données vers un volume cible.' 
+---
+= Découvrez les types d'opérations de copie de volume dans le logiciel SANtricity
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez effectuer une opération de copie de volume _hors ligne_ ou une opération de copie de volume _en ligne_. Une opération hors ligne lit les données d'un volume source et les copie vers un volume cible. Une opération en ligne utilise un volume instantané comme source et copie ses données vers un volume cible.
+
+Pour garantir l'intégrité des données, toute activité d'E/S sur le volume cible est suspendue pendant l'une ou l'autre des opérations de copie de volume. Cette suspension se produit parce que l'état des données sur le volume cible est incohérent jusqu'à la fin de la procédure.
+
+Les opérations de copie de volume hors ligne et en ligne sont décrites ci-dessous.
+
+
+
+== Opération de copie de volume hors ligne
+
+La relation de copie hors ligne s'établit entre un volume source et un volume cible. Une copie hors ligne lit les données du volume source et les copie sur un volume cible, tout en suspendant toutes les mises à jour du volume source pendant la copie en cours. Toutes les mises à jour du volume source sont suspendues afin d'éviter que des incohérences chronologiques ne soient créées sur le volume cible.
+
+[cols="25h,~"]
+|===
+2+| Ce que vous devez savoir sur les opérations de copie hors ligne 
+
+
+ a| 
+Requêtes de lecture et d'écriture
+ a| 
+* Les volumes sources qui participent à une copie hors ligne sont disponibles pour une activité d'E/S en lecture seule tant qu'une opération Copy Volume a le statut En cours ou En attente.
+* Les demandes d'écriture sont autorisées après que la copie hors ligne a été terminée.
+* Pour éviter les messages d'erreur liés à la protection en écriture, n'accédez pas à un volume source qui participe à une opération Copy Volume avec un statut de In Progress.
+
+
+
+
+ a| 
+système de fichiers journalisé
+ a| 
+* Si le volume source a été formaté avec un système de fichiers journalisé, toute tentative d'envoi d'une requête de lecture au volume source peut être rejetée par les contrôleurs de la baie de stockage, et un message d'erreur peut apparaître.
+* Le pilote du système de fichiers journalisé émet une requête d'écriture avant de tenter d'émettre la requête de lecture. Le contrôleur rejette la requête d'écriture, et la requête de lecture pourrait ne pas être émise en raison de la requête d'écriture rejetée. Cette condition peut entraîner l'apparition d'un message d'erreur indiquant que le volume source est protégé en écriture.
+* Pour éviter que ce problème ne survienne, n'essayez pas d'accéder à un volume source qui participe à une copie hors ligne tant que l'opération Copy Volume a le statut En cours.
+
+
+|===
+
+
+== Opération de copie de volume en ligne
+
+La relation de copie de volume en ligne s'établit entre un volume snapshot et un volume cible. Vous pouvez lancer une opération de copie de volume pendant que le volume source est en ligne et disponible pour les écritures de données. Cette fonction est réalisée en créant un snapshot du volume et en utilisant le snapshot comme volume source pour la copie.
+
+Lorsque vous lancez une opération Copy Volume pour un volume source, System Manager crée une image instantanée du volume de base et une relation de copie entre l'image instantanée du volume de base et un volume cible. L'utilisation de l'image instantanée comme volume source permet à la baie de stockage de continuer à écrire sur le volume source pendant que la copie est en cours.
+
+Lors d'une opération de copie en ligne, un impact sur les performances est constaté en raison de la procédure de copie sur écriture. Après la fin de la copie en ligne, les performances du volume de base sont rétablies.
+
+[cols="25h,~"]
+|===
+2+| Ce que vous devez savoir sur les opérations de copie en ligne 
+
+
+ a| 
+Quels types de volumes peuvent être utilisés ?
+ a| 
+* Le volume pour lequel l'image à un instant donné est créée est appelé volume de base et doit être un volume standard ou un volume mince sur la baie de stockage.
+* Un volume cible peut être un volume standard dans un groupe de volumes ou un volume standard dans un pool. Un volume cible ne peut pas être un volume mince ni un volume de base dans un groupe d'instantanés.
+* Vous pouvez utiliser la fonction en ligne Copy Volume pour copier des données d'un volume fin vers un volume standard dans un pool situé dans la même baie de stockage. Mais vous ne pouvez pas utiliser la fonction Copy Volume pour copier des données d'un volume standard vers un volume fin.
+
+
+
+
+ a| 
+Performances du volume de base
+ a| 
+* Si le volume de snapshot utilisé comme source de copie est actif, les performances du volume de base sont dégradées en raison des opérations de copie sur écriture. Une fois la copie terminée, le snapshot est désactivé et les performances du volume de base sont rétablies. Bien que le snapshot soit désactivé, le volume de capacité réservée et la relation de copie restent intacts.
+
+
+
+
+ a| 
+Types de volumes créés
+ a| 
+* Un volume instantané et un volume de capacité réservée sont créés lors de l'opération de copie en ligne.
+* Le volume instantané n'est pas un volume réel contenant des données ; il s'agit plutôt d'une référence aux données qui étaient contenues sur un volume à un moment précis.
+* Pour chaque instantané pris, un volume de capacité réservé est créé pour contenir les données de l'instantané. Le volume de capacité réservé est utilisé uniquement pour gérer l'image de l'instantané.
+
+
+
+
+ a| 
+Volume de capacité réservée
+ a| 
+* Avant qu'un bloc de données sur le volume source ne soit modifié, le contenu du bloc à modifier est copié sur le volume de capacité réservée pour être mis en sécurité.
+* Étant donné que le volume de capacité réservée stocke des copies des données originales dans ces blocs de données, les modifications ultérieures apportées à ces blocs de données ne sont écrites que sur le volume source.
+* L'opération de copie en ligne utilise moins d'espace disque qu'une copie physique complète, car seuls les blocs de données qui ont changé depuis la prise du snapshot sont stockés dans le volume de capacité réservée.
+
+
+|===

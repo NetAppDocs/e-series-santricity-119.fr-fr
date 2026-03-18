@@ -1,0 +1,43 @@
+---
+permalink: sm-support/clear-recovery-mode.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, clear, recovery, mode 
+summary: 'Après avoir restauré la configuration d"une baie de stockage, utilisez l"opération Clear Recovery Mode pour reprendre les E/S sur la baie de stockage et la remettre en fonctionnement normal.' 
+---
+= Effacer le mode de récupération dans le logiciel SANtricity
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Après avoir restauré la configuration d'une baie de stockage, utilisez l'opération Clear Recovery Mode pour reprendre les E/S sur la baie de stockage et la remettre en fonctionnement normal.
+
+.Avant de commencer
+* Si vous souhaitez rétablir la baie de stockage à une configuration précédente, vous devez restaurer la configuration à partir de la sauvegarde avant de désactiver le mode de récupération.
+* Vous devez effectuer des vérifications de validation ou contacter le support technique pour vous assurer que la restauration a réussi. Après avoir déterminé que la restauration a réussi, le mode de récupération peut être effacé.
+
+
+.À propos de cette tâche
+La baie de stockage contient une base de données de configuration qui inclut un enregistrement de sa configuration logique (pools, groupes de volumes, volumes, etc.). Si vous effacez intentionnellement la configuration de la baie de stockage ou si la base de données de configuration est corrompue, la baie de stockage passe en mode de récupération. Le mode de récupération interrompt les E/S et fige la base de données de configuration, ce qui vous laisse le temps d'effectuer l'une des actions suivantes :
+
+* Restaurez la configuration à partir de la sauvegarde automatique stockée dans la mémoire flash du contrôleur. Vous devez contacter le support technique pour effectuer cette opération.
+* Restaurez la configuration à partir d'une opération précédente d'enregistrement de la base de données de configuration. Les opérations d'enregistrement de la base de données de configuration sont effectuées via la ligne de commandes (CLI).
+* Reconfigurez la baie de stockage à partir de zéro.
+
+
+Après que la configuration de la baie de stockage a été restaurée ou redéfinie et que vous avez vérifié que tout est en ordre, vous devez effacer manuellement le mode de récupération.
+
+[NOTE]
+====
+Vous ne pouvez pas annuler l'opération Clear Recovery Mode après son démarrage. La suppression du mode de récupération peut prendre beaucoup de temps. N'effectuez cette opération que sur instruction du support technique.
+
+====
+.Étapes
+. Sélectionnez le menu : Support [Support Center > Diagnostics] onglet.
+. Sélectionnez *Effacer le mode de récupération* et confirmez que vous souhaitez effectuer cette opération.
++
+Cette option n'apparaît que si la baie de stockage est en mode de récupération.
+
+

@@ -1,0 +1,182 @@
+---
+permalink: sm-storage/change-settings-for-a-volume.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, settings, volume 
+summary: Vous pouvez modifier les paramètres d’un volume, tels que son nom, son attribution à un hôte, la taille de segment, la priorité de modification, la mise en cache, et ainsi de suite. 
+---
+= Modifiez les paramètres d'un volume dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez modifier les paramètres d'un volume, tels que son nom, son attribution à un hôte, la taille de segment, la priorité de modification, la mise en cache, et ainsi de suite.
+
+.Avant de commencer
+Le volume que vous souhaitez modifier est en état optimal.
+
+
+NOTE: Certaines opérations peuvent être indisponibles pendant la modification des paramètres de volume
+
+.Étapes
+. Sélectionnez le menu : Storage[Volumes].
+. Sélectionnez le volume que vous souhaitez modifier, puis sélectionnez *Afficher/Modifier les paramètres*.
++
+La boîte de dialogue Réglages du volume s'affiche. Les paramètres de configuration du volume sélectionné apparaissent dans cette boîte de dialogue.
+
+. Sélectionnez l'onglet *Basic* pour modifier le nom du volume et son attribution à l'hôte.
++
+.Détails du champ
+[%collapsible]
+====
+[cols="25h,~"]
+|===
+| Paramètre | Description 
+
+
+ a| 
+Nom
+ a| 
+Affiche le nom du volume. Modifiez le nom d'un volume lorsque le nom actuel n'est plus pertinent ou applicable.
+
+
+
+ a| 
+Capacités
+ a| 
+Affiche la capacité déclarée et allouée pour le volume sélectionné.
+
+Pour les volumes épais, la capacité déclarée et la capacité allouée sont identiques, mais elles sont différentes pour les volumes minces. Pour un volume épais, l'espace physiquement alloué est égal à l'espace qui est déclaré à l'hôte. Pour un volume mince, la capacité déclarée est la capacité qui est déclarée aux hôtes, tandis que la capacité allouée est la quantité d'espace disque actuellement allouée pour l'écriture des données.
+
+
+
+ a| 
+Pool / groupe de volumes
+ a| 
+Affiche le nom et le niveau RAID du pool ou du groupe de volumes. Indique si le pool ou le groupe de volumes est compatible avec la sécurité et si celle-ci est activée.
+
+
+
+ a| 
+Hôte
+ a| 
+Affiche l'affectation du volume. Vous affectez un volume à un hôte ou à un cluster d'hôtes afin qu'il soit accessible pour les opérations d'E/S. Cette affectation autorise un hôte ou un cluster d'hôtes à accéder à un volume particulier ou à plusieurs volumes dans une baie de stockage.
+
+** *Attribué à* -- Identifie l'hôte ou le cluster d'hôtes qui a accès au volume sélectionné.
+** *LUN* -- Un numéro d'unité logique (LUN) est le numéro attribué à l'espace d'adressage qu'un hôte utilise pour accéder à un volume. Le volume est présenté à l'hôte comme une capacité sous la forme d'un LUN. Chaque hôte a son propre espace d'adressage LUN. Par conséquent, le même LUN peut être utilisé par différents hôtes pour accéder à différents volumes.
++
+
+NOTE: Pour les interfaces NVMe, cette colonne affiche l'ID de namespace. Un namespace est un stockage NVM formaté pour un accès par blocs. Il est analogue à une unité logique dans SCSI, qui correspond à un volume dans la baie de stockage. L'ID de namespace est l'identifiant unique du contrôleur NVMe pour le namespace, et peut être défini sur une valeur comprise entre 1 et 255. Il est analogue à un numéro d'unité logique (LUN) dans SCSI.
+
+
+
+
+
+ a| 
+Identifiants
+ a| 
+Affiche les identifiants du volume sélectionné.
+
+** *Identifiant mondial (WWID)* -- Un identifiant hexadécimal unique pour le volume.
+** *Identifiant unique étendu (EUI)* -- Un identifiant EUI-64 pour le volume.
+** *Identifiant du sous-système (SSID)* -- L'identifiant du sous-système de stockage d'un volume.
+
+
+|===
+====
+. Sélectionnez l'onglet *Advanced* pour modifier les paramètres de configuration supplémentaires d'un volume dans un pool ou dans un groupe de volumes.
++
+.Détails du champ
+[%collapsible]
+====
+[cols="25h,~"]
+|===
+| Paramètre | Description 
+
+
+ a| 
+Informations sur l'application et la charge de travail
+ a| 
+Lors de la création d'un volume, vous pouvez créer des charges de travail spécifiques à une application ou d'autres charges de travail. Le cas échéant, le nom de la charge de travail, le type d'application et le type de volume apparaissent pour le volume sélectionné.
+
+Vous pouvez changer le nom de la charge de travail si vous le souhaitez.
+
+
+
+ a| 
+Paramètres de qualité de service
+ a| 
+*Désactiver définitivement la garantie des données* -- Ce paramètre apparaît uniquement si le volume est activé pour Data Assurance (DA). DA vérifie et corrige les erreurs pouvant survenir lors du transfert des données des contrôleurs vers les disques. Utilisez cette option pour désactiver définitivement DA sur le volume sélectionné. Lorsque désactivée, DA ne peut pas être réactivée sur ce volume.
+
+*Activer la vérification de redondance avant lecture* -- Ce paramètre n'apparaît que si le volume est un volume épais. Les vérifications de redondance avant lecture déterminent si les données d'un volume sont cohérentes chaque fois qu'une lecture est effectuée. Un volume avec cette fonctionnalité activée renvoie des erreurs de lecture si les données sont jugées incohérentes par le micrologiciel du contrôleur.
+
+
+
+ a| 
+Propriété du contrôleur
+ a| 
+Définit le contrôleur qui est désigné comme étant le contrôleur propriétaire, ou principal, du volume.
+
+L'attribution des contrôleurs est primordiale et doit être planifiée avec soin. Les contrôleurs doivent être équilibrés aussi étroitement que possible pour le nombre total d'E/S.
+
+
+
+ a| 
+Dimensionnement des segments
+ a| 
+Affiche le paramètre de dimensionnement des segments, qui n'apparaît que pour les volumes dans un groupe de volumes. Vous pouvez modifier la taille des segments pour optimiser les performances.
+
+*Transitions de taille de segment autorisées* -- System Manager détermine les transitions de taille de segment autorisées. Les tailles de segment qui sont des transitions inappropriées à partir de la taille de segment actuelle ne sont pas disponibles dans la liste déroulante. Les transitions autorisées correspondent généralement au double ou à la moitié de la taille de segment actuelle. Par exemple, si la taille de segment actuelle du volume est de 32 KiB, une nouvelle taille de segment de volume de 16 KiB ou de 64 KiB est autorisée.
+
+*Volumes avec cache SSD activé* -- Vous pouvez spécifier une taille de segment de 4 Kio pour les volumes avec cache SSD activé. Veillez à sélectionner la taille de segment de 4 Kio uniquement pour les volumes avec cache SSD activé qui gèrent des opérations d'E/S par petits blocs (par exemple, des tailles de blocs d'E/S de 16 Kio ou moins). Les performances pourraient être affectées si vous sélectionnez 4 Kio comme taille de segment pour les volumes avec cache SSD activé qui gèrent des opérations séquentielles par gros blocs.
+
+*Délai de modification de la taille des segments* -- Le temps nécessaire pour modifier la taille des segments d'un volume dépend de ces variables :
+
+** La charge d'E/S de l'hôte
+** La priorité de modification du volume
+** Le nombre de lecteurs dans le groupe de volumes
+** Le nombre de canaux de lecteur
+** La puissance de traitement des contrôleurs de baies de stockage Lorsque vous modifiez la taille d’un segment pour un volume, les performances d’E/S sont affectées, mais vos données restent disponibles.
+
+
+
+
+ a| 
+Priorité de modification
+ a| 
+Affiche le paramètre de priorité de modification, qui n'apparaît que pour les volumes dans un groupe de volumes.
+
+La priorité de modification définit le temps de traitement alloué aux opérations de modification de volume par rapport aux performances du système. Vous pouvez augmenter la priorité de modification de volume, bien que cela puisse affecter les performances du système.
+
+Déplacez les barres de défilement pour sélectionner un niveau de priorité.
+
+*Niveaux de priorité des modifications* -- Le niveau de priorité le plus bas améliore les performances du système, mais l'opération de modification prend plus de temps. Le niveau de priorité le plus élevé bénéficie à l'opération de modification, mais les performances du système peuvent être compromises.
+
+
+
+ a| 
+Mise en cache
+ a| 
+Affiche le paramètre de mise en cache, que vous pouvez modifier pour influer sur les performances d'I/O globales d'un volume.
+
+
+
+ a| 
+Cache SSD
+ a| 
+Affiche le paramètre de cache SSD, que vous pouvez activer sur les volumes compatibles pour améliorer les performances en lecture seule. Les volumes sont compatibles s'ils partagent les mêmes fonctionnalités de sécurité du disque et d'assurance des données.
+
+*La fonctionnalité de cache SSD utilise un ou plusieurs disques SSD (Solid State Disks) pour créer un cache de lecture*. Les performances des applications sont améliorées grâce à la vitesse de lecture accrue des SSD. Le cache de lecture étant intégré à la baie de stockage, la mise en cache est partagée entre toutes les applications utilisant la baie de stockage. Il suffit de sélectionner le volume que vous souhaitez mettre en cache, puis la mise en cache est automatique et dynamique.
+
+|===
+====
+. Cliquez sur *Enregistrer*.
++
+Le System Manager modifie les paramètres du volume en fonction de vos sélections.
+
+
+
+.Après avoir terminé
+Sélectionnez menu : Home [View Operations in Progress] pour afficher la progression des opérations de modification actuellement en cours pour le volume sélectionné.

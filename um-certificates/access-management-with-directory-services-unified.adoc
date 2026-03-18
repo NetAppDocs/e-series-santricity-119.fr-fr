@@ -1,0 +1,49 @@
+---
+permalink: um-certificates/access-management-with-directory-services-unified.html 
+sidebar: sidebar 
+keywords: SANtricity, Unified Manager, E-Series, access management, directory services, 
+summary: 'Les administrateurs peuvent utiliser un serveur LDAP (Lightweight Directory Access Protocol) et un service d"annuaire, tel que Microsoft’s Active Directory.' 
+---
+= Gestion des accès avec les services d'annuaire dans SANtricity Unified Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Les administrateurs peuvent utiliser un serveur LDAP (Lightweight Directory Access Protocol) et un service d'annuaire, tel que Microsoft's Active Directory.
+
+
+
+== Flux de travail de configuration
+
+Si un serveur LDAP et un service d'annuaire sont utilisés dans le réseau, la configuration fonctionne comme suit :
+
+. Un administrateur se connecte à Unified Manager avec un profil utilisateur qui inclut les autorisations d'administrateur de sécurité.
++
+[NOTE]
+====
+L' `admin`utilisateur a un accès complet à toutes les fonctions du système.
+
+====
+. L'administrateur saisit les paramètres de configuration du serveur LDAP. Les paramètres comprennent le nom de domaine, l'URL et les informations du compte Bind.
+. Si le serveur LDAP utilise un protocole sécurisé (LDAPS), l'administrateur télécharge une chaîne de certificats d'autorité de certification (CA) pour l'authentification entre le serveur LDAP et le système hôte où le Web Services Proxy est installé.
+. Une fois la connexion au serveur établie, l'administrateur associe les groupes d'utilisateurs aux rôles utilisateurs locaux. Ces rôles sont prédéfinis et ne peuvent pas être modifiés.
+. L'administrateur teste la connexion entre le serveur LDAP et le Web Services Proxy.
+. Les utilisateurs se connectent au système avec leurs identifiants LDAP/Directory Services attribués.
+
+
+
+
+== Gestion
+
+Lorsqu'ils utilisent les services d'annuaire pour l'authentification, les administrateurs peuvent effectuer les tâches de gestion suivantes :
+
+* Ajouter un serveur d'annuaire.
+* Modifier les paramètres du serveur d'annuaire.
+* Associez les utilisateurs LDAP aux rôles d'utilisateurs locaux.
+* Supprimez un serveur d'annuaire.
+* Changez les mots de passe.
+* Définissez une longueur minimale pour les mots de passe.
+* Autoriser les utilisateurs à se connecter sans mots de passe.
+

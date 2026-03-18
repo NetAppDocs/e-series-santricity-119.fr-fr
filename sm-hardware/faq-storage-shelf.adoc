@@ -1,0 +1,180 @@
+---
+permalink: sm-hardware/faq-storage-shelf.html 
+sidebar: sidebar 
+keywords:  
+summary: Cette FAQ peut vous aider si vous cherchez simplement une réponse rapide à une question. 
+---
+= FAQ sur les tiroirs de stockage pour SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Cette FAQ peut vous aider si vous cherchez simplement une réponse rapide à une question.
+
+
+
+== Qu’est-ce que la protection contre la perte de tiroir et la protection contre la perte de tiroir d'extension ?
+
+La protection contre la perte d'étagère et la protection contre la perte de tiroir sont des attributs des pools et des groupes de volumes qui vous permettent de maintenir l'accès aux données en cas de défaillance d'une seule étagère ou d'un seul tiroir.
+
+
+
+=== Protection contre la perte de tiroir
+
+Un châssis est le boîtier qui contient soit les disques, soit les disques et le contrôleur. La protection contre la perte d'un châssis garantit l'accessibilité aux données sur les volumes d'un pool ou d'un groupe de volumes en cas de perte totale de communication avec un seul châssis de disques. Un exemple de perte totale de communication pourrait être une coupure de courant du châssis de disques ou la défaillance des deux modules d'E/S (IOM).
+
+[NOTE]
+====
+La protection contre la perte d'un tiroir n'est pas garantie si un disque a déjà subi une défaillance dans le pool ou le groupe de volumes. Dans cette situation, la perte d'accès à un tiroir d'extension et, par conséquent, à un autre disque dans le pool ou le groupe de volumes entraîne une perte de données.
+
+====
+Les critères de protection contre la perte de tiroir dépendent de la méthode de protection, comme décrit dans le tableau suivant :
+
+[cols="1a,1a,1a"]
+|===
+| Niveau | Critères de protection contre la perte de tiroir | Nombre minimum de tiroirs requis 
+
+
+ a| 
+Pool
+ a| 
+Le pool doit inclure des disques provenant d'au moins cinq tiroirs et chaque tiroir doit contenir un nombre égal de disques. La protection contre la perte de tiroir ne s'applique pas aux tiroirs haute capacité ; si votre système contient des tiroirs haute capacité, consultez la section Drawer Loss Protection.
+ a| 
+5
+
+
+
+ a| 
+RAID 6
+ a| 
+Le groupe de volumes ne contient pas plus de deux disques dans un seul tiroir d'extension.
+ a| 
+3
+
+
+
+ a| 
+RAID 3 ou RAID 5
+ a| 
+Chaque lecteur du groupe de volumes est situé dans un tiroir séparé.
+ a| 
+3
+
+
+
+ a| 
+RAID 1
+ a| 
+Chaque disque d'une paire RAID 1 doit être situé dans un tiroir séparé.
+ a| 
+2
+
+
+
+ a| 
+RAID 0
+ a| 
+Impossible d'obtenir une protection contre la perte de tiroir.
+ a| 
+Non Concerné
+
+|===
+
+
+=== Protection contre la perte des tiroirs
+
+Un tiroir est un des compartiments d'une étagère que l'on tire pour accéder aux disques. Seules les étagères haute capacité ont des tiroirs. La protection contre la perte de tiroir garantit l'accessibilité aux données sur les volumes d'un pool ou d'un groupe de volumes en cas de perte totale de communication avec un seul tiroir. Un exemple de perte totale de communication pourrait être une coupure de courant du tiroir ou la défaillance d'un composant interne du tiroir.
+
+[NOTE]
+====
+La protection contre la perte d'accès à un tiroir n'est pas garantie si un disque a déjà subi une défaillance dans le pool ou le groupe de volumes. Dans cette situation, la perte d'accès à un tiroir (et par conséquent à un autre disque dans le pool ou le groupe de volumes) entraîne une perte de données.
+
+====
+Les critères de protection contre la perte des tiroirs dépendent de la méthode de protection, comme décrit dans le tableau suivant :
+
+[cols="1a,1a,1a"]
+|===
+| Niveau | Critères de protection contre la perte de tiroir | Nombre minimum de tiroirs requis 
+
+
+ a| 
+Pool
+ a| 
+Les disques candidats doivent provenir de tous les tiroirs, et il doit y avoir un nombre égal de disques dans chaque tiroir.
+
+Le pool doit inclure des disques provenant d'au moins cinq tiroirs et il doit y avoir un nombre égal de disques dans chaque tiroir.
+
+Une baie de 60 disques peut bénéficier d'une protection contre la perte de tiroir lorsque le pool contient 15, 20, 25, 30, 35, 40, 45, 50, 55 ou 60 disques. Des incréments de 5 peuvent être ajoutés au pool après la création initiale.
+ a| 
+5
+
+
+
+ a| 
+RAID 6
+ a| 
+Le groupe de volumes ne contient pas plus de deux lecteurs dans un seul tiroir.
+ a| 
+3
+
+
+
+ a| 
+RAID 3 ou RAID 5
+ a| 
+Chaque disque du groupe de volumes est situé dans un tiroir séparé.
+ a| 
+3
+
+
+
+ a| 
+RAID 1
+ a| 
+Chaque disque dur d'une paire en miroir doit être placé dans un tiroir séparé.
+ a| 
+2
+
+
+
+ a| 
+RAID 0
+ a| 
+Impossible d'obtenir la protection contre la perte du tiroir.
+ a| 
+Non Concerné
+
+|===
+
+
+== Que sont les cycles d'apprentissage de la batterie ?
+
+Un cycle d'apprentissage est un cycle automatique permettant de calibrer l'indicateur de batterie intelligent.
+
+Un cycle d'apprentissage se compose des phases suivantes :
+
+* Décharge contrôlée de la batterie
+* période de repos
+* Charge
+
+
+Les batteries sont déchargées jusqu'à un seuil prédéterminé. Durant cette phase, l'indicateur de batterie est calibré.
+
+Un cycle d'apprentissage nécessite ces paramètres :
+
+* Batteries entièrement chargées
+* Aucune batterie en surchauffe
+
+
+Les cycles d'apprentissage pour les systèmes de contrôleurs duplex se produisent simultanément. Pour les contrôleurs disposant d'une alimentation de secours provenant de plusieurs batteries ou ensembles de cellules de batterie, les cycles d'apprentissage se produisent de manière séquentielle.
+
+Les cycles d'apprentissage sont programmés pour démarrer automatiquement à intervalles réguliers, à la même heure et le même jour de la semaine. L'intervalle entre les cycles est décrit en semaines.
+
+[NOTE]
+====
+Un cycle d'apprentissage peut prendre plusieurs heures pour se terminer.
+
+====

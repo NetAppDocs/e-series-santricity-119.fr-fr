@@ -1,0 +1,105 @@
+---
+permalink: sm-storage/create-host-manually.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, create, host, manually 
+summary: 'Pour les hôtes qui ne peuvent pas être détectés automatiquement, vous pouvez créer un hôte manuellement. La création d"un hôte est une des étapes nécessaires pour que la baie de stockage sache quels hôtes y sont connectés et pour autoriser l"accès en E/S aux volumes.' 
+---
+= Créer un hôte manuellement dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Pour les hôtes qui ne peuvent pas être détectés automatiquement, vous pouvez créer un hôte manuellement. La création d'un hôte est une des étapes nécessaires pour que la baie de stockage sache quels hôtes y sont connectés et pour autoriser l'accès en E/S aux volumes.
+
+.À propos de cette tâche
+Gardez ces consignes à l'esprit lorsque vous créez un hôte :
+
+* Vous devez définir les ports d'identifiant d'hôte qui sont associés à l'hôte.
+* Assurez-vous de fournir le même nom que le nom attribué au système hôte.
+* Cette opération ne réussit pas si le nom que vous choisissez est déjà utilisé.
+* La longueur du nom ne peut pas dépasser 30 caractères.
+
+
+.Étapes
+. Sélectionnez le menu : Storage[Hosts].
+. Cliquez sur menu : Create[Host].
++
+La boîte de dialogue Create Host apparaît.
+
+. Sélectionnez les paramètres de l'hôte selon vos besoins.
++
+.Détails du champ
+[%collapsible]
+====
+[cols="25h,~"]
+|===
+| Paramètre | Description 
+
+
+ a| 
+Nom
+ a| 
+Saisissez un nom pour le nouvel hôte.
+
+
+
+ a| 
+Type de système d'exploitation hôte
+ a| 
+Sélectionnez le système d'exploitation qui s'exécute sur le nouvel hôte dans la liste déroulante.
+
+
+
+ a| 
+type d'interface d'hôte
+ a| 
+(Facultatif) Si votre baie de stockage prend en charge plusieurs types d'interface d'hôte, sélectionnez le type d'interface d'hôte que vous souhaitez utiliser.
+
+
+
+ a| 
+ports hôtes
+ a| 
+Effectuez l'une des opérations suivantes :
+
+** *Sélectionnez l'interface d'E/S*
++
+En règle générale, les ports hôtes devraient être connectés et disponibles dans la liste déroulante. Vous pouvez sélectionner les identifiants des ports hôtes dans la liste.
+
+** *Ajout manuel*
++
+Si un identifiant de port hôte n'apparaît pas dans la liste, cela signifie que le port hôte ne s'est pas connecté. Un utilitaire HBA ou l'utilitaire d'initiateur iSCSI peut être utilisé pour trouver les identifiants de port hôte et les associer à l'hôte.
+
++
+Vous pouvez saisir manuellement les identifiants de port hôte ou les copier/coller depuis l'utilitaire (un à la fois) dans le champ *Host ports*.
+
++
+Vous devez sélectionner un identifiant de port hôte à la fois pour l'associer à l'hôte, mais vous pouvez continuer à sélectionner autant d'identifiants qui sont associés à l'hôte. Chaque identifiant est affiché dans le champ *Ports hôtes*. Si nécessaire, vous pouvez également supprimer un identifiant en sélectionnant le *X* à côté de celui-ci.
+
+
+
+
+
+ a| 
+Initiateur CHAP
+ a| 
+(Facultatif) Si vous avez sélectionné ou saisi manuellement un port hôte avec un IQN iSCSI, et si vous souhaitez exiger qu'un hôte tentant d'accéder à la baie de stockage s'authentifie à l'aide du protocole Challenge Handshake Authentication Protocol (CHAP), sélectionnez la case à cocher *CHAP initiator*. Pour chaque port hôte iSCSI sélectionné ou saisi manuellement, procédez comme suit :
+
+** Saisissez la même clé secrète CHAP que celle configurée sur chaque initiateur iSCSI pour la méthode d'authentification CHAP. Si vous utilisez la méthode d'authentification CHAP mutuelle (authentification bidirectionnelle permettant à un hôte de s'authentifier auprès de la baie de stockage et à la baie de stockage de s'authentifier auprès de l'hôte), vous devez également définir la clé secrète CHAP de la baie de stockage lors de la configuration initiale ou en modifiant les paramètres.
+** Laissez le champ vide si vous n'avez pas besoin d'authentification de l'hôte.
+
+
+Actuellement, la seule méthode d'authentification iSCSI utilisée par System Manager est CHAP.
+
+|===
+====
+. Cliquez sur *Créer*.
+
+
+.Résultats
+Une fois l’hôte créé avec succès, le système crée un nom par défaut pour chaque port hôte configuré pour l’hôte (étiquette utilisateur).
+
+L'alias par défaut est <``Hostname_Port Number``>. Par exemple, l'alias par défaut du premier port créé pour  `host IPT is IPT_1`.

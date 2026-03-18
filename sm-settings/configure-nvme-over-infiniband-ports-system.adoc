@@ -1,0 +1,37 @@
+---
+permalink: sm-settings/configure-nvme-over-infiniband-ports-system.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, configure, nvme, over, InfiniBand, ports, 
+summary: Si votre contrôleur inclut une connexion NVMe over InfiniBand, vous pouvez configurer les paramètres du port NVMe depuis la page Système. 
+---
+= Configurer les ports NVMe sur InfiniBand dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Si votre contrôleur inclut une connexion NVMe over InfiniBand, vous pouvez configurer les paramètres du port NVMe depuis la page Système.
+
+.Avant de commencer
+* Votre contrôleur doit inclure un port hôte NVMe over InfiniBand ; sinon, les paramètres NVMe over InfiniBand ne sont pas disponibles dans System Manager.
+* Vous devez connaître l'adresse IP de la connexion hôte.
+
+
+[NOTE]
+====
+Les paramètres et fonctions NVMe over InfiniBand n'apparaissent que si le contrôleur de votre baie de stockage inclut un port NVMe over InfiniBand.
+
+====
+.Étapes
+. Sélectionnez menu : Paramètres [System].
+. Sous *Paramètres NVMe sur InfiniBand*, sélectionnez *Configurer les ports NVMe sur InfiniBand*.
+. Sélectionnez le contrôleur avec le port NVMe over InfiniBand que vous souhaitez configurer. Cliquez sur *Suivant*.
+. Sélectionnez le port HIC que vous souhaitez configurer dans la liste déroulante, puis saisissez l'adresse IP.
++
+Si vous configurez une baie de stockage EF600 avec un HIC compatible 200Gb, cette boîte de dialogue affiche deux champs d'adresse IP, un pour un port physique (externe) et un pour un port virtuel (interne). Vous devez attribuer une adresse IP unique à chaque port. Ces paramètres permettent à l'hôte d'établir un chemin entre chaque port, et au HIC d'atteindre des performances maximales. Si vous n'attribuez pas d'adresse IP au port virtuel, le HIC fonctionnera à environ la moitié de sa vitesse maximale.
+
+. Cliquez sur *Terminer*.
+. Réinitialisez le port NVMe via InfiniBand en cliquant sur *Oui*.
+

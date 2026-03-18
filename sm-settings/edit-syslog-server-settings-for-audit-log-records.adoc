@@ -1,0 +1,41 @@
+---
+permalink: sm-settings/edit-syslog-server-settings-for-audit-log-records.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, edit, syslog, server, settings, audit, log, records, 
+summary: 'Vous pouvez modifier les paramètres du serveur syslog utilisé pour l"archivage des journaux des audits, et également télécharger un nouveau certificat d"autorité de certification (CA) pour le serveur.' 
+---
+= Modifiez les paramètres du serveur syslog pour les enregistrements du journal des audits dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez modifier les paramètres du serveur syslog utilisé pour l'archivage des journaux des audits, et également télécharger un nouveau certificat d'autorité de certification (CA) pour le serveur.
+
+.Avant de commencer
+* Vous devez être connecté avec un profil utilisateur disposant des autorisations d'administrateur de sécurité. Sinon, les fonctions de gestion des accès ne s'affichent pas.
+* L'adresse du serveur syslog, le protocole et le numéro de port doivent être disponibles. L'adresse du serveur peut être un domaine complet, une adresse IPv4 ou une adresse IPv6.
+* Si vous téléchargez un nouveau certificat d'autorité de certification, le certificat doit être disponible sur votre système local.
+
+
+.Étapes
+. Sélectionnez le menu : Settings [Gestion des accès].
+. Dans l'onglet journal des audits, sélectionnez *Configurer les serveurs Syslog*.
++
+Les serveurs syslog configurés sont affichés sur la page.
+
+. Pour modifier les informations du serveur, sélectionnez l'icône *Modifier* (crayon) à droite du nom du serveur, puis apportez les modifications souhaitées dans les champs suivants :
++
+** *Adresse du serveur* -- Entrez un domaine complet, une adresse IPv4 ou une adresse IPv6.
+** *Protocole* -- Sélectionnez un protocole dans la liste déroulante (par exemple, TLS, UDP ou TCP).
+** *Port* -- Entrez le numéro de port pour le récepteur syslog.
+
+
+. Si vous avez modifié le protocole pour utiliser le protocole sécurisé TLS (à partir d'UDP ou de TCP), cliquez sur *Importer un certificat de confiance* pour télécharger un certificat CA.
+. Pour tester la nouvelle connexion avec la baie de stockage, sélectionnez *Test All*.
+
+
+.Résultats
+Après la configuration, tous les nouveaux journaux des audits sont envoyés au serveur syslog. Les journaux précédents ne sont pas transférés.

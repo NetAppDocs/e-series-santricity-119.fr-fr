@@ -1,0 +1,37 @@
+---
+permalink: sm-storage/delete-snapshot-volume.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, delete, snapshot, volume 
+summary: 'Vous pouvez supprimer un volume de snapshot ou un volume de snapshot de groupe de cohérence qui n"est plus nécessaire à des fins de sauvegarde ou de test d"applications logicielles.' 
+---
+= Supprimer un volume snapshot dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez supprimer un volume de snapshot ou un volume de snapshot de groupe de cohérence qui n'est plus nécessaire à des fins de sauvegarde ou de test d'applications logicielles.
+
+Vous pouvez également spécifier si vous souhaitez supprimer le volume de capacité réservée de l’instantané associé à un  `read-write` volume d’instantané ou conserver le volume de capacité réservée de l’instantané en tant que volume non attribué.
+
+.À propos de cette tâche
+La suppression d'un volume de base supprime automatiquement tout volume de snapshot associé ou tout volume de snapshot de groupe de cohérence associé. Vous ne pouvez pas supprimer un volume de snapshot qui fait partie d'une copie de volume avec un statut de *In Progress*.
+
+.Étapes
+. Sélectionnez le menu : Storage[Snapshots].
+. Sélectionnez l’onglet *Snapshot Volumes*.
++
+System Manager affiche tous les volumes d'instantanés associés à la baie de stockage.
+
+. Sélectionnez le volume d'instantané que vous souhaitez supprimer, puis sélectionnez menu:Uncommon Tasks[Delete].
+. Confirmez que vous souhaitez effectuer l'opération, puis cliquez sur *Supprimer*.
+
+
+.Résultats
+System Manager effectue les actions suivantes :
+
+* Supprime tous les volumes d'instantanés membres (pour un volume d'instantané de groupe de cohérence d'instantanés).
+* Supprime toutes les affectations d'hôtes associées.
+

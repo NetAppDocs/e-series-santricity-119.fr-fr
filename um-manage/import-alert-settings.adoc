@@ -1,0 +1,54 @@
+---
+permalink: um-manage/import-alert-settings.html 
+sidebar: sidebar 
+keywords: SANtricity, Unified Manager, E-Series, import, alert, settings 
+summary: 'Vous pouvez importer les configurations d"alerte d"une baie de stockage vers d"autres baies de stockage. Cette opération par lots permet de gagner du temps lorsque vous devez configurer plusieurs baies de stockage dans le réseau.' 
+---
+= Importer les paramètres d'alerte dans SANtricity Unified Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez importer les configurations d'alerte d'une baie de stockage vers d'autres baies de stockage. Cette opération par lots permet de gagner du temps lorsque vous devez configurer plusieurs baies de stockage dans le réseau.
+
+.Avant de commencer
+* Les alertes sont configurées dans System Manager pour la baie de stockage que vous souhaitez utiliser comme source (menu:Paramètres[Alertes]).
+* La configuration existante des baies de stockage cibles est sauvegardée dans System Manager (menu: Paramètres [Système > Enregistrer la configuration de la baie de stockage]).
+
+
+.À propos de cette tâche
+Vous pouvez sélectionner les alertes par e-mail, SNMP ou syslog pour l'opération d'importation. Les paramètres importés comprennent :
+
+* *Alertes par courriel* -- Une adresse de serveur de messagerie et les adresses courriel des destinataires des alertes.
+* *Alertes Syslog* -- Une adresse de serveur syslog et un port UDP.
+* *Alertes SNMP* -- Un nom de communauté et une adresse IP pour le serveur SNMP.
+
+
+.Étapes
+. Depuis la page Manage, cliquez sur *Import Settings*.
++
+L'assistant d'importation des paramètres s'ouvre.
+
+. Dans la boîte de dialogue Sélectionner les paramètres, sélectionnez soit *Alertes par e-mail*, *Alertes SNMP* ou *Alertes Syslog*, puis cliquez sur *Suivant*.
++
+Une boîte de dialogue s'ouvre pour sélectionner le tableau source.
+
+. Dans la boîte de dialogue Select Source, sélectionnez l'array avec les paramètres que vous souhaitez importer, puis cliquez sur *Next*.
+. Dans la boîte de dialogue Select Targets, sélectionnez un ou plusieurs arrays pour recevoir les nouveaux paramètres.
++
+[NOTE]
+====
+Les baies de stockage dont le firmware est inférieur à 8.50 ne sont pas disponibles pour la sélection. De plus, une baie n'apparaît pas dans cette boîte de dialogue si Unified Manager ne peut pas communiquer avec cette baie (par exemple, si elle est hors ligne ou si elle présente des problèmes de certificat, de mot de passe ou de réseau).
+
+====
+. Cliquez sur *Terminer*.
++
+La page Opérations affiche les résultats de l'opération d'importation. Si l'opération échoue, vous pouvez cliquer sur sa ligne pour voir plus d'informations.
+
+
+
+.Résultats
+Les baies de stockage cibles sont désormais configurées pour envoyer des alertes aux administrateurs par email, SNMP ou syslog.

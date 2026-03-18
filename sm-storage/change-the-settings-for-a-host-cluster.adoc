@@ -1,0 +1,50 @@
+---
+permalink: sm-storage/change-the-settings-for-a-host-cluster.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, settings, host, cluster 
+summary: 'Vous pouvez modifier le nom du cluster d"hôtes ou ajouter ou supprimer des hôtes dans un cluster d"hôtes.' 
+---
+= Modifiez les paramètres d'un cluster hôte dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez modifier le nom du cluster d'hôtes ou ajouter ou supprimer des hôtes dans un cluster d'hôtes.
+
+.Étapes
+. Sélectionnez le menu : Storage[Hosts].
+. Sélectionnez le cluster hôte que vous souhaitez modifier, puis cliquez sur *Afficher/Modifier les paramètres*.
++
+Une boîte de dialogue s'affiche qui montre les paramètres actuels du cluster hôte.
+
+. Modifiez les paramètres du cluster hôte selon vos besoins.
++
+.Détails du champ
+[%collapsible]
+====
+[cols="25h,~"]
+|===
+| Paramètre | Description 
+
+
+ a| 
+Nom
+ a| 
+Vous pouvez spécifier le nom du cluster hôte fourni par l'utilisateur. La spécification d'un nom pour un cluster est obligatoire.
+
+
+
+ a| 
+Hôtes associés
+ a| 
+Pour ajouter un hôte, cliquez sur la case *Hôtes associés*, puis sélectionnez un nom de l'hôte dans la liste déroulante. Vous ne pouvez pas saisir manuellement un nom de l'hôte.
+
+Pour supprimer un hôte, cliquez sur le *X* à côté du nom de l'hôte.
+
+|===
+====
+. Cliquez sur *Enregistrer*.
+

@@ -1,0 +1,40 @@
+---
+permalink: sm-support/collect-support-data-manually.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, collect, support, data, manually 
+summary: 'Vous pouvez rassembler différents types de données d"inventaire, d"état et de performance concernant votre baie de stockage dans un seul fichier. Le support technique peut utiliser le fichier pour le dépannage et une analyse plus approfondie.' 
+---
+= Collectez manuellement les données de support dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez rassembler différents types de données d'inventaire, d'état et de performance concernant votre baie de stockage dans un seul fichier. Le support technique peut utiliser le fichier pour le dépannage et une analyse plus approfondie.
+
+.À propos de cette tâche
+++ ++
+
+[NOTE]
+====
+Si la fonctionnalité AutoSupport est activée, vous pouvez également collecter ces données en allant dans l’onglet *AutoSupport* et en sélectionnant *Envoyer un envoi AutoSupport*.
+
+====
+Vous ne pouvez exécuter qu'une seule opération de collecte à la fois. Si vous tentez d'en démarrer une autre, vous recevez un message d'erreur.
+
+[NOTE]
+====
+N’effectuez cette opération que sur instruction du support technique.
+
+====
+.Étapes
+. Sélectionnez le menu : Support [Support Center > Diagnostics] onglet.
+. Sélectionnez *Collect Support Data*.
+. Cliquez sur *Collect*.
++
+Le fichier est enregistré dans le dossier Téléchargements de votre navigateur sous le nom `support-data.7z`. Si votre étagère contient des tiroirs, les données de diagnostic de cette étagère sont archivées dans un fichier zip distinct nommé `tray-component-state-capture.7z`.
+
+. Suivez les instructions fournies par le support technique pour leur envoyer le fichier.
+

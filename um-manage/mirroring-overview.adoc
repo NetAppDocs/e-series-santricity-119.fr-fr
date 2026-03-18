@@ -1,0 +1,76 @@
+---
+permalink: um-manage/mirroring-overview.html 
+sidebar: sidebar 
+keywords: SANtricity, Unified Manager, E-Series, mirroring, 
+summary: Unified Manager inclut des options de configuration pour les fonctionnalités de mise en miroir SANtricity, qui permettent aux administrateurs de répliquer des données entre deux baies de stockage pour la protection des données. 
+---
+= Découvrez la mise en miroir SANtricity
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SANtricity Unified Manager inclut des options de configuration pour les fonctionnalités de mise en miroir SANtricity, qui permettent aux administrateurs de répliquer les données entre deux baies de stockage pour la protection des données.
+
+[NOTE]
+====
+La mise en miroir synchrone n'est pas disponible sur le système de stockage EF600/EF600C ou EF300/EF300C.
+
+====
+
+
+== Types de mise en miroir
+
+Les applications SANtricity incluent deux types de mise en miroir : asynchrone et synchrone.
+
+La réplication asynchrone copie les volumes de données à la demande ou selon une planification, ce qui minimise ou évite l'interruption pouvant résulter de la corruption des données ou de la perte de données. La réplication asynchrone capture l'état du volume principal à un instant donné et copie uniquement les données qui ont changé depuis la dernière capture d'image. Le site principal peut être mis à jour immédiatement et le site secondaire peut être mis à jour en fonction de la bande passante disponible. Les informations sont mises en cache et envoyées ultérieurement, à mesure que les ressources réseau deviennent disponibles. Ce type de réplication est idéal pour les processus périodiques tels que la sauvegarde et l'archivage.
+
+La mise en miroir synchrone réplique les volumes de données en temps réel afin de garantir une disponibilité continue. Le but est d’atteindre un objectif de point de reprise (RPO) de zéro perte de données en ayant une copie des données importantes disponible si un sinistre survient sur l’une des deux baies de stockage. La copie est identique aux données de production à chaque instant, car chaque fois qu’une écriture est effectuée sur le volume principal, une écriture est effectuée sur le volume secondaire. L’hôte ne reçoit une confirmation de réussite de l’écriture que lorsque le volume secondaire est mis à jour avec les modifications apportées sur le volume principal. Ce type de mise en miroir est idéal pour la continuité d’activité, comme la reprise après sinistre.
+
+
+
+== Différences entre les types de mise en miroir
+
+Le tableau suivant décrit les principales différences entre les deux types de mise en miroir.
+
+[cols="1a,1a,1a"]
+|===
+| Attribut | Asynchrone | Synchrone 
+
+
+ a| 
+Méthode de réplication
+ a| 
+Mise en miroir à un instant précis -- La mise en miroir est effectuée à la demande ou automatiquement selon une planification définie par l'utilisateur.
+ a| 
+En continu -- La mise en miroir est exécutée automatiquement et en continu, copiant les données à chaque écriture sur l'hôte.
+
+
+
+ a| 
+Distance
+ a| 
+Prend en charge les grandes distances entre les arrays. En règle générale, la distance est uniquement limitée par les capacités du réseau et la technologie d'extension de canal.
+ a| 
+L'utilisation est limitée aux courtes distances entre les baies de stockage. En règle générale, la distance doit être inférieure à 10 km (6,2 miles) de la baie de stockage locale pour respecter les exigences de latence et de performance de l'application.
+
+
+
+ a| 
+Méthode de communication
+ a| 
+Un réseau IP ou Fibre Channel standard.
+ a| 
+Réseau Fibre Channel uniquement.
+
+
+
+ a| 
+Types de volume
+ a| 
+Standard ou thin.
+ a| 
+Standard uniquement.
+
+|===

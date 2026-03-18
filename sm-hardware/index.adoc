@@ -1,0 +1,14 @@
+---
+permalink: sm-hardware/index.html 
+sidebar: sidebar 
+keywords:  
+summary:  
+---
+= SANtricity System Manager 11.9
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez vérifier l'état des composants sur la page Matériel et effectuer certaines fonctions liées à ces composants.

@@ -1,0 +1,33 @@
+---
+permalink: sm-support/schedule-autosupport-dispatches.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, schedule, autosupport, dispatches 
+summary: System Manager crée automatiquement une planification par défaut pour AutoSupport dispatches. Si vous le souhaitez, vous pouvez spécifier votre propre planification. 
+---
+= Planifiez les envois AutoSupport dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SANtricity System Manager crée automatiquement une planification par défaut pour les envois AutoSupport. Si vous le souhaitez, vous pouvez spécifier votre propre planification.
+
+.Avant de commencer
+La fonctionnalité AutoSupport doit être activée. Vous pouvez vérifier si elle est activée sur la page AutoSupport.
+
+.À propos de cette tâche
+* *Heure quotidienne* -- les envois quotidiens sont collectés et envoyés chaque jour pendant la plage horaire que vous spécifiez. System Manager sélectionne une heure aléatoire pendant la plage. Toutes les heures sont en temps universel coordonné (UTC), ce qui peut être différent de l'heure locale de la baie de stockage. Vous devez convertir l'heure locale de votre baie de stockage en UTC.
+* *Journée hebdomadaire* -- Les envois hebdomadaires sont collectés et envoyés une fois par semaine. System Manager sélectionne un jour aléatoire parmi les jours que vous spécifiez. Désélectionnez les jours pour lesquels vous ne souhaitez pas autoriser un envoi hebdomadaire. System Manager sélectionne un jour aléatoire parmi les jours que vous autorisez.
+* *Heure hebdomadaire* -- Les envois hebdomadaires sont collectés et expédiés une fois par semaine pendant la plage horaire que vous spécifiez. System Manager sélectionne une heure aléatoire dans cette plage. Toutes les heures sont exprimées en temps universel coordonné (UTC), qui peut différer de l'heure locale de la baie de stockage. Vous devez convertir l'heure locale de la baie de stockage en UTC.
+
+
+.Étapes
+. Sélectionnez le menu : Support [Support Center > AutoSupport] onglet.
+. Sélectionnez *Schedule AutoSupport Dispatches*.
++
+L'assistant de planification des envois AutoSupport s'affiche.
+
+. Suivez les étapes de l'assistant.
+

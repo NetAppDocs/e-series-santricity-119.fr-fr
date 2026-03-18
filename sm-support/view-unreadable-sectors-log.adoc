@@ -1,0 +1,58 @@
+---
+permalink: sm-support/view-unreadable-sectors-log.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, view, unreadable, sectors, log 
+summary: Vous pouvez enregistrer le journal des secteurs illisibles et envoyer le fichier au support technique pour analyse. 
+---
+= Afficher le journal des secteurs illisibles dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez enregistrer le journal des secteurs illisibles et envoyer le fichier au support technique pour analyse.
+
+.À propos de cette tâche
+Le journal des secteurs illisibles contient des enregistrements détaillés des secteurs illisibles causés par des disques signalant des erreurs de support irrécupérables. Les secteurs illisibles sont détectés lors des opérations d'E/S normales et lors des opérations de modification, telles que les reconstructions. Lorsqu'un secteur illisible est détecté sur une baie de stockage, une alerte Needs Attention apparaît pour la baie de stockage. Le Recovery Guru distingue quelle condition de secteur illisible nécessite une attention. Toute donnée contenue dans un secteur illisible ne peut pas être récupérée et doit être considérée comme perdue.
+
+Le journal des secteurs illisibles peut stocker jusqu'à 1 000 secteurs illisibles. Lorsque le journal des secteurs illisibles atteint 1 000 entrées, les conditions suivantes s'appliquent :
+
+* Si de nouveaux secteurs illisibles sont détectés pendant la reconstruction, la reconstruction échoue et aucune entrée n'est enregistrée.
+* Pour les nouveaux secteurs illisibles détectés lors des E/S, l'E/S échoue et aucune entrée n'est enregistrée.
++
+[NOTE]
+====
+Ces actions comprennent les écritures RAID 5 et les écritures RAID 6 qui auraient réussi avant le débordement.
+
+====
+
+
+[CAUTION]
+====
+*Risque de perte de données* -- La récupération à partir de secteurs illisibles est une procédure complexe qui peut impliquer plusieurs méthodes. N’effectuez cette opération que sur instruction du support technique.
+
+====
+.Étapes
+. Sélectionnez le menu : Support [Support Center > Diagnostics] onglet.
+. Sélectionnez *Afficher/Effacer les secteurs illisibles*.
+. Pour enregistrer le journal des secteurs illisibles :
++
+.. Dans la première colonne du tableau, vous pouvez soit sélectionner les volumes individuels pour lesquels vous souhaitez enregistrer le journal des secteurs illisibles (cochez la case à cocher à côté de chaque volume), soit sélectionner tous les volumes (cochez la case à cocher dans l'en-tête du tableau).
++
+Pour trouver des volumes particuliers, vous pouvez trier n'importe quelle colonne ou saisir des caractères dans la zone *Filter*.
+
+.. Cliquez sur *Enregistrer*.
+
+
++
+Le fichier est enregistré dans le dossier Téléchargements de votre navigateur sous le nom `unreadable-sectors.txt`.
+
+. Si le support technique vous demande d'effacer le journal des secteurs illisibles, procédez comme suit :
++
+.. Dans la première colonne du tableau, vous pouvez soit sélectionner les volumes individuels pour lesquels vous souhaitez effacer le journal des secteurs illisibles (cochez la case à cocher à côté de chaque volume), soit sélectionner tous les volumes (cochez la case à cocher dans l'en-tête du tableau).
+.. Cliquez sur *Effacer*, et confirmez que vous souhaitez effectuer l'opération.
+
+
+

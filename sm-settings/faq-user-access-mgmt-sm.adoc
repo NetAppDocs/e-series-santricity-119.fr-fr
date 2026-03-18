@@ -1,0 +1,202 @@
+---
+permalink: sm-settings/faq-user-access-mgmt-sm.html 
+sidebar: sidebar 
+keywords:  
+summary: Cette FAQ peut vous aider si vous cherchez simplement une réponse rapide à une question. 
+---
+= FAQ sur la gestion des accès utilisateurs pour SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Cette FAQ peut vous aider si vous cherchez simplement une réponse rapide à une question.
+
+
+
+== Pourquoi je n'arrive pas à me connecter
+
+Si vous recevez une erreur lors de votre tentative de connexion à SANtricity System Manager, examinez ces causes possibles.
+
+Des erreurs de connexion à System Manager peuvent survenir pour l'une des raisons suivantes :
+
+* Vous avez saisi un nom d'utilisateur ou un mot de passe incorrect.
+* Vous ne disposez pas de privilèges suffisants.
+* Le serveur d'annuaire (s'il est configuré) est peut-être indisponible. Si c'est le cas, essayez de vous connecter avec un rôle utilisateur local.
+* Vous avez tenté de vous connecter à plusieurs reprises sans succès, ce qui a déclenché le mode de verrouillage. Attendez 10 minutes pour vous reconnecter.
+* Un verrouillage a été déclenché et votre journal des audits est peut-être plein. Accédez à la gestion des accès et supprimez les anciens événements du journal des audits.
+* L'authentification SAML est activée. Actualisez votre navigateur pour vous connecter.
+
+
+Des erreurs de connexion à une baie de stockage distante pour les tâches de mise en miroir peuvent survenir pour l'une des raisons suivantes :
+
+* Vous avez saisi un mot de passe incorrect.
+* Vous avez tenté de vous connecter à plusieurs reprises sans succès, ce qui a déclenché le mode de verrouillage. Attendez 10 minutes pour vous reconnecter.
+* Le nombre maximal de connexions client utilisées sur le contrôleur a été atteint. Vérifiez s'il y a plusieurs utilisateurs ou clients.
+
+
+
+
+== Que dois-je savoir avant d'ajouter un serveur d'annuaire ?
+
+Avant d'ajouter un serveur d'annuaire dans la gestion des accès, assurez-vous de respecter les exigences suivantes.
+
+* Les groupes d'utilisateurs doivent être définis dans votre service d'annuaire.
+* Les informations d'identification du serveur LDAP doivent être disponibles, notamment le nom de domaine, l'URL du serveur et, éventuellement, le nom d'utilisateur et le mot de passe du compte de liaison.
+* Pour les serveurs LDAPS utilisant un protocole sécurisé, la chaîne de certificats du serveur LDAP doit être installée sur votre machine locale.
+
+
+
+
+== Que dois-je savoir sur le mappage aux rôles des baies de stockage ?
+
+Avant d'associer des groupes à des rôles, examinez les directives suivantes.
+
+Les fonctionnalités RBAC (contrôle d'accès basé sur les rôles) intégrées à la baie de stockage incluent les rôles suivants :
+
+* *Administrateur de stockage* -- Accès complet en lecture/écriture aux objets de stockage (par exemple, volumes et disk pools), mais aucun accès à la configuration de sécurité.
+* *Administrateur de sécurité* -- Accès à la configuration de sécurité dans la gestion des accès, la gestion des certificats, la gestion du journal des audits et la possibilité d'activer ou de désactiver l'interface de gestion héritée (SYMbol).
+* *Administrateur support* -- Accès à toutes les ressources matérielles de la baie de stockage, aux données de panne, aux événements MEL et aux mises à niveau du micrologiciel du contrôleur. Aucun accès aux objets de stockage ni à la configuration de sécurité.
+* *Moniteur* -- Accès en lecture seule à tous les objets de stockage, mais aucun accès à la configuration de sécurité.
+
+
+
+
+=== Services d'annuaire
+
+Si vous utilisez un serveur LDAP (Lightweight Directory Access Protocol) et Directory Services, assurez-vous que :
+
+* Un administrateur a défini des groupes d'utilisateurs dans le service d'annuaire.
+* Vous connaissez les noms de domaine des groupes d'utilisateurs LDAP. Les expressions régulières sont prises en charge. Ces caractères spéciaux d'expressions régulières doivent être précédés d'une barre oblique inverse (`\`) s'ils ne font pas partie d'un motif d'expression régulière :
++
+[listing]
+----
+\.[]{}()<>*+-=!?^$|
+----
+* Le rôle de Monitor est requis pour tous les utilisateurs, y compris l'administrateur. System Manager ne fonctionnera pas correctement pour tout utilisateur sans le rôle Monitor.
+
+
+
+
+=== SAML
+
+Si vous utilisez les fonctionnalités Security Assertion Markup Language (SAML) intégrées à la baie de stockage, assurez-vous que :
+
+* Un administrateur d'Identity Provider (IdP) a configuré les attributs des utilisateurs et l'appartenance aux groupes dans le système IdP.
+* Vous connaissez les noms d'appartenance au groupe.
+* Vous connaissez la valeur de l'attribut du groupe à mapper. Les expressions régulières sont prises en charge. Ces caractères spéciaux d'expression régulière doivent être précédés d'un antislash (`\`) s'ils ne font pas partie d'un modèle d'expression régulière :
++
+[listing]
+----
+\.[]{}()<>*+-=!?^$|
+----
+* Le rôle de Monitor est requis pour tous les utilisateurs, y compris l'administrateur. System Manager ne fonctionnera pas correctement pour tout utilisateur sans le rôle Monitor.
+
+
+
+
+== Quels outils de gestion externes peuvent être affectés par ce changement ?
+
+Lorsque vous effectuez certaines modifications dans SANtricity System Manager, comme le changement de l'interface de gestion ou l'utilisation de SAML comme méthode d'authentification, certains outils et fonctionnalités externes peuvent être restreints.
+
+
+
+=== Interface de gestion
+
+Les outils qui communiquent directement avec l'interface de gestion héritée (SYMbol), tels que le SANtricity SMI-S Provider ou OnCommand Insight (OCI), ne fonctionnent pas à moins que le paramètre Interface de gestion héritée ne soit activé. De plus, vous ne pouvez pas utiliser les commandes CLI héritées ni effectuer d'opérations de mise en miroir si ce paramètre est désactivé.
+
+Contactez le support technique pour plus d'informations.
+
+
+
+=== Authentification SAML
+
+Lorsque SAML est activé, les clients suivants ne peuvent pas accéder aux services et ressources de la baie de stockage :
+
+* Fenêtre de gestion d'entreprise (EMW)
+* Interface de ligne de commande (CLI)
+* Clients des Software Developer Kits (SDK)
+* Clients intégrés
+* Clients REST API avec authentification HTTP de base
+* Connexion à l'aide du point de terminaison standard de l'API REST
+
+
+Contactez le support technique pour plus d'informations.
+
+
+
+== Que dois-je savoir avant de configurer et d'activer SAML ?
+
+Avant de configurer et d'activer les fonctionnalités du Security Assertion Markup Language (SAML) pour l'authentification, assurez-vous de respecter les exigences suivantes et de comprendre les restrictions SAML.
+
+
+
+=== Exigences
+
+Avant de commencer, assurez-vous que :
+
+* Un fournisseur d'identité (IdP) est configuré dans votre réseau. Un IdP est un système externe utilisé pour demander les identifiants d'un utilisateur et déterminer si l'utilisateur est authentifié avec succès. Votre équipe de sécurité est responsable de la maintenance de l'IdP.
+* Un administrateur IdP a configuré les attributs d'utilisateurs et les groupes dans le système IdP.
+* Un administrateur IdP s'est assuré que l'IdP prend en charge la capacité de renvoyer un Name ID lors de l'authentification.
+* Un administrateur s'est assuré que les horloges du serveur IdP et du contrôleur sont synchronisées (soit via un serveur NTP, soit en ajustant les paramètres d'horloge du contrôleur).
+* Un fichier de métadonnées IdP est téléchargé depuis le système IdP et disponible sur le système local utilisé pour accéder à System Manager.
+* Vous connaissez l'adresse IP ou le nom de domaine de chaque contrôleur de la baie de stockage.
+
+
+
+
+=== Restrictions
+
+En plus des exigences mentionnées ci-dessus, assurez-vous de bien comprendre les restrictions suivantes :
+
+* Une fois SAML activé, vous _ne pouvez pas_ le désactiver via l'interface utilisateur, ni modifier les paramètres de l'IdP. Si vous devez désactiver ou modifier la configuration SAML, contactez le support technique pour obtenir de l'aide. Nous recommandons de tester les connexions SSO avant d'activer SAML lors de l'étape finale de configuration. (Le système effectue également un test de connexion SSO avant d'activer SAML.)
+* Si vous désactivez SAML à l'avenir, le système restaure automatiquement la configuration précédente (Local User Roles et/ou Directory Services).
+* Si les services d'annuaire sont actuellement configurés pour l'authentification des utilisateurs, SAML remplace cette configuration.
+* Lorsque SAML est configuré, les clients suivants ne peuvent pas accéder aux ressources de la storage array :
++
+** Fenêtre de gestion d'entreprise (EMW)
+** Interface de ligne de commande (CLI)
+** Clients des Software Developer Kits (SDK)
+** Clients intégrés
+** Clients REST API avec authentification HTTP de base
+** Connexion à l'aide du point de terminaison standard de l'API REST
+
+
+
+
+
+
+== Quels types d'événements sont enregistrés dans le journal des audits ?
+
+Le journal des audits peut enregistrer les événements de modification, ou les événements de modification et en lecture seule.
+
+En fonction des paramètres de stratégie, les types d'événements suivants sont affichés :
+
+* *Événements de modification* -- Actions de l'utilisateur à partir de System Manager qui impliquent des modifications du système, telles que la mise en service du stockage.
+* *Événements de modification et de lecture seule* -- Actions de l'utilisateur impliquant des modifications du système, ainsi que des événements impliquant la consultation ou le téléchargement d'informations, comme la consultation des affectations de volume.
+
+
+
+
+== Que dois-je savoir avant de configurer un serveur syslog ?
+
+Vous pouvez archiver les journaux des audits sur un serveur syslog externe.
+
+Avant de configurer un serveur syslog, gardez à l'esprit les consignes suivantes.
+
+* Assurez-vous de connaître l'adresse du serveur, le protocole et le numéro de port. L'adresse du serveur peut être un domaine complet, une adresse IPv4 ou une adresse IPv6.
+* Si votre serveur utilise un protocole sécurisé (par exemple, TLS), un certificat d'autorité de certification (CA) doit être disponible sur votre système local. Les certificats d'autorité de certification (CA) identifient les propriétaires de sites web pour des connexions sécurisées entre les serveurs et les clients.
+* Après la configuration, tous les nouveaux journaux des audits sont envoyés au serveur syslog. Les journaux précédents ne sont pas transférés.
+* Les paramètres de stratégie d'écrasement (disponibles dans *Afficher/Modifier les paramètres*) n'affectent pas la façon dont les journaux sont gérés avec une configuration de serveur syslog.
+* Les journaux des audits suivent le format de messagerie RFC 5424.
+
+
+
+
+== Le serveur syslog ne reçoit plus les journaux d'audit. Que dois-je faire ?
+
+Si vous avez configuré un serveur syslog avec un protocole TLS, le serveur ne peut pas recevoir de messages si le certificat devient invalide pour quelque raison que ce soit. Un message d'erreur concernant le certificat invalide est consigné dans le journal des audits.
+
+Pour résoudre ce problème, vous devez d'abord corriger le certificat du serveur syslog. Une fois une chaîne de certificats valide en place, accédez au menu : Settings[Audit Log > Configure Syslog Servers > Test All].

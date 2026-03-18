@@ -1,0 +1,46 @@
+---
+permalink: um-certificates/overview-access-management-um.html 
+sidebar: sidebar 
+keywords: SANtricity, Unified Manager, E-Series, access management, authentication 
+summary: 'La gestion des accès est une méthode de configuration de l"authentification des utilisateurs dans SANtricity Unified Manager.' 
+---
+= En savoir plus sur la gestion des accès SANtricity Unified Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La gestion des accès est une méthode de configuration de l'authentification des utilisateurs dans SANtricity Unified Manager.
+
+
+
+== Quelles méthodes d'authentification sont disponibles ?
+
+Les méthodes d'authentification suivantes sont disponibles :
+
+* *Rôles utilisateurs locaux* -- L'authentification est gérée par les fonctionnalités RBAC (contrôle d'accès basé sur les rôles). Les rôles utilisateurs locaux comprennent des profils et des rôles prédéfinis avec des autorisations d'accès spécifiques.
+* *Services d'annuaire* -- L'authentification est gérée via un serveur LDAP (Lightweight Directory Access Protocol) et un service d'annuaire, tel que Microsoft's Active Directory.
+* *SAML* -- L'authentification est gérée par un fournisseur d'identité (IdP) utilisant SAML 2.0.
+
+
+En savoir plus :
+
+* link:how-access-management-works-unified.html["Comment fonctionne la gestion des accès"]
+* link:access-management-terminology-unified.html["Terminologie de la gestion des accès"]
+* link:permissions-for-mapped-roles-unified.html["Autorisations pour les rôles mappés"]
+* link:access-management-with-saml.html["SAML"]
+
+
+
+
+== Comment configurer la gestion des accès ?
+
+Le logiciel SANtricity est préconfiguré pour utiliser les rôles utilisateurs locaux. Si vous souhaitez utiliser LDAP, vous pouvez le configurer sur la page Gestion des accès.
+
+En savoir plus :
+
+* link:access-management-with-local-user-roles-unified.html["Gestion des accès avec rôles d'utilisateurs locaux"]
+* link:access-management-with-directory-services-unified.html["Gestion des accès avec les services d'annuaire"]
+* link:configure-saml.html["Configurer SAML"]
+

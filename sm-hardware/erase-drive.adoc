@@ -1,0 +1,64 @@
+---
+permalink: sm-hardware/erase-drive.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, erase, drives, removal, 
+summary: 'Vous pouvez utiliser l"option Effacer pour préparer un lecteur non attribué à son retrait du système. Cette procédure supprime définitivement les données, garantissant qu"elles ne pourront plus être lues.' 
+---
+= Effacer les disques dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez utiliser l'option Effacer pour préparer un lecteur non attribué à son retrait du système. Cette procédure supprime définitivement les données, garantissant qu'elles ne pourront plus être lues.
+
+.Avant de commencer
+Le lecteur doit être dans un état non attribué.
+
+.À propos de cette tâche
+N’utilisez l’option Erase que si vous souhaitez supprimer définitivement toutes les données d’un disque. Si le disque est secure-enabled, l’option Erase effectue un effacement cryptographique et rétablit les attributs de sécurité du disque à secure-capable.
+
+[NOTE]
+====
+La fonction d'effacement n'est pas compatible avec certains modèles de disques anciens. Si vous tentez d'effacer un de ces anciens modèles, un message d'erreur s'affiche.
+
+====
+.Étapes
+. Sélectionnez *Hardware*.
+. Si le graphique affiche les contrôleurs, cliquez sur l’onglet *Lecteurs*.
++
+Le graphique change pour afficher les disques au lieu des contrôleurs.
+
+. Vous pouvez également utiliser les champs de filtre pour afficher tous les disques non attribués dans le shelf. Dans la liste déroulante *Afficher les disques qui sont...*, sélectionnez *Unassigned*.
++
+L'affichage sur l'étagère ne montre que les lecteurs non attribués ; tous les autres sont grisés.
+
+. Pour ouvrir le menu contextuel du lecteur, cliquez sur un lecteur que vous souhaitez effacer. (Si vous souhaitez sélectionner plusieurs lecteurs, vous pouvez le faire dans la boîte de dialogue Erase Drives.)
++
+[CAUTION]
+====
+*Risque de perte de données* -- L’opération d’effacement est irréversible. Assurez-vous de sélectionner les lecteurs appropriés lors de la procédure.
+
+====
+. Dans le menu contextuel, sélectionnez *Erase*.
++
+La boîte de dialogue Effacer les lecteurs s'ouvre, affichant tous les lecteurs éligibles pour une opération d'effacement.
+
+. Si vous le souhaitez, sélectionnez d'autres disques dans le tableau. Vous ne pouvez pas sélectionner _tous_ les disques ; assurez-vous qu'un disque reste désélectionné.
+. Confirmez l'opération en saisissant `erase`, puis cliquez sur *Effacer*.
++
+[CAUTION]
+====
+Assurez-vous de vouloir poursuivre cette opération. Une fois que vous aurez cliqué sur Oui dans la boîte de dialogue suivante, l'opération ne pourra plus être annulée.
+
+====
+. Dans la boîte de dialogue Estimated Completion Time, cliquez sur *Oui* pour poursuivre l'opération d'effacement.
+
+
+.Résultats
+L'opération d'effacement peut prendre de quelques minutes à plusieurs heures. Vous pouvez consulter son état dans menu:Home[View Operations in Progress]. Une fois l'opération d'effacement terminée, les disques sont disponibles pour une utilisation dans un autre groupe de volumes, un autre pool de disques ou une autre baie de stockage.
+
+.Après avoir terminé
+Pour réutiliser le lecteur, vous devez d'abord l'initialiser. Pour ce faire, sélectionnez *Initialiser* dans le menu contextuel du lecteur.

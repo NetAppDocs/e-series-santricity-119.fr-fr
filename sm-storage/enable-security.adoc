@@ -1,0 +1,36 @@
+---
+permalink: sm-storage/enable-security.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, enable, security, pool, volume group 
+summary: 'Vous pouvez activer la sécurité des disques pour un pool ou un groupe de volumes afin d"empêcher tout accès non autorisé aux données des disques contenus dans le pool ou le groupe de volumes. L"accès en lecture et en écriture aux disques n"est disponible que via un contrôleur configuré avec une clé de sécurité.' 
+---
+= Activez la sécurité pour un pool ou un groupe de volumes dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez activer la sécurité des disques pour un pool ou un groupe de volumes afin d'empêcher tout accès non autorisé aux données des disques contenus dans le pool ou le groupe de volumes. L'accès en lecture et en écriture aux disques n'est disponible que via un contrôleur configuré avec une clé de sécurité.
+
+.Avant de commencer
+* La fonction Drive Security doit être activée.
+* Une clé de sécurité doit être créée.
+* Le pool ou groupe de volumes doit être dans un état optimal.
+* Tous les disques du pool ou du groupe de volumes doivent être des disques sécurisés.
+
+
+.À propos de cette tâche
+Si vous souhaitez utiliser Drive Security, sélectionnez un pool ou un groupe de volumes qui est compatible avec la sécurité. Un pool ou un groupe de volumes peut contenir à la fois des disques compatibles avec la sécurité et des disques non compatibles, mais tous les disques doivent être compatibles avec la sécurité pour utiliser leurs capacités de chiffrement.
+
+Après avoir activé la sécurité, vous ne pouvez la supprimer qu'en supprimant le pool ou le groupe de volumes, puis en effaçant les disques.
+
+.Étapes
+. Sélectionnez le menu : Storage [Pools & Volume Groups].
+. Sélectionnez le pool ou le groupe de volumes sur lequel vous souhaitez activer la sécurité, puis cliquez sur menu:More[Enable security].
++
+La boîte de dialogue Confirmer l'activation de la sécurité s'affiche.
+
+. Confirmez que vous souhaitez activer la sécurité pour le pool ou le groupe de volumes sélectionné, puis cliquez sur *Enable*.
+

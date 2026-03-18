@@ -1,0 +1,43 @@
+---
+permalink: sm-hardware/place-controller-offline.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, place, controller, offline, 
+summary: Si on vous le demande, vous pouvez placer un contrôleur hors ligne. 
+---
+= Placez un contrôleur hors ligne dans SANtricity System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Si on vous le demande, vous pouvez placer un contrôleur hors ligne.
+
+.Avant de commencer
+* Votre baie de stockage doit comporter deux contrôleurs. Le contrôleur que vous ne mettez pas hors ligne doit être en ligne (dans l'état optimal).
+* Assurez-vous qu'aucun volume n'est utilisé ou que vous avez un pilote multipath installé sur tous les hôtes utilisant ces volumes.
+
+
+.À propos de cette tâche
+++ ++
+
+[CAUTION]
+====
+Ne mettez pas un contrôleur hors ligne sauf si vous y êtes invité par le Recovery Guru ou le support technique.
+
+====
+.Étapes
+. Sélectionnez *Hardware*.
+. Si le graphique affiche les lecteurs, cliquez sur l’onglet *Controllers & Components*.
++
+Le graphique change pour afficher les contrôleurs au lieu des disques.
+
+. Cliquez sur le contrôleur que vous souhaitez mettre hors ligne.
++
+Le menu contextuel du contrôleur apparaît.
+
+. Sélectionnez *Place offline*, puis confirmez que vous souhaitez effectuer l'opération.
+
+
+.Résultats
+La mise à jour de l'état du contrôleur à « hors ligne » par System Manager peut prendre plusieurs minutes. N'entamez aucune autre opération avant que l'état ait été mis à jour.

@@ -1,0 +1,64 @@
+---
+permalink: sm-storage/change-media-scan-settings.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, media scan settings, volume 
+summary: 'Une analyse du support est une opération en arrière-plan qui examine toutes les données et les informations de redondance du volume. Utilisez cette option pour activer ou désactiver les paramètres d"analyse du support pour un ou plusieurs volumes, ou pour modifier la durée de l"analyse.' 
+---
+= Modifiez les paramètres d'analyse des supports pour un volume dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Une analyse du support est une opération en arrière-plan qui examine toutes les données et les informations de redondance du volume. Utilisez cette option pour activer ou désactiver les paramètres d'analyse du support pour un ou plusieurs volumes, ou pour modifier la durée de l'analyse.
+
+.Avant de commencer
+Comprenez ce qui suit :
+
+* L'analyse des supports s'effectue en continu à un rythme constant, en fonction de la capacité à analyser et de la durée de l'analyse. Les analyses en arrière-plan peuvent être temporairement suspendues par une tâche d'arrière-plan de priorité supérieure (par exemple, la reconstruction), mais reprendront au même rythme constant.
+* Un volume est analysé uniquement si l'option d'analyse du support est activée pour la baie de stockage et pour ce volume. Si la vérification de redondance est également activée pour ce volume, les informations de redondance dans le volume seront vérifiées pour leur cohérence avec les données, à condition que le volume dispose de redondance. L'analyse du support avec vérification de redondance est activée par défaut pour chaque volume lors de sa création.
+* Si une erreur de support irrécupérable est rencontrée pendant l'analyse, les données seront réparées à l'aide d'informations de redondance, si disponible.
++
+Par exemple, les informations de redondance sont disponibles dans les volumes RAID 5 optimaux, ou dans les volumes RAID 6 qui sont optimaux ou ne présentent qu'une seule panne disque. Si l'erreur irrécupérable ne peut être réparée à l'aide des informations de redondance, le bloc de données sera ajouté au journal des secteurs illisibles. Les erreurs de support, qu'elles soient corrigibles ou non corrigibles, sont signalées dans le journal des événements.
+
++
+Si le contrôle de redondance détecte une incohérence entre les données et les informations de redondance, elle est signalée dans le journal des événements.
+
+
+
+
+NOTE: La période d'analyse des supports par défaut est fixée à 120 jours.
+
+.À propos de cette tâche
+Les analyses de support détectent et réparent les erreurs sur les blocs de disque rarement lus par les applications. Cela peut prévenir la perte de données en cas de panne disque, car les données des disques défaillants sont reconstruites à l'aide des informations de redondance et des données provenant d'autres disques du groupe de volumes ou du pool.
+
+Vous pouvez effectuer les actions suivantes :
+
+* Activer ou désactiver les analyses de support en arrière-plan pour l'ensemble de la baie de stockage
+* Modifiez la durée d'analyse pour l'ensemble de la baie de stockage
+* Activer ou désactiver l'analyse du support pour un ou plusieurs volumes
+* Activez ou désactivez la vérification de redondance pour un ou plusieurs volumes
+
+
+.Étapes
+. Sélectionnez le menu : Storage[Volumes].
+. Sélectionnez un volume quelconque, puis sélectionnez menu: More[Change media scan settings].
++
+La boîte de dialogue « Modifier les paramètres d'analyse du lecteur » s'affiche. Tous les volumes de la baie de stockage apparaissent dans cette boîte de dialogue.
+
+. Pour activer l'analyse du support, cochez la case à cocher *Analyser le support au cours de...*
++
+La désactivation de la case à cocher d'analyse des supports suspend tous les paramètres d'analyse des supports.
+
+. Indiquez le nombre de jours sur lesquels vous souhaitez que l'analyse des supports s'exécute.
+. Cochez la case à cocher *Media Scan* pour chaque volume sur lequel vous souhaitez effectuer une analyse de média.
++
+Le Gestionnaire système active l'option de vérification de redondance pour chaque volume sur lequel vous choisissez d'effectuer une analyse de support. Si vous ne souhaitez pas effectuer de vérification de redondance pour certains volumes, décochez la case à cocher *Redundancy Check*.
+
+. Cliquez sur *Enregistrer*.
++
+System Manager applique les modifications aux analyses de supports en arrière-plan en fonction de votre sélection.
+
+

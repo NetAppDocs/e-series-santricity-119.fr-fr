@@ -1,0 +1,87 @@
+---
+permalink: sm-settings/create-internal-security-key.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, create, internal, security, key, 
+summary: Pour utiliser la fonction de sécurité des disques, vous pouvez créer une clé de sécurité interne qui est partagée par les contrôleurs et les disques compatibles avec la sécurité dans la baie de stockage. Les clés internes sont stockées dans la mémoire persistante du contrôleur. 
+---
+= Créez une clé de sécurité interne dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Pour utiliser la fonction de sécurité des disques, vous pouvez créer une clé de sécurité interne qui est partagée par les contrôleurs et les disques compatibles avec la sécurité dans la baie de stockage. Les clés internes sont stockées dans la mémoire persistante du contrôleur.
+
+.Avant de commencer
+* Des disques compatibles avec le chiffrement sécurisé doivent être installés dans la baie de stockage. Ces disques peuvent être des disques à chiffrement complet (FDE) ou des disques Federal Information Processing Standard (FIPS).
+* La fonction de sécurité du disque doit être activée. Sinon, une boîte de dialogue « Cannot Create Security Key » s'affiche pendant cette tâche. Si nécessaire, contactez votre fournisseur de stockage pour obtenir des instructions sur l'activation de la fonction de sécurité du disque.
+
+
+[NOTE]
+====
+Si des disques FDE et FIPS sont installés dans la baie de stockage, ils partagent tous la même clé de sécurité.
+
+====
+.À propos de cette tâche
+Dans cette tâche, vous définissez un identifiant et une phrase de passe à associer à la clé de sécurité interne.
+
+[NOTE]
+====
+La phrase de passe pour Drive Security est indépendante du mot de passe administrateur de la baie de stockage.
+
+====
+.Étapes
+. Sélectionnez menu : Paramètres [System].
+. Sous *Security key management*, sélectionnez *Create Internal Key*.
++
+Si vous n'avez pas encore généré de clé de sécurité, la boîte de dialogue Créer une clé de sécurité s'ouvre.
+
+. Saisissez les informations dans les champs suivants :
++
+** *Définissez un identifiant de clé de sécurité* -- Vous pouvez accepter la valeur par défaut (nom de la baie de stockage et horodatage, qui est généré par le micrologiciel du contrôleur) ou saisir votre propre valeur. Vous pouvez saisir jusqu'à 189 caractères alphanumériques sans espaces, ponctuation ou symboles.
++
+[NOTE]
+====
+Des caractères supplémentaires sont générés automatiquement, ajoutés aux deux extrémités de la chaîne que vous saisissez. Les caractères générés garantissent que l'identifiant est unique.
+
+====
+** *Définir une phrase secrète/Confirmer la phrase secrète* -- Saisissez et confirmez une phrase secrète. La valeur peut comporter entre 8 et 32 caractères et doit inclure chacun des éléments suivants :
++
+*** Une ou plusieurs lettres majuscules. Gardez à l'esprit que la phrase de passe est sensible à la casse.
+*** Un nombre (un ou plusieurs).
+*** Un caractère non alphanumérique, tel que !, *, @ (un ou plusieurs).
+
+
+
+
++
+[CAUTION]
+====
+*Conservez bien vos saisies pour une utilisation ultérieure*. Si vous devez déplacer un disque sécurisé de la baie de stockage, vous devez connaître l'identifiant et la phrase de passe pour déverrouiller les données du disque.
+
+====
+. Cliquez sur *Créer*.
++
+La clé de sécurité est stockée sur le contrôleur dans un emplacement inaccessible. Avec la clé réelle, il y a un fichier de clé chiffré qui est téléchargé depuis votre navigateur.
+
++
+[NOTE]
+====
+Le chemin du fichier téléchargé peut dépendre de l'emplacement de téléchargement par défaut de votre navigateur.
+
+====
+. Notez votre identifiant de clé, votre phrase secrète et l’emplacement du fichier de clé téléchargé, puis cliquez sur *Fermer*.
+
+
+.Résultats
+Vous pouvez désormais créer des groupes ou des pools de volumes sécurisés, ou activer la sécurité sur des groupes et pools de volumes existants.
+
+[NOTE]
+====
+Lorsque l'alimentation des disques est coupée puis rétablie, tous les disques avec la fonction de sécurité activée passent à l'état Verrouillé par sécurité. Dans cet état, les données sont inaccessibles jusqu'à ce que le contrôleur applique la clé de sécurité correcte lors de l'initialisation du disque. Si une personne retire physiquement un disque verrouillé et l'installe dans un autre système, l'état Verrouillé par sécurité empêche tout accès non autorisé à ses données.
+
+====
+.Après avoir terminé
+Vous devez valider la clé de sécurité pour vous assurer que le fichier de clé n'est pas corrompu.

@@ -1,0 +1,48 @@
+---
+permalink: sm-hardware/solid-state-disks-ssds.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, solid, state, disk, SSD 
+summary: 'Les disques SSD (Solid-state disks) sont des périphériques de stockage des données qui utilisent la mémoire à semi-conducteurs (flash) pour stocker les données de manière persistante. Les SSD émulent les disques durs classiques et sont disponibles avec les mêmes interfaces que celles utilisées par les disques durs.' 
+---
+= Découvrez les disques SSD (Solid State Disks) dans SANtricity System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Les disques SSD (Solid-state disks) sont des périphériques de stockage des données qui utilisent la mémoire à semi-conducteurs (flash) pour stocker les données de manière persistante. Les SSD émulent les disques durs classiques et sont disponibles avec les mêmes interfaces que celles utilisées par les disques durs.
+
+
+
+== Avantages des SSD
+
+Les avantages des SSD par rapport aux disques durs incluent :
+
+* Démarrage plus rapide (pas de mise en rotation)
+* Latence réduite
+* Opérations d'E/S par seconde (IOPS) plus élevées
+* Fiabilité accrue grâce à un nombre réduit de pièces mobiles
+* Consommation d'énergie réduite
+* Moins de chaleur produite et moins de refroidissement nécessaire
+
+
+
+
+== Identification des SSD
+
+Sur la page Matériel, vous pouvez localiser les SSD dans la vue de la façade avant. Recherchez les baies de disque affichant une icône d'éclair, ce qui indique qu'un SSD est installé.
+
+
+
+== Groupes de volumes
+
+Tous les disques d'un groupe de volumes doivent être du même type de support (soit tous des SSD, soit tous des disques durs). Les groupes de volumes ne peuvent pas contenir un mélange de types de supports ou de types d'interfaces.
+
+
+
+== Mise en cache
+
+La mise en cache en écriture du contrôleur est toujours activée pour les SSD. La mise en cache en écriture améliore les performances et prolonge la durée de vie du SSD.
+
+Outre le cache du contrôleur, vous pouvez utiliser la fonctionnalité de cache SSD pour améliorer les performances globales du système. Dans le cache SSD, les données sont copiées depuis les volumes et stockées sur deux volumes RAID internes (un par contrôleur).

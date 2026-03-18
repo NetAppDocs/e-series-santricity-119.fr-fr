@@ -1,0 +1,24 @@
+---
+permalink: um-certificates/permissions-for-mapped-roles-unified.html 
+sidebar: sidebar 
+keywords: SANtricity, Unified Manager, E-Series, permissions, mapped, roles 
+summary: 'Les fonctionnalités de contrôle d"accès basé sur les rôles (RBAC) incluent des utilisateurs prédéfinis auxquels un ou plusieurs rôles sont attribués. Chaque rôle comprend des autorisations pour accéder aux tâches dans SANtricity Unified Manager.' 
+---
+= Autorisations pour les rôles mappés
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Les fonctionnalités de contrôle d'accès basé sur les rôles (RBAC) incluent des utilisateurs prédéfinis auxquels un ou plusieurs rôles sont attribués. Chaque rôle comprend des autorisations pour accéder aux tâches dans SANtricity Unified Manager.
+
+Les rôles fournissent aux utilisateurs l'accès aux tâches, comme suit :
+
+* *Administrateur de stockage* -- Accès complet en lecture/écriture aux objets de stockage sur les baies, mais aucun accès à la configuration de sécurité.
+* *Administrateur de sécurité* -- Accès à la configuration de sécurité dans la gestion des accès et Certificate Management.
+* *Administrateur support* -- Accès à toutes les ressources matérielles des baies de stockage, aux données de panne et aux événements MEL. Aucun accès aux objets de stockage ni à la configuration de sécurité.
+* *Moniteur* -- Accès en lecture seule à tous les objets de stockage, mais aucun accès à la configuration de sécurité.
+
+
+Si un utilisateur ne dispose pas des autorisations pour une certaine fonction, cette fonction est soit indisponible à la sélection, soit n'apparaît pas dans l'interface utilisateur.

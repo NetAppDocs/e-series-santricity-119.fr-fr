@@ -1,0 +1,141 @@
+---
+permalink: sm-storage/copy-volume-function.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, copy, volume, 
+summary: 'La fonction Copy Volume vous permet de créer une copie à un instant donné d"un volume en créant deux volumes distincts, le volume source et le volume cible, sur la même baie de stockage.' 
+---
+= Découvrez la fonction Copy Volume dans SANtricity System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La fonction Copy Volume vous permet de créer une copie à un instant donné d'un volume en créant deux volumes distincts, le volume source et le volume cible, sur la même baie de stockage.
+
+Cette fonction effectue une copie octet par octet du volume source vers le volume cible, rendant les données du volume cible identiques à celles du volume source.
+
+
+
+== Copie des données pour un accès plus large
+
+Lorsque vos besoins de stockage pour un volume évoluent, vous pouvez utiliser la fonction Copy Volume pour copier des données depuis des pools ou des groupes de volumes utilisant des disques de plus faible capacité vers des pools ou des groupes de volumes utilisant des disques de plus grande capacité. Par exemple, vous pouvez utiliser la fonction Copy Volume pour effectuer les opérations suivantes :
+
+* Déplacez les données vers des disques plus grands.
+* Passez à des disques avec un débit de transfert des données plus élevé.
+* Passez à des disques utilisant de nouvelles technologies pour des performances supérieures.
+* Changer un volume mince en un volume épais.
+
+
+Les volumes source et cible de la copie doivent avoir les mêmes tailles de blocs logiques/adressables par l’hôte (taille de secteur).
+
+Les tailles de blocs de volume signalées sont :
+
+* *Taille de bloc native* – la taille de bloc du volume correspond à la taille de bloc du disque, soit 512 ou 4K.
+* *Taille de bloc émulée de 512* - les disques sont de 4K mais la taille de bloc signalée est de 512.
+
+
+
+
+== Changer un volume mince en un volume épais
+
+Pour convertir un volume fin en volume épais, utilisez l'opération Copier le volume afin de créer une copie du volume fin. La cible de l'opération Copier le volume est toujours un volume épais.
+
+[NOTE]
+====
+System Manager ne propose pas d'option pour créer des volumes légers. Si vous souhaitez créer des volumes légers, utilisez la Command Line Interface (CLI).
+
+====
+
+
+== Sauvegarder les données
+
+La fonction Copie de volume permet de sauvegarder un volume en copiant les données d'un volume vers un autre volume sur la même baie de stockage. Vous pouvez utiliser le volume cible comme sauvegarde du volume source, pour des tests système, ou pour sauvegarder sur un autre périphérique, tel qu'un lecteur de bande.
+
+
+
+== Restaurer les données du volume instantané sur le volume de base
+
+Si vous devez restaurer des données sur le volume de base à partir de son volume de snapshot associé, vous pouvez utiliser la fonction Copier le volume pour copier les données du volume de snapshot vers le volume de base. Vous pouvez créer une copie de volume des données sur le volume de snapshot, puis copier les données vers le volume de base.
+
+
+
+== Volumes source et cible
+
+Le tableau suivant spécifie les types de volumes pouvant être utilisés comme volumes source et cible avec la fonction Copy Volume.
+
+[cols="1a,1a,1a,1a"]
+|===
+| Type de volume | Volume source de copie de volume hors ligne | Volume source de copie de volume en ligne | Volume cible en ligne et hors ligne 
+
+
+ a| 
+Volume thick dans un pool
+ a| 
+Oui
+ a| 
+Oui
+ a| 
+Oui
+
+
+
+ a| 
+Volume épais dans un groupe de volumes
+ a| 
+Oui
+ a| 
+Oui
+ a| 
+Oui
+
+
+
+ a| 
+Volume mince
+ a| 
+Oui^1^
+ a| 
+Oui
+ a| 
+Non
+
+
+
+ a| 
+Volume instantané
+ a| 
+Oui^2^
+ a| 
+Non
+ a| 
+Non
+
+
+
+ a| 
+Volume de base de snapshot
+ a| 
+Oui
+ a| 
+Oui
+ a| 
+Non
+
+
+
+ a| 
+Volume principal du miroir distant
+ a| 
+Oui^3^
+ a| 
+Oui
+ a| 
+Non
+
+|===
+^1^ Le volume cible doit avoir une capacité égale ou supérieure à la capacité signalée du volume mince.
+
+^2^ Vous ne pouvez pas utiliser la copie de volume instantané tant que l'opération de copie en ligne n'est pas terminée.
+
+^3^ Si le volume source est un volume primaire, la capacité du volume cible doit être égale ou supérieure à la capacité utilisable du volume source.

@@ -1,0 +1,32 @@
+---
+permalink: sm-settings/access-management-tokens-edit.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, access management, edit tokens 
+summary: 'Vous pouvez modifier les paramètres des jetons d"accès, ce qui inclut les dates d"expiration et la possibilité de créer de nouveaux jetons.' 
+---
+= Modifier les paramètres du jeton d'accès dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez modifier les paramètres des jetons d'accès, ce qui inclut les dates d'expiration et la possibilité de créer de nouveaux jetons.
+
+.Étapes
+. Sélectionnez le menu : Settings [Gestion des accès].
+. Sélectionnez l’onglet *Jetons d’accès*.
+. Sélectionnez *Afficher/Modifier les paramètres du jeton d'accès*.
+. Dans la boîte de dialogue, vous pouvez effectuer une ou les deux tâches suivantes :
++
+** Activer ou désactiver la création de jetons.
+** Modifiez l'expiration des jetons existants.
++
+
+NOTE: Lorsque vous désactivez l'option *Activer les jetons d'accès*, cela empêche à la fois la création et l'authentification des jetons. Si vous réactivez cette option ultérieurement, les jetons non expirés peuvent être réutilisés. Si vous souhaitez révoquer définitivement tous les jetons existants, consultez link:access-management-tokens-revoke.html["Révoquer les jetons d'accès"].
+
+
+
+. Cliquez sur *Enregistrer*.
+

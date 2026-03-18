@@ -1,0 +1,84 @@
+---
+permalink: sm-hardware/hot-spare-drives.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, hot, spare, drives, raid1, raid6, raid5 
+summary: Les disques de secours à chaud servent de disques de secours en attente dans les groupes de volumes RAID 1, RAID 5 ou RAID 6 pour System Manager. 
+---
+= Découvrez les disques de secours à chaud dans SANtricity System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Les disques de secours à chaud servent de disques de secours dans les groupes de volumes RAID 1, RAID 5 ou RAID 6 pour SANtricity System Manager.
+
+Ce sont des disques parfaitement fonctionnels qui ne contiennent aucune donnée. Si un disque tombe en panne dans le groupe de volumes, le contrôleur reconstruit automatiquement les données du disque défaillant vers un disque affecté comme disque de secours.
+
+Les disques de secours à chaud ne sont pas dédiés à des groupes de volumes spécifiques. Ils peuvent être utilisés pour n'importe quel disque défaillant de la baie de stockage, à condition que le disque de secours à chaud et le disque partagent les attributs suivants :
+
+* Capacité égale (ou capacité supérieure pour le hot spare)
+* Même type de support (par exemple, HDD ou SSD)
+* Même type d'interface (par exemple, SAS)
+
+
+
+
+== Comment identifier les hot spares
+
+Vous pouvez attribuer des disques de secours via l'assistant de configuration initiale ou depuis la page Matériel. Pour déterminer si des disques de secours sont attribués, allez à la page Matériel et recherchez les baies de disques affichées en rose.
+
+
+
+== Comment fonctionne la couverture de secours
+
+La couverture des pièces de rechange à chaud fonctionne comme suit :
+
+* Vous réservez un disque non attribué comme disque de secours à chaud pour les groupes de volumes RAID 1, RAID 5 ou RAID 6.
++
+[NOTE]
+====
+Les disques de secours à chaud ne peuvent pas être utilisés pour les pools, qui emploient une méthode différente de protection des données. Au lieu de réserver un disque supplémentaire, les pools réservent de la capacité de réserve (appelée _capacité de préservation_) au sein de chaque disque du pool. Si un disque tombe en panne dans un pool, le contrôleur reconstruit les données dans cette capacité de réserve.
+
+====
+* En cas de défaillance d'un disque au sein d'un groupe de volumes RAID 1, RAID 5 ou RAID 6, le contrôleur utilise automatiquement les données de redondance pour reconstruire les données à partir du disque défaillant. Le disque de secours à chaud est automatiquement substitué au disque défaillant sans nécessiter de remplacement physique.
+* Une fois que vous avez physiquement remplacé le disque défaillant, une opération de copie de données (copyback) est effectuée du disque de secours vers le disque remplacé. Si vous avez désigné le disque de secours comme membre permanent d'un groupe de volumes, l'opération de copie de données (copyback) n'est pas nécessaire.
+* La disponibilité de la protection contre la perte de plateau et de la protection contre la perte de tiroir pour un groupe de volumes dépend de l'emplacement des disques qui composent le groupe de volumes. La protection contre la perte de plateau et la protection contre la perte de tiroir peuvent être perdues en raison d'un disque défaillant et de l'emplacement du disque de secours à chaud. Pour vous assurer que la protection contre la perte de plateau et la protection contre la perte de tiroir ne sont pas affectées, vous devez remplacer un disque défaillant pour lancer le processus de copie de retour.
+* Le volume de la baie de stockage reste en ligne et accessible pendant le remplacement du disque défaillant, car le disque de secours à chaud est automatiquement substitué au disque défaillant.
+
+
+
+
+== Considérations relatives à la capacité du disque de secours à chaud
+
+Sélectionnez un disque dont la capacité est égale ou supérieure à la capacité totale du disque que vous souhaitez protéger. Par exemple, si vous disposez d’un disque de 18 Gio avec une capacité configurée de 8 Gio, vous pouvez utiliser un disque de 9 Gio ou plus comme disque de secours. En règle générale, n’assignez pas un disque comme disque de secours à moins que sa capacité ne soit égale ou supérieure à celle du disque le plus volumineux de la baie de stockage.
+
+[NOTE]
+====
+Si aucun disque de rechange à chaud de même capacité physique n'est disponible, un disque de capacité inférieure peut être utilisé comme disque de rechange à chaud si la « capacité utilisée » du disque est égale ou inférieure à la capacité du disque de rechange à chaud.
+
+====
+
+
+== Considérations relatives aux types de médias et d'interfaces
+
+Le disque utilisé comme disque de secours à chaud doit être du même type de support et du même type d'interface que les disques qu'il protégera. Par exemple, un disque dur (HDD) ne peut pas servir de disque de secours à chaud pour des disques SSD.
+
+
+
+== Considérations relatives aux disques sécurisés
+
+Un disque compatible avec la sécurité, tel que FDE ou FIPS, peut servir de disque de secours à chaud pour des disques avec ou sans capacités de sécurité. Cependant, un disque qui n'est pas compatible avec la sécurité ne peut pas servir de disque de secours à chaud pour des disques avec des capacités de sécurité.
+
+Lorsque vous sélectionnez un disque sécurisé comme disque de secours, le System Manager vous invite à effectuer un Secure Erase avant de poursuivre. Le Secure Erase réinitialise les attributs de sécurité du disque à secure-capable, mais pas secure-enabled.
+
+[NOTE]
+====
+Lorsque vous activez la fonction Drive Security, puis créez un pool ou un groupe de volumes à partir de disques compatibles avec la sécurité, ces disques deviennent _secure-enabled_. L'accès en lecture et en écriture est disponible uniquement via un contrôleur configuré avec la clé de sécurité correcte. Cette sécurité supplémentaire empêche tout accès non autorisé aux données d'un disque physiquement retiré de la baie de stockage.
+
+====
+
+
+== Nombre recommandé de disques de secours à chaud
+
+Si vous avez utilisé l'assistant de configuration initiale pour créer automatiquement des disques de secours, System Manager crée un disque de secours pour chaque groupe de 30 disques d'un type de support et d'interface particulier. Sinon, vous pouvez créer manuellement des disques de secours parmi les groupes de volumes de la baie de stockage.

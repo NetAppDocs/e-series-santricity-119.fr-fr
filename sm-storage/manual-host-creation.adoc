@@ -1,0 +1,22 @@
+---
+permalink: sm-storage/manual-host-creation.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, manual, host, 
+summary: 'La création d"un hôte est une des étapes requises pour permettre à la baie de stockage de savoir quels hôtes y sont connectés et d"autoriser l"accès en E/S aux volumes. Vous pouvez uniquement créer un hôte manuellement.' 
+---
+= Découvrez la création manuelle d'un hôte dans SANtricity System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La création d'un hôte est une des étapes requises pour permettre à la baie de stockage de savoir quels hôtes y sont connectés et d'autoriser l'accès en E/S aux volumes. Vous pouvez uniquement créer un hôte manuellement.
+
+
+
+== Création manuelle
+
+La création manuelle d'hôtes permet de s'assurer que les identifiants de port hôte détectés par les contrôleurs de la baie de stockage sont correctement associés aux hôtes.
+
+Lors de la création manuelle d'un hôte, vous associez les identifiants de port hôte en les sélectionnant dans une liste ou en les saisissant manuellement. Après avoir créé un hôte, vous pouvez lui attribuer des volumes ou l'ajouter à un cluster d'hôtes si vous prévoyez de partager l'accès aux volumes.

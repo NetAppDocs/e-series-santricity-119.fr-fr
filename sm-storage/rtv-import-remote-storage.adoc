@@ -1,0 +1,122 @@
+---
+permalink: sm-storage/rtv-import-remote-storage.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, import, remote, storage 
+summary: 'Pour lancer une importation de stockage depuis un système distant vers un système de stockage E-Series, utilisez l"assistant Import Remote Storage.' 
+---
+= Importer le stockage distant dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Pour lancer une importation de stockage depuis un système distant vers un système de stockage E-Series, utilisez l'assistant Import Remote Storage.
+
+.Avant de commencer
+* Le système de stockage E-Series doit être configuré pour communiquer avec le système de stockage distant.
++
+[NOTE]
+====
+La configuration matérielle est décrite dans le guide de l'utilisateur de la fonction Remote Storage, disponible dans le centre de documentation E-Series et SANtricity à  https://docs.netapp.com/us-en/e-series/remote-storage-volumes/setup-remote-volumes-concept.html["Configurer le matériel"^], et dans le  https://www.netapp.com/pdf.html?item=/media/28697-tr-4893-deploy.pdf["Rapport technique sur le stockage à distance"^].
+
+====
+* Pour le système de stockage distant, rassemblez les informations suivantes :
++
+** IQN iSCSI
+** Adresses IP iSCSI
+** Numéro LUN du périphérique de stockage distant (volume source)
+
+
+* Pour le système de stockage E-Series local, créez ou sélectionnez un volume à utiliser pour l'importation des données. Voir link:create-volumes.html["Créer des volumes"]. Le volume de destination doit répondre aux exigences suivantes :
++
+** Correspond à la taille de bloc du périphérique de stockage distant (le volume source).
+** Possède une capacité égale ou supérieure à celle du périphérique de stockage distant.
+** Possède un état Optimal et est disponible.
+
+
+
+
+Pour une liste complète des exigences, voir link:rtv-remote-storage-volume-requirements.html["Exigences relatives au volume de stockage distant"].
+
+* *Recommandé :* Sauvegardez les volumes sur le système de stockage distant avant de commencer le processus d'importation.
+
+
+.À propos de cette tâche
+Dans cette tâche, vous créez une correspondance entre le périphérique de stockage distant et un volume sur le système de stockage E-Series local. Lorsque vous terminez la configuration, l'importation commence.
+
+[NOTE]
+====
+Étant donné que de nombreux facteurs peuvent influencer l'opération d'importation et sa durée, nous vous recommandons d'effectuer d'abord des importations "`test`" plus petites. Utilisez ces tests pour vous assurer que toutes les connexions fonctionnent comme prévu et que l'opération d'importation s'achève dans un délai approprié.
+
+====
+.Étapes
+. Sélectionnez le menu : Storage[Remote storage].
+. Cliquez sur *Importer le stockage distant*.
++
+Un assistant d'importation de stockage distant s'affiche.
+
+. À l'étape 1a du panneau Configurer la source, saisissez les informations de connexion. Si vous souhaitez ajouter une autre connexion iSCSI, cliquez sur *Ajouter une autre adresse IP* pour inclure une adresse IP supplémentaire pour le stockage distant. Lorsque vous avez terminé, cliquez sur *Suivant*.
++
+.Détails du champ
+[%collapsible]
+====
+[cols="25h,~"]
+|===
+| Paramètre | Description 
+
+
+ a| 
+Nom
+ a| 
+Saisissez un nom pour le périphérique de stockage distant afin de l’identifier dans l’interface System Manager.
+
+Un nom peut comporter jusqu'à 30 caractères et ne peut contenir que des lettres, des chiffres et les caractères spéciaux suivants : le trait de soulignement (_), le tiret (-) et le dièse (#). Un nom ne peut pas contenir d'espaces.
+
+
+
+ a| 
+propriétés de connexion iSCSI
+ a| 
+Saisissez les propriétés de connexion du périphérique de stockage distant :
+
+** *Nom qualifié iSCSI (IQN)*: Saisissez l’IQN iSCSI.
+** *Adresse IP* : Saisissez l’adresse IPv4.
+** *Port* : Saisissez le numéro de port à utiliser pour les communications entre les périphériques source et cible. Par défaut, le numéro de port est 3260.
+
+
+|===
+====
++
+Après avoir cliqué sur *Suivant*, l'*Étape 1b* du panneau Configurer la source s'affiche.
+
+. Dans le champ *LUN*, sélectionnez le numéro LUN du périphérique de stockage distant à utiliser comme source, puis cliquez sur *Suivant*.
++
+Le panneau « Configurer la cible » s’ouvre et affiche les volumes candidats pouvant servir de cible pour l’import. Certains volumes n’apparaissent pas dans la liste des candidats en raison de la taille des blocs, de la capacité ou de la disponibilité du volume.
+
+. Dans le tableau, sélectionnez un volume cible sur le système de stockage E-Series. Si nécessaire, utilisez le curseur pour modifier la priorité d'importation. Cliquez sur *Suivant*. Confirmez l'opération dans la boîte de dialogue suivante en saisissant  `continue`, puis cliquez sur *Continuer*.
++
+Si le volume cible a une capacité supérieure à celle du volume source, cette capacité supplémentaire n'est pas communiquée à l'hôte connecté au système E-Series. Pour utiliser cette nouvelle capacité, vous devez effectuer une opération d'expansion du système de fichiers sur l'hôte après la fin de l'opération d'importation et la déconnexion.
+
++
+Après avoir confirmé la configuration dans la boîte de dialogue, le panneau de révision s'affiche.
+
+. Dans le panneau de vérification, assurez-vous que les paramètres sont corrects, puis cliquez sur *Finish* pour lancer l'import.
++
+Une autre boîte de dialogue s'ouvre, vous demandant si vous souhaitez lancer une autre importation.
+
+. Si nécessaire, cliquez sur *Oui* pour créer une autre importation depuis un stockage distant. Cliquer sur *Oui* vous ramène à l'*étape 1a* du panneau *Configurer la source*, où vous pouvez sélectionner la configuration existante ou en ajouter une nouvelle. Si vous ne souhaitez pas créer une autre importation, cliquez sur *Non* pour fermer la boîte de dialogue.
++
+Une fois le processus d'importation lancé, l'intégralité du volume cible est écrasée par les données copiées. Si l'hôte écrit de nouvelles données sur le volume cible pendant ce processus, ces nouvelles données sont répercutées sur le périphérique distant (volume source).
+
+. Consultez la progression de l'opération dans la boîte de dialogue View Operations sous le panneau Remote Storage.
+
+
+.Résultats
+Le temps nécessaire pour effectuer l'opération d'importation dépend de la taille du système de stockage distant, du paramètre de priorité pour l'importation et de la charge d'E/S sur les deux systèmes de stockage et leurs volumes associés.
+
+Une fois l'importation terminée, le volume local est un duplicata du périphérique de stockage distant.
+
+.Après avoir terminé
+Lorsque vous êtes prêt à rompre la relation entre les deux volumes, sélectionnez *Déconnecter* sur l'objet d'importation dans la vue Opérations en cours. Une fois la relation déconnectée, les performances du volume local redeviennent normales et ne sont plus affectées par la connexion distante.

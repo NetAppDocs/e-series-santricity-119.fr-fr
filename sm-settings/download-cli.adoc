@@ -1,0 +1,32 @@
+---
+permalink: sm-settings/download-cli.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, download, command line interface, CLI, 
+summary: 'Depuis System Manager, vous pouvez télécharger le package d"interface de ligne de commandes (CLI).' 
+---
+= Téléchargez l’interface de ligne de commandes (CLI) SANtricity
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Depuis SANtricity System Manager, vous pouvez télécharger le package de l'interface de ligne de commandes (CLI).
+
+La CLI fournit une méthode basée sur du texte pour configurer et surveiller les baies de stockage. Elle communique via https et utilise la même syntaxe que la CLI disponible dans le package logiciel de gestion installé en externe. Aucune clé n'est requise pour télécharger la CLI.
+
+.Avant de commencer
+Un environnement d'exécution Java (JRE), version 8 et supérieure, doit être disponible sur le système de gestion où vous prévoyez d'exécuter les commandes CLI.
+
+.Étapes
+. Sélectionnez menu : Paramètres [System].
+. Sous *Modules complémentaires*, sélectionnez *Command Line Interface*.
++
+Le package ZIP se télécharge dans le navigateur.
+
+. Enregistrez le fichier ZIP sur le système de gestion où vous prévoyez d'exécuter des commandes de ligne de commandes pour la baie de stockage, puis extrayez le fichier.
++
+Vous pouvez désormais exécuter des commandes CLI depuis l'invite de commande du système d'exploitation, telle que l'invite C: de DOS. Une référence des commandes CLI est disponible dans le menu Aide, en haut à droite de l'interface utilisateur du System Manager.
+
+

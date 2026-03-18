@@ -1,0 +1,49 @@
+---
+permalink: sm-storage/delete-host-or-host-cluster.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, delete, host, host cluster 
+summary: 'Vous pouvez supprimer un hôte ou un cluster d"hôtes.' 
+---
+= Supprimer un hôte ou un cluster d'hôtes dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez supprimer un hôte ou un cluster d'hôtes.
+
+.À propos de cette tâche
+Gardez ces consignes à l'esprit lorsque vous supprimez un hôte ou un cluster d'hôtes :
+
+* Toute affectation de volume spécifique est supprimée et les volumes associés sont disponibles pour une nouvelle affectation.
+* Si l'hôte fait partie d'un cluster d'hôtes doté de ses propres affectations spécifiques, le cluster reste inchangé. Cependant, si l'hôte fait partie d'un cluster d'hôtes qui n'a pas d'autres affectations, le cluster d'hôtes et tout autre hôte ou identifiant de port d'hôte associé héritent de toute affectation par défaut.
+* Tous les identifiants de port hôte qui étaient associés à l’hôte deviennent indéfinis.
+
+
+.Étapes
+. Sélectionnez le menu : Storage[Hosts].
+. Sélectionnez l'hôte ou le cluster d'hôtes que vous souhaitez supprimer, puis cliquez sur *Supprimer*.
++
+La boîte de dialogue de confirmation apparaît.
+
+. Confirmez que vous souhaitez effectuer l'opération, puis cliquez sur *Supprimer*.
+
+
+.Résultats
+Si vous supprimez un hôte, le système effectue les actions suivantes :
+
+* Supprime l'hôte et, le cas échéant, le retire du cluster d'hôtes.
+* Supprime l'accès à tous les volumes attribués.
+* Rend les volumes associés à un état non attribué.
+* Rend tous les identifiants de port hôte associés à l’hôte à un état non associé.
+
+
+Si vous avez supprimé un cluster d'hôtes, le système effectue les actions suivantes :
+
+* Supprime le cluster hôte et ses hôtes associés (le cas échéant).
+* Supprime l'accès à tous les volumes attribués.
+* Rend les volumes associés à un état non attribué.
+* Rend tout identifiant de port hôte associé aux hôtes à un état non associé.
+

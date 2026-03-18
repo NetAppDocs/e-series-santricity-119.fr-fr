@@ -1,0 +1,57 @@
+---
+permalink: sm-mirroring/change-synchronization-settings-for-a-mirrored-pair.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, change, synchronization, settings, mirrored, pair, 
+summary: 'Vous pouvez modifier la priorité de synchronisation et la politique de resynchronisation que la paire miroir utilise pour effectuer l"opération de resynchronisation après une interruption de communication.' 
+---
+= Modifier les paramètres de synchronisation d'une paire miroir dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez modifier la priorité de synchronisation et la politique de resynchronisation que la paire miroir utilise pour effectuer l'opération de resynchronisation après une interruption de communication.
+
+.À propos de cette tâche
+Vous pouvez modifier les paramètres de synchronisation d'une paire en miroir uniquement sur la baie de stockage qui contient le volume principal.
+
+.Étapes
+. Sélectionnez le menu : Storage[Synchronous Mirroring].
+. Sélectionnez la paire en miroir que vous souhaitez modifier, puis sélectionnez menu:More[Modifier les paramètres].
++
+Le système affiche la boîte de dialogue View/Edit Settings.
+
+. Utilisez la barre de défilement pour modifier la priorité de synchronisation.
++
+La priorité de synchronisation détermine la quantité de ressources système utilisées pour effectuer l'opération de resynchronisation après une interruption de communication par rapport aux requêtes d'I/O de service.
+
++
+.En savoir plus sur les taux de synchronisation
+[%collapsible]
+====
+Il existe cinq niveaux de priorité de synchronisation :
+
+** Le plus bas
+** Faible
+** Moyen
+** Élevée
+** Le plus élevé
+
+
+====
++
+Si la priorité de synchronisation est définie sur le niveau le plus bas, l'activité d'E/S est prioritaire et l'opération de resynchronisation prend plus de temps. Si la priorité de synchronisation est définie sur le niveau le plus élevé, l'opération de resynchronisation est prioritaire, mais l'activité d'E/S pour la baie de stockage peut être affectée.
+
+. Modifiez la politique de resynchronisation comme il convient.
++
+Vous pouvez resynchroniser les paires en miroir sur la baie de stockage distante soit manuellement, soit automatiquement.
+
++
+** *Manuel* (option recommandée) -- Sélectionnez cette option pour que la synchronisation soit reprise manuellement après le rétablissement de la communication avec une paire miroir. Cette option offre la meilleure opportunité de récupération des données.
+** *Automatique* -- Sélectionnez cette option pour lancer la resynchronisation automatiquement après le rétablissement de la communication avec une paire en miroir.
+
+
+. Sélectionnez *Save*.
+

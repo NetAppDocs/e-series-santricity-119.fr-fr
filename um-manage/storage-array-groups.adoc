@@ -1,0 +1,28 @@
+---
+permalink: um-manage/storage-array-groups.html 
+sidebar: sidebar 
+keywords: SANtricity, Unified Manager, E-Series, storage, array, groups 
+summary: 'Vous pouvez gérer votre infrastructure physique et virtualisée en regroupant un ensemble de baies de stockage. Vous pourriez vouloir regrouper des baies de stockage pour faciliter l"exécution de tâches de surveillance ou de génération de rapports.' 
+---
+= Découvrez les groupes de baies de stockage dans SANtricity Unified Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez gérer votre infrastructure physique et virtualisée en regroupant un ensemble de baies de stockage. Vous pourriez vouloir regrouper des baies de stockage pour faciliter l'exécution de tâches de surveillance ou de génération de rapports.
+
+
+
+== Types de groupes de systèmes de stockage
+
+* *Tous les groupes*
++
+Le groupe « All » est le groupe par défaut et comprend toutes les baies de stockage détectées dans votre organisation. Le groupe « All » est accessible depuis la vue principale.
+
+* *Groupe créé par l'utilisateur*
++
+Un groupe créé par l'utilisateur comprend les baies de stockage que vous sélectionnez manuellement pour ajouter à ce groupe. Les groupes créés par l'utilisateur sont accessibles depuis la vue principale.
+
+

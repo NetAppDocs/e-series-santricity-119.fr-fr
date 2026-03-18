@@ -1,0 +1,31 @@
+---
+permalink: sm-support/view-software-and-firmware-inventory.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, view, software, firmware, inventory 
+summary: 'L"inventaire des logiciels et des microprogrammes répertorie les versions de microprogramme pour chaque composant de votre baie de stockage.' 
+---
+= Afficher l'inventaire des logiciels et micrologiciels dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'inventaire des logiciels et des microprogrammes répertorie les versions de microprogramme pour chaque composant de votre baie de stockage.
+
+.À propos de cette tâche
+Une baie de stockage est composée de nombreux composants, qui peuvent inclure des contrôleurs, des disques, des tiroirs et des modules d'entrée/sortie (IOM). Chacun de ces composants contient un firmware. Certaines versions de firmware dépendent d'autres versions de firmware. Pour capturer des informations sur toutes les versions de firmware dans votre baie de stockage, affichez l'inventaire des logiciels et des firmwares. Le support technique peut analyser l'inventaire des logiciels et des firmwares pour détecter toute incompatibilité de firmware.
+
+.Étapes
+. Sélectionnez le menu : Support [Support Center > Support Resources] onglet.
+. Faites défiler vers le bas jusqu'à *Launch detailed storage array information*, puis sélectionnez *Software and Firmware Inventory*.
++
+Le rapport d'inventaire des logiciels et des microprogrammes s'affiche à l'écran.
+
+. Pour enregistrer l'inventaire des logiciels et des microprogrammes, cliquez sur *Save*.
++
+Le fichier est enregistré dans le dossier Téléchargements de votre navigateur sous le nom de fichier `firmware-inventory.txt`.
+
+. Suivez les instructions fournies par le support technique pour leur envoyer le fichier.
+

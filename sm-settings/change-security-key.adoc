@@ -1,0 +1,62 @@
+---
+permalink: sm-settings/change-security-key.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, change, security, key, 
+summary: À tout moment, vous pouvez remplacer une clé de sécurité par une nouvelle clé. Vous pourriez avoir besoin de changer une clé de sécurité dans les cas où vous avez une faille de sécurité potentielle dans votre entreprise et souhaitez vous assurer que le personnel non autorisé ne puisse pas accéder aux données des disques. 
+---
+= Modifier une clé de sécurité dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez à tout moment remplacer une clé de sécurité par une nouvelle clé. Vous pourriez avoir besoin de changer une clé de sécurité dans les cas où vous avez une faille de sécurité potentielle dans votre entreprise et souhaitez vous assurer que le personnel non autorisé ne puisse pas accéder aux données des disques.
+
+.Étapes
+. Sélectionnez menu : Paramètres [System].
+. Sous *Security key management*, sélectionnez *Change Key*.
++
+La boîte de dialogue Change Security Key s'ouvre.
+
+. Saisissez les informations dans les champs suivants.
++
+** *Définissez un identifiant de clé de sécurité* -- (Pour les clés de sécurité internes uniquement.) Acceptez la valeur par défaut (nom de la baie de stockage et horodatage, qui sont générés par le micrologiciel du contrôleur) ou saisissez votre propre valeur. Vous pouvez saisir jusqu'à 189 caractères alphanumériques sans espaces, ponctuation ou symboles.
++
+[NOTE]
+====
+Des caractères supplémentaires sont générés automatiquement et sont ajoutés aux deux extrémités de la chaîne que vous saisissez. Les caractères générés contribuent à garantir que l'identifiant est unique.
+
+====
+** *Définir une phrase secrète/Confirmer la phrase secrète* -- Dans chacun de ces champs, saisissez votre phrase secrète. La valeur peut comporter entre 8 et 32 caractères et doit inclure chacun des éléments suivants :
++
+*** Une ou plusieurs lettres majuscules. Gardez à l'esprit que la phrase de passe est sensible à la casse.
+*** Un nombre (un ou plusieurs).
+*** Un caractère non alphanumérique, tel que !, *, @ (un ou plusieurs).
+
+
+
+
+. Pour les clés de sécurité externes, si vous souhaitez supprimer l'ancienne clé de sécurité lors de la création de la nouvelle, cochez la case « Supprimer la clé de sécurité actuelle... » en bas de la boîte de dialogue.
++
+[CAUTION]
+====
+*Veillez à enregistrer vos saisies pour une utilisation ultérieure* -- Si vous devez déplacer un disque sécurisé de la baie de stockage, vous devez connaître l'identifiant et la phrase de passe pour déverrouiller les données du disque.
+
+====
+. Cliquez sur *Change*.
++
+La nouvelle clé de sécurité remplace la clé précédente, qui n'est plus valide.
+
++
+[NOTE]
+====
+Le chemin du fichier téléchargé peut dépendre de l'emplacement de téléchargement par défaut de votre navigateur.
+
+====
+. Notez votre identifiant de clé, votre phrase secrète et l’emplacement du fichier de clé téléchargé, puis cliquez sur *Fermer*.
+
+
+.Après avoir terminé
+Vous devez valider la clé de sécurité pour vous assurer que le fichier de clé n'est pas corrompu.

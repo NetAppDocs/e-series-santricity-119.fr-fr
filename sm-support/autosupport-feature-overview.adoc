@@ -1,0 +1,55 @@
+---
+permalink: sm-support/autosupport-feature-overview.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, autosupport, ASUP 
+summary: 'La fonctionnalité AutoSupport surveille l"état de santé d"une baie de stockage et envoie automatiquement des rapports à l"assistance technique.' 
+---
+= En savoir plus sur AutoSupport pour la série E
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La fonctionnalité AutoSupport surveille l'état de santé d'une baie de stockage et envoie automatiquement des rapports à l'assistance technique.
+
+Le support technique utilise les données AutoSupport de manière réactive pour accélérer le diagnostic et la résolution des problèmes des clients et de manière proactive pour détecter et éviter les problèmes potentiels.
+
+AutoSupport data comprend des informations sur la configuration, l'état, les performances et les événements système d'une baie de stockage. Les données AutoSupport ne contiennent aucune donnée utilisateur. Les rapports peuvent être envoyés immédiatement ou selon une planification (quotidienne ou hebdomadaire).
+
+
+
+== Principaux avantages
+
+Certains avantages clés de la fonctionnalité AutoSupport incluent :
+
+* Délais de résolution des dossiers accélérés
+* Surveillance sophistiquée pour une gestion des incidents plus rapide
+* Rapports automatisés selon un calendrier, ainsi que rapports automatisés sur les événements critiques
+* Demandes automatisées de remplacement de matériel pour certains composants tels que les disques
+* Alertes non intrusives pour vous notifier d'un problème et fournir des informations permettant au support technique de prendre des mesures correctives
+* AutoSupport analysis tools qui surveillent les expéditions pour détecter les problèmes de configuration connus
+
+
+
+
+== Fonctionnalités individuelles AutoSupport
+
+La fonctionnalité AutoSupport est composée de trois fonctionnalités individuelles que vous activez séparément.
+
+* *Basic AutoSupport* -- Permet à votre baie de stockage de collecter et d'envoyer automatiquement des données au support technique.
+* *AutoSupport OnDemand* -- Permet au support technique de demander la retransmission d’un envoi AutoSupport précédent en cas de besoin pour le dépannage d’un problème. Toutes les transmissions sont initiées depuis la baie de stockage, et non depuis le serveur AutoSupport. La baie de stockage se connecte périodiquement au serveur AutoSupport pour déterminer s’il existe des demandes de retransmission en attente et y répond en conséquence.
+* *Diagnostic à distance* -- Permet au support technique de demander une nouvelle intervention AutoSupport à jour lorsque cela est nécessaire pour résoudre un problème. Toutes les transmissions sont initiées depuis la baie de stockage, et non depuis le serveur AutoSupport. La baie de stockage se connecte périodiquement au serveur AutoSupport pour déterminer s'il y a de nouvelles demandes en attente et y répond en conséquence.
+
+
+
+
+== Différence entre AutoSupport et Collecte de données de support
+
+Il existe deux méthodes de collecte des données de support dans la baie de stockage :
+
+* *AutoSupport feature* -- Les données sont collectées automatiquement.
+* *Option Collect Support Data* -- Les données doivent être collectées et envoyées manuellement.
+
+
+La fonctionnalité AutoSupport est plus simple d'utilisation car les données sont collectées et envoyées automatiquement. Les données AutoSupport peuvent être utilisées de manière proactive pour prévenir les problèmes avant qu'ils ne surviennent. La fonctionnalité AutoSupport accélère le dépannage car le support technique a déjà accès aux données. Pour ces raisons, la fonctionnalité AutoSupport est la méthode de collecte de données privilégiée à utiliser.

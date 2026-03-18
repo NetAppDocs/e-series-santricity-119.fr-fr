@@ -1,0 +1,31 @@
+---
+permalink: sm-settings/delete-trap-destinations.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, delete, trap, destinations, 
+summary: Vous pouvez supprimer une adresse de destination de trap afin que le moniteur d’événements de la baie de stockage n’envoie plus de traps SNMP à cette adresse. 
+---
+= Supprimer les destinations de trap dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez supprimer une adresse de destination de trap afin que le moniteur d'événements de la baie de stockage n'envoie plus de traps SNMP à cette adresse.
+
+.Étapes
+. Sélectionnez menu : Paramètres[Alertes].
+. Sélectionnez l’onglet *SNMP*.
++
+Les adresses de destination des pièges apparaissent dans le tableau.
+
+. Sélectionnez une destination de trap, puis cliquez sur *Supprimer* en haut à droite de la page.
+. Confirmez l'opération, puis cliquez sur *Supprimer*.
++
+L'adresse de destination n'apparaît plus sur la page Alerts.
+
+
+
+.Résultats
+La destination de trap supprimée ne reçoit plus de traps SNMP du moniteur d'événements de la baie de stockage.

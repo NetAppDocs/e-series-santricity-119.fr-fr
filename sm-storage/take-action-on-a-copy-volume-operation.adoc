@@ -1,0 +1,68 @@
+---
+permalink: sm-storage/take-action-on-a-copy-volume-operation.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, copy, volume, 
+summary: Vous pouvez visualiser une opération Copy Volume en cours et arrêter, changer la priorité, recopier ou effacer une opération Copy Volume. 
+---
+= Effectuez une action sur une opération Copy Volume dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez visualiser une opération Copy Volume en cours et arrêter, changer la priorité, recopier ou effacer une opération Copy Volume.
+
+.Étapes
+. Sélectionnez le menu : Home[Afficher les opérations en cours].
++
+La boîte de dialogue « Operations in Progress » s'affiche.
+
+. Trouvez l'opération Copy Volume sur laquelle vous souhaitez agir, puis cliquez sur le lien dans la colonne *Actions* pour effectuer l'une des actions suivantes.
++
+Lisez tous les textes d'avertissement fournis dans les boîtes de dialogue, en particulier lors de l'arrêt d'une opération.
+
++
+[cols="25h,~"]
+|===
+| Action | Description 
+
+
+ a| 
+Arrêter
+ a| 
+Vous pouvez interrompre une opération Copy Volume lorsque l’opération a le statut En cours, En attente ou Échec.
+
+Lorsque la copie de volume est arrêtée, tous les hôtes mappés disposent d'un accès en écriture au volume source. Si des données sont écrites sur le volume source, les données du volume cible ne correspondent plus aux données du volume source.
+
+
+
+ a| 
+Modifier la priorité
+ a| 
+Vous pouvez modifier la priorité d'une opération de Copy Volume lorsque l'opération a le statut « En cours » afin de sélectionner la vitesse à laquelle une opération de Copy Volume s'achève.
+
+
+
+ a| 
+Recopier
+ a| 
+Vous pouvez relancer une copie de volume lorsque vous avez arrêté une opération Copy Volume et souhaitez la recommencer, ou lorsqu'une opération Copy Volume a échoué ou s'est arrêtée. L'opération Copy Volume recommence depuis le début.
+
+L'action de recopie écrase les données existantes sur le volume cible et invalide tous les volumes instantanés associés au volume cible, le cas échéant.
+
+
+
+ a| 
+Effacer
+ a| 
+Vous pouvez supprimer l'opération Copy Volume tant que l'opération a le statut En cours, En attente ou Échec.
+
+[NOTE]
+====
+Assurez-vous de vouloir effectuer cette opération avant de sélectionner *Effacer*. Aucune boîte de dialogue de confirmation ne s'affiche.
+
+====
+|===
+

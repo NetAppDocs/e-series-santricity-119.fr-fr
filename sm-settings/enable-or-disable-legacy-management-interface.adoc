@@ -1,0 +1,35 @@
+---
+permalink: sm-settings/enable-or-disable-legacy-management-interface.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, enable, disable, legacy, management, interface, 
+summary: 'Vous pouvez activer ou désactiver l"interface de gestion héritée (SYMbol), qui est une méthode de communication entre la baie de stockage et le client de gestion.' 
+---
+= Activer ou désactiver l'interface de gestion héritée dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez activer ou désactiver l'interface de gestion héritée (SYMbol), qui est une méthode de communication entre la baie de stockage et le client de gestion.
+
+.À propos de cette tâche
+Par défaut, l'interface de gestion héritée est activée. Si vous la désactivez, la baie de stockage et le client de gestion utiliseront une méthode de communication plus sécurisée (REST API via https) ; cependant, certains outils et tâches pourraient être affectés si elle est désactivée.
+
+[NOTE]
+====
+Pour le système de stockage EF600, cette fonctionnalité est désactivée par défaut.
+
+====
+Ce paramètre affecte les opérations comme suit :
+
+* *Activé* (par défaut) -- Paramètre requis pour configurer la mise en miroir avec la CLI et certains autres outils, tels que l'adaptateur OCI.
+* *Off* -- Paramètre requis pour garantir la confidentialité des communications entre la baie de stockage et le client de gestion, et pour accéder aux outils externes. Paramètre recommandé lors de la configuration d’un Directory Server (LDAP).
+
+
+.Étapes
+. Sélectionnez menu : Paramètres [System].
+. Faites défiler vers le bas jusqu'à *Paramètres supplémentaires*, puis cliquez sur *Changer l'interface de gestion*.
+. Dans la boîte de dialogue, cliquez sur *Oui* pour continuer.
+

@@ -1,0 +1,37 @@
+---
+permalink: sm-storage/view-and-save-performance-data-tabular.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, view, save, tabular, performance, 
+summary: Vous pouvez consulter et enregistrer les données des graphiques de performance sous forme de tableau. Cela vous permet de filtrer les données que vous souhaitez afficher. 
+---
+= Consultez et enregistrez les données de performance tabulaires dans SANtricity System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez consulter et enregistrer les données des graphiques de performance sous forme de tableau. Cela vous permet de filtrer les données que vous souhaitez afficher.
+
+.Étapes
+. À partir de n'importe quel graphique de données de performance, cliquez sur *Launch table view*.
++
+Un tableau s'affiche qui répertorie toutes les données de performance pour les objets sélectionnés.
+
+. Utilisez le menu déroulant de sélection d'objet et le filtre selon vos besoins.
+. Cliquez sur le bouton *Show/Hide Columns* pour sélectionner les colonnes que vous souhaitez inclure dans le tableau.
++
+Vous pouvez cliquer sur chaque case à cocher pour sélectionner ou désélectionner un élément.
+
+. Sélectionnez *Export* en bas de l'écran pour enregistrer la vue tabulaire dans un fichier de valeurs séparées par des virgules (CSV).
++
+La boîte de dialogue Export Table apparaît, indiquant le nombre de lignes à exporter et le format du fichier d’exportation (valeurs séparées par des virgules, ou format CSV).
+
+. Cliquez sur *Exporter* pour poursuivre le téléchargement, ou cliquez sur *Annuler*.
++
+Selon les paramètres de votre navigateur, le fichier est soit enregistré, soit vous êtes invité à choisir un nom et un emplacement pour le fichier.
+
++
+Le format de nom de fichier par défaut est  `performanceStatistics-yyyy-mm-dd_hh-mm-ss.csv`, qui inclut la date et l'heure d'exportation du fichier.
+
+

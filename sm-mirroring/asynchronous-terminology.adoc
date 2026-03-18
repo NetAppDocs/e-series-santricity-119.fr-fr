@@ -1,0 +1,86 @@
+---
+permalink: sm-mirroring/asynchronous-terminology.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, asynchronous, mirroring, terms, 
+summary: 'Découvrez comment les termes de mise en miroir asynchrone s"appliquent à votre baie de stockage.' 
+---
+= Découvrez la terminologie de la mise en miroir asynchrone dans le logiciel SANtricity
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Découvrez comment les termes de mise en miroir asynchrone s'appliquent à votre baie de stockage.
+
+[cols="25h,~"]
+|===
+| Terme | Description 
+
+
+ a| 
+baie de stockage locale
+ a| 
+La baie de stockage locale est la baie de stockage sur laquelle vous agissez.
+
+Lorsque vous voyez *Primary* dans la colonne Rôle local, cela indique que la baie de stockage contient le volume qui détient le rôle principal dans la relation de mise en miroir. Lorsque vous voyez *Secondary* dans la colonne Rôle local, cela indique que la baie de stockage contient le volume qui détient le rôle secondaire dans la relation de mise en miroir.
+
+
+
+ a| 
+Groupe de cohérence miroir
+ a| 
+Un groupe de cohérence de miroir est un conteneur pour une ou plusieurs paires miroir. Pour les opérations de mise en miroir asynchrones, vous devez créer un groupe de cohérence de miroir.
+
+
+
+ a| 
+Paire en miroir
+ a| 
+Une paire en miroir est composée de deux volumes, un volume primaire et un volume secondaire.
+
+En mode de réplication asynchrone, une paire en miroir appartient toujours à un groupe de cohérence de miroir. Les opérations d'écriture sont d'abord effectuées sur le volume principal, puis répliquées sur le volume secondaire. Chaque paire en miroir dans un groupe de cohérence de miroir partage les mêmes paramètres de synchronisation.
+
+
+
+ a| 
+Volume primaire
+ a| 
+Le volume principal d'une paire en miroir est le volume source à mettre en miroir.
+
+
+
+ a| 
+baie de stockage distante
+ a| 
+Le système de stockage distant est généralement désigné comme le site secondaire, qui contient généralement une réplique des données dans une configuration en miroir.
+
+
+
+ a| 
+Capacité réservée
+ a| 
+La capacité réservée correspond à la capacité physique allouée qui est utilisée pour toute opération de service de copie et tout objet de stockage. Elle n'est pas directement lisible par l'hôte.
+
+
+
+ a| 
+Changement de rôle
+ a| 
+Le changement de rôle consiste à attribuer le rôle principal au volume secondaire et vice versa.
+
+
+
+ a| 
+Volume secondaire
+ a| 
+Le volume secondaire d'une paire miroir est généralement situé sur un site secondaire et contient une réplique des données.
+
+
+
+ a| 
+Synchronisation
+ a| 
+La synchronisation a lieu lors de la synchronisation initiale entre la baie de stockage locale et la baie de stockage distante. La synchronisation a également lieu lorsque les volumes principal et secondaire se désynchronisent après une interruption de communication. Lorsque la liaison de communication fonctionne à nouveau, toutes les données non répliquées sont synchronisées avec la baie de stockage du volume secondaire.
+
+|===

@@ -1,0 +1,58 @@
+---
+permalink: sm-settings/how-alerts-work.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, alarm, alerts, 
+summary: Les alertes informent les administrateurs des événements importants qui se produisent sur la baie de stockage. Les alertes peuvent être envoyées par e-mail, traps SNMP et syslog. 
+---
+= Fonctionnement des alertes dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Les alertes informent les administrateurs des événements importants qui se produisent sur la baie de stockage. Les alertes peuvent être envoyées par e-mail, traps SNMP et syslog.
+
+Le processus d'alerte fonctionne comme suit :
+
+. Un administrateur configure une ou plusieurs des méthodes d'alerte suivantes dans System Manager :
++
+** *Courriel* -- Les messages sont envoyés à des adresses email.
+** *SNMP* -- Les traps SNMP sont envoyés à un serveur SNMP.
+** *Syslog* -- Les messages sont envoyés à un serveur syslog.
+
+
+. Lorsque le système de surveillance des événements de la baie de stockage détecte un problème, il consigne les informations relatives à ce problème dans le journal des événements (accessible via menu:Support[Event Log]). Par exemple, les problèmes peuvent inclure des événements tels qu'une panne de batterie, le passage d'un composant de l'état Optimal à Offline, ou des erreurs de redondance dans le contrôleur.
+. Si le système de surveillance des événements détermine que l'événement est « alertable », il envoie alors une notification via les méthodes d'alerte configurées (email, SNMP et/ou syslog). Tous les événements Critiques sont considérés comme « alertable », ainsi que certains événements Warning et Informational.
+
+
+
+
+== Configuration des alertes
+
+Vous pouvez configurer les alertes depuis l'assistant de configuration initiale (pour les alertes par e-mail uniquement) ou depuis la page Alertes. Pour consulter la configuration actuelle, accédez au menu:Settings[Alerts].
+
+La vignette Alertes affiche la configuration des alertes, qui peut être l'une des suivantes :
+
+* Non configuré.
+* Configuré ; au moins une méthode d’alerte est définie. Pour déterminer quelles méthodes d’alerte sont configurées, placez le curseur sur la vignette.
+
+
+
+
+== Informations d'alerte
+
+Les alertes peuvent inclure les types d'informations suivants :
+
+* Nom de la baie de stockage.
+* Type d'erreur d'événement lié à une entrée du journal des événements.
+* Date et heure auxquelles l'événement s'est produit.
+* Brève description de l'événement.
+
+
+[NOTE]
+====
+Les alertes Syslog suivent la norme de messagerie RFC 5424.
+
+====

@@ -1,0 +1,74 @@
+---
+permalink: um-manage/mirroring-configuration-workflow.html 
+sidebar: sidebar 
+keywords: SANtricity, Unified Manager, E-Series, mirroring, configuration, workflow 
+summary: Vous configurez la mise en miroir asynchrone ou synchrone dans Unified Manager, puis utilisez System Manager pour gérer les synchronisations. 
+---
+= Workflows de configuration Mirror SANtricity
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous configurez la mise en miroir asynchrone ou synchrone dans SANtricity Unified Manager, puis utilisez SANtricity System Manager pour gérer les synchronisations.
+
+
+
+== Flux de travail de mise en miroir asynchrone
+
+La mise en miroir asynchrone implique le workflow suivant :
+
+. Effectuez la configuration initiale dans Unified Manager :
++
+.. Sélectionnez la baie de stockage locale comme source pour le transfert de données.
+.. Créez ou sélectionnez un groupe de cohérence miroir existant, qui est un conteneur pour le volume principal sur la baie locale et le volume secondaire sur la baie distante. Les volumes principal et secondaire sont appelés la « paire miroir ». Si vous créez le groupe de cohérence miroir pour la première fois, vous devez spécifier si vous souhaitez effectuer des synchronisations manuelles ou planifiées.
+.. Sélectionnez un volume principal sur la baie de stockage locale, puis déterminez sa capacité réservée. La capacité réservée correspond à la capacité physique allouée pour l'opération de copie.
+.. Sélectionnez une baie de stockage distante comme destination du transfert, un volume secondaire, puis déterminez sa capacité réservée.
+.. Démarrez le transfert de données initial du volume principal vers le volume secondaire. Selon la taille du volume, ce transfert initial peut prendre plusieurs heures.
+
+
+. Vérifiez la progression de la synchronisation initiale :
++
+.. Dans Unified Manager, lancez System Manager pour la baie locale.
+.. Dans System Manager, consultez l'état de l'opération de mise en miroir. Une fois la mise en miroir terminée, l'état de la paire mise en miroir est "Optimal".
+
+
+. Vous pouvez, si vous le souhaitez, reprogrammer ou effectuer manuellement les transferts de données suivants dans System Manager. Seuls les blocs nouveaux et modifiés sont transférés du volume principal vers le volume secondaire.
++
+[NOTE]
+====
+Comme la réplication asynchrone est périodique, le système peut consolider les blocs modifiés et préserver la bande passante réseau. L'impact sur le débit d'écriture et la latence d'écriture est minimal.
+
+====
+
+
+
+
+== Flux de travail de mise en miroir synchrone
+
+La mise en miroir synchrone implique le workflow suivant :
+
+. Effectuez la configuration initiale dans Unified Manager :
++
+.. Sélectionnez une baie de stockage locale comme source pour le transfert de données.
+.. Sélectionnez un volume principal dans la baie de stockage locale.
+.. Sélectionnez une baie de stockage distante comme destination du transfert de données, puis sélectionnez un volume secondaire.
+.. Sélectionnez les priorités de synchronisation et de resynchronisation.
+.. Démarrez le transfert de données initial du volume principal vers le volume secondaire. Selon la taille du volume, ce transfert initial peut prendre plusieurs heures.
+
+
+. Vérifiez la progression de la synchronisation initiale :
++
+.. Dans Unified Manager, lancez System Manager pour la baie locale.
+.. Dans System Manager, consultez l'état de l'opération de mise en miroir. Une fois la mise en miroir terminée, l'état de la paire en miroir est « Optimal ». Les deux arrays tentent de rester synchronisés lors des opérations normales. Seuls les blocs nouveaux et modifiés sont transférés du volume principal vers le volume secondaire.
+
+
+. Vous pouvez éventuellement modifier les paramètres de synchronisation dans System Manager.
++
+[NOTE]
+====
+Étant donné que la réplication synchrone est continue, la liaison de réplication entre les deux sites doit offrir des capacités de bande passante suffisantes.
+
+====
+

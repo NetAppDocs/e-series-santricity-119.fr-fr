@@ -1,0 +1,51 @@
+---
+permalink: sm-storage/how-snapshot-storage-works.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, snapshot, storage 
+summary: La fonction Instantanés utilise la technologie de copie en écriture pour stocker les images instantanées et utiliser la capacité réservée allouée. 
+---
+= Comment fonctionne le stockage de snapshots dans le logiciel SANtricity
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La fonction Instantanés utilise la technologie de copie en écriture pour stocker les images instantanées et utiliser la capacité réservée allouée.
+
+
+
+== Comment les images instantanées sont utilisées
+
+Une image instantanée est une copie logique en lecture seule du contenu d'un volume, capturée à un instant précis. Vous pouvez utiliser les instantanés pour vous protéger contre la perte de données.
+
+Les images d'instantané sont également utiles pour les environnements de test. En créant une copie virtuelle des données, vous pouvez tester les données à l'aide de l'instantané sans modifier le volume réel lui-même. De plus, les hôtes n'ont pas accès en écriture aux images d'instantané, de sorte que vos instantanés sont toujours une ressource de sauvegarde sécurisée.
+
+
+
+== Création d'instantanés
+
+Lors de la création d'instantanés, la fonction Snapshots enregistre les données d'image comme suit :
+
+* Lorsqu'une image instantanée est créée, elle correspond exactement au volume de base. La fonction Instantanés utilise la technologie de copie en écriture. Après la prise de l'instantané, la première écriture sur un bloc ou un ensemble de blocs du volume de base entraîne la copie des données originales vers l'espace réservé avant l'écriture des nouvelles données sur le volume de base.
+* Les instantanés suivants ne contiennent que les blocs de données modifiés. Avant que les données ne soient écrasées sur le volume de base, la fonction Snapshots utilise sa technologie de copie en écriture pour enregistrer les images nécessaires des secteurs concernés dans la capacité réservée aux instantanés.
++
+image::../media/sam1130-dwg-snapshots-cow-overview.gif[Aperçu des snapshots]
+
+
+
+^1^ Volume de base (capacité physique du disque); ^2^ Instantanés (capacité logique du disque); ^3^ Capacité réservée (capacité physique du disque)
+
+* La capacité réservée stocke les blocs de données d'origine des portions du volume de base qui ont été modifiées après la prise de l'instantané et inclut un index pour suivre les modifications. En général, la taille de la capacité réservée est par défaut de 40 % du volume de base. (Si vous avez besoin de plus de capacité réservée, vous pouvez augmenter la capacité réservée.)
+* Les images instantanées sont stockées dans un ordre précis, en fonction de leur horodatage. Seule l'image instantanée la plus ancienne d'un volume de base est disponible pour une suppression manuelle.
+
+
+
+
+== Restauration de snapshot
+
+Pour restaurer des données sur un volume de base, vous pouvez utiliser soit un volume snapshot, soit une image snapshot :
+
+* *Volume de snapshot* -- Si vous devez récupérer des fichiers supprimés, créez un volume de snapshot à partir d'une image de snapshot fonctionnelle, puis attribuez-le à l'hôte.
+* *Image instantanée* -- Si vous devez restaurer un volume de base à un point précis dans le temps, utilisez une image instantanée précédente pour restaurer les données sur le volume de base.
+

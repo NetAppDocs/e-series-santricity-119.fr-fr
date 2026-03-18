@@ -1,0 +1,41 @@
+---
+permalink: sm-mirroring/remove-mirrored-pair.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, remove, asynchronous, mirror, relationship, 
+summary: Vous supprimez une paire miroir pour supprimer la relation de miroir du volume principal sur la baie de stockage locale et du volume secondaire sur la baie de stockage distante. 
+---
+= Supprimez les relations de miroir asynchrones dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous supprimez une paire miroir pour supprimer la relation de miroir du volume principal sur la baie de stockage locale et du volume secondaire sur la baie de stockage distante.
+
+.À propos de cette tâche
+Examinez les informations suivantes concernant les paires miroir orphelines :
+
+* Une paire miroir orpheline existe lorsqu'un volume membre dans un groupe miroir de cohérence a été supprimé d'un côté (soit du côté de la baie de stockage locale, soit du côté de la baie de stockage distante), mais pas de l'autre côté.
+* Les paires miroir orphelines sont détectées lorsque la communication inter-baies est rétablie et que les deux côtés de la configuration miroir réconcilient les paramètres du miroir.
+* Vous pouvez supprimer une paire miroir pour corriger un état de paire miroir orpheline.
+
+
+.Étapes
+. Sélectionnez menu : Storage[Asynchronous Mirroring].
+. Sélectionnez l’onglet *Mirrored Pair*.
++
+Le tableau des paires en miroir s'affiche et présente toutes les paires en miroir associées à la baie de stockage.
+
+. Sélectionnez la paire symétrique que vous souhaitez supprimer, puis cliquez sur *Remove*.
+. Confirmez que vous souhaitez supprimer la paire en miroir, puis cliquez sur *Remove*.
+
+
+.Résultats
+System Manager effectue les actions suivantes :
+
+* Supprime la relation de miroir du groupe de cohérence de miroir sur la baie de stockage locale et sur la baie de stockage distante, et supprime la capacité réservée.
+* Rend le volume principal et le volume secondaire accessibles à l'hôte en tant que volumes non mis en miroir.
+* Met à jour la tuile Asynchronous Mirroring avec la suppression de la paire asynchrone mise en miroir.
+

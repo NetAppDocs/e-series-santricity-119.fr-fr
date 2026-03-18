@@ -1,0 +1,47 @@
+---
+permalink: sm-storage/automatic-versus-manual-pool-creation.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, automatic, manual, pool 
+summary: Vous créez des pools automatiquement ou manuellement pour permettre le regroupement du stockage physique, puis son allocation dynamique selon les besoins. Lorsqu’un pool est créé, vous pouvez ajouter des disques physiques. 
+---
+= Découvrez la création automatique par rapport à la création manuelle de pools dans SANtricity System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous créez des pools automatiquement ou manuellement pour permettre le regroupement du stockage physique, puis son allocation dynamique selon les besoins. Lorsqu’un pool est créé, vous pouvez ajouter des disques physiques.
+
+
+
+== Création automatique
+
+La création automatique de pools est déclenchée lorsque System Manager détecte de la capacité non allouée dans une baie de stockage. Lorsque de la capacité non allouée est détectée, System Manager vous invite automatiquement à créer un ou plusieurs pools, à ajouter la capacité non allouée à un pool existant, ou les deux.
+
+La création automatique du pool se produit lorsque l'une de ces conditions est vraie :
+
+* Il n'existe pas de pools dans la baie de stockage, et il y a suffisamment de disques similaires pour créer un nouveau pool.
+* De nouveaux disques sont ajoutés à une baie de stockage qui possède au moins un pool.
+
+
+Chaque disque d'un pool doit être du même type (HDD ou SSD) et avoir une capacité similaire. System Manager vous invitera à effectuer les tâches suivantes :
+
+* Créez un pool unique s'il y a un nombre suffisant de disques de ces types.
+* Créez plusieurs pools si la capacité non attribuée est composée de différents types de disques.
+* Ajoutez les disques au pool existant si un pool est déjà défini dans la baie de stockage, et ajoutez de nouveaux disques du même type au pool.
+* Ajoutez les disques du même type de disque au pool existant, et utilisez les autres types de disques pour créer des pools différents si les nouveaux disques sont de types de disque différents.
+
+
+
+
+== Création manuelle
+
+Il peut être nécessaire de créer un pool manuellement lorsque la création automatique ne parvient pas à déterminer la meilleure configuration. Cette situation peut se produire pour l'une des raisons suivantes :
+
+* Les nouveaux disques pourraient potentiellement être ajoutés à plus d'un pool.
+* Un ou plusieurs des nouveaux candidats au pool peuvent utiliser la protection contre la perte d’étagère ou la protection contre la perte de tiroir.
+* Un ou plusieurs des candidats actuels au pool ne peuvent pas maintenir leur statut de protection contre la perte d'étagère ou la perte de tiroir.
+
+
+Vous pouvez également vouloir créer un pool manuellement si vous avez plusieurs applications sur votre baie de stockage et que vous ne souhaitez pas qu'elles se disputent les mêmes ressources disque. Dans ce cas, vous pouvez envisager de créer manuellement un pool plus petit pour une ou plusieurs des applications. Vous pouvez affecter seulement un ou deux volumes au lieu d'affecter la charge de travail à un grand pool comportant de nombreux volumes sur lesquels répartir les données. La création manuelle d'un pool distinct dédié à la charge de travail d'une application spécifique peut permettre aux opérations de la baie de stockage de s'exécuter plus rapidement, avec moins de concurrence.

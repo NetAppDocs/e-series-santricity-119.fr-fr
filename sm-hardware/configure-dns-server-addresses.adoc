@@ -1,0 +1,60 @@
+---
+permalink: sm-hardware/configure-dns-server-addresses.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, configure, dns, server, addresses, 
+summary: 'Le système de noms de domaine (serveur DNS) est utilisé pour résoudre les noms de domaine complets des contrôleurs et d"un serveur Network Time Protocol (NTP). Les ports de gestion de la baie de stockage peuvent prendre en charge simultanément les protocoles IPv4 ou IPv6.' 
+---
+= Configurez les adresses des serveurs DNS dans SANtricity System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Le système de noms de domaine (serveur DNS) est utilisé pour résoudre les noms de domaine complets des contrôleurs et d'un serveur Network Time Protocol (NTP). Les ports de gestion de la baie de stockage peuvent prendre en charge simultanément les protocoles IPv4 ou IPv6.
+
+.Avant de commencer
+* Un serveur DNS doit être installé et configuré sur votre réseau.
+* Vous connaissez l'adresse du serveur DNS principal et éventuellement celle d'un serveur DNS de secours. Ces adresses peuvent être des adresses IPv4 ou IPv6.
+
+
+.À propos de cette tâche
+Cette procédure décrit comment spécifier l'adresse d'un serveur DNS principal et d'un serveur DNS de secours. Le serveur DNS de secours peut être configuré en option pour être utilisé si le serveur DNS principal tombe en panne.
+
+[NOTE]
+====
+Si vous avez déjà configuré les ports de gestion de la baie de stockage avec le protocole Dynamic Host Configuration Protocol (DHCP), et que vous avez un ou plusieurs serveurs DNS ou NTP associés à la configuration DHCP, alors vous n'avez pas besoin de configurer manuellement DNS ou NTP. Dans ce cas, la baie de stockage devrait avoir déjà obtenu automatiquement les adresses des serveurs DNS/NTP. Cependant, vous devez tout de même suivre les instructions ci-dessous pour ouvrir la boîte de dialogue et vous assurer que les adresses correctes sont détectées.
+
+====
+.Étapes
+. Sélectionnez *Hardware*.
+. Si le graphique affiche les lecteurs, cliquez sur l’onglet *Controllers & Components*.
++
+Le graphique change pour afficher les contrôleurs au lieu des disques.
+
+. Sélectionnez le contrôleur à configurer.
++
+Le menu contextuel du contrôleur apparaît.
+
+. Sélectionnez *Configurer le serveur DNS*.
++
+La boîte de dialogue Configurer le serveur Domain Name System (DNS) s'ouvre.
+
+. Sélectionnez l'une des options suivantes :
++
+** *Obtenir automatiquement les adresses du serveur DNS à partir du serveur DHCP* -- Les adresses du serveur DNS détectées sont affichées.
++
+[NOTE]
+====
+Si la baie de stockage est configurée pour utiliser une adresse DNS statique, aucun serveur DNS n’apparaît.
+
+====
+** *Spécifiez manuellement les adresses du serveur DNS* -- Saisissez l'adresse d'un serveur DNS principal et l'adresse d'un serveur DNS de secours. Le serveur de secours est facultatif. (Ces champs d'adresse apparaissent après que vous ayez sélectionné le bouton radio.) Ces adresses peuvent être des adresses IPv4 ou IPv6.
+
+
+. Cliquez sur *Enregistrer*.
+. Répétez ces étapes pour l'autre contrôleur.
+
+
+.Résultats
+La configuration du serveur DNS est affichée dans les paramètres du contrôleur, onglet *DNS / NTP*.

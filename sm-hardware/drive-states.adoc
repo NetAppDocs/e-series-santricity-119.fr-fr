@@ -1,0 +1,135 @@
+---
+permalink: sm-hardware/drive-states.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, drive, states, 
+summary: System Manager signale différents états pour les disques. 
+---
+= Découvrez les états de lecteur dans SANtricity System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SANtricity System Manager signale différents états pour les disques.
+
+
+
+== États d'accessibilité
+
+[cols="25h,~"]
+|===
+| État | Définition 
+
+
+ a| 
+Contourné
+ a| 
+Le disque est physiquement présent, mais le contrôleur ne peut pas communiquer avec lui sur aucun des deux ports.
+
+
+
+ a| 
+Incompatible
+ a| 
+L'une des conditions suivantes existe :
+
+* Le disque n'est pas certifié pour une utilisation dans la baie de stockage.
+* Le disque possède une taille de secteur différente.
+* Le disque contient des données de configuration inutilisables provenant d'une version de firmware plus ancienne ou plus récente.
+
+
+
+
+ a| 
+Supprimé
+ a| 
+Le disque a été retiré de manière incorrecte de la baie de stockage.
+
+
+
+ a| 
+Présent
+ a| 
+Le contrôleur peut communiquer avec le disque sur les deux ports.
+
+
+
+ a| 
+Ne répond pas
+ a| 
+Le disque ne répond pas aux commandes.
+
+|===
+
+
+== États de rôle
+
+[cols="25h,~"]
+|===
+| État | Définition 
+
+
+ a| 
+Attribué
+ a| 
+Le disque est membre d'un pool ou d'un groupe de volumes.
+
+
+
+ a| 
+pièce de rechange à chaud en cours d'utilisation
+ a| 
+Ce disque est actuellement utilisé en remplacement d'un disque qui a subi une panne disque. Les disques de secours à chaud ne sont utilisés que dans les groupes de volumes, pas dans les pools.
+
+
+
+ a| 
+Standby de secours à chaud
+ a| 
+Ce disque est prêt à être utilisé comme remplacement pour un disque qui a subi une panne disque. Les disques de remplacement à chaud sont utilisés uniquement dans les groupes de volumes, pas dans les pools.
+
+
+
+ a| 
+Non attribué
+ a| 
+Le lecteur n'est membre d'aucun pool ni groupe de volume.
+
+|===
+
+
+== États de disponibilité
+
+[cols="25h,~"]
+|===
+| État | Définition 
+
+
+ a| 
+Échec
+ a| 
+Le disque dur ne fonctionne pas. Les données sur le disque dur ne sont pas disponibles.
+
+
+
+ a| 
+Défaillance imminente
+ a| 
+Il a été détecté que le disque pourrait bientôt tomber en panne. Les données sur le disque sont encore disponibles.
+
+
+
+ a| 
+Hors ligne
+ a| 
+Le disque n'est généralement pas disponible pour le stockage de données car il fait partie d'un groupe de volumes en cours d'exportation ou il est en cours de mise à niveau du firmware.
+
+
+
+ a| 
+Optimal
+ a| 
+Le disque fonctionne normalement.
+
+|===

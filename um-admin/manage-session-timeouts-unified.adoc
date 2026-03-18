@@ -1,0 +1,39 @@
+---
+permalink: um-admin/manage-session-timeouts-unified.html 
+sidebar: sidebar 
+keywords: SANtricity, Unified Manager, E-Series, manage, session, timeouts 
+summary: 'Vous pouvez configurer des délais d"expiration pour SANtricity Unified Manager, afin que les sessions inactives des utilisateurs soient déconnectées après un temps spécifié.' 
+---
+= Gérer les délais d'expiration de session dans SANtricity Unified Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez configurer des délais d'expiration pour SANtricity Unified Manager, afin que les sessions inactives des utilisateurs soient déconnectées après un délai spécifié.
+
+.À propos de cette tâche
+Par défaut, le délai d'expiration de session pour Unified Manager est de 30 minutes. Vous pouvez modifier ce délai ou désactiver complètement le délai d'expiration de session.
+
+
+NOTE: Si la gestion des accès est configurée à l'aide des fonctionnalités Security Assertion Markup Language (SAML) intégrées dans la baie, une expiration de session peut survenir lorsque la session SSO de l'utilisateur atteint sa limite maximale. Cela peut se produire avant l'expiration de la session System Manager.
+
+.Étapes
+. Dans la barre de menu, sélectionnez la flèche déroulante située à côté de votre nom de connexion utilisateur.
+. Sélectionnez *Activer/Désactiver le délai d'expiration de session*.
++
+La boîte de dialogue Activer/Désactiver le délai d'expiration de session s'ouvre.
+
+. Utilisez les commandes de sélection pour augmenter ou diminuer la durée en minutes.
++
+Le délai d'inactivité minimum que vous pouvez définir est de 15 minutes.
+
++
+[NOTE]
+====
+Pour désactiver les délais d'expiration de session, décochez la case *Set the length of time...*.
+
+====
+. Cliquez sur *Enregistrer*.
+

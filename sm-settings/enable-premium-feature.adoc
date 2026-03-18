@@ -1,0 +1,41 @@
+---
+permalink: sm-settings/enable-premium-feature.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, enable, premium, feature, 
+summary: Une fonctionnalité premium est une option supplémentaire qui nécessite une clé pour être activée. 
+---
+= Activez une fonctionnalité premium dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Une fonctionnalité premium est une option supplémentaire qui nécessite une clé pour être activée.
+
+.Avant de commencer
+* Vous avez obtenu une clé de fonctionnalité. Si nécessaire, contactez le support technique pour une clé.
+* Vous avez chargé le fichier clé sur le client de gestion (le système doté d'un navigateur pour accéder à System Manager).
+
+
+.À propos de cette tâche
+Cette tâche décrit comment utiliser System Manager pour activer une fonctionnalité premium.
+
+[NOTE]
+====
+Si vous souhaitez désactiver une fonctionnalité premium, vous devez utiliser la commande Disable Storage Array Feature (`disable storageArray) (featurePack | feature=featureAttributeList` dans l'interface de ligne de commandes (CLI).
+
+====
+.Étapes
+. Sélectionnez menu : Paramètres [System].
+. Sous *Modules complémentaires*, sélectionnez *Enable Premium Feature*.
++
+La boîte de dialogue Activer une fonctionnalité premium s'ouvre.
+
+. Cliquez sur *Parcourir*, puis sélectionnez le fichier clé.
++
+Le nom du fichier s'affiche dans la boîte de dialogue.
+
+. Cliquez sur *Enable*.
+

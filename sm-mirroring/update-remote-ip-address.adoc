@@ -1,0 +1,34 @@
+---
+permalink: sm-mirroring/update-remote-ip-address.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, update, remote, ip, address, connection, 
+summary: 'Vous pouvez mettre à jour l"adresse IP iSCSI de votre baie de stockage distante pour rétablir la connexion avec la baie de stockage locale.' 
+---
+= Mettre à jour les adresses IP des baies de stockage distantes dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez mettre à jour l'adresse IP iSCSI de votre baie de stockage distante pour rétablir la connexion avec la baie de stockage locale.
+
+.Avant de commencer
+La baie de stockage locale et la baie de stockage distante doivent toutes deux être configurées pour la réplication asynchrone à l'aide d'une connexion iSCSI.
+
+.Étapes
+. Sélectionnez menu : Storage[Asynchronous Mirroring].
+. Sélectionnez l’onglet *Mirror Consistency Groups*.
++
+Le tableau Mirror Consistency Group affiche tous les groupes de cohérence des miroirs associés à la baie de stockage.
+
+. Sélectionnez le groupe de cohérence de miroir que vous souhaitez mettre à jour, puis sélectionnez menu : Plus [Mettre à jour l’adresse IP distante].
++
+Le système affiche la boîte de dialogue Mettre à jour l'adresse IP distante.
+
+. Sélectionnez *Mettre à jour* pour mettre à jour l'adresse IP iSCSI de votre baie de stockage distante.
+
+
+.Résultats
+Le système réinitialise l'adresse IP de la baie de stockage distante afin de rétablir la connexion avec la baie de stockage locale.

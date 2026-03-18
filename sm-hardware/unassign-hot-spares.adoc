@@ -1,0 +1,43 @@
+---
+permalink: sm-hardware/unassign-hot-spares.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, change, hot, spare, unassign, 
+summary: Vous pouvez changer un disque de secours à chaud en un disque non attribué. 
+---
+= Désaffecter les hot spares dans SANtricity System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez changer un disque de secours à chaud en un disque non attribué.
+
+.Avant de commencer
+Le disque de secours à chaud doit être en état Optimal, Veille.
+
+.À propos de cette tâche
+Vous ne pouvez pas désaffecter un disque de secours actif qui prend actuellement le relais d'une panne disque. Si le disque de secours actif n'est pas dans l'état Optimal, suivez les procédures de Recovery Guru pour corriger tout problème avant d'essayer de désaffecter le disque.
+
+.Étapes
+. Sélectionnez *Hardware*.
+. Si le graphique affiche les contrôleurs, cliquez sur l’onglet *Lecteurs*.
++
+Le graphique change pour afficher les disques au lieu des contrôleurs.
+
+. Sélectionnez le disque de secours à chaud (affiché en rose) que vous souhaitez désassigner.
++
+Si des lignes diagonales traversent la baie de disque rose, le disque de secours est actuellement utilisé et ne peut pas être désaffecté.
+
++
+Le menu contextuel du lecteur s'ouvre.
+
+. Dans la liste déroulante du lecteur, sélectionnez *Désaffecter hot spare*.
++
+La boîte de dialogue affiche tous les groupes de volumes affectés par la suppression de ce hot spare et si d'autres hot spares les protègent.
+
+. Confirmez l'opération de désaffectation.
+
+
+.Résultats
+Le lecteur est renvoyé à Unassigned (affiché en gris).

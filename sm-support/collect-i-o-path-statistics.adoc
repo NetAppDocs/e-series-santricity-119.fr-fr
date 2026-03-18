@@ -1,0 +1,35 @@
+---
+permalink: sm-support/collect-i-o-path-statistics.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, collect, i/o path, statistics 
+summary: 'Vous pouvez enregistrer le fichier de statistiques du chemin d"E/S et l"envoyer au support technique pour analyse.' 
+---
+= Collectez les statistiques du chemin d'E/S dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez enregistrer le fichier de statistiques du chemin d'E/S et l'envoyer au support technique pour analyse.
+
+.À propos de cette tâche
+L'assistance technique utilise les statistiques du chemin d'E/S pour aider à diagnostiquer les problèmes de performance. Les problèmes de performance des applications peuvent être causés par l'utilisation de la mémoire, le taux d'utilisation du processeur, la latence réseau, la latence d'E/S ou d'autres problèmes. Les statistiques du chemin d'E/S sont collectées automatiquement lors de la collecte de données de support ou vous pouvez les collecter manuellement. De plus, si vous avez AutoSupport activé, les statistiques du chemin d'E/S sont automatiquement collectées et envoyées à l'assistance technique.
+
+Les compteurs des statistiques du chemin d'E/S sont réinitialisés après que vous ayez confirmé que vous souhaitez collecter les statistiques du chemin d'E/S. Les compteurs sont réinitialisés même si vous annulez ensuite l'opération. Les compteurs sont également réinitialisés lorsque le contrôleur se réinitialise (redémarre).
+
+[NOTE]
+====
+N’effectuez cette opération que sur instruction du support technique.
+
+====
+.Étapes
+. Sélectionnez le menu : Support [Support Center > Diagnostics] onglet.
+. Sélectionnez *Collect I/O Path Statistics*.
+. Confirmez que vous souhaitez effectuer l'opération en saisissant  `collect`, puis cliquez sur *Collect*.
++
+Le fichier est enregistré dans le dossier Téléchargements de votre navigateur sous le nom de fichier `io-path-statistics.7z`.
+
+. Suivez les instructions fournies par le support technique pour leur envoyer le fichier.
+

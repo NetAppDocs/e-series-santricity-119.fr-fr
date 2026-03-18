@@ -1,0 +1,53 @@
+---
+permalink: sm-settings/view-imported-certificates.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, view, imported, certificate, information, 
+summary: Sur la page Certificats, vous pouvez consulter le type de certificat, l’autorité émettrice et la plage de dates de validité des certificats pour la storage array. 
+---
+= Afficher les informations du certificat importé dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sur la page Certificats, vous pouvez consulter le type de certificat, l’autorité émettrice et la plage de dates de validité des certificats pour la storage array.
+
+.Avant de commencer
+Vous devez être connecté avec un profil utilisateur disposant des autorisations d'administrateur de sécurité. Sinon, les fonctions de certificat n'apparaissent pas.
+
+.Étapes
+. Sélectionnez menu : Paramètres [Certificates].
+. Sélectionnez un des onglets pour afficher des informations sur les certificats.
++
+[cols="25h,~"]
+|===
+| Onglet | Description 
+
+
+ a| 
+Gestion des baies
+ a| 
+Consultez les informations sur les certificats signés par l'autorité de certification (CA) importés pour chaque contrôleur, y compris le fichier racine, le(s) fichier(s) intermédiaire(s) et le(s) fichier(s) serveur(s).
+
+
+
+ a| 
+Fiable
+ a| 
+Consultez les informations relatives à tous les autres types de certificats importés pour les contrôleurs. Utilisez le champ de filtre sous *Afficher les certificats qui sont...* pour afficher soit les certificats installés par l'utilisateur, soit les certificats préinstallés.
+
+** *Installés par l'utilisateur* -- Certificats qu'un utilisateur a téléchargés sur la baie de stockage, qui peuvent inclure des certificats de confiance lorsque le contrôleur agit en tant que client (au lieu d'un serveur), des certificats LDAPS et des certificats de fédération d'identité.
+** *Préinstallé* -- Certificats auto-signés inclus avec le stockage array.
+
+
+
+
+ a| 
+Gestion des clés
+ a| 
+Afficher les informations sur les certificats signés par une autorité de certification (CA) importés pour un serveur de gestion de clés externe.
+
+|===
+

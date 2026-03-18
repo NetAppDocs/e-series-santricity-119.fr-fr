@@ -1,0 +1,125 @@
+---
+permalink: um-manage/requirements-for-using-mirroring.html 
+sidebar: sidebar 
+keywords: SANtricity, Unified Manager, E-Series, requirements, using, mirroring 
+summary: 'Si vous prévoyez de configurer la mise en miroir, gardez à l"esprit les exigences suivantes.' 
+---
+= Exigences relatives à l'utilisation de la mise en miroir dans SANtricity Unified Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Si vous prévoyez de configurer la mise en miroir, gardez à l'esprit les exigences suivantes.
+
+
+
+== Gestionnaire unifié
+
+* Le service Web Services Proxy doit être en cours d'exécution.
+* Unified Manager doit être exécuté sur votre hôte local via une connexion HTTPS.
+* Unified Manager doit afficher des certificats SSL valides pour la baie de stockage. Vous pouvez accepter un certificat auto-signé ou installer votre propre certificat de sécurité à l'aide de Unified Manager et en accédant à menu:Certificate[Certificate Management].
+
+
+
+
+== baies de stockage
+
+[NOTE]
+====
+La mise en miroir synchrone n'est pas disponible sur la baie de stockage EF600/EF600C ou EF300/EF300C.
+
+====
+* Vous devez disposer de deux baies de stockage.
+* Chaque baie de stockage doit comporter deux contrôleurs.
+* Les deux baies de stockage doivent être détectées dans Unified Manager.
+* Chaque contrôleur dans la matrice principale et la matrice secondaire doit avoir un port de gestion Ethernet configuré et doit être connecté à votre réseau.
+* Les baies de stockage ont une version minimale de firmware de 7.84. (Elles peuvent chacune exécuter des versions différentes du système d'exploitation.)
+* Vous devez connaître le mot de passe pour les baies de stockage locales et distantes.
+* Vous devez disposer d'une capacité libre suffisante sur la baie de stockage distante pour créer un volume secondaire égal ou supérieur au volume principal que vous souhaitez mettre en miroir.
+* La mise en miroir asynchrone est prise en charge sur les contrôleurs dotés de ports hôtes Fibre Channel (FC) ou iSCSI, tandis que la mise en miroir synchrone est prise en charge uniquement sur les contrôleurs dotés de ports hôtes FC.
+
+
+
+
+== Exigences de connectivité
+
+La mise en miroir via une interface FC (asynchrone ou synchrone) nécessite les éléments suivants :
+
+* Chaque contrôleur de la baie de stockage dédie son port hôte FC au numéro le plus élevé aux opérations de mise en miroir.
+* Si le contrôleur possède à la fois des ports FC de base et des ports FC de carte d'interface d'hôte (HIC), le port portant le numéro le plus élevé se trouve sur une HIC. Tout hôte connecté à ce port dédié est déconnecté, et aucune demande de connexion d'hôte n'est acceptée. Les requêtes d'E/S sur ce port sont acceptées uniquement des contrôleurs qui participent aux opérations de mise en miroir.
+* Les ports de mise en miroir dédiés doivent être connectés à un environnement FC prenant en charge les interfaces de service d'annuaire et de service de noms. En particulier, FC-AL et point-to-point ne sont pas pris en charge comme options de connectivité entre les contrôleurs qui participent à des relations de mise en miroir.
+
+
+La mise en miroir via une interface iSCSI (asynchrone uniquement) nécessite les éléments suivants :
+
+* Contrairement à FC, iSCSI ne nécessite pas de port dédié. Lorsqu'une mise en miroir asynchrone est utilisée dans des environnements iSCSI, il n'est pas nécessaire de dédier l'un des ports iSCSI frontaux de la baie de stockage à la mise en miroir asynchrone ; ces ports sont partagés à la fois pour le trafic de mise en miroir asynchrone et pour les connexions d'E/S entre l'hôte et la baie.
+* Le contrôleur gère une liste de systèmes de stockage distants avec lesquels l'initiateur iSCSI tente d'établir une session. Le premier port qui établit une connexion iSCSI avec succès est utilisé pour toutes les communications ultérieures avec cette baie de stockage distante. En cas d'échec de communication, une nouvelle session est tentée en utilisant tous les ports disponibles.
++
+
+NOTE: Les contrôleurs E4000 ne prennent pas en charge la mise en miroir iSCSI.
+
+* Les ports iSCSI sont configurés au niveau de la baie, port par port. La communication entre contrôleurs pour la messagerie de configuration et le transfert de données utilise les paramètres globaux, notamment les paramètres suivants :
++
+** VLAN : Les systèmes local et distant doivent avoir le même paramètre VLAN pour communiquer
+** port d'écoute iSCSI
+** Trames jumbo
+** Priorité Ethernet
+
+
+
+
+[NOTE]
+====
+La communication intercontrôleurs iSCSI doit utiliser un port de connexion hôte et non le port Ethernet de gestion.
+
+====
+
+
+== Candidats à volume miroir
+
+* Le niveau RAID, les paramètres de mise en cache et la taille des segments peuvent être différents sur les volumes primaire et secondaire d'une paire en miroir.
++
+
+NOTE: Pour les contrôleurs EF600 et EF300, les volumes primaire et secondaire d'une paire miroir asynchrone doivent utiliser le même protocole, le même niveau de tiroir, la même taille de segment, le même type de sécurité et le même niveau RAID. Les paires miroir asynchrones non éligibles n'apparaîtront pas dans la liste des volumes disponibles.
+
+* Le volume secondaire doit être au moins aussi grand que le volume primaire.
+* Un volume ne peut participer qu'à une seule relation miroir.
+* Pour une paire de volumes miroirs synchrones, les volumes primaire et secondaire doivent être des volumes standard. Ils ne peuvent pas être des volumes minces ou des volumes instantanés.
+* Pour la mise en miroir synchrone, il existe des limites quant au nombre de volumes pris en charge sur une baie de stockage donnée. Assurez-vous que le nombre de volumes configurés sur votre baie de stockage est inférieur à la limite prise en charge. Lorsque la mise en miroir synchrone est active, les deux volumes de capacité réservée créés sont comptabilisés dans la limite de volumes.
+* Pour la mise en miroir asynchrone, le volume principal et le volume secondaire doivent avoir les mêmes capacités de sécurité de disque.
++
+** Si le volume principal est compatible FIPS, le volume secondaire doit être compatible FIPS.
+** Si le volume principal est compatible FDE, le volume secondaire doit être compatible FDE.
+** Si le volume principal n'utilise pas Drive Security, le volume secondaire ne doit pas utiliser Drive Security.
+
+
+* Les volumes primaires et secondaires ne doivent pas avoir le partitionnement des ressources activé.
+
+
+
+
+== Capacité réservée
+
+Mise en miroir asynchrone :
+
+* Un volume de capacité réservé est requis pour un volume principal et pour un volume secondaire dans une paire en miroir pour consigner les informations d'écriture afin de récupérer après des réinitialisations du contrôleur et d'autres interruptions temporaires.
+* Étant donné que le volume principal et le volume secondaire d'une paire en miroir nécessitent tous deux une capacité réservée supplémentaire, vous devez vous assurer de disposer d'une capacité libre sur les deux baies de stockage dans la relation de miroir.
+
+
+Mise en miroir synchrone :
+
+* Une capacité réservée est nécessaire pour un volume principal et pour un volume secondaire afin de consigner les informations d'écriture pour récupérer après des réinitialisations du contrôleur et d'autres interruptions temporaires.
+* Les volumes de capacité réservée sont créés automatiquement lors de l'activation de la mise en miroir synchrone. Étant donné que le volume principal et le volume secondaire d'une paire en miroir nécessitent tous deux de la capacité réservée, vous devez vous assurer de disposer d'une capacité libre suffisante sur les deux baies de stockage participant à la relation de mise en miroir synchrone.
+
+
+
+
+== Fonction de sécurité du lecteur
+
+* Si vous utilisez des disques compatibles avec la sécurité, le volume principal et le volume secondaire doivent avoir des paramètres de sécurité compatibles. Cette restriction n'est pas appliquée ; vous devez donc la vérifier vous-même.
+* Si vous utilisez des disques sécurisés, le volume principal et le volume secondaire doivent utiliser le même type de disque. Cette restriction n'est pas appliquée ; vous devez donc la vérifier vous-même.
+* Si vous utilisez Data Assurance (DA), le volume principal et le volume secondaire doivent avoir les mêmes paramètres DA.
+

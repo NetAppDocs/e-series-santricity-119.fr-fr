@@ -1,0 +1,132 @@
+---
+permalink: sm-storage/faq-snapshots.html 
+sidebar: sidebar 
+keywords:  
+summary: Cette FAQ peut vous aider si vous cherchez simplement une réponse rapide à une question. 
+---
+= FAQ sur les snapshots pour SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Cette FAQ peut vous aider si vous cherchez simplement une réponse rapide à une question.
+
+
+
+== Pourquoi ne vois-je pas tous mes volumes, hôtes ou groupes d'hôtes ?
+
+Les volumes de snapshot avec un volume de base activé DA ne peuvent pas être attribués à un hôte qui n'est pas compatible Data Assurance (DA). Vous devez désactiver DA sur le volume de base avant qu'un volume de snapshot puisse être attribué à un hôte qui n'est pas compatible DA.
+
+Tenez compte des instructions suivantes pour l’hôte auquel vous attribuez le volume d’instantané :
+
+* Un hôte n'est pas compatible DA s'il est connecté à la baie de stockage via une interface d'E/S qui n'est pas compatible DA.
+* Un cluster d'hôtes n'est pas compatible DA s'il comporte au moins un membre hôte qui n'est pas compatible DA.
+
+
+[NOTE]
+====
+Vous ne pouvez pas désactiver DA sur un volume associé à des instantanés (groupes de cohérence, groupes d'instantanés, images d'instantanés et volumes d'instantanés), à des copies de volume et à des miroirs. Toute la capacité réservée associée et les objets d'instantané doivent être supprimés avant que DA puisse être désactivé sur le volume de base.
+
+====
+
+
+== Qu'est-ce qu'une image instantanée ?
+
+Une image instantanée est une copie logique du contenu d'un volume, capturée à un instant précis. Les images instantanées utilisent un espace de stockage minimal.
+
+Les données des images instantanées sont stockées comme suit :
+
+* Lorsqu'une image instantanée est créée, elle correspond exactement au volume de base. Après la création de l'instantané, lors de la première requête d'écriture pour un bloc ou un ensemble de blocs sur le volume de base, les données originales sont copiées dans la capacité réservée de l'instantané avant que les nouvelles données ne soient écrites sur le volume de base.
+* Les instantanés suivants ne contiennent que les blocs de données qui ont changé depuis la création de la première image d’instantané. Chaque opération de copie sur écriture suivante sauvegarde les données originales qui sont sur le point d’être écrasées sur le volume de base dans la capacité réservée à l’instantané avant que les nouvelles données ne soient écrites sur le volume de base.
+
+
+
+
+== Pourquoi utiliser des images instantanées ?
+
+Vous pouvez utiliser des instantanés pour vous protéger contre la perte ou la corruption accidentelle ou malveillante de données et permettre la récupération.
+
+Sélectionnez un volume de base ou un groupe de volumes de base, appelé groupe de cohérence d'instantané, puis capturez des images d'instantané selon une ou plusieurs des méthodes suivantes :
+
+* Vous pouvez créer une image instantanée d'un seul volume de base ou un groupe de cohérence de snapshot composé de plusieurs volumes de base.
+* Vous pouvez prendre des instantanés manuellement ou créer une planification pour un volume de base ou un groupe de cohérence afin de capturer automatiquement des images d'instantanés périodiques.
+* Vous pouvez créer un volume de snapshot accessible par l'hôte à partir d'une image de snapshot.
+* Vous pouvez effectuer une opération de rollback pour restaurer une image de snapshot.
+
+
+Le système conserve plusieurs images instantanées servant de points de restauration que vous pouvez utiliser pour revenir à des ensembles de données connus et fonctionnels à des moments précis. La possibilité de revenir en arrière offre une protection contre la suppression accidentelle de données et la corruption des données.
+
+
+
+== Quels types de volumes peuvent être utilisés pour les instantanés ?
+
+Seuls les volumes standard et les volumes fins peuvent être utilisés pour stocker des images instantanées. Les volumes non standard ne peuvent pas être utilisés. Le volume de base peut résider soit sur un pool, soit sur un groupe de volumes.
+
+
+
+== Pourquoi créerais-je un groupe de cohérence ?
+
+Vous créez un groupe de cohérence d'instantanés lorsque vous souhaitez vous assurer que des images d'instantanés sont prises sur plusieurs volumes en même temps.
+
+Par exemple, une base de données composée de plusieurs volumes qui doivent rester cohérents à des fins de récupération nécessiterait un groupe de cohérence de snapshot pour collecter des snapshots coordonnés de tous les volumes et les utiliser pour restaurer l'intégralité de la base de données.
+
+Les volumes inclus dans un groupe de cohérence de snapshot sont appelés _volumes membres_.
+
+Vous pouvez effectuer les opérations d'instantané suivantes sur un groupe de cohérence :
+
+* Créez une image instantanée d'un groupe de cohérence de snapshot pour obtenir des images simultanées des volumes membres.
+* Créez une planification pour que le groupe de cohérence de snapshot capture automatiquement des images simultanées périodiques des volumes membres.
+* Créer un volume de snapshot accessible par l'hôte à partir d'une image de groupe de cohérence de snapshot.
+* Effectuez une opération de restauration pour un groupe de cohérence de snapshot.
+
+
+
+
+== Qu'est-ce qu'un volume de snapshot et quand a-t-il besoin de capacité réservée ?
+
+Un volume de snapshot permet à l'hôte d'accéder aux données de l'image snapshot. Le volume de snapshot possède sa propre capacité réservée, qui enregistre toute modification apportée au volume de base sans affecter l'image snapshot originale. Les images snapshot ne sont pas accessibles en lecture ou en écriture par les hôtes. Si vous souhaitez lire ou écrire des données de snapshot, créez un volume de snapshot et assignez-le à un hôte.
+
+Vous pouvez créer deux types de volumes d'instantané. Le type de volume d'instantané détermine s'il utilise de la capacité réservée.
+
+* *Lecture seule* -- Un volume de snapshot créé en lecture seule permet à une application hôte d'accéder en lecture à une copie des données contenues dans l'image du snapshot. Un volume de snapshot en lecture seule n'utilise pas de capacité réservée.
+* *Lecture-écriture* – Un volume de snapshot créé en lecture-écriture vous permet de modifier le volume de snapshot sans affecter l'image de snapshot référencée. Un volume de snapshot en lecture-écriture utilise la capacité réservée pour stocker ces modifications. Vous pouvez convertir un volume de snapshot en lecture seule en lecture-écriture à tout moment.
+
+
+
+
+== Qu'est-ce qu'un groupe d'instantané ?
+
+Un groupe d'instantanés est une collection d'images instantanées à un instant donné d'un seul volume de base associé.
+
+System Manager organise les images instantanées en . Les groupes d'instantanés ne nécessitent aucune intervention de l'utilisateur, mais vous pouvez ajuster la capacité réservée sur un groupe d'instantanés à tout moment. De plus, vous pourriez être invité à créer de la capacité réservée lorsque les conditions suivantes sont réunies :
+
+* Chaque fois que vous prenez un instantané d'un volume de base ne possédant pas encore de groupe d'instantanés, System Manager crée automatiquement un groupe d'instantanés. Cela crée une capacité réservée pour le volume de base qui est utilisée pour stocker les images d'instantanés suivantes.
+* Chaque fois que vous créez une planification de snapshot pour un volume de base, System Manager crée automatiquement un snapshot group.
+
+
+
+
+== Pourquoi désactiverais-je un volume de snapshot ?
+
+Vous désactivez un volume de snapshot lorsque vous souhaitez attribuer un autre volume de snapshot à l'image de snapshot. Vous pouvez réserver le volume de snapshot désactivé pour une utilisation ultérieure.
+
+Si vous n'avez plus besoin du volume d'instantané ou du volume d'instantané du groupe de cohérence et que vous n'avez pas l'intention de le recréer ultérieurement, vous devez supprimer le volume au lieu de le désactiver.
+
+
+
+== Qu’est-ce que l’état Désactivé ?
+
+Un volume de snapshot en statut Désactivé n'est actuellement associé à aucune image de snapshot. Pour activer le volume de snapshot, vous devez utiliser l'opération de recréation pour associer une nouvelle image de snapshot au volume de snapshot désactivé.
+
+Les caractéristiques du volume de snapshot sont définies par l'image de snapshot qui lui est associée. L'activité de lecture-écriture est suspendue sur un volume de snapshot ayant le statut Désactivé.
+
+
+
+== Pourquoi suspendrais-je une planification d'instantanés ?
+
+Lorsqu'une planification est suspendue, la création des images d'instantanés planifiées n'a pas lieu. Vous pouvez mettre en pause une planification d'instantanés pour économiser de l'espace de stockage, puis reprendre les instantanés planifiés ultérieurement.
+
+Si vous n'avez pas besoin de la planification des instantanés, vous devez supprimer la planification au lieu de la suspendre.

@@ -1,0 +1,69 @@
+---
+permalink: sm-hardware/allow-remote-login.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, remote, login, 
+summary: La connexion à distance permet aux utilisateurs en dehors du réseau local de démarrer une session SSH et de modifier les paramètres du contrôleur. 
+---
+= Configurer la connexion à distance (SSH) dans SANtricity System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+En activant la connexion à distance, vous permettez aux utilisateurs situés en dehors du réseau local de démarrer une session SSH et d'accéder aux paramètres du contrôleur.
+
+Pour les versions de SANtricity 11.74 et ultérieures, vous pouvez également configurer l'authentification multifacteur (MFA) en exigeant des utilisateurs la saisie d'une clé SSH et/ou d'un mot de passe SSH. Pour les versions de SANtricity 11.73 et antérieures, cette fonctionnalité ne comprend _pas_ d'option d'authentification multifacteur avec des clés SSH et des mots de passe.
+
+[CAUTION]
+====
+*Risque de sécurité* -- Pour des raisons de sécurité, seul le personnel de support technique doit utiliser la fonction Remote Login.
+
+====
+.Étapes
+. Sélectionnez *Hardware*.
+. Si le graphique affiche les lecteurs, cliquez sur l’onglet *Controllers & Components*.
++
+Le graphique change pour afficher les contrôleurs au lieu des disques.
+
+. Cliquez sur le contrôleur pour lequel vous souhaitez configurer la connexion à distance.
++
+Le menu contextuel du contrôleur apparaît.
+
+. Sélectionnez *Configurer la connexion à distance (SSH)*. (Pour les versions de SANtricity 11.73 et antérieures, cet élément de menu est *Modifier la connexion à distance*.)
++
+La boîte de dialogue s'ouvre pour activer la connexion à distance.
+
+. Sélectionnez la case *Activer la connexion à distance*.
++
+Ce paramètre permet la connexion à distance avec trois options d'autorisation :
+
++
+** *Mot de passe uniquement*. Pour cette option, la configuration est terminée et vous pouvez cliquer sur *Enregistrer*. Si vous disposez d'un système duplex, vous pouvez activer la connexion à distance sur le second contrôleur en suivant les étapes précédentes.
+** *Clé SSH ou mot de passe*. Pour cette option, passez à l'étape suivante.
+** *Mot de passe et clé SSH*. Pour cette option, cochez la case *Exiger une clé publique et un mot de passe autorisés pour la connexion à distance* et passez à l'étape suivante.
+
+
+. Renseignez le champ *Clé publique autorisée*. Ce champ contient une liste de clés publiques autorisées, au format du fichier *authorized_keys* d'OpenSSH.
++
+Lors du remplissage du champ *Clé publique autorisée*, veuillez tenir compte des consignes suivantes :
+
++
+** Le champ *Clé publique autorisée* s'applique aux deux contrôleurs et ne doit être configuré que sur le premier contrôleur.
+** Le fichier *authorized_keys* ne doit contenir qu'une seule clé par ligne. Les lignes commençant par # et les lignes vides sont ignorées. Pour plus d'informations sur le format du fichier, consultez link:https://www.ssh.com/academy/ssh/authorized-keys-openssh["Configuration des clés autorisées pour OpenSSH"^].
+** Un fichier *authorized_keys* doit ressembler à l'exemple suivant :
++
+[listing]
+----
+ssh-rsa
+AAAAB3NzaC1yc2EAAAADAQABAAABAQDJlG20rYTk4ok+xFjkPHYp/R0LfJqEYDLXA5AJ49w3DvAWLrUg+1CpNq76WSqmQBmoG9jgbcAB5ABGdswdeMQZHilJcu29iJ3OKKv6SlCulAj1tHymwtbdhPuipd2wIDAQAB
+----
+
+
+. Lorsque vous avez terminé, cliquez sur *Save*.
+. Pour les systèmes duplex, vous pouvez activer la connexion à distance sur le second contrôleur en suivant les étapes ci-dessus. Si vous configurez l’option pour un mot de passe et une clé SSH, veillez à cocher à nouveau la case *Require authorized public key and password for remote login*.
+. Une fois le dépannage terminé par l'assistance technique, vous pouvez désactiver la connexion à distance en retournant dans la boîte de dialogue Configurer la connexion à distance et en décochant la case *Activer la connexion à distance*. Si la connexion à distance est activée sur un deuxième contrôleur, une boîte de dialogue de confirmation s'ouvre et vous permet de désactiver la connexion à distance également sur ce dernier.
++
+La désactivation de la connexion à distance met fin à toute session SSH en cours et rejette toute nouvelle demande de connexion.
+
+

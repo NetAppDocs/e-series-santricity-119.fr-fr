@@ -1,0 +1,46 @@
+---
+permalink: sm-settings/synchronize-storage-array-clocks.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, synchronize, storage, array, clocks, 
+summary: 'Si Network Time Protocol (NTP) n"est pas activé, vous pouvez régler manuellement les horloges des contrôleurs afin qu"elles soient synchronisées avec le client de gestion (le système utilisé pour exécuter le navigateur qui accède à SANtricity System Manager).' 
+---
+= Synchroniser les horloges des baies de stockage dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Si Network Time Protocol (NTP) n'est pas activé, vous pouvez régler manuellement les horloges des contrôleurs afin qu'elles soient synchronisées avec le client de gestion (le système utilisé pour exécuter le navigateur qui accède à SANtricity System Manager).
+
+.À propos de cette tâche
+La synchronisation garantit que les horodatages des événements dans le journal des événements correspondent à ceux enregistrés dans les fichiers journaux de l'hôte. Pendant le processus de synchronisation, les contrôleurs restent disponibles et opérationnels.
+
+[NOTE]
+====
+Si NTP est activé dans System Manager, n'utilisez pas cette option pour synchroniser les horloges. À la place, NTP synchronise automatiquement les horloges avec un hôte externe à l'aide de SNTP (Simple Network Time Protocol).
+
+====
+[NOTE]
+====
+Après la synchronisation, vous pourriez constater une perte ou une distorsion des statistiques de performance, des perturbations dans les planifications (ASUP, snapshots, etc.) et des décalages dans les horodatages des données de journalisation. L'utilisation de NTP permet d'éviter ce problème.
+
+====
+.Étapes
+. Sélectionnez menu : Paramètres [System].
+. Sous *Général*, cliquez sur *Synchroniser les horloges des baies de stockage*.
++
+La boîte de dialogue « Synchroniser les horloges de la baie de stockage » s'ouvre. Elle affiche la date et l'heure actuelles du ou des contrôleurs et de l'ordinateur utilisé comme client de gestion.
+
++
+[NOTE]
+====
+Pour les baies de stockage simplex, un seul contrôleur est affiché.
+
+====
+. Si les heures affichées dans la boîte de dialogue ne correspondent pas, cliquez sur *Synchronize*.
+
+
+.Résultats
+Une fois la synchronisation réussie, les horodatages des événements sont identiques dans le journal des événements et les journaux de l’hôte.

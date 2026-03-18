@@ -1,0 +1,34 @@
+---
+permalink: um-certificates/remove-directory-server-unified.html 
+sidebar: sidebar 
+keywords: SANtricity, Unified Manager, E-Series, remove, directory, server 
+summary: 'Pour interrompre la connexion entre un serveur d"annuaire et le Web Services Proxy, vous pouvez supprimer les informations du serveur depuis la page gestion des accès. Vous pourriez vouloir effectuer cette tâche si vous avez configuré un nouveau serveur, puis souhaitez supprimer l"ancien.' 
+---
+= Supprimer le serveur d'annuaire
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Pour interrompre la connexion entre un serveur d'annuaire et le Web Services Proxy, vous pouvez supprimer les informations du serveur depuis la page gestion des accès. Vous pourriez vouloir effectuer cette tâche si vous avez configuré un nouveau serveur, puis souhaitez supprimer l'ancien.
+
+.Avant de commencer
+Vous devez être connecté avec un profil utilisateur disposant des autorisations d'administrateur de sécurité. Sinon, les fonctions de gestion des accès ne s'affichent pas.
+
+.À propos de cette tâche
+Après avoir terminé cette tâche, toutes les sessions utilisateur actives sont terminées. Seule votre session utilisateur actuelle est conservée.
+
+.Étapes
+. Sélectionnez *gestion des accès*.
+. Sélectionnez l’onglet *Services d’annuaire*.
+. Dans la liste, sélectionnez le serveur d'annuaire que vous souhaitez supprimer.
+. Cliquez sur *Remove*.
++
+La boîte de dialogue Supprimer Directory Server s'ouvre.
+
+. Tapez  `remove` dans le champ, puis cliquez sur *Supprimer*.
++
+Les paramètres de configuration du serveur d'annuaire, les paramètres de privilèges et les mappages de rôles sont supprimés. Les utilisateurs ne peuvent plus se connecter avec des identifiants provenant de ce serveur.
+
+

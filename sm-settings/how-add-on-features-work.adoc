@@ -1,0 +1,26 @@
+---
+permalink: sm-settings/how-add-on-features-work.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, add-on, features, 
+summary: Les modules complémentaires sont des fonctionnalités qui ne sont pas incluses dans la configuration standard de System Manager et qui peuvent nécessiter une clé pour être activées. Une fonctionnalité complémentaire peut être soit une fonctionnalité premium unique, soit un pack de fonctionnalités groupées. 
+---
+= Fonctionnement des fonctionnalités supplémentaires dans SANtricity System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Les modules complémentaires sont des fonctionnalités qui ne sont pas incluses dans la configuration standard de SANtricity System Manager et qui peuvent nécessiter une clé pour être activées. Une fonctionnalité complémentaire peut être soit une fonctionnalité premium unique, soit un pack de fonctionnalités groupées.
+
+Les étapes suivantes donnent un aperçu de la procédure d'activation d'une fonctionnalité premium ou d'un pack de fonctionnalités :
+
+. Obtenez les informations suivantes :
++
+** Le numéro de série du châssis et l'identificateur d'activation de la fonctionnalité, qui identifient la baie de stockage pour la fonctionnalité à installer. Ces éléments sont disponibles dans System Manager.
+** Code d'activation de la fonctionnalité, disponible sur le site Support lors de l'achat de la fonctionnalité.
+
+
+. Obtenez la clé de fonctionnalité en contactant votre fournisseur de stockage ou en accédant au site d'activation des fonctionnalités Premium. Fournissez le numéro de série du châssis, l'identifiant d'activation et le code de fonctionnalité pour l'activation.
+. À l'aide de System Manager, activez la fonctionnalité premium ou le pack de fonctionnalités en utilisant le fichier de clé de fonctionnalité.
+

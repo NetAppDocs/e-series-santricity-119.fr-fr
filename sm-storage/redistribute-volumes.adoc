@@ -1,0 +1,38 @@
+---
+permalink: sm-storage/redistribute-volumes.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, redistribute, volumes 
+summary: 'Vous redistribuez les volumes pour les ramener à leurs contrôleurs propriétaires préférés. Généralement, les pilotes multipath déplacent les volumes de leur contrôleur propriétaire préféré lorsqu"un problème survient sur le chemin d"accès aux données entre l"hôte et la baie de stockage.' 
+---
+= Redistribuer les volumes dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous redistribuez les volumes pour les ramener à leurs contrôleurs propriétaires préférés. Généralement, les pilotes multipath déplacent les volumes de leur contrôleur propriétaire préféré lorsqu'un problème survient sur le chemin d'accès aux données entre l'hôte et la baie de stockage.
+
+.Avant de commencer
+* Les volumes que vous souhaitez redistribuer ne sont pas utilisés, ou des erreurs d'E/S se produiront.
+* Un pilote multipath est installé sur tous les hôtes utilisant les volumes que vous souhaitez redistribuer, ou des erreurs d'E/S se produiront.
++
+Si vous souhaitez redistribuer des volumes sans pilote multipath sur les hôtes, toute activité d'E/S sur les volumes _pendant que l'opération de redistribution est en cours_ doit être arrêtée afin d'éviter les erreurs d'application.
+
+
+
+.À propos de cette tâche
+La plupart des pilotes multipath hôtes tentent d'accéder à chaque volume via un chemin vers son contrôleur propriétaire préféré. Cependant, si ce chemin préféré devient indisponible, le pilote multipath sur l'hôte bascule vers un chemin alternatif. Ce basculement peut entraîner un changement de propriétaire du volume vers le contrôleur alternatif. Après avoir résolu la condition ayant causé le basculement, certains hôtes peuvent automatiquement rétablir la propriété du volume sur le contrôleur propriétaire préféré, mais dans certains cas, vous devrez peut-être redistribuer manuellement les volumes.
+
+.Étapes
+. Sélectionnez le menu : Storage[Volumes].
+. Sélectionnez le menu : More [Redistribute volumes].
++
+La boîte de dialogue Redistribuer les volumes s'affiche. Tous les volumes de la baie de stockage dont le propriétaire du contrôleur préféré ne correspond pas au propriétaire actuel apparaissent dans cette boîte de dialogue.
+
+. Sélectionnez un ou plusieurs volumes que vous souhaitez redistribuer et confirmez que vous souhaitez effectuer l'opération.
+
+
+.Résultats
+System Manager déplace les volumes sélectionnés vers leurs propriétaires de contrôleurs préférés ou vous pouvez voir une boîte de dialogue Redistribute Volumes Unnecessary.

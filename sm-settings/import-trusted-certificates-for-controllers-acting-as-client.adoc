@@ -1,0 +1,39 @@
+---
+permalink: sm-settings/import-trusted-certificates-for-controllers-acting-as-client.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, import, certificates, 
+summary: 'Si le contrôleur rejette une connexion parce qu"il ne peut pas valider la chaîne de confiance pour un serveur réseau, vous pouvez importer un certificat depuis l"onglet Trusted qui permet au contrôleur (agissant en tant que client) d"accepter les communications de ce serveur.' 
+---
+= Importez les certificats pour les contrôleurs lorsqu'ils agissent en tant que clients dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Si le contrôleur rejette une connexion parce qu'il ne peut pas valider la chaîne de confiance pour un serveur réseau, vous pouvez importer un certificat depuis l'onglet Trusted qui permet au contrôleur (agissant en tant que client) d'accepter les communications de ce serveur.
+
+.Avant de commencer
+* Vous devez être connecté avec un profil utilisateur disposant des autorisations d'administrateur de sécurité. Sinon, les fonctions de certificat n'apparaissent pas.
+* Les fichiers de certificat sont installés sur votre système local.
+
+
+.À propos de cette tâche
+L'importation de certificats depuis l'onglet Trusted peut être nécessaire si vous souhaitez autoriser un autre serveur à contacter les contrôleurs (par exemple, un serveur LDAP ou un serveur syslog utilisant TLS).
+
+.Étapes
+. Sélectionnez menu : Paramètres [Certificates].
+. Dans l’onglet Trusted, sélectionnez *Import*.
++
+Une boîte de dialogue s'ouvre pour importer les fichiers de certificats de confiance.
+
+. Cliquez sur *Parcourir* pour sélectionner les fichiers de certificat pour les contrôleurs.
++
+Les noms de fichiers s'affichent dans la boîte de dialogue.
+
+. Cliquez sur *Import*.
+
+
+.Résultats
+Les fichiers sont téléchargés et validés.

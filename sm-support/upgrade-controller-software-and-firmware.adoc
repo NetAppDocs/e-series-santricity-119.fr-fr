@@ -1,0 +1,100 @@
+---
+permalink: sm-support/upgrade-controller-software-and-firmware.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, upgrade, software, firmware 
+summary: 'Vous pouvez mettre à niveau le logiciel de votre baie de stockage et, en option, le firmware IOM et la mémoire statique non volatile (NVSRAM) afin de vous assurer de bénéficier de toutes les dernières fonctionnalités et corrections de bugs.' 
+---
+= Mettez à niveau le logiciel et le firmware du contrôleur dans SANtricity System Manager
+:allow-uri-read: 
+
+
+[role="lead"]
+Vous pouvez mettre à niveau le logiciel de votre baie de stockage et, en option, le firmware IOM et la mémoire statique non volatile (NVSRAM) pour vous assurer de disposer de toutes les dernières fonctionnalités et corrections de bugs.
+
+.Avant de commencer
+* Vous savez si vous souhaitez mettre à jour le firmware de votre IOM.
++
+Normalement, vous devez mettre à niveau tous les composants en même temps. Cependant, vous pouvez décider de ne pas mettre à niveau le firmware IOM si vous ne souhaitez pas le mettre à niveau dans le cadre de la mise à niveau du logiciel SANtricity OS ou si le support technique vous a demandé de rétrograder votre firmware IOM (vous ne pouvez rétrograder le firmware qu'en utilisant la ligne de commandes).
+
+* Vous savez si vous souhaitez mettre à jour le fichier NVSRAM du contrôleur.
++
+Normalement, vous devez mettre à niveau tous les composants en même temps. Cependant, vous pouvez décider de ne pas mettre à niveau le fichier NVSRAM du contrôleur si votre fichier a été corrigé ou s'il s'agit d'une version personnalisée et que vous ne souhaitez pas l'écraser.
+
+* Vous savez si vous souhaitez activer la mise à niveau de votre système d'exploitation maintenant ou plus tard.
++
+Les raisons d'une activation ultérieure peuvent inclure :
+
++
+** *Heure de la journée* – L’activation du logiciel et du micrologiciel peut prendre du temps, il est donc conseillé d’attendre que la charge d’E/S soit plus faible. Les contrôleurs basculent pendant l’activation, ce qui peut entraîner une baisse des performances jusqu’à la fin de la mise à niveau.
+** *Type de package* -- Vous pourriez vouloir tester le nouveau logiciel et le nouveau firmware sur une baie de stockage avant de mettre à jour les fichiers sur d'autres baies de stockage.
+
+
+* Vous savez si vous souhaitez passer de disques non sécurisés ou de disques sécurisés en interne à l'utilisation d'un serveur de gestion de clés (KMS) externe pour la sécurité des disques.
+* Vous savez si vous souhaitez utiliser le contrôle d'accès basé sur les rôles dans votre baie de stockage.
+
+
+.À propos de cette tâche
+Vous pouvez choisir de mettre à niveau uniquement le fichier logiciel du système d'exploitation, uniquement le fichier NVSRAM du contrôleur ou de mettre à niveau les deux fichiers.
+
+N’effectuez cette opération que sur instruction du support technique.
+
+[CAUTION]
+====
+*Risque de perte de données ou risque d'endommagement de la baie de stockage* -- Ne modifiez pas la baie de stockage pendant la mise à niveau. Maintenez l'alimentation de la baie de stockage.
+
+====
+.Étapes
+. Si votre baie de stockage ne contient qu'un seul contrôleur ou si vous n'avez pas de pilote multipath installé, arrêtez l'activité d'E/S vers la baie de stockage pour éviter les erreurs d'application. Si votre baie de stockage possède deux contrôleurs et que vous avez un pilote multipath installé, vous n'avez pas besoin d'arrêter l'activité d'E/S.
+. Sélectionnez le menu : Support [Upgrade Center].
+. Téléchargez le nouveau fichier depuis le site Support vers votre client de gestion.
++
+.. Cliquez sur *NetApp Support* pour lancer le site Web de support.
+.. Sur le site Web de support, cliquez sur l’onglet *Downloads*, puis sélectionnez *Downloads*.
+.. Sélectionnez *E-Series SANtricity OS Controller Software*.
+.. Suivez les instructions restantes.
+
+
++
+[NOTE]
+====
+Un firmware signé numériquement est requis dans la version 8.42 et les versions ultérieures. Si vous tentez de télécharger un firmware non signé, une erreur s'affiche et le téléchargement est annulé.
+
+====
+. Si vous ne souhaitez PAS mettre à niveau le firmware IOM pour le moment, cliquez sur *Suspendre la synchronisation automatique IOM*.
++
+Si vous disposez d'une baie de stockage avec un seul contrôleur, le firmware IOM n'est pas mis à niveau.
+
+. Sous SANtricity OS Software upgrade, cliquez sur *Commencer la mise à niveau*.
++
+La boîte de dialogue « Mise à niveau du logiciel SANtricity OS » s'affiche.
+
+. Sélectionnez un ou plusieurs fichiers pour lancer le processus de mise à niveau :
++
+.. Sélectionnez le fichier SANtricity OS Software en cliquant sur *Parcourir* et en naviguant jusqu'au fichier OS software que vous avez téléchargé depuis le site Web de support.
+.. Sélectionnez le fichier NVSRAM du contrôleur en cliquant sur *Parcourir* et en naviguant jusqu'au fichier NVSRAM que vous avez téléchargé depuis le site de support. Les fichiers NVSRAM du contrôleur ont un nom de fichier similaire à `N2800-830000-000.dlp`.
+
+
++
+Les actions suivantes se produisent :
+
++
+** Par défaut, seuls les fichiers compatibles avec la configuration actuelle de la baie de stockage apparaissent.
+** Lorsque vous sélectionnez un fichier pour la mise à niveau, le nom et la taille du fichier apparaissent.
+
+
+. *Facultatif :* Si vous avez sélectionné un fichier SANtricity OS Software à mettre à niveau, vous pouvez transférer les fichiers vers le contrôleur sans les activer en sélectionnant la case à cocher *Transférer les fichiers maintenant, mais ne pas effectuer la mise à niveau (activer la mise à niveau plus tard)*.
+. Cliquez sur *Démarrer* et confirmez que vous souhaitez effectuer l'opération.
++
+Vous pouvez annuler l'opération pendant la vérification de l'état avant la mise à niveau, mais pas pendant le transfert ou l'activation.
+
+. *Facultatif :* Pour voir la liste de ce qui a été mis à niveau, cliquez sur *Enregistrer le journal*.
++
+Le fichier est enregistré dans le dossier Téléchargements de votre navigateur sous le nom `drive_upgrade_log-timestamp.txt`.
+
+
+
+.Après avoir terminé
+* Vérifiez que tous les composants apparaissent sur la page Hardware.
+* Vérifiez les nouvelles versions des logiciels et des microprogrammes en consultant la boîte de dialogue Inventaire des logiciels et des microprogrammes (allez dans le menu:Support[Centre de mise à niveau], puis cliquez sur le lien *Inventaire des logiciels et des microprogrammes*).
+* Si vous avez mis à niveau la NVSRAM du contrôleur, tous les paramètres personnalisés que vous avez appliqués à la NVSRAM existante sont perdus lors du processus d'activation. Vous devez appliquer à nouveau les paramètres personnalisés à la NVSRAM une fois le processus d'activation terminé.
+

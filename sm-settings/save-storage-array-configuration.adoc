@@ -1,0 +1,72 @@
+---
+permalink: sm-settings/save-storage-array-configuration.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, save, storage array, configuration, 
+summary: 'Vous pouvez enregistrer les informations de configuration d"une baie de stockage dans un fichier script afin de gagner du temps lors de la configuration de stockage supplémentaire avec la même configuration.' 
+---
+= Enregistrez la configuration de la baie de stockage dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez enregistrer les informations de configuration d'une baie de stockage dans un fichier script afin de gagner du temps lors de la configuration de stockage supplémentaire avec la même configuration.
+
+.Avant de commencer
+La baie de stockage ne doit faire l'objet d'aucune opération modifiant sa configuration logique. Des exemples de ces opérations incluent la création ou la suppression de volumes, le téléchargement du micrologiciel du contrôleur, l'attribution ou la modification de disques de secours, ou l'ajout de capacité (disques) à un groupe de volumes.
+
+.À propos de cette tâche
+L'enregistrement de la configuration de la baie de stockage génère un script de ligne de commandes (CLI) qui contient les paramètres de la baie de stockage, la configuration des volumes, la configuration de l'hôte ou les affectations hôte-volume pour une baie de stockage. Vous pouvez utiliser ce script CLI généré pour répliquer une configuration sur une autre baie de stockage ayant exactement la même configuration matérielle.
+
+Toutefois, vous ne devez pas utiliser ce script CLI généré pour la récupération après sinistre. Pour effectuer une restauration système, utilisez plutôt le fichier de sauvegarde de la base de données de configuration que vous créez manuellement ou contactez le support technique pour obtenir ces données à partir des dernières données Auto-Support.
+
+Cette opération _ne sauvegarde pas_ ces paramètres :
+
+* La durée de vie de la batterie
+* L'heure du contrôleur
+* Les paramètres de la mémoire statique à accès aléatoire non volatile (NVSRAM)
+* Toutes les fonctionnalités premium
+* Le mot de passe de la baie de stockage
+* L'état de fonctionnement et les états des composants matériels
+* L'état de fonctionnement (sauf Optimal) et les états des groupes de volumes
+* Services de copie, tels que la mise en miroir et la copie de volume
+
+
+[CAUTION]
+====
+*Risque d'erreurs d'application* -- N'utilisez pas cette option si la baie de stockage fait l'objet d'une opération susceptible de modifier un paramètre de configuration logique. Exemples de ces opérations : création ou suppression de volumes, téléchargement du microprogramme du contrôleur, attribution ou modification de disques de secours, ou ajout de capacité (disques) à un groupe de volumes.
+
+====
+.Étapes
+. Sélectionnez menu : Paramètres [System].
+. Sélectionnez *Enregistrer la configuration de la baie de stockage*.
+. Sélectionnez les éléments de la configuration que vous souhaitez enregistrer :
++
+** Paramètres de la baie de stockage
+** Configuration du volume
+** Configuration de l'hôte
+** Affectations hôte-volume
+
+
++
+[NOTE]
+====
+Si vous sélectionnez l’élément *Attribution hôte-volume*, les éléments *Configuration du volume* et *Configuration de l’hôte* sont également sélectionnés par défaut. Vous ne pouvez pas enregistrer « Attribution hôte-volume » sans enregistrer également « Configuration du volume » et « Configuration de l’hôte ».
+
+====
+. Cliquez sur *Enregistrer*.
++
+Le fichier est enregistré dans le dossier Téléchargements de votre navigateur sous le nom `storage-array-configuration.cfg`.
+
+
+
+.Après avoir terminé
+Pour charger la configuration de baie de stockage enregistrée sur une autre baie de stockage, utilisez l'interface de ligne de commandes SANtricity (SMcli) avec l' `-f` option pour appliquer le fichier  `.cfg`.
+
+[NOTE]
+====
+Vous pouvez également charger une configuration de baie de stockage sur d'autres baies de stockage en utilisant l'interface Unified Manager (sélectionnez menu:Manage[Import Settings]).
+
+====

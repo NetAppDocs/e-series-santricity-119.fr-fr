@@ -1,0 +1,36 @@
+---
+permalink: sm-storage/delete-snapshot-group.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, delete, snapshot, group 
+summary: 'Vous supprimez un groupe de snapshots lorsque vous souhaitez effacer définitivement ses données et le retirer du système. La suppression d"un groupe de snapshots libère la capacité réservée pour une réutilisation dans le pool ou le groupe de volumes.' 
+---
+= Supprimer un groupe d'instantanés dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous supprimez un groupe de snapshots lorsque vous souhaitez effacer définitivement ses données et le retirer du système. La suppression d'un groupe de snapshots libère la capacité réservée pour une réutilisation dans le pool ou le groupe de volumes.
+
+.À propos de cette tâche
+Lorsqu'un groupe d'instantanés est supprimé, toutes les images d'instantanés du groupe sont également supprimées.
+
+.Étapes
+. Sélectionnez le menu : Storage [Pools & Volume Groups].
+. Cliquez sur l’onglet *Reserved Capacity*.
+. Sélectionnez le groupe d'instantanés que vous souhaitez supprimer, puis cliquez sur menu:Uncommon Tasks[Delete snapshot group].
++
+La boîte de dialogue Confirmer la suppression du groupe d'instantanés s'affiche.
+
+. Tapez `delete` pour confirmer.
+
+
+.Résultats
+System Manager effectue les actions suivantes :
+
+* Supprime toutes les images instantanées associées au groupe de snapshots.
+* Désactive tous les volumes de snapshot associés aux images du groupe de snapshot.
+* Supprime la capacité réservée qui existe pour le groupe d'instantanés.
+

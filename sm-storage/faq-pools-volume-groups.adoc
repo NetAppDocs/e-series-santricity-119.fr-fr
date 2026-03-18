@@ -1,0 +1,694 @@
+---
+permalink: sm-storage/faq-pools-volume-groups.html 
+sidebar: sidebar 
+keywords:  
+summary: Cette FAQ peut vous aider si vous cherchez simplement une réponse rapide à une question. 
+---
+= FAQ sur les pools et les groupes de volumes pour SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Cette FAQ peut vous aider si vous cherchez simplement une réponse rapide à une question.
+
+
+
+== Qu'est-ce qu'un groupe de volumes ?
+
+Un groupe de volumes est un conteneur pour des volumes partageant des caractéristiques communes. Un groupe de volumes possède une capacité et un niveau RAID définis. Vous pouvez utiliser un groupe de volumes pour créer un ou plusieurs volumes accessibles à un hôte. (Vous créez des volumes à partir d’un groupe de volumes ou d’un pool.)
+
+
+
+== Qu'est-ce qu'un pool ?
+
+Un pool est un ensemble de disques regroupés logiquement. Vous pouvez utiliser un pool pour créer un ou plusieurs volumes accessibles à un hôte. (Vous créez des volumes à partir d’un pool ou d’un groupe de volumes.)
+
+Les pools permettent aux administrateurs de s'affranchir de la surveillance de l'utilisation sur chaque hôte afin d'anticiper les risques de saturation de l'espace de stockage et d'éviter les interruptions liées au redimensionnement classique des disques. Lorsqu'un pool est presque plein, il est possible d'y ajouter des disques supplémentaires sans interruption de service et l'augmentation de capacité est transparente pour l'hôte.
+
+Avec les pools, les données sont automatiquement redistribuées pour maintenir l'équilibre. En répartissant les informations de parité et la capacité de réserve dans l'ensemble du pool, chaque disque du pool peut être utilisé pour reconstruire un disque en panne. Cette approche n'utilise pas de disques de secours dédiés ; à la place, la capacité de préservation (de secours) est réservée dans tout le pool. En cas de panne disque, les segments présents sur d'autres disques sont lus pour recréer les données. Un nouveau disque est ensuite choisi pour écrire chaque segment qui se trouvait sur un disque en panne afin que la distribution des données entre les disques soit maintenue.
+
+
+
+== Qu'est-ce que la capacité réservée ?
+
+La capacité réservée est la capacité physiquement allouée qui stocke les données des objets de service de copie tels que les images instantanées, les volumes membres de groupe de cohérence et les volumes de paires en miroir.
+
+Le volume de capacité réservée associé à une opération de service de copie se trouve dans un pool ou un groupe de volumes. Vous créez la capacité réservée à partir d'un pool ou d'un groupe de volumes.
+
+
+
+== Qu'est-ce que la sécurité FDE/FIPS ?
+
+La sécurité FDE/FIPS désigne les disques sécurisés qui chiffrent les données lors de l'écriture et les déchiffrent lors de la lecture à l'aide d'une clé de chiffrement unique. Ces disques sécurisés empêchent tout accès non autorisé aux données d'un disque physiquement retiré de la baie de stockage.
+
+Les disques sécurisés peuvent être soit des disques à chiffrement complet (FDE) soit des disques Federal Information Processing Standard (FIPS). Les disques FIPS ont subi des tests de certification.
+
+[NOTE]
+====
+Pour les volumes nécessitant la prise en charge FIPS, utilisez uniquement des disques FIPS. L'utilisation simultanée de disques FIPS et FDE dans un groupe ou un pool de volumes entraînera le traitement de tous les disques comme des disques FDE. De plus, un disque FDE ne peut pas être ajouté à un groupe ou un pool de volumes composé exclusivement de disques FIPS, ni utilisé comme disque de secours dans un groupe ou un pool entièrement FIPS.
+
+====
+
+
+== Qu'est-ce qu'un contrôle de redondance ?
+
+Un contrôle de redondance détermine si les données d'un volume au sein d'un pool ou d'un groupe de volumes sont cohérentes. Les données de redondance sont utilisées pour reconstruire rapidement les informations sur un disque de remplacement si l'un des disques du pool ou du groupe de volumes tombe en panne.
+
+Vous ne pouvez effectuer cette vérification que sur un seul pool ou groupe de volumes à la fois. Une vérification de redondance de volume effectue les actions suivantes :
+
+* Analyse les blocs de données d'un volume RAID 3, RAID 5 ou RAID 6, puis vérifie les informations de redondance de chaque bloc. (RAID 3 ne peut être attribué aux groupes de volumes qu'à l'aide de la ligne de commandes.)
+* Compare les blocs de données sur des disques RAID 1 en miroir.
+* Renvoie des erreurs de redondance si les données sont déterminées comme incohérentes par le micrologiciel du contrôleur.
+
+
+[NOTE]
+====
+L'exécution immédiate d'une vérification de redondance sur le même pool ou groupe de volumes peut entraîner une erreur. Pour éviter ce problème, patientez une à deux minutes avant d'exécuter une autre vérification de redondance sur le même pool ou groupe de volumes.
+
+====
+
+
+== Quelles sont les différences entre les pools et les groupes de volume ?
+
+Un pool est similaire à un groupe de volumes, avec les différences suivantes.
+
+* Les données dans un pool sont stockées de manière aléatoire sur tous les disques du pool, contrairement aux données dans un groupe de volumes, qui sont stockées sur le même ensemble de disques.
+* Un pool subit une moindre dégradation des performances en cas de panne disque et sa reconstruction est plus rapide.
+* Un pool possède une capacité de préservation intégrée ; par conséquent, il ne nécessite pas de disques de secours à chaud dédiés.
+* Un pool permet de regrouper un grand nombre de disques.
+* Un pool n'a pas besoin d'un niveau RAID spécifié.
+
+
+
+
+== Pourquoi voudrais-je configurer manuellement un pool ?
+
+Les exemples suivants décrivent pourquoi vous souhaiteriez configurer manuellement un pool.
+
+* Si vous avez plusieurs applications sur votre baie de stockage et que vous ne souhaitez pas qu'elles se disputent les mêmes ressources disque, vous pouvez envisager de créer manuellement un pool plus petit pour une ou plusieurs des applications.
++
+Vous pouvez affecter un ou deux volumes seulement au lieu d'affecter la charge de travail à un grand pool comportant de nombreux volumes sur lesquels distribuer les données. La création manuelle d'un pool distinct dédié à la charge de travail d'une application spécifique peut permettre aux opérations de la baie de stockage de s'exécuter plus rapidement, avec moins de contention.
+
++
+Pour créer manuellement un pool : sélectionnez *Stockage*, puis *Pools & Volume Groups*. Dans l’onglet All Capacity, cliquez sur menu:Create[Pool].
+
+* S'il existe plusieurs pools de disques du même type, un message indique que System Manager ne peut pas recommander automatiquement les disques pour un pool. Cependant, vous pouvez ajouter manuellement les disques à un pool existant.
++
+Pour ajouter manuellement des disques à un pool existant : depuis la page Pools et groupes de volumes, sélectionnez le pool, puis cliquez sur *Ajouter de la capacité*.
+
+
+
+
+
+== Pourquoi les alertes de capacité sont-elles importantes ?
+
+Les alertes de capacité indiquent quand ajouter des disques à un pool. Un pool nécessite une capacité libre suffisante pour effectuer avec succès les opérations de la baie de stockage. Vous pouvez éviter les interruptions de ces opérations en configurant SANtricity System Manager pour envoyer des alertes lorsque la capacité libre d'un pool atteint ou dépasse un pourcentage spécifié.
+
+Vous définissez ce pourcentage lors de la création d'un pool, soit via l'option *Pool auto-configuration*, soit via l'option *Create pool*. Si vous choisissez l'option automatique, les paramètres par défaut déterminent automatiquement le moment où vous recevez des notifications d'alerte. Si vous choisissez de créer le pool manuellement, vous pouvez déterminer les paramètres de notification d'alerte ; ou, si vous préférez, vous pouvez accepter les paramètres par défaut. Vous pouvez ajuster ces paramètres ultérieurement dans menu:Settings[Alerts].
+
+[NOTE]
+====
+Lorsque la capacité libre dans le pool atteint le pourcentage spécifié, une notification d'alerte est envoyée en utilisant la méthode que vous avez spécifiée dans la configuration des alertes.
+
+====
+
+
+== Pourquoi ne puis-je pas augmenter ma capacité de conservation ?
+
+Si vous avez créé des volumes sur toute la capacité utilisable disponible, vous ne pourrez peut-être pas augmenter la capacité de préservation.
+
+La capacité de préservation correspond à la capacité (nombre de disques) réservée sur un pool pour prendre en charge d'éventuelles pannes disque. Lorsqu'un pool est créé, le système réserve automatiquement une capacité de préservation par défaut en fonction du nombre de disques dans le pool. Si vous avez créé des volumes sur toute la capacité utilisable disponible, vous ne pouvez pas augmenter la capacité de préservation sans ajouter de capacité au pool, soit en ajoutant des disques, soit en supprimant des volumes.
+
+Vous pouvez modifier la capacité de conservation dans *Pools & Volume Groups*. Sélectionnez le pool que vous souhaitez modifier. Cliquez sur *Afficher/Modifier les paramètres*, puis sélectionnez l’onglet *Paramètres*.
+
+[NOTE]
+====
+La capacité de préservation est spécifiée en nombre de disques, même si la capacité de préservation réelle est répartie sur les disques du pool.
+
+====
+
+
+== Existe-t-il une limite au nombre de disques que je peux retirer d'un pool ?
+
+SANtricity System Manager définit des limites pour le nombre de disques que vous pouvez retirer d'un pool.
+
+* Vous ne pouvez pas réduire le nombre de disques dans un pool à moins de 11 disques.
+* Vous ne pouvez pas retirer de disques s'il n'y a pas suffisamment de capacité libre dans le pool pour contenir les données des disques retirés lorsque ces données sont redistribuées sur les disques restants du pool.
+* Vous pouvez retirer jusqu'à 60 disques à la fois. Si vous sélectionnez plus de 60 disques, l'option Retirer les disques est désactivée. Si vous devez retirer plus de 60 disques, répétez l'opération Retirer les disques.
+
+
+
+
+== Quels types de supports sont pris en charge pour un lecteur ?
+
+Les types de supports suivants sont pris en charge : Hard Disk Drive (HDD) et Solid State Disk (SSD).
+
+
+
+== Pourquoi certains disques ne s'affichent-ils pas ?
+
+Dans la boîte de dialogue Ajouter de la capacité, tous les disques ne sont pas disponibles pour ajouter de la capacité à un pool ou à un groupe de volumes existant.
+
+Les disques ne sont pas admissibles pour l'une des raisons suivantes :
+
+* Le disque doit être non attribué et non sécurisé. Les disques faisant déjà partie d'un autre pool, d'un autre groupe de volumes ou configurés comme disque de secours ne sont pas éligibles. Si un disque est non attribué mais est sécurisé, vous devez l'effacer manuellement pour qu'il devienne éligible.
+* Un disque qui est dans un état non optimal n'est pas éligible.
+* Si la capacité d'un disque est trop faible, il n'est pas éligible.
+* Le type de support de lecteur doit être identique au sein d'un pool ou d'un groupe de volumes. Vous ne pouvez pas mélanger les éléments suivants :
++
+** Disques durs (HDD) avec disques à semi-conducteurs (SSD)
+** NVMe avec disques SAS
+** Disques avec des tailles de blocs de volume de 512 octets et 4Kio
+
+
+* Si un pool ou un groupe de volumes contient tous les disques sécurisés, les disques non sécurisés ne sont pas répertoriés.
+* Si un pool ou un groupe de volumes contient tous les disques Federal Information Processing Standards (FIPS), les disques non-FIPS ne sont pas répertoriés.
+* Si un pool ou un groupe de volumes contient uniquement des disques compatibles Data Assurance (DA) et qu'il comprend au moins un volume compatible DA, un disque non compatible DA n'est pas éligible, il ne peut donc pas être ajouté à ce pool ou groupe de volumes. Cependant, si le pool ou le groupe de volumes ne contient aucun volume compatible DA, un disque non compatible DA peut être ajouté à ce pool ou groupe de volumes. Si vous décidez de mélanger ces disques, gardez à l'esprit que vous ne pourrez pas créer de volumes compatibles DA.
+
+
+[NOTE]
+====
+La capacité peut être augmentée dans votre baie de stockage en ajoutant de nouveaux disques ou en supprimant des pools ou des groupes de volumes.
+
+====
+
+
+== Comment puis-je maintenir la protection contre la perte d'étagère/tiroir ?
+
+Pour maintenir la protection contre les pertes d'étagères/tiroirs pour un pool ou un groupe de volumes, utilisez les critères spécifiés dans le tableau suivant.
+
+[cols="1a,1a,1a"]
+|===
+| Niveau | Critères de protection contre la perte d'étagère/tiroir | Nombre minimum d'étagères/tiroirs requis 
+
+
+ a| 
+Pool
+ a| 
+Pour les étagères, le pool ne doit pas contenir plus de deux disques dans une seule étagère.
+
+Pour les tiroirs, le pool doit inclure un nombre égal de disques provenant de chaque tiroir.
+ a| 
+6 pour les étagères
+
+5 pour les tiroirs
+
+
+
+ a| 
+RAID 6
+ a| 
+Le groupe de volumes ne contient pas plus de deux disques dans une seule étagère ou un seul tiroir.
+ a| 
+3
+
+
+
+ a| 
+RAID 3 ou RAID 5
+ a| 
+Chaque lecteur du groupe de volumes est situé dans une étagère ou un tiroir séparé.
+ a| 
+3
+
+
+
+ a| 
+RAID 1
+ a| 
+Chaque disque d'une paire en miroir doit être placé dans une étagère ou un tiroir séparé.
+ a| 
+2
+
+
+
+ a| 
+RAID 0
+ a| 
+Impossible d'obtenir une protection contre la perte d'étagère/tiroir.
+ a| 
+Non Concerné
+
+|===
+[NOTE]
+====
+La protection contre la perte d'accès à une baie ou un tiroir n'est pas maintenue si un disque a déjà échoué dans le pool ou le groupe de volumes. Dans cette situation, la perte d'accès à une baie ou un tiroir de disque, et par conséquent à un autre disque dans le pool ou le groupe de volumes, entraîne une perte de données.
+
+====
+
+
+== Quel est le positionnement optimal des disques pour les pools et les groupes de volumes ?
+
+Lors de la création de pools et de groupes de volumes, veillez à équilibrer la sélection des disques entre les emplacements de disques supérieurs et inférieurs.
+
+Pour les contrôleurs EF600 et EF300, les emplacements de disques 0 à 11 sont connectés à un pont PCI, tandis que les emplacements 12 à 23 sont connectés à un autre pont PCI. Pour des performances optimales, vous devez équilibrer la sélection des disques afin d'inclure un nombre à peu près égal de disques provenant des emplacements supérieurs et inférieurs. Cette disposition garantit que vos volumes n'atteignent pas une limite de bande passante plus tôt que nécessaire.
+
+
+
+== Quel niveau RAID est le mieux adapté à mon application ?
+
+Pour optimiser les performances d'un groupe de volumes, vous devez sélectionner le niveau RAID approprié. Vous pouvez déterminer le niveau RAID approprié en connaissant les pourcentages de lecture et d'écriture des applications qui accèdent au groupe de volumes. Utilisez la page Performance pour obtenir ces pourcentages.
+
+
+
+=== Niveaux RAID et performance de l'application
+
+Le RAID repose sur une série de configurations, appelées , qui déterminent comment les données utilisateur et les données de redondance sont écrites et récupérées sur les disques. Chaque niveau RAID offre différentes caractéristiques de performance. Les applications avec un pourcentage élevé de lectures fonctionneront bien avec des volumes RAID 5 ou RAID 6 en raison de l'excellente performance de lecture des configurations RAID 5 et RAID 6.
+
+Les applications à faible pourcentage de lecture (à forte intensité d'écriture) sont moins performantes sur les volumes RAID 5 ou RAID 6. La dégradation des performances est le résultat de la manière dont un contrôleur écrit les données et les données de redondance sur les disques dans un groupe de volumes RAID 5 ou un groupe de volumes RAID 6.
+
+Sélectionnez un niveau RAID en fonction des informations suivantes.
+
+*RAID 0*
+
+* *Description*
++
+** Mode de striping non redondant.
+
+
+* *Comment ça marche*
++
+** RAID 0 répartit les données sur tous les disques du groupe de volumes.
+
+
+* *Fonctionnalités de protection des données*
++
+** RAID 0 n'est pas recommandé pour les besoins de haute disponibilité. RAID 0 est mieux adapté aux données non critiques.
+** Si une seule panne disque survient dans le groupe de volumes, tous les volumes associés échouent et toutes les données sont perdues.
+
+
+* *Exigences relatives au nombre de disques*
++
+** Un minimum d'un disque est requis pour le niveau RAID 0.
+** Les groupes de volumes RAID 0 peuvent comporter plus de 30 disques.
+** Vous pouvez créer un groupe de volumes qui inclut tous les disques de la baie de stockage.
+
+
+
+
+*RAID 1 ou RAID 10*
+
+* *Description*
++
+** Mode striping/miroir.
+
+
+* *Comment ça marche*
++
+** RAID 1 utilise la mise en miroir des disques pour écrire simultanément des données sur deux disques identiques.
+** RAID 10 utilise le striping de disques pour répartir les données sur un ensemble de paires de disques en miroir.
+
+
+* *Fonctionnalités de protection des données*
++
+** RAID 1 et RAID 10 offrent des performances élevées et la meilleure disponibilité des données.
+** RAID 1 et RAID 10 utilisent la mise en miroir de disque pour créer une copie exacte d’un disque vers un autre disque.
+** Si l'un des disques d'une paire tombe en panne, la baie de stockage peut basculer instantanément sur l'autre disque sans aucune perte de données ni de service.
+** La panne disque entraîne la dégradation des volumes associés. Le disque miroir permet d'accéder aux données.
+** La panne d'une paire de disques dans un groupe de volumes entraîne la défaillance de tous les volumes associés, et une perte de données peut survenir.
+
+
+* *Exigences relatives au nombre de disques*
++
+** Un minimum de deux disques est requis pour le RAID 1 : un disque pour les données utilisateur et un disque pour les données en miroir.
+** Si vous sélectionnez quatre disques ou plus, le RAID 10 est automatiquement configuré sur le groupe de volumes : deux disques pour les données utilisateur et deux disques pour les données en miroir.
+** Le groupe de volumes doit comporter un nombre pair de disques. Si vous n'avez pas un nombre pair de disques et qu'il vous reste des disques non attribués, accédez à *Pools & Volume Groups* pour ajouter des disques supplémentaires au groupe de volumes, puis réessayez l'opération.
+** Les groupes de volumes RAID 1 et RAID 10 peuvent contenir plus de 30 disques. Un groupe de volumes peut être créé qui inclut tous les disques de la baie de stockage.
+
+
+
+
+*RAID 5*
+
+* *Description*
++
+** Mode E/S élevé.
+
+
+* *Comment ça marche*
++
+** Les données utilisateur et les informations redondantes (parité) sont réparties sur les disques.
+** La capacité équivalente d'un disque est utilisée pour les informations redondantes.
+
+
+* *Fonctionnalités de protection des données*
++
+** Si un disque tombe en panne dans un groupe de volumes RAID 5, tous les volumes associés deviennent dégradés. Les informations redondantes permettent d'accéder aux données malgré tout.
+** Si deux disques ou plus tombent en panne dans un groupe de volumes RAID 5, tous les volumes associés tombent en panne et toutes les données sont perdues.
+
+
+* *Exigences relatives au nombre de disques*
++
+** Vous devez avoir au minimum trois disques dans le groupe de volumes.
+** En règle générale, vous êtes limité à un maximum de 30 drives dans le groupe de volumes.
+
+
+
+
+*RAID 6*
+
+* *Description*
++
+** Mode E/S élevé.
+
+
+* *Comment ça marche*
++
+** Les données utilisateur et les informations redondantes (double parité) sont réparties sur les disques.
+** La capacité équivalente de deux disques est utilisée pour les informations redondantes.
+
+
+* *Fonctionnalités de protection des données*
++
+** Si un ou deux disques tombent en panne dans un groupe de volumes RAID 6, tous les volumes associés deviennent dégradés, mais les informations redondantes permettent toujours d'accéder aux données.
+** Si trois disques ou plus tombent en panne dans un groupe de volumes RAID 6, tous les volumes associés tombent en panne et toutes les données sont perdues.
+
+
+* *Exigences relatives au nombre de disques*
++
+** Vous devez avoir un minimum de cinq disques dans le groupe de volumes.
+** En règle générale, vous êtes limité à un maximum de 30 drives dans le groupe de volumes.
+
+
+
+
+[NOTE]
+====
+Il est impossible de modifier le niveau RAID d'un pool. L'interface utilisateur configure automatiquement les pools en RAID 6.
+
+====
+
+
+=== Niveaux RAID et protection des données
+
+RAID 1, RAID 5 et RAID 6 écrivent des données de redondance sur le support du disque pour la tolérance aux pannes. Les données de redondance peuvent être une copie des données (en miroir) ou un code de correction d’erreurs dérivé des données. Vous pouvez utiliser les données de redondance pour reconstruire rapidement les informations sur un disque de remplacement en cas de panne disque.
+
+Vous configurez un seul niveau RAID sur un seul groupe de volumes. Toutes les données de redondance pour ce groupe de volumes sont stockées au sein du groupe de volumes. La capacité du groupe de volumes est la capacité totale des disques membres moins la capacité réservée aux données de redondance. La quantité de capacité nécessaire pour la redondance dépend du niveau RAID utilisé.
+
+
+
+== Qu'est-ce que l'assurance des données ?
+
+L'assurance des données (DA) met en œuvre la norme T10 Protection Information (PI), qui augmente l'intégrité des données en vérifiant et en corrigeant les erreurs qui pourraient survenir lors du transfert des données le long du chemin d'E/S.
+
+L'utilisation typique de la fonction Data Assurance consiste à vérifier la portion du chemin d'E/S située entre les contrôleurs et les disques. Les capacités de Data Assurance sont présentées au niveau du pool et du groupe de volumes.
+
+Lorsque cette fonctionnalité est activée, la baie de stockage ajoute des codes de contrôle d'erreur (également appelés contrôles de redondance cyclique ou CRC) à chaque bloc de données du volume. Après le déplacement d'un bloc de données, la baie de stockage utilise ces codes CRC pour déterminer si des erreurs se sont produites lors de la transmission. Les données potentiellement corrompues ne sont ni écrites sur le disque ni renvoyées à l'hôte. Si vous souhaitez utiliser la fonctionnalité DA, sélectionnez un pool ou un groupe de volumes compatible DA lors de la création d'un nouveau volume (recherchez « Oui » à côté de « DA » dans le tableau des candidats de pools et groupes de volumes).
+
+Assurez-vous d’assigner ces volumes compatibles DA à un hôte utilisant une interface d’E/S capable de DA. Les interfaces d’E/S capables de DA incluent Fibre Channel, SAS, iSCSI sur TCP/IP, NVMe/FC, NVMe/IB, NVMe/RoCE et iSER sur InfiniBand (iSCSI Extensions for RDMA/IB). DA n’est pas pris en charge par SRP sur InfiniBand.
+
+
+
+== Qu'est-ce que secure-capable (Drive Security) ?
+
+La sécurité des disques est une fonctionnalité qui empêche tout accès non autorisé aux données sur des disques sécurisés lorsqu'ils sont retirés de la baie de stockage. Ces disques peuvent être soit des disques à chiffrement complet (FDE), soit des disques Federal Information Processing Standard (FIPS).
+
+
+
+== Que dois-je savoir sur l'augmentation de la capacité réservée ?
+
+En règle générale, vous devez augmenter la capacité lorsque vous recevez un avertissement indiquant que la capacité réservée risque d'être saturée. Vous pouvez augmenter la capacité réservée uniquement par incréments de 8 Gio.
+
+* Vous devez disposer d'une capacité libre suffisante dans le pool ou le groupe de volumes afin de pouvoir l'étendre si nécessaire.
++
+S'il n'existe aucune capacité libre sur un pool ou un groupe de volumes, vous pouvez ajouter de la capacité non attribuée sous forme de disques inutilisés à un pool ou un groupe de volumes.
+
+* Le volume du pool ou du groupe de volumes doit avoir un statut optimal et ne doit être dans aucun état de modification.
+* Il doit exister de la capacité libre dans le pool ou le groupe de volumes que vous souhaitez utiliser pour augmenter la capacité.
+* Il est impossible d'augmenter la capacité réservée d'un volume de snapshot en lecture seule. Seuls les volumes de snapshot en lecture-écriture nécessitent une capacité réservée.
+
+
+Pour les opérations de snapshot, la capacité réservée représente généralement 40 % du volume de base. Pour les opérations de mise en miroir asynchrone, la capacité réservée représente généralement 20 % du volume de base. Utilisez un pourcentage plus élevé si vous pensez que le volume de base subira de nombreux changements ou si la durée de vie estimée de l'opération de service de copie d'un objet de stockage sera très longue.
+
+
+
+== Pourquoi ne puis-je pas choisir un autre montant à diminuer ?
+
+Vous ne pouvez réduire la capacité réservée que du montant utilisé pour l’augmenter. La capacité réservée pour les volumes membres ne peut être supprimée que dans l’ordre inverse de leur ajout.
+
+Vous ne pouvez pas diminuer la capacité réservée d'un objet de stockage si l'une de ces conditions existe :
+
+* Si l'objet de stockage est un volume de paire en miroir.
+* Si l'objet de stockage ne contient qu'un seul volume pour la capacité réservée. L'objet de stockage doit contenir au moins deux volumes pour la capacité réservée.
+* Si l'objet de stockage est un volume de snapshot désactivé.
+* Si l'objet de stockage contient une ou plusieurs images instantanées associées.
+
+
+Vous ne pouvez supprimer les volumes de capacité réservée que dans l'ordre inverse de leur ajout.
+
+Vous ne pouvez pas réduire la capacité réservée d'un volume de snapshot en lecture seule, car il n'a aucune capacité réservée associée. Seuls les volumes de snapshot en lecture-écriture nécessitent une capacité réservée.
+
+
+
+== Pourquoi ai-je besoin d'une capacité réservée pour chaque volume membre ?
+
+Chaque volume membre d'un groupe de cohérence d'instantané doit disposer de sa propre capacité réservée afin de sauvegarder toute modification apportée par l'application hôte au volume de base, sans affecter l'image d'instantané du groupe de cohérence référencé. La capacité réservée confère à l'application hôte un accès en écriture à une copie des données contenues dans le volume membre désigné comme lecture-écriture.
+
+Une image instantanée de groupe de cohérence n'est pas directement accessible en lecture ou en écriture par les hôtes. Au contraire, l'image instantanée est utilisée pour sauvegarder uniquement les données capturées à partir du volume de base.
+
+Lors de la création d'un volume de snapshot de groupe de cohérence désigné comme lecture-écriture, System Manager crée une capacité réservée pour chaque volume membre du groupe de cohérence. Cette capacité réservée permet à l'application hôte d'accéder en écriture à une copie des données contenues dans l'image snapshot du groupe de cohérence.
+
+
+
+== Comment puis-je consulter et interpréter toutes les statistiques du cache SSD ?
+
+Vous pouvez consulter les statistiques nominales et les statistiques détaillées pour le cache SSD. Les statistiques nominales sont un sous-ensemble des statistiques détaillées.
+
+Les statistiques détaillées ne peuvent être consultées que lorsque vous exportez toutes les statistiques SSD vers un fichier  `.csv`. Lorsque vous examinez et interprétez les statistiques, gardez à l'esprit que certaines interprétations sont obtenues en examinant une combinaison de statistiques.
+
+
+
+=== Statistiques nominales
+
+Pour consulter les statistiques du cache SSD, sélectionnez le menu : Storage[Pools & Volume Groups]. Sélectionnez le SSD Cache dont vous souhaitez consulter les statistiques, puis sélectionnez le menu : More[View Statistics]. Les statistiques nominales s’affichent dans la boîte de dialogue View SSD Cache Statistics.
+
+La liste suivante comprend des statistiques nominales, qui sont un sous-ensemble des statistiques détaillées.
+
+[cols="25h,~"]
+|===
+| Statistique nominale | Description 
+
+
+ a| 
+Lecture/écriture
+ a| 
+Le nombre total de lectures effectuées par l’hôte depuis ou d’écritures effectuées par l’hôte vers les volumes avec cache SSD activé. Comparez les lectures par rapport aux écritures. Les lectures doivent être supérieures aux écritures pour un fonctionnement efficace du cache SSD. Plus le ratio de lectures par rapport aux écritures est élevé, meilleur est le fonctionnement du cache.
+
+
+
+ a| 
+Accès au cache
+ a| 
+Un décompte du nombre d'accès au cache.
+
+
+
+ a| 
+Accès au cache (%)
+ a| 
+Calculé à partir du nombre d'accès au cache divisé par (lectures + écritures). Le pourcentage d'accès au cache doit être supérieur à 50 % pour un fonctionnement optimal du SSD Cache. Une valeur faible peut indiquer plusieurs choses :
+
+* Le rapport entre les lectures et les écritures est trop faible
+* Les lectures ne sont pas répétées
+* La capacité du cache est trop petite
+
+
+
+
+ a| 
+Allocation du cache (%)
+ a| 
+La quantité de stockage du cache SSD qui est allouée, exprimée en pourcentage du stockage du cache SSD disponible pour ce contrôleur. Dérivé de octets alloués / octets disponibles. Le pourcentage d’allocation du cache s’affiche normalement à 100 %. Si ce nombre est inférieur à 100 %, cela signifie soit que le cache n’a pas été réchauffé, soit que la capacité du cache SSD est supérieure à l’ensemble des données auxquelles on accède. Dans ce dernier cas, une capacité de cache SSD plus petite pourrait fournir le même niveau de performance. Notez que cela n’indique pas que les données mises en cache ont été placées dans le cache SSD ; il s’agit simplement d’une étape de préparation avant que les données puissent être placées dans le cache SSD.
+
+
+
+ a| 
+Utilisation du cache (%)
+ a| 
+La quantité de stockage SSD Cache contenant des données provenant de volumes activés, exprimée en pourcentage du stockage SSD Cache alloué. Cette valeur représente l'utilisation ou la densité du SSD Cache dérivée des octets de données utilisateur / octets alloués. Le pourcentage d'utilisation du SSD Cache est normalement inférieur à 100 pour cent, parfois bien inférieur. Ce nombre indique le pourcentage de la capacité du SSD Cache qui est rempli avec des données de cache. Ce nombre est inférieur à 100 pour cent car chaque unité d'allocation du SSD Cache, le bloc SSD Cache, est divisée en unités plus petites appelées sous-blocs, qui sont remplis de manière relativement indépendante. Un nombre plus élevé est généralement préférable, mais des gains de performance peuvent être significatifs même avec un nombre plus faible.
+
+|===
+
+
+=== Statistiques détaillées
+
+Les statistiques détaillées comprennent les statistiques nominales, ainsi que des statistiques supplémentaires. Ces statistiques supplémentaires sont enregistrées avec les statistiques nominales, mais contrairement aux statistiques nominales, elles ne s'affichent pas dans la boîte de dialogue Afficher les statistiques du cache SSD. Vous pouvez consulter les statistiques détaillées uniquement après avoir exporté les statistiques vers un fichier  `.csv`.
+
+Lors de la consultation du  `.csv` file, notez que les statistiques détaillées sont listées après les statistiques nominales :
+
+[cols="25h,~"]
+|===
+| Statistiques détaillées | Description 
+
+
+ a| 
+Blocs de lecture
+ a| 
+Le nombre de blocs dans les lectures de l’hôte.
+
+
+
+ a| 
+Blocs d'écriture
+ a| 
+Le nombre de blocs dans les écritures de l’hôte.
+
+
+
+ a| 
+Blocs d'accès complet
+ a| 
+Le nombre de blocs lors des accès au cache. Les blocs d'accès complet indiquent le nombre de blocs qui ont été lus entièrement depuis le SSD Cache. Le SSD Cache n'est bénéfique pour les performances que pour les opérations qui sont des accès complets au cache.
+
+
+
+ a| 
+Coups partiels
+ a| 
+Le nombre de lectures de l'hôte où au moins un bloc, mais pas tous, était présent dans le cache SSD. Un accès partiel au cache correspond à un accès au cache SSD *manqué*, où les lectures ont été satisfaites à partir du volume de base.
+
+
+
+ a| 
+Accès partiels - Blocs
+ a| 
+Le nombre de blocs dans les accès partiels au cache. Les accès partiels au cache et les blocs d'accès partiels au cache résultent d'une opération dont seule une partie des données est présente dans le cache SSD. Dans ce cas, l'opération doit récupérer les données depuis le volume du disque dur (HDD) mis en cache. Le cache SSD n'offre aucun gain de performance pour ce type d'accès. Si le nombre de blocs d'accès partiels au cache est supérieur au nombre de blocs d'accès complets au cache, un autre type de caractéristique d'E/S (système de fichiers, base de données ou serveur web) pourrait améliorer les performances. On s'attend à un nombre plus important d'accès partiels et d'échecs d'accès que d'accès complets pendant la phase de montée en température du cache SSD.
+
+
+
+ a| 
+Manques
+ a| 
+Le nombre de lectures de l’hôte pour lesquelles aucun bloc n’était présent dans le cache SSD. Un accès au cache SSD manqué se produit lorsque les lectures sont satisfaites à partir du volume de base. Il est attendu qu’il y ait un nombre plus élevé d’accès partiels et d’accès manqués par rapport aux accès au cache pendant la phase de montée en température du cache SSD.
+
+
+
+ a| 
+Manqués - Blocs
+ a| 
+Le nombre de blocs dans les Misses.
+
+
+
+ a| 
+Actions de remplissage (Lectures de l'hôte)
+ a| 
+Le nombre de lectures de l’hôte où les données ont été copiées du volume de base vers le cache SSD.
+
+
+
+ a| 
+Actions de remplissage (Lectures de l'hôte) - Blocs
+ a| 
+Le nombre de blocs dans Populate Actions (Host Reads).
+
+
+
+ a| 
+Actions de remplissage (écritures de l'hôte)
+ a| 
+Nombre d'écritures hôte où des données ont été copiées du volume de base vers le cache SSD. Le nombre d'actions de remplissage (écritures hôte) peut être nul pour les paramètres de configuration du cache qui ne remplissent pas le cache à la suite d'une opération d'E/S en écriture.
+
+
+
+ a| 
+Actions de remplissage (Host Writes) - Blocs
+ a| 
+Le nombre de blocs dans Populate Actions (Host Writes).
+
+
+
+ a| 
+Invalider les actions
+ a| 
+Nombre de fois où des données ont été invalidées ou supprimées du cache SSD. Une opération d'invalidation du cache est effectuée pour chaque requête d'écriture hôte, chaque requête de lecture hôte avec Forced Unit Access (FUA), chaque requête de vérification et dans certaines autres circonstances.
+
+
+
+ a| 
+Actions de recyclage
+ a| 
+Le nombre de fois que le bloc de cache SSD a été réutilisé pour un autre volume de base et/ou une plage d'adressage logique (LBA) différente. Pour un fonctionnement efficace du cache, le nombre de recyclages doit être faible par rapport au nombre total d'opérations de lecture et d'écriture. Si le nombre d'actions de recyclage est proche du nombre total de lectures et d'écritures, le cache SSD est en situation de thrashing. Il est alors nécessaire d'augmenter la capacité du cache ou la charge de travail n'est pas favorable à l'utilisation du cache SSD.
+
+
+
+ a| 
+Octets disponibles
+ a| 
+Le nombre d'octets disponibles dans le cache SSD pour être utilisés par ce contrôleur.
+
+
+
+ a| 
+Octets alloués
+ a| 
+Le nombre d'octets alloués à partir du cache SSD par ce contrôleur. Les octets alloués à partir du cache SSD peuvent être vides ou contenir des données provenant des volumes de base.
+
+
+
+ a| 
+Octets de données utilisateur
+ a| 
+Le nombre d'octets alloués dans le cache SSD qui contiennent des données provenant des volumes de base. Les octets disponibles, les octets alloués et les octets de données utilisateur sont utilisés pour calculer le pourcentage d'allocation du cache et le pourcentage d'utilisation du cache.
+
+|===
+
+
+== Quelle est la capacité d'optimisation des pools ?
+
+Les disques SSD auront une durée de vie plus longue et de meilleures performances d'écriture maximales lorsqu'une partie de leur capacité n'est pas allouée.
+
+Pour les disques associés à un pool, la capacité non allouée comprend la capacité de préservation du pool, la capacité libre (capacité non utilisée par les volumes) et une partie de la capacité utilisable réservée comme capacité d'optimisation supplémentaire. La capacité d'optimisation supplémentaire garantit un niveau minimal de capacité d'optimisation en réduisant la capacité utilisable, et, en tant que telle, n'est pas disponible pour la création de volumes.
+
+Lorsqu'un pool est créé, une capacité d'optimisation recommandée est générée, offrant un équilibre entre les performances, la durée de vie des disques et la capacité disponible. Le curseur Capacité d'optimisation supplémentaire situé dans la boîte de dialogue Paramètres du pool permet d'ajuster la capacité d'optimisation du pool. L'ajustement du curseur permet d'améliorer les performances et la durée de vie des disques au détriment de la capacité disponible, ou d'obtenir une capacité disponible supplémentaire au détriment des performances et de la durée de vie des disques.
+
+[NOTE]
+====
+Le curseur de capacité d'optimisation supplémentaire est uniquement disponible pour les systèmes de stockage EF600 et EF300.
+
+====
+
+
+== Quelle est la capacité d'optimisation pour les groupes de volumes ?
+
+Les disques SSD auront une durée de vie plus longue et de meilleures performances d'écriture maximales lorsqu'une partie de leur capacité n'est pas allouée.
+
+Pour les disques associés à un groupe de volumes, la capacité non allouée comprend la capacité libre du groupe de volumes (capacité non utilisée par les volumes), et une partie de la capacité utilisable réservée comme capacité d'optimisation. La capacité d'optimisation supplémentaire garantit un niveau minimal de capacité d'optimisation en réduisant la capacité utilisable et, à ce titre, n'est pas disponible pour la création de volumes.
+
+Lors de la création d'un groupe de volumes, une capacité d'optimisation recommandée est générée, offrant un équilibre entre les performances, la durée de vie des disques et la capacité disponible. Le curseur Capacité d'optimisation supplémentaire dans la boîte de dialogue Paramètres du groupe de volumes permet d'ajuster la capacité d'optimisation d'un groupe de volumes. L'ajustement du curseur permet d'améliorer les performances et la durée de vie des disques au détriment de la capacité disponible, ou d'augmenter la capacité disponible au détriment des performances et de la durée de vie des disques.
+
+[NOTE]
+====
+Le curseur de capacité d'optimisation supplémentaire est uniquement disponible pour les systèmes de stockage EF600 et EF300.
+
+====
+
+
+== Quelles sont les capacités de l'approvisionnement en ressources ?
+
+L'approvisionnement en ressources est une fonctionnalité disponible dans les baies de stockage EF300 et EF600, qui permet de mettre les volumes en service immédiatement sans processus d'initialisation en arrière-plan.
+
+Un volume provisionné en ressources est un volume épais dans un groupe ou un pool de volumes SSD, où la capacité du disque est allouée (attribuée au volume) lors de la création du volume, mais les blocs de disque sont désalloués (non mappés). À titre de comparaison, dans un volume épais traditionnel, tous les blocs de disque sont mappés ou alloués lors d'une opération d'initialisation en arrière-plan afin d'initialiser les champs d'informations de protection Data Assurance et d'assurer la cohérence des données et de la parité RAID dans chaque bande RAID. Avec un volume provisionné en ressources, il n'y a pas d'initialisation en arrière-plan limitée dans le temps. À la place, chaque bande RAID est initialisée lors de la première écriture sur un bloc de volume de cette bande.
+
+Les volumes à ressources allouées ne sont pris en charge que sur les groupes et pools de volumes SSD, lorsque tous les disques du groupe ou du pool prennent en charge la capacité de récupération d'erreurs NVMe Deallocated or Unwritten Logical Block Error Enable (DULBE). Lorsqu'un volume à ressources allouées est créé, tous les blocs de disque attribués au volume sont désalloués (non mappés). De plus, les hôtes peuvent désallouer des blocs logiques dans le volume à l'aide de la commande NVMe Dataset Management ou de la commande SCSI Unmap. La désallocation de blocs peut améliorer la durée de vie des SSD et augmenter les performances d'écriture maximales. L'amélioration varie selon chaque modèle et capacité de disque.
+
+
+NOTE: DULBE n'est pas pris en charge sur les baies de stockage EF300C ou EF600C pour le moment.
+
+
+
+== Que dois-je savoir sur la fonctionnalité des volumes provisionnés en ressources ?
+
+L'approvisionnement en ressources est une fonctionnalité disponible dans les baies de stockage EF300 et EF600, qui permet de mettre les volumes en service immédiatement sans processus d'initialisation en arrière-plan.
+
+Un volume provisionné en ressources est un volume épais dans un groupe ou un pool de volumes SSD, où la capacité du disque est allouée (attribuée au volume) lors de la création du volume, mais les blocs de disque sont désalloués (non mappés). À titre de comparaison, dans un volume épais traditionnel, tous les blocs de disque sont mappés ou alloués lors d'une opération d'initialisation en arrière-plan afin d'initialiser les champs d'informations de protection Data Assurance et d'assurer la cohérence des données et de la parité RAID dans chaque bande RAID. Avec un volume provisionné en ressources, il n'y a pas d'initialisation en arrière-plan limitée dans le temps. À la place, chaque bande RAID est initialisée lors de la première écriture sur un bloc de volume de cette bande.
+
+Les volumes à ressources allouées ne sont pris en charge que sur les groupes et pools de volumes SSD, lorsque tous les disques du groupe ou du pool prennent en charge la capacité de récupération d'erreurs NVMe Deallocated or Unwritten Logical Block Error Enable (DULBE). Lorsqu'un volume à ressources allouées est créé, tous les blocs de disque attribués au volume sont désalloués (non mappés). De plus, les hôtes peuvent désallouer des blocs logiques dans le volume à l'aide de la commande NVMe Dataset Management ou de la commande SCSI Unmap. La désallocation de blocs peut améliorer la durée de vie des SSD et augmenter les performances d'écriture maximales. L'amélioration varie selon chaque modèle et capacité de disque.
+
+L'allocation des ressources est activée par défaut sur les systèmes dont les disques prennent en charge DULBE. Vous pouvez désactiver ce paramètre par défaut depuis *Pools & Volume Groups*.
+
+
+NOTE: DULBE n'est pas pris en charge sur les baies de stockage EF300C ou EF600C pour le moment.

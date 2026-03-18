@@ -1,0 +1,55 @@
+---
+permalink: sm-storage/overview-hosts.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, hosts 
+summary: 'Vous pouvez configurer les hôtes et les clusters d"hôtes, qui définissent les connexions entre la baie de stockage et les serveurs de données.' 
+---
+= Découvrez les hôtes et les clusters d'hôtes dans le logiciel SANtricity
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez configurer les hôtes et les clusters d'hôtes, qui définissent les connexions entre la baie de stockage et les serveurs de données.
+
+
+
+== Que sont les hôtes et les clusters d'hôtes ?
+
+Un hôte est un serveur qui envoie des opérations d'entrée/sortie à un volume sur une baie de stockage. Un cluster d'hôtes est un groupe d'hôtes que vous pouvez créer pour attribuer les mêmes volumes à plusieurs hôtes.
+
+En savoir plus :
+
+* link:host-terminology.html["Terminologie de l'hôte"]
+* link:access-volumes.html["Volumes d'accès"]
+* link:maximum-number-of-luns.html["Nombre maximal de LUNs"]
+
+
+
+
+== Comment configurer les hôtes et les clusters d'hôtes ?
+
+Pour définir les connexions hôtes, vous pouvez accéder au menu : Storage[Hosts] pour configurer manuellement l’hôte. Si vous souhaitez que deux hôtes ou plus partagent l’accès au même ensemble de volumes, vous pouvez alors définir un cluster et affecter les volumes à ce cluster.
+
+En savoir plus :
+
+* link:manual-host-creation.html["Création manuelle de l'hôte"]
+* link:how-volumes-are-assigned-to-hosts-and-host-clusters.html["Comment les volumes sont attribués aux hôtes et aux clusters d'hôtes"]
+* link:workflow-for-creating-hosts-and-assigning-volumes.html["Flux de travail pour la création d'hôtes et l'attribution de volumes"]
+* link:create-host-manually.html["Créer l'hôte manuellement"]
+* link:create-host-cluster.html["Créer un cluster d'hôtes"]
+* link:assign-volumes.html["Attribuer des volumes aux hôtes"]
+
+
+
+
+== Informations connexes
+
+En savoir plus sur les tâches liées aux hôtes :
+
+* link:../sm-settings/set-automatic-load-balancing.html["Configurer l'équilibrage de charge automatique"]
+* link:../sm-settings/set-host-connectivity-reporting.html["Configurer le reporting de la connectivité hôte"]
+* link:../sm-settings/change-default-host-type.html["Modifier le type d'hôte par défaut"]
+

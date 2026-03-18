@@ -1,0 +1,121 @@
+---
+permalink: sm-interface/view-storage-hierarchy.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, storage hierarchy 
+summary: 'La hiérarchie de stockage sur l"interface principale offre une vue organisée des différents composants matériels et objets de stockage gérés par votre baie de stockage.' 
+---
+= Afficher la hiérarchie de stockage dans SANtricity System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La hiérarchie de stockage sur l'interface principale offre une vue organisée des différents composants matériels et objets de stockage gérés par votre baie de stockage.
+
+Pour visualiser la hiérarchie de stockage, accédez à la page d'accueil et cliquez sur la flèche déroulante d'un composant de baie de stockage ou d'un objet de stockage. Une baie de stockage est composée d'un ensemble de composants physiques et logiques.
+
+
+
+== Composants physiques
+
+Les composants physiques d'une baie de stockage sont décrits dans ce tableau.
+
+[cols="25h,~"]
+|===
+| Composant | Description 
+
+
+ a| 
+Contrôleur
+ a| 
+Un contrôleur se compose d'une carte, d'un micrologiciel et d'un logiciel. Il contrôle les disques et implémente les fonctions du System Manager.
+
+
+
+ a| 
+Tiroir
+ a| 
+Une étagère est un boîtier installé dans une baie ou un rack. Elle contient les composants matériels de la baie de stockage. Il existe deux types d'étagères : une étagère de contrôleur et une étagère de disques. Une étagère de contrôleur comprend des contrôleurs et des disques. Une étagère de disques comprend des modules d'entrée/sortie (IOM) et des disques.
+
+[NOTE]
+====
+Si votre baie de stockage contient différents types de supports ou différents types d'interfaces, une étagère de disques pour chaque type de disque apparaît.
+
+====
+
+
+ a| 
+Lecteur
+ a| 
+Un disque est un dispositif électromagnétique mécanique ou un dispositif de mémoire à semi-conducteurs qui constitue le support de stockage physique des données.
+
+
+
+ a| 
+Hôte
+ a| 
+Un hôte est un serveur qui envoie des E/S à un volume sur une baie de stockage.
+
+
+
+ a| 
+Adaptateur de bus hôte (HBA)
+ a| 
+Un adaptateur de bus hôte (HBA) est une carte qui réside dans un hôte et contient un ou plusieurs ports hôtes.
+
+
+
+ a| 
+Port hôte
+ a| 
+Un port hôte est un port sur un adaptateur de bus hôte (HBA) qui assure la connexion physique à un contrôleur et est utilisé pour les opérations d'E/S.
+
+
+
+ a| 
+Client de gestion
+ a| 
+Un client de gestion est l'ordinateur sur lequel un navigateur est installé pour accéder à System Manager.
+
+|===
+
+
+== Composants logiques
+
+Les disques de la baie de stockage fournissent la capacité de stockage physique des données. Utilisez System Manager pour configurer la capacité physique en composants logiques, tels que des pools, des groupes de volumes et des volumes. Ces composants sont les outils que vous utilisez pour configurer, stocker, maintenir et préserver les données sur la baie de stockage. Les composants logiques d'une baie de stockage sont décrits dans ce tableau.
+
+[cols="25h,~"]
+|===
+| Composant | Description 
+
+
+ a| 
+Pool
+ a| 
+Un pool est un ensemble de disques regroupés logiquement. Vous pouvez utiliser un pool pour créer un ou plusieurs volumes accessibles à un hôte. (Vous créez des volumes à partir d’un pool ou d’un groupe de volumes.)
+
+
+
+ a| 
+Groupe de volumes
+ a| 
+Un groupe de volumes est un conteneur pour des volumes partageant des caractéristiques communes. Un groupe de volumes possède une capacité et un niveau RAID définis. Vous pouvez utiliser un groupe de volumes pour créer un ou plusieurs volumes accessibles à un hôte. (Vous créez des volumes à partir d’un groupe de volumes ou d’un pool.)
+
+
+
+ a| 
+Volume
+ a| 
+Un volume est un conteneur dans lequel les applications, les bases de données et les systèmes de fichiers stockent des données. Il s'agit du composant logique créé pour permettre à l'hôte d'accéder au stockage sur la baie de stockage.
+
+
+
+ a| 
+Numéro d'unité logique (LUN)
+ a| 
+Un numéro d'unité logique (LUN) est le numéro attribué à l'espace d'adressage qu'un hôte utilise pour accéder à un volume. Le volume est présenté à l'hôte comme une capacité sous la forme d'un LUN.
+
+Chaque hôte possède son propre espace d'adressage LUN. Par conséquent, le même LUN peut être utilisé par différents hôtes pour accéder à des volumes différents.
+
+|===

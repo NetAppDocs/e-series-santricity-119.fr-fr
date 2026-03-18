@@ -1,0 +1,60 @@
+---
+permalink: sm-storage/assign-volumes.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, assign volumes 
+summary: 'Vous devez affecter un volume à un hôte ou à un cluster d"hôtes pour qu"il puisse être utilisé pour les opérations d"E/S. Cette affectation accorde à un hôte ou à un cluster d"hôtes l"accès à un ou plusieurs volumes dans une baie de stockage.' 
+---
+= Attribuer des volumes aux hôtes dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous devez affecter un volume à un hôte ou à un cluster d'hôtes pour qu'il puisse être utilisé pour les opérations d'E/S. Cette affectation accorde à un hôte ou à un cluster d'hôtes l'accès à un ou plusieurs volumes dans une baie de stockage.
+
+.À propos de cette tâche
+Gardez ces consignes à l'esprit lorsque vous attribuez des volumes aux hôtes :
+
+* Vous ne pouvez affecter un volume qu'à un seul hôte ou host cluster à la fois.
+* Les volumes attribués sont partagés entre les contrôleurs de la baie de stockage.
+* Un même numéro d'unité logique (LUN) ne peut pas être utilisé deux fois par un hôte ou un cluster d'hôtes pour accéder à un volume. Vous devez utiliser un LUN unique.
+* Pour les nouveaux groupes de volumes, si vous attendez que tous les volumes soient créés et initialisés avant de les affecter à un hôte, le temps d'initialisation des volumes est réduit. Gardez à l'esprit qu'une fois qu'un volume associé au groupe de volumes est mappé,  les volumes reviendront à l'initialisation plus lente. Vous pouvez vérifier la progression de l'initialisation depuis menu:Accueil[Opérations en cours].
+
+
+L'attribution d'un volume échoue dans les conditions suivantes :
+
+* Tous les volumes sont attribués.
+* Le volume est déjà attribué à un autre hôte ou groupe d'hôtes.
+
+
+La possibilité d'attribuer un volume est indisponible dans ces conditions :
+
+* Aucun hôte ou groupe de clusters d'hôtes valide n'existe.
+* Aucun identifiant de port hôte n'a été défini pour l'hôte.
+* Toutes les affectations de volume ont été définies.
+
+
+Tous les volumes non attribués sont affichés pendant cette tâche, mais les fonctions pour les hôtes avec ou sans Data Assurance (DA) s'appliquent comme suit :
+
+* Pour un hôte compatible DA, vous pouvez sélectionner des volumes qui sont soit activés DA, soit non activés DA.
+* Pour un hôte qui n'est pas compatible DA, si vous sélectionnez un volume qui est activé DA, un avertissement indique que le système doit désactiver automatiquement DA sur le volume avant d'attribuer le volume à l'hôte.
+
+
+.Étapes
+. Sélectionnez le menu : Storage[Hosts].
+. Sélectionnez l'hôte ou le cluster d'hôtes auquel vous souhaitez attribuer des volumes, puis cliquez sur *Attribuer des volumes*.
++
+Une boîte de dialogue s'affiche, listant tous les volumes pouvant être attribués. Vous pouvez trier n'importe laquelle des colonnes ou saisir quelque chose dans la case *Filter* pour faciliter la recherche de volumes particuliers.
+
+. Cochez la case à cocher à côté de chaque volume que vous souhaitez attribuer ou cochez la case à cocher dans l'en-tête du tableau pour sélectionner tous les volumes.
+. Cliquez sur *Attribuer* pour terminer l'opération.
+
+
+.Résultats
+Après avoir correctement attribué un ou plusieurs volumes à un hôte ou à un cluster d'hôtes, le système effectue les actions suivantes :
+
+* Le volume attribué reçoit le prochain numéro LUN disponible. L’hôte utilise le numéro LUN pour accéder au volume.
+* Le nom du volume défini par l'utilisateur apparaît dans la liste des volumes associés à l'hôte. Le cas échéant, le volume d'accès configuré en usine apparaît également dans la liste des volumes associés à l'hôte.
+

@@ -1,0 +1,45 @@
+---
+permalink: um-manage/activate-pending-firmware.html 
+sidebar: sidebar 
+keywords: SANtricity, Unified Manager, E-Series, activate, staged, os, software 
+summary: 'Vous pouvez choisir d"activer le fichier logiciel immédiatement ou attendre un moment plus opportun. Cette procédure suppose que vous avez choisi d"activer le fichier logiciel ultérieurement.' 
+---
+= Activer le logiciel du système d'exploitation mis en scène dans SANtricity Unified Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez choisir d'activer le fichier logiciel immédiatement ou attendre un moment plus opportun. Cette procédure suppose que vous avez choisi d'activer le fichier logiciel ultérieurement.
+
+.À propos de cette tâche
+Vous pouvez transférer les fichiers du firmware sans les activer. Vous pouvez choisir de les activer ultérieurement pour les raisons suivantes :
+
+* *Heure de la journée* -- L’activation du logiciel peut prendre du temps, il est donc conseillé d’attendre que la charge d’E/S soit plus faible. Les contrôleurs redémarrent et basculent pendant l’activation, donc les performances peuvent être inférieures à la normale jusqu’à la fin de la mise à niveau.
+* *Type de package* -- Vous pourriez vouloir tester le nouveau logiciel et le nouveau firmware sur une baie de stockage avant de mettre à jour les fichiers sur d'autres baies de stockage.
+
+
+[NOTE]
+====
+Vous ne pouvez pas arrêter le processus d'activation après son démarrage.
+
+====
+.Étapes
+. Dans la vue principale, sélectionnez *Gérer*. Si nécessaire, cliquez sur la colonne État pour trier, en haut de la page, tous les systèmes de stockage dont l'état est « OS Upgrade (awaiting activation) ».
+. Sélectionnez une ou plusieurs baies de stockage pour lesquelles vous souhaitez activer le logiciel, puis sélectionnez menu : Upgrade Center [Activate Staged OS Software].
++
+Les actions suivantes se produisent lors de l'opération de mise à niveau :
+
++
+** Une vérification de l'état est exécutée dans le cadre du processus d'activation. La vérification de l'état évalue tous les composants de la baie de stockage afin de garantir que l'activation puisse se dérouler.
+** Si une vérification de l'état échoue pour une baie de stockage, l'activation est interrompue. Vous pouvez cliquer sur les points de suspension (...) et sélectionner *Enregistrer le journal* pour consulter les erreurs. Vous pouvez également choisir d'ignorer l'erreur de vérification de l'état, puis cliquer sur *Continuer* pour poursuivre l'activation.
+** Vous pouvez annuler l'opération d'activation après la vérification de l'état avant la mise à niveau. Une fois la vérification de l'état avant la mise à niveau terminée avec succès, l'activation a lieu. Le temps nécessaire à l'activation dépend de la configuration de votre baie de stockage et des composants que vous activez.
+
+
+. *Facultatif :* Une fois l’activation terminée, vous pouvez voir une liste de ce qui a été activé pour une baie de stockage spécifique en cliquant sur les points de suspension (...) puis en sélectionnant *Enregistrer le journal*.
++
+Le fichier est enregistré dans le dossier Téléchargements de votre navigateur sous le nom `activate_log-<date>.json`.
+
+

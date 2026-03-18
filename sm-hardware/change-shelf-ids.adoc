@@ -1,0 +1,30 @@
+---
+permalink: sm-hardware/change-shelf-ids.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, change, shelf, ids, 
+summary: 'L"identifiant d"étagère est un numéro qui identifie de manière unique une étagère dans la baie de stockage. Les étagères sont numérotées consécutivement, en commençant par 00 ou 01, en haut à gauche de chaque vue d"étagère.' 
+---
+= Modifier les ID des étagères dans SANtricity System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'identifiant d'étagère est un numéro qui identifie de manière unique une étagère dans la baie de stockage. Les étagères sont numérotées consécutivement, en commençant par 00 ou 01, en haut à gauche de chaque vue d'étagère.
+
+.À propos de cette tâche
+Le micrologiciel du contrôleur attribue automatiquement l'identifiant de l'étagère, mais vous pouvez modifier ce numéro si vous souhaitez créer un schéma d'ordre différent.
+
+.Étapes
+. Sélectionnez *Hardware*.
+. Sélectionnez la liste déroulante pour l'étagère du contrôleur ou l'étagère du disque, puis sélectionnez *Changer l'ID*.
+. Dans la boîte de dialogue Changer l'ID de l'étagère, sélectionnez la liste déroulante pour afficher les numéros disponibles.
++
+Cette boîte de dialogue n'affiche pas les ID actuellement attribués aux étagères actives.
+
+. Sélectionnez un numéro disponible, puis cliquez sur *Enregistrer*.
++
+Selon le numéro que vous avez sélectionné, l'ordre des étagères peut être réorganisé sur la page Matériel. Si vous le souhaitez, vous pouvez utiliser les flèches haut/bas en haut à droite de chaque étagère pour réajuster l'ordre.
+
+

@@ -1,0 +1,140 @@
+---
+permalink: um-certificates/faq-user-access-mgmt-um.html 
+sidebar: sidebar 
+keywords:  
+summary: Cette FAQ peut vous aider si vous cherchez simplement une réponse rapide à une question. 
+---
+= FAQ sur la gestion des accès utilisateurs pour SANtricity Unified Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Cette FAQ peut vous aider si vous cherchez simplement une réponse rapide à une question.
+
+
+
+== Pourquoi je n'arrive pas à me connecter
+
+Si vous recevez une erreur lors de la tentative de connexion, examinez ces causes possibles.
+
+Des erreurs de connexion peuvent survenir pour l'une de ces raisons :
+
+* Vous avez saisi un nom d'utilisateur ou un mot de passe incorrect.
+* Vous ne disposez pas de privilèges suffisants.
+* Vous avez tenté de vous connecter à plusieurs reprises sans succès, ce qui a déclenché le mode de verrouillage. Attendez 10 minutes pour vous reconnecter.
+* L'authentification SAML est activée. Actualisez votre navigateur pour vous connecter.
+
+
+
+
+== Que dois-je savoir avant d'ajouter un serveur d'annuaire ?
+
+Avant d'ajouter un serveur d'annuaire dans la gestion des accès, vous devez satisfaire à certaines exigences.
+
+* Les groupes d'utilisateurs doivent être définis dans votre service d'annuaire.
+* Les informations d'identification du serveur LDAP doivent être disponibles, notamment le nom de domaine, l'URL du serveur et, éventuellement, le nom d'utilisateur et le mot de passe du compte de liaison.
+* Pour les serveurs LDAPS utilisant un protocole sécurisé, la chaîne de certificats du serveur LDAP doit être installée sur votre machine locale.
+
+
+
+
+== Que dois-je savoir sur le mappage aux rôles des baies de stockage ?
+
+Avant d'associer des groupes à des rôles, consultez les directives.
+
+Les fonctionnalités RBAC (contrôle d'accès basé sur les rôles) incluent les rôles suivants :
+
+* *Administrateur de stockage* -- Accès complet en lecture/écriture aux objets de stockage sur les baies, mais aucun accès à la configuration de sécurité.
+* *Administrateur de sécurité* -- Accès à la configuration de sécurité dans la gestion des accès et Certificate Management.
+* *Administrateur support* -- Accès à toutes les ressources matérielles des baies de stockage, aux données de panne et aux événements MEL. Aucun accès aux objets de stockage ni à la configuration de sécurité.
+* *Moniteur* -- Accès en lecture seule à tous les objets de stockage, mais aucun accès à la configuration de sécurité.
+
+
+[NOTE]
+====
+Le rôle Monitor est requis pour tous les utilisateurs, y compris l'administrateur.
+
+====
+Si vous utilisez un serveur LDAP (Lightweight Directory Access Protocol) et Directory Services, assurez-vous que :
+
+* Un administrateur a défini des groupes d'utilisateurs dans le service d'annuaire.
+* Vous connaissez les noms de domaine des groupes d'utilisateurs LDAP.
+
+
+
+
+=== SAML
+
+Si vous utilisez les fonctionnalités Security Assertion Markup Language (SAML) intégrées à la baie de stockage, assurez-vous que :
+
+* Un administrateur d'Identity Provider (IdP) a configuré les attributs des utilisateurs et l'appartenance aux groupes dans le système IdP.
+* Vous connaissez les noms d'appartenance au groupe.
+* Vous connaissez la valeur de l'attribut du groupe à mapper. Les expressions régulières sont prises en charge. Ces caractères spéciaux d'expression régulière doivent être précédés d'un antislash (`\`) s'ils ne font pas partie d'un modèle d'expression régulière :
++
+[listing]
+----
+\.[]{}()<>*+-=!?^$|
+----
+* Le rôle Monitor est requis pour tous les utilisateurs, y compris l'administrateur. Unified Manager ne fonctionnera pas correctement pour tout utilisateur sans le rôle Monitor.
+
+
+
+
+== Que dois-je savoir avant de configurer et d'activer SAML ?
+
+Avant de configurer et d'activer les fonctionnalités du Security Assertion Markup Language (SAML) pour l'authentification, assurez-vous de respecter les exigences suivantes et de comprendre les restrictions SAML.
+
+
+
+=== Exigences
+
+Avant de commencer, assurez-vous que :
+
+* Un fournisseur d'identité (IdP) est configuré dans votre réseau. Un IdP est un système externe utilisé pour demander les identifiants d'un utilisateur et déterminer si l'utilisateur est authentifié avec succès. Votre équipe de sécurité est responsable de la maintenance de l'IdP.
+* Un administrateur IdP a configuré les attributs d'utilisateurs et les groupes dans le système IdP.
+* Un administrateur IdP s'est assuré que l'IdP prend en charge la capacité de renvoyer un Name ID lors de l'authentification.
+* Un administrateur s'est assuré que l'horloge du serveur IdP et celle du contrôleur sont synchronisées (soit via un serveur NTP, soit en ajustant les paramètres d'horloge du contrôleur).
+* Un fichier de métadonnées IdP est téléchargé depuis le système IdP et disponible sur le système local utilisé pour accéder à Unified Manager.
+* Vous connaissez l'adresse IP ou le nom de domaine du contrôleur dans la baie de stockage.
+
+
+
+
+=== Restrictions
+
+En plus des exigences mentionnées ci-dessus, assurez-vous de bien comprendre les restrictions suivantes :
+
+* Une fois SAML activé, vous _ne pouvez pas_ le désactiver via l'interface utilisateur, ni modifier les paramètres de l'IdP. Si vous devez désactiver ou modifier la configuration SAML, contactez le support technique pour obtenir de l'aide. Nous recommandons de tester les connexions SSO avant d'activer SAML lors de l'étape finale de configuration. (Le système effectue également un test de connexion SSO avant d'activer SAML.)
+* Si vous désactivez SAML à l'avenir, le système restaure automatiquement la configuration précédente (Local User Roles et/ou Directory Services).
+* Si les services d'annuaire sont actuellement configurés pour l'authentification des utilisateurs, SAML remplace cette configuration.
+* Lorsque SAML est configuré, les clients suivants ne peuvent pas accéder aux ressources de la storage array :
++
+** Fenêtre de gestion d'entreprise (EMW)
+** Interface de ligne de commande (CLI)
+** Clients des Software Developer Kits (SDK)
+** Clients intégrés
+** Clients REST API avec authentification HTTP de base
+** Connexion à l'aide du point de terminaison standard de l'API REST
+
+
+
+
+
+
+== Quels sont les utilisateurs locaux ?
+
+Les utilisateurs locaux sont prédéfinis dans le système et incluent des autorisations spécifiques.
+
+Les utilisateurs locaux comprennent :
+
+* *admin* -- Super administrateur ayant accès à toutes les fonctions du système. Cet utilisateur possède tous les rôles. Le mot de passe doit être défini lors de la première connexion.
+* *storage* -- L’administrateur responsable de tout le provisionnement du stockage. Cet utilisateur inclut les rôles suivants : Storage Admin, Support Admin et Monitor. Ce compte est désactivé tant qu’un mot de passe n’est pas défini.
+* *security* -- L'utilisateur responsable de la configuration de la sécurité, y compris la gestion des accès et la gestion des certificats. Cet utilisateur inclut les rôles suivants : Security Admin et Monitor. Ce compte est désactivé jusqu'à ce qu'un mot de passe soit défini.
+* *support* -- L'utilisateur responsable des ressources matérielles, des données de panne et des mises à jour du micrologiciel. Cet utilisateur inclut les rôles suivants : Support Admin et Monitor. Ce compte est désactivé jusqu'à ce qu'un mot de passe soit défini.
+* *moniteur* -- Utilisateur disposant d'un accès en lecture seule au système. Cet utilisateur possède uniquement le rôle de moniteur. Ce compte est désactivé tant qu'aucun mot de passe n'est défini.
+* *rw* (lecture/écriture) -- Cet utilisateur inclut les rôles suivants : Storage Admin, Support Admin et Monitor. Ce compte est désactivé jusqu'à ce qu'un mot de passe soit défini.
+* *ro* (lecture seule) -- Cet utilisateur possède uniquement le rôle Monitor. Ce compte est désactivé tant qu'un mot de passe n'est pas défini.
+

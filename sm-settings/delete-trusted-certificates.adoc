@@ -1,0 +1,42 @@
+---
+permalink: sm-settings/delete-trusted-certificates.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, delete, trusted, certificates, 
+summary: 'Vous pouvez supprimer les certificats installés par l"utilisateur précédemment importés depuis l"onglet Trusted.' 
+---
+= Supprimez les certificats de confiance dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez supprimer les certificats installés par l'utilisateur précédemment importés depuis l'onglet Trusted.
+
+.Avant de commencer
+* Vous devez être connecté avec un profil utilisateur disposant des autorisations d'administrateur de sécurité. Sinon, les fonctions de certificat n'apparaissent pas.
+* Si vous mettez à jour un certificat de confiance avec une nouvelle version, le certificat mis à jour doit être importé avant que vous ne supprimiez l'ancien certificat.
+
+
+[CAUTION]
+====
+Vous risquez de perdre l'accès à un système si vous supprimez un certificat utilisé pour authentifier les contrôleurs et un autre serveur, tel qu'un serveur LDAP, avant d'importer un certificat de remplacement.
+
+====
+.À propos de cette tâche
+Cette procédure explique comment supprimer les certificats installés par l'utilisateur. Les certificats auto-signés préinstallés ne peuvent pas être supprimés.
+
+.Étapes
+. Sélectionnez menu : Paramètres [Certificates].
+. Sélectionnez l’onglet *Trusted*.
++
+Le tableau présente les certificats approuvés de la baie de stockage.
+
+. Dans le tableau, sélectionnez le certificat que vous souhaitez supprimer.
+. Cliquez sur menu : Uncommon Tasks[Delete].
++
+Une boîte de dialogue « Confirmer la suppression du certificat de confiance » s'ouvre.
+
+. Tapez `delete` dans le champ, puis cliquez sur *Supprimer*.
+

@@ -1,0 +1,73 @@
+---
+permalink: sm-settings/unlock-drives-using-an-internal-security-key.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, unlock, drives, internal, key, management, 
+summary: 'Si vous avez configuré la gestion des clés internes et que vous déplacez ensuite des disques sécurisés d"une baie de stockage à une autre, vous devez réattribuer la clé de sécurité à la nouvelle baie de stockage pour accéder aux données chiffrées sur les disques.' 
+---
+= Déverrouillez les disques lors de l'utilisation de la gestion des clés internes dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Si vous avez configuré la gestion des clés internes et que vous déplacez ensuite des disques sécurisés d'une baie de stockage à une autre, vous devez réattribuer la clé de sécurité à la nouvelle baie de stockage pour accéder aux données chiffrées sur les disques.
+
+.Avant de commencer
+* Sur la baie source (celle où vous retirez les disques), vous avez exporté les groupes de volumes et retiré les disques. Sur la baie cible, vous avez réinstallé les disques.
++
+
+NOTE: La fonction d'exportation/importation n'est pas prise en charge dans l'interface utilisateur de System Manager ; vous devez utiliser la ligne de commandes (CLI) pour exporter/importer un groupe de volumes vers une autre baie de stockage.
+
++
+Des instructions détaillées pour la migration d'un groupe de volumes sont fournies dans le https://kb.netapp.com/["Base de connaissances NetApp"^]. Veillez à suivre les instructions appropriées pour les baies plus récentes gérées par System Manager ou pour les systèmes hérités.
+
+* La fonction de sécurité du disque doit être activée. Sinon, une boîte de dialogue « Cannot Create Security Key » s'affiche pendant cette tâche. Si nécessaire, contactez votre fournisseur de stockage pour obtenir des instructions sur l'activation de la fonction de sécurité du disque.
+* Vous devez connaître la clé de sécurité associée aux lecteurs que vous souhaitez déverrouiller.
+* Le fichier de clé de sécurité est disponible sur le client de gestion (le système doté d'un navigateur utilisé pour accéder à System Manager). Si vous déplacez les disques vers une baie de stockage gérée par un autre système, vous devez déplacer le fichier de clé de sécurité vers ce client de gestion.
+
+
+.À propos de cette tâche
+Lorsque vous utilisez la gestion interne des clés, la clé de sécurité est stockée localement sur la baie de stockage. Une clé de sécurité est une chaîne de caractères partagée par le contrôleur et les disques pour l'accès en lecture/écriture. Lorsque les disques sont physiquement retirés de la baie et installés dans une autre, ils ne peuvent pas fonctionner tant que vous n'avez pas fourni la clé de sécurité correcte.
+
+[NOTE]
+====
+Vous pouvez créer une clé interne à partir de la mémoire persistante du contrôleur ou une clé externe à partir d'un serveur de gestion de clés. Cette rubrique décrit le déverrouillage des données lorsque la gestion de clés  est utilisée. Si vous avez utilisé la gestion de clés , consultez link:unlock-drives-using-an-external-security-key.html["Déverrouillez les disques lors de l'utilisation d'une gestion de clés externe"]. Si vous effectuez une mise à niveau du contrôleur et remplacez tous les contrôleurs par le matériel le plus récent, vous devez suivre des étapes différentes, comme décrit dans le centre de documentation E-Series et SANtricity, dans link:https://docs.netapp.com/us-en/e-series/upgrade-controllers/upgrade-unlock-drives-task.html["Déverrouiller les lecteurs"].
+
+====
+Une fois les disques sécurisés réinstallés dans une autre baie, cette dernière les détecte et affiche l'état « Nécessite une intervention » ainsi que le statut « Clé de sécurité requise ». Pour déverrouiller les données du disque, sélectionnez le fichier de clé de sécurité et saisissez la phrase secrète de la clé. (Cette phrase secrète n'est pas la même que le mot de passe administrateur de la baie de stockage.)
+
+Si d'autres disques sécurisés sont installés dans la nouvelle baie de stockage, ils peuvent utiliser une clé de sécurité différente de celle que vous importez. Lors du processus d'importation, l'ancienne clé de sécurité est utilisée uniquement pour déverrouiller les données des disques que vous installez. Lorsque le processus de déverrouillage réussit, les disques nouvellement installés sont réassociés à la clé de sécurité de la baie de stockage cible.
+
+.Étapes
+. Sélectionnez menu : Paramètres [System].
+. Sous *Security key management*, sélectionnez *Unlock Secure Drives*.
++
+La boîte de dialogue Déverrouiller les lecteurs sécurisés s'ouvre. Les lecteurs nécessitant une clé de sécurité sont affichés dans le tableau.
+
+. *Facultatif :* placez le curseur de la souris sur un numéro de lecteur pour voir l’emplacement du lecteur (numéro d’étagère et numéro de baie).
+. Cliquez sur *Parcourir*, puis sélectionnez le fichier de clé de sécurité qui correspond au lecteur que vous souhaitez déverrouiller.
++
+Le fichier clé que vous avez sélectionné apparaît dans la boîte de dialogue.
+
+. Saisissez la phrase de passe associée à ce fichier clé.
++
+Les caractères que vous saisissez sont masqués.
+
+. Cliquez sur *Unlock*.
++
+Si l'opération de déverrouillage réussit, la boîte de dialogue affiche : "Les lecteurs sécurisés associés ont été déverrouillés."
+
+
+
+.Résultats
+Lorsque tous les disques sont verrouillés puis déverrouillés, chaque contrôleur de la baie de stockage redémarrera. Cependant, si la baie de stockage cible contient déjà des disques déverrouillés, alors les contrôleurs ne redémarreront pas.
+
+.Après avoir terminé
+Sur la baie de destination (la baie avec les disques nouvellement installés), vous pouvez maintenant importer des groupes de volumes.
+
+
+NOTE: La fonction d'exportation/importation n'est pas prise en charge dans l'interface utilisateur de System Manager ; vous devez utiliser la ligne de commandes (CLI) pour exporter/importer un groupe de volumes vers une autre baie de stockage.
+
+Des instructions détaillées pour la migration d'un groupe de volumes sont fournies dans le https://kb.netapp.com/["Base de connaissances NetApp"^].

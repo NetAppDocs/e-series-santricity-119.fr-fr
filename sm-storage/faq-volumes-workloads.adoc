@@ -1,0 +1,183 @@
+---
+permalink: sm-storage/faq-volumes-workloads.html 
+sidebar: sidebar 
+keywords:  
+summary: Cette FAQ peut vous aider si vous cherchez simplement une réponse rapide à une question. 
+---
+= FAQ sur les volumes et les charges de travail pour SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Cette FAQ peut vous aider si vous cherchez simplement une réponse rapide à une question.
+
+
+
+== Qu'est-ce qu'un volume ?
+
+Un volume est un conteneur dans lequel les applications, les bases de données et les systèmes de fichiers stockent des données. Il s'agit du composant logique créé pour permettre à l'hôte d'accéder au stockage sur la baie de stockage.
+
+Un volume est créé à partir de la capacité disponible dans un pool ou un groupe de volumes. Un volume possède une capacité définie. Bien qu'un volume puisse être composé de plusieurs disques, il apparaît comme un seul composant logique pour l'hôte.
+
+
+
+== Pourquoi est-ce que je vois une erreur de surallocation de capacité alors que j'ai suffisamment de capacité libre dans un groupe de volumes pour créer des volumes ?
+
+Le groupe de volumes sélectionné peut comporter une ou plusieurs zones de capacité libre. Une zone de capacité libre correspond à la capacité libre qui peut résulter de la suppression d'un volume ou de la non-utilisation de toute la capacité libre disponible lors de la création du volume.
+
+Lorsque vous créez un volume dans un groupe de volumes comportant une ou plusieurs zones de capacité libre, la capacité du volume est limitée à la plus grande zone de capacité libre dans ce groupe de volumes. Par exemple, si un groupe de volumes dispose d'une capacité libre totale de 15 Gio et que la plus grande zone de capacité libre est de 10 Gio, le plus grand volume que vous pouvez créer est de 10 Gio.
+
+Si un groupe de volumes comporte des zones de capacité libre, le graphique du groupe de volumes contient un lien indiquant le nombre de zones de capacité libre existantes. Sélectionnez le lien pour afficher une fenêtre contextuelle indiquant la capacité de chaque zone.
+
+En consolidant la capacité libre, vous pouvez créer des volumes supplémentaires à partir de la capacité libre maximale d'un groupe de volumes. Vous pouvez consolider la capacité libre existante sur un groupe de volumes sélectionné en utilisant l'une des méthodes suivantes :
+
+* Lorsqu'au moins une zone de capacité libre est détectée pour un groupe de volumes, la recommandation « Consolider la capacité libre » s'affiche dans la zone de notification de la page d'accueil. Cliquez sur le lien *Consolider la capacité libre* pour ouvrir la boîte de dialogue.
+* Vous pouvez également sélectionner menu : Pools & Volume Groups [Uncommon Tasks > Consolidate volume group free capacity] pour lancer la boîte de dialogue.
+
+
+Si vous souhaitez utiliser une zone de capacité libre spécifique plutôt que la plus grande zone de capacité libre, utilisez la ligne de commandes (CLI).
+
+
+
+== Quel est l'impact de ma charge de travail sélectionnée sur la création de volumes ?
+
+Lors de la création d'un volume, vous êtes invité à fournir des informations sur l'utilisation de la charge de travail. Le système utilise ces informations pour créer une configuration de volume optimale pour vous, qui peut être modifiée si nécessaire. Vous pouvez également ignorer cette étape dans la séquence de création du volume.
+
+Une charge de travail est un objet de stockage qui prend en charge une application. Vous pouvez définir une ou plusieurs charges de travail, ou instances, par application. Pour certaines applications, le système configure la charge de travail pour qu'elle contienne des volumes ayant des caractéristiques de volume sous-jacentes similaires. Ces caractéristiques de volume sont optimisées en fonction du type d'application que la charge de travail prend en charge. Par exemple, si vous créez une charge de travail qui prend en charge une application Microsoft SQL Server, puis créez des volumes pour cette charge de travail, les caractéristiques de volume sous-jacentes sont optimisées pour prendre en charge Microsoft SQL Server.
+
+* *Spécifique à l'application* -- Lors de la création de volumes à l'aide d'une charge de travail spécifique à une application, le système peut recommander une configuration de volume optimisée afin de minimiser la contention entre la charge de travail applicative E/S et le reste du trafic provenant de votre instance d'application. Les caractéristiques du volume, telles que le type d'E/S, la taille de segment, la propriété du contrôleur, ainsi que le cache de lecture et d'écriture, sont automatiquement recommandées et optimisées pour les charges de travail créées pour les types d'applications suivants.
++
+** Microsoft® SQL Server™
+** Microsoft® Serveur Exchange™
+** Applications de vidéosurveillance
+** VMware ESXi™ (pour les volumes à utiliser avec Virtual Machine File System)
++
+Vous pouvez consulter la configuration de volume recommandée et modifier, ajouter ou supprimer les volumes et caractéristiques recommandés par le système à l'aide de la boîte de dialogue Add/Edit Volumes.
+
+
+
+* *Autres* (ou applications sans prise en charge spécifique de la création de volumes) -- Les autres charges de travail utilisent une configuration de volume que vous devez spécifier manuellement lorsque vous souhaitez créer une charge de travail non associée à une application spécifique, ou s'il n'y a pas d'optimisation intégrée pour l'application que vous prévoyez d'utiliser sur la baie de stockage. Vous devez spécifier manuellement la configuration de volume à l'aide de la boîte de dialogue Ajouter/Modifier des volumes.
+
+
+
+
+== Pourquoi ces volumes ne sont-ils pas associés à une charge de travail ?
+
+Les volumes ne sont pas associés à une charge de travail s'ils ont été créés à l'aide de la ligne de commandes (CLI) ou s'ils ont été migrés (importés/exportés) à partir d'une baie de stockage différente.
+
+
+
+== Pourquoi ne puis-je pas supprimer la charge de travail sélectionnée ?
+
+Cette charge de travail est composée d'un groupe de volumes créés via la ligne de commandes (CLI) ou migrés (importés/exportés) depuis une autre baie de stockage. Par conséquent, les volumes de cette charge de travail ne sont pas associés à une charge de travail applicative spécifique, de sorte que la charge de travail ne peut pas être supprimée.
+
+
+
+== Comment les charges de travail spécifiques à une application m'aident-elles à gérer ma baie de stockage ?
+
+Les caractéristiques de volume de votre charge de travail spécifique à l'application dictent la manière dont la charge de travail interagit avec les composants de votre baie de stockage et aident à déterminer les performances de votre environnement dans une configuration donnée.
+
+Une application est un logiciel tel que SQL Server ou Serveur Exchange. Vous définissez une ou plusieurs charges de travail pour prendre en charge chaque application.
+
+
+
+== Comment la fourniture de ces informations aide-t-elle à créer du stockage ?
+
+Les informations relatives à la charge de travail permettent d'optimiser les caractéristiques du volume, telles que le type d'E/S, la taille des segments et le cache de lecture/écriture, pour la charge de travail sélectionnée. Ces caractéristiques optimisées déterminent la manière dont votre charge de travail interagit avec les composants de la baie de stockage.
+
+En fonction des informations de charge de travail que vous fournissez, System Manager crée les volumes appropriés et les place sur les pools ou groupes de volumes disponibles sur le système. Le système crée les volumes et optimise leurs caractéristiques selon les bonnes pratiques actuelles pour la charge de travail que vous avez sélectionnée.
+
+Avant de terminer la création des volumes pour une charge de travail donnée, vous pouvez consulter la configuration de volume recommandée et modifier, ajouter ou supprimer les volumes et caractéristiques recommandés par le système à l'aide de la boîte de dialogue Ajouter/Modifier des volumes.
+
+Consultez la documentation spécifique à votre application pour obtenir des informations sur les bonnes pratiques.
+
+
+
+== Que dois-je faire pour reconnaître la capacité accrue ?
+
+Si vous augmentez la capacité d'un volume, l'hôte risque de ne pas immédiatement reconnaître l'augmentation de la capacité du volume.
+
+La plupart des systèmes d'exploitation reconnaissent la capacité de volume étendue et s'étendent automatiquement après le lancement de l'extension du volume. Cependant, certains peuvent ne pas le faire. Si votre système d'exploitation ne reconnaît pas automatiquement la capacité de volume étendue, vous devrez peut-être effectuer une nouvelle analyse du disque ou redémarrer.
+
+Après avoir augmenté la capacité du volume, vous devez augmenter manuellement la taille du système de fichiers pour qu'elle corresponde. La façon de procéder dépend du système de fichiers que vous utilisez.
+
+Consultez la documentation de votre système d'exploitation hôte pour plus de détails.
+
+
+
+== Pourquoi ne vois-je pas tous mes pools et/ou groupes de volumes ?
+
+Tout pool ou groupe de volumes vers lequel vous ne pouvez pas déplacer le volume ne s'affiche pas dans la liste.
+
+Les pools ou groupes de volume ne sont pas éligibles pour l'une des raisons suivantes :
+
+* Les capacités d'assurance des données (DA) d'un pool ou d'un groupe de volumes pool ne correspondent pas.
+* Un pool ou un groupe de volumes se trouve dans un état non optimal.
+* La capacité d'un pool ou d'un groupe de volumes est trop faible.
+
+
+
+
+== Quelle est la taille d'un segment ?
+
+Un segment correspond à la quantité de données, exprimée en kilo-octets (KiB), stockée sur un disque avant que la baie de stockage ne passe au disque suivant dans la bande (groupe RAID). La taille des segments s'applique uniquement aux groupes de volumes, pas aux pools.
+
+La taille d'un segment est définie par le nombre de blocs de données qu'il contient. Lors de la détermination de la taille du segment, vous devez savoir quel type de données vous allez stocker dans un volume. Si une application utilise généralement de petites lectures et écritures aléatoires (IOPS), une taille de segment plus petite fonctionne généralement mieux. À l'inverse, si l'application effectue de grandes lectures et écritures séquentielles (débit), une grande taille de segment est généralement préférable.
+
+Qu'une application utilise de petites lectures et écritures aléatoires ou de grandes lectures et écritures séquentielles, la baie de stockage offre de meilleures performances si la taille des segments est supérieure à la taille typique du bloc de données. Cela facilite et accélère généralement l'accès aux données par les disques, ce qui est important pour de meilleures performances de la baie de stockage.
+
+
+
+=== Environnements où les performances IOPS sont importantes
+
+Dans un environnement d'opérations d'E/S par seconde (IOPS), la baie de stockage offre de meilleures performances si vous utilisez une taille de segment supérieure à la taille typique du bloc de données (« chunk ») qui est lu/écrit sur un disque. Cela garantit que chaque chunk est écrit sur un seul disque.
+
+
+
+=== Environnements où le débit est important
+
+Dans un environnement à haut débit, la taille des segments doit être une fraction égale du nombre total de disques pour les données et de la taille typique du bloc de données (taille d'E/S). Cela répartit les données comme une seule bande sur les disques du groupe de volumes, ce qui accélère les lectures et écritures.
+
+
+
+== Qu'est-ce que la propriété de contrôleur préférée ?
+
+La propriété du contrôleur préféré définit le contrôleur qui est désigné comme le contrôleur propriétaire, ou principal, du volume.
+
+L'attribution des contrôleurs est primordiale et doit être planifiée avec soin. Les contrôleurs doivent être équilibrés aussi étroitement que possible pour le nombre total d'E/S.
+
+Par exemple, si un contrôleur traite principalement de grands blocs de données séquentiels et que l'autre contrôleur a de petits blocs de données avec des lectures et écritures fréquentes, les charges sont très différentes. Savoir quels volumes contiennent quel type de données permet de répartir équitablement les transferts d'E/S sur les deux contrôleurs.
+
+
+
+== Dans quel cas voudrais-je utiliser la sélection « Attribuer l'hôte ultérieurement » ?
+
+Si vous souhaitez accélérer le processus de création de volumes, vous pouvez ignorer l'étape d'attribution d'hôte afin que les volumes nouvellement créés soient initialisés hors ligne.
+
+Les volumes nouvellement créés doivent être initialisés. Le système peut les initialiser selon deux modes : soit un processus d’initialisation en arrière-plan au format immédiatement disponible (IAF), soit un processus hors ligne.
+
+Lorsqu'un volume est associé à un hôte, cela force tous les volumes en cours d'initialisation dans ce groupe à passer à l'initialisation en arrière-plan. Ce processus d'initialisation en arrière-plan permet des opérations d'E/S simultanées sur l'hôte, ce qui peut parfois prendre du temps.
+
+Lorsqu'aucun volume d'un groupe de volumes n'est mappé, une initialisation hors ligne est effectuée. Le processus hors ligne est beaucoup plus rapide que le processus en arrière-plan.
+
+
+
+== Que dois-je savoir concernant les exigences de taille de bloc hôte ?
+
+Pour les systèmes EF300 et EF600, un volume peut être configuré pour prendre en charge une taille de bloc de 512 octets ou de 4KiB (également appelée « taille de secteur »). Vous devez définir la valeur correcte lors de la création du volume. Si possible, le système suggère la valeur par défaut appropriée.
+
+Avant de définir la taille du bloc de volume, lisez les limitations et les directives suivantes.
+
+* Certains systèmes d'exploitation et machines virtuelles (notamment VMware, à ce jour) requièrent une taille de bloc de 512 octets et ne prennent pas en charge 4KiB, alors assurez-vous de connaître les exigences de l'hôte avant de créer un volume. En général, vous pouvez obtenir les meilleures performances en configurant un volume pour présenter une taille de bloc de 4KiB ; cependant, assurez-vous que votre hôte prend en charge les blocs de 4KiB (ou « 4Kn »).
+* Le type de disques que vous sélectionnez pour votre pool ou groupe de volumes détermine également les tailles de blocs de volume prises en charge, comme suit :
++
+** Si vous créez un groupe de volumes à l'aide de disques qui écrivent dans des blocs de 512 octets, alors vous ne pouvez créer que des volumes avec des blocs de 512 octets.
+** Si vous créez un groupe de volumes à l'aide de disques qui écrivent sur des blocs de 4KiB, vous pouvez créer des volumes avec des blocs de 512 octets ou de 4KiB.
+
+
+* Si la baie possède une carte d'interface d'hôte iSCSI, tous les volumes sont limités à des blocs de 512 octets (quelle que soit la taille des blocs du groupe de volumes). Ceci est dû à une implémentation matérielle spécifique.
+* Vous ne pouvez pas changer la taille d'un bloc une fois qu'elle est définie. Si vous devez changer la taille d'un bloc, vous devez supprimer le volume et le recréer.
+

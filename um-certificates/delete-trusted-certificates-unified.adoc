@@ -1,0 +1,41 @@
+---
+permalink: um-certificates/delete-trusted-certificates-unified.html 
+sidebar: sidebar 
+keywords: SANtricity, Unified Manager, E-Series, delete, trusted, certificates 
+summary: Vous pouvez supprimer un ou plusieurs certificats qui ne sont plus nécessaires, comme un certificat expiré. 
+---
+= Supprimer les certificats de confiance dans SANtricity Unified Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez supprimer un ou plusieurs certificats qui ne sont plus nécessaires, comme un certificat expiré.
+
+.Avant de commencer
+Importez le nouveau certificat avant de supprimer l'ancien.
+
+[CAUTION]
+====
+Sachez que la suppression d'un certificat racine ou intermédiaire peut avoir un impact sur plusieurs baies de stockage, car ces baies peuvent partager les mêmes fichiers de certificat.
+
+====
+.Étapes
+. Sélectionnez *Certificate Management*.
+. Sélectionnez l’onglet *Trusted*.
+. Sélectionnez un ou plusieurs certificats dans le tableau, puis cliquez sur *Delete*.
++
+[NOTE]
+====
+La fonction *Supprimer* n'est pas disponible pour les certificats préinstallés.
+
+====
++
+La boîte de dialogue Confirmer la suppression du certificat de confiance s'ouvre.
+
+. Confirmez la suppression, puis cliquez sur *Delete*.
++
+Le certificat est retiré du tableau.
+
+

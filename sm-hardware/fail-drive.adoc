@@ -1,0 +1,49 @@
+---
+permalink: sm-hardware/fail-drive.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, fail, drive, 
+summary: 'Si on vous le demande, vous pouvez provoquer manuellement la panne d"un disque.' 
+---
+= Défaillir manuellement un disque dans SANtricity System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Si on vous le demande, vous pouvez provoquer manuellement la panne d'un disque.
+
+.À propos de cette tâche
+Le Gestionnaire système surveille les disques de la baie de stockage. Lorsqu'il détecte qu'un disque génère de nombreuses erreurs, le Recovery Guru vous avertit d'une panne disque imminente. Si cela se produit et que vous disposez d'un disque de remplacement, vous pouvez provoquer la panne du disque pour prendre une mesure préventive. Si vous n'avez pas de disque de remplacement, vous pouvez attendre que le disque tombe en panne de lui-même.
+
+[CAUTION]
+====
+*Risque de perte d'accès aux données* -- Cette opération peut entraîner une perte de données ou la perte de redondance des données. N'effectuez cette opération que sur instruction du support technique ou du Recovery Guru.
+
+====
+.Étapes
+. Sélectionnez *Hardware*.
+. Si le graphique affiche les contrôleurs, cliquez sur l’onglet *Lecteurs*.
++
+Le graphique change pour afficher les disques au lieu des contrôleurs.
+
+. Cliquez sur le lecteur que vous souhaitez mettre en panne.
++
+Le menu contextuel du lecteur apparaît.
+
+. Sélectionnez *Fail*.
+. Laissez la case à cocher *Copier le contenu du lecteur avant la panne* sélectionnée.
++
+L'option de copie n'apparaît que pour les disques attribués et pour les groupes de volumes non-RAID 0.
+
++
+Avant de déclarer la panne disque, assurez-vous de copier le contenu du disque. Selon votre configuration, vous pourriez potentiellement perdre toutes les données ou la redondance des données sur le pool ou le groupe de volumes associé si vous ne copiez pas d'abord le contenu du disque.
+
++
+L'option de copie permet une récupération plus rapide du disque que la reconstruction et réduit la possibilité d'une panne de volume si un autre disque venait à tomber en panne pendant l'opération de copie.
+
+. Confirmez que vous souhaitez mettre le disque en panne.
++
+Après la panne disque, attendez au moins 60 secondes avant de le retirer.
+
+

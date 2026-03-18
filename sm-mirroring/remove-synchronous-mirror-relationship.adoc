@@ -1,0 +1,39 @@
+---
+permalink: sm-mirroring/remove-synchronous-mirror-relationship.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, remove, synchronous, mirror, relationship, 
+summary: Vous supprimez une paire miroir pour supprimer la relation de miroir du volume principal sur la baie de stockage locale et du volume secondaire sur la baie de stockage distante. 
+---
+= Supprimez les relations de miroir synchrones dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous supprimez une paire miroir pour supprimer la relation de miroir du volume principal sur la baie de stockage locale et du volume secondaire sur la baie de stockage distante.
+
+.À propos de cette tâche
+Vous pouvez également supprimer une paire miroir pour corriger un état de paire miroir orpheline. Consultez les informations suivantes concernant les paires miroir orphelines :
+
+* Une paire miroir orpheline existe lorsqu'un volume membre a été supprimé d'un côté (local/remote) mais pas de l'autre côté.
+* Les paires miroir orphelines sont détectées lorsque la communication entre les matrices est rétablie.
+
+
+.Étapes
+. Sélectionnez le menu : Storage[Synchronous Mirroring].
+. Sélectionnez la paire en miroir que vous souhaitez supprimer, puis sélectionnez le menu : Uncommon Tasks[Remove].
++
+La boîte de dialogue Supprimer la relation miroir apparaît.
+
+. Confirmez que vous souhaitez supprimer la paire en miroir, puis cliquez sur *Remove*.
+
+
+.Résultats
+System Manager effectue les actions suivantes :
+
+* Supprime la relation de miroir de la paire mise en miroir sur la baie de stockage locale et sur la baie de stockage distante.
+* Rend le volume principal et le volume secondaire accessibles à l'hôte en tant que volumes non mis en miroir.
+* Met à jour la tuile Synchronous Mirroring avec la suppression de la paire synchronisée.
+

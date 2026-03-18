@@ -1,0 +1,28 @@
+---
+permalink: um-manage/clear-staged-os-software.html 
+sidebar: sidebar 
+keywords: SANtricity, Unified Manager, E-Series, clear, staged, os, software 
+summary: 'Vous pouvez supprimer le logiciel du système d"exploitation mis en attente afin de garantir qu"une version en attente ne soit pas activée par inadvertance ultérieurement. La suppression du logiciel du système d"exploitation mis en attente n"affecte pas la version actuellement en cours d"exécution sur les baies de stockage.' 
+---
+= Effacer le logiciel du système d'exploitation mis en attente dans SANtricity Unified Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez supprimer le logiciel du système d'exploitation mis en attente afin de garantir qu'une version en attente ne soit pas activée par inadvertance ultérieurement. La suppression du logiciel du système d'exploitation mis en attente n'affecte pas la version actuellement en cours d'exécution sur les baies de stockage.
+
+.Étapes
+. Dans la vue principale, sélectionnez *Manage*, puis sélectionnez menu : Upgrade Center[Clear Staged OS Software].
++
+La boîte de dialogue « Clear Staged OS Software » s'ouvre et liste tous les systèmes de stockage détectés avec un logiciel ou une NVSRAM en attente.
+
+. Si nécessaire, filtrez ou triez les systèmes de stockage dans la liste afin de pouvoir visualiser tous les systèmes qui ont un logiciel mis en attente.
+. Cochez les cases des systèmes de stockage avec des logiciels en attente que vous souhaitez effacer.
+. Cliquez sur *Clear*.
++
+L'état de l'opération est affiché dans la boîte de dialogue.
+
+

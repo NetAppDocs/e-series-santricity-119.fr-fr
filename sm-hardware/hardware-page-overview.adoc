@@ -1,0 +1,72 @@
+---
+permalink: sm-hardware/hardware-page-overview.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, hardware, page, components, 
+summary: 'La page Matériel présente une représentation graphique des composants physiques de la baie de stockage. À partir de là, vous pouvez vérifier l"état des composants et effectuer certaines fonctions liées à ces composants.' 
+---
+= Page matérielle et composants de SANtricity System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La page Matériel présente une représentation graphique des composants physiques de la baie de stockage. À partir de là, vous pouvez consulter l'état des composants et effectuer certaines fonctions liées à ces composants.
+
+
+
+== Tiroirs
+
+Une étagère est un composant qui contient le matériel de la baie de stockage (contrôleurs, modules d'alimentation/ventilateurs et disques). Il existe deux types d'étagères :
+
+* *Étagère pour contrôleurs* -- Contient les disques, les boîtiers d'alimentation/ventilateurs et les contrôleurs.
+* *Baie de disques* (ou *tiroir d'extension*) -- contient les disques, les modules d'alimentation/ventilateurs et deux modules d'entrée/sortie (IOMs). Les IOMs, également appelés modules de services environnementaux (ESMs), comprennent des ports SAS qui relient la baie de disques à la baie de contrôleur.
+
+
+Les étagères sont disponibles en trois tailles pour accueillir jusqu'à 12, 24 ou 60 disques. Chaque étagère inclut un numéro d'identification, qui est attribué par le micrologiciel du contrôleur. L'identifiant apparaît en haut à gauche de l'illustration de l'étagère.
+
+L'affichage en étagère de la page Matériel présente les composants avant ou arrière. Vous pouvez basculer entre les deux affichages en sélectionnant les onglets *Lecteurs* ou *Contrôleur* en haut à droite de l'affichage en étagère. Vous pouvez également sélectionner *Afficher tout l'avant* ou *Afficher tout l'arrière* en bas de la page. Les affichages avant et arrière présentent les éléments suivants :
+
+* *Composants avant* -- Disques et baies de disques vides.
+* *Composants arrière* -- Contrôleurs et boîtiers d'alimentation/ventilateurs (pour les tiroirs de contrôleur) ou les IOM et boîtiers d'alimentation/ventilateurs (pour les tiroirs de disques).
+
+
+Vous pouvez effectuer les fonctions suivantes relatives aux shelves :
+
+* Allumez le voyant de localisation de l'étagère, afin de pouvoir repérer l'emplacement physique de l'étagère dans l'armoire ou le rack.
+* Modifiez le numéro d'identification affiché en haut à gauche de la vue du tiroir.
+* Consultez les paramètres du tiroir, tels que les types de disques installés et le numéro de série.
+* Déplacez les vues des étagères vers le haut ou vers le bas pour correspondre à la disposition physique dans la storage array.
+
+
+
+
+== Contrôleurs
+
+Un contrôleur est l'ensemble matériel et micrologiciel qui implémente les fonctions de gestion et de traitement des baies de stockage. Il comprend la mémoire cache, la prise en charge des disques et la prise en charge de l'interface d'hôte.
+
+Vous pouvez effectuer les fonctions suivantes liées aux contrôleurs :
+
+* Configurez les ports de gestion pour les adresses IP et la vitesse.
+* Configurez les connexions d'hôte iSCSI (si vous avez des hôtes iSCSI).
+* Configurez un serveur Network Time Protocol (NTP) et un serveur Domain Name System (DNS).
+* Afficher l'état et les paramètres du contrôleur.
+* Autoriser les utilisateurs situés en dehors du réseau local à démarrer une session SSH et à modifier les paramètres du contrôleur.
+* Mettez le contrôleur hors ligne, en ligne ou en mode service.
+
+
+
+
+== Disques
+
+La baie de stockage peut inclure des disques durs (HDD) ou des disques SSD (SSD). Selon la taille du tiroir, jusqu'à 12, 24 ou 60 disques peuvent être installés dans le tiroir.
+
+Vous pouvez effectuer les fonctions suivantes liées aux lecteurs :
+
+* Allumez le voyant de localisation du disque, afin de pouvoir trouver l'emplacement physique du disque dans le tiroir.
+* Afficher l'état et les paramètres du lecteur.
+* Réaffectez un lecteur (remplacez logiquement un lecteur défaillant par un lecteur non affecté), et reconstruisez manuellement le lecteur si nécessaire.
+* Provoquez une panne manuelle d'un disque dur afin de pouvoir le remplacer. (La panne d'un disque dur vous permet de copier son contenu avant de le remplacer.)
+* Affecter ou désaffecter des disques de secours.
+* Effacer les disques.
+

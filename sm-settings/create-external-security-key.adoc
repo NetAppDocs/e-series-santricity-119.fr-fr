@@ -1,0 +1,127 @@
+---
+permalink: sm-settings/create-external-security-key.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, create, external, security, key, 
+summary: Pour utiliser la fonction Drive Security avec un serveur de gestion de clés, vous devez créer une clé externe qui est partagée par le serveur de gestion de clés et les disques compatibles avec la sécurité dans la baie de stockage. 
+---
+= Créez une clé de sécurité externe dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Pour utiliser la fonction Drive Security avec un serveur de gestion de clés, vous devez créer une clé externe qui est partagée par le serveur de gestion de clés et les disques compatibles avec la sécurité dans la baie de stockage.
+
+.Avant de commencer
+* Des disques compatibles avec le chiffrement sécurisé doivent être installés dans la baie. Ces disques peuvent être des disques à chiffrement complet (FDE) ou des disques Federal Information Processing Standard (FIPS).
++
+[NOTE]
+====
+Si des disques FDE et FIPS sont installés dans la baie de stockage, ils partagent tous la même clé de sécurité.
+
+====
+* La fonction de sécurité du disque doit être activée. Sinon, une boîte de dialogue « Cannot Create Security Key » s'affiche pendant cette tâche. Si nécessaire, contactez votre fournisseur de stockage pour obtenir des instructions sur l'activation de la fonction de sécurité du disque.
+* Vous disposez d'un fichier de certificat client signé pour les contrôleurs de la baie de stockage et vous avez copié ce fichier sur l'hôte depuis lequel vous accédez à System Manager. Un certificat client valide les contrôleurs de la baie de stockage, afin que le serveur de gestion des clés puisse faire confiance à leurs requêtes Key Management Interoperability Protocol (KMIP).
+* Vous devez récupérer un fichier de certificat auprès du serveur de gestion des clés, puis le copier sur l'hôte depuis lequel vous accédez à System Manager. Un certificat de serveur de gestion des clés valide le serveur de gestion des clés, afin que la baie de stockage puisse faire confiance à son adresse IP. Vous pouvez utiliser un certificat racine, intermédiaire ou serveur pour le serveur de gestion des clés.
++
+[NOTE]
+====
+Pour plus d'informations sur le certificat serveur, consultez la documentation de votre serveur de gestion de clés.
+
+====
+
+
+.À propos de cette tâche
+Dans cette tâche, vous définissez l'adresse IP du serveur de gestion des clés et le numéro de port qu'il utilise, puis vous chargez des certificats pour la gestion externe des clés.
+
+.Étapes
+. Sélectionnez menu : Paramètres [System].
+. Sous *Security key management*, sélectionnez *Create External Key*.
++
+[NOTE]
+====
+Si la gestion interne des clés est actuellement configurée, une boîte de dialogue s'ouvre et vous demande de confirmer que vous souhaitez passer à la gestion externe des clés.
+
+====
++
+La boîte de dialogue « Create External Security Key » s'ouvre.
+
+. Sous *Connect to Key Server*, saisissez les informations dans les champs suivants.
++
+** *Adresse du serveur de gestion des clés* -- Entrez le domaine complet ou l'adresse IP (IPv4 ou IPv6) du serveur utilisé pour la gestion des clés.
+** *Numéro de port de gestion des clés* -- Saisissez le numéro de port utilisé pour les communications KMIP. Le numéro de port le plus couramment utilisé pour les communications avec le serveur de gestion des clés est 5696.
++
+*Facultatif :* Si vous souhaitez configurer un serveur de clés de secours, cliquez sur *Ajouter un serveur de clés*, puis saisissez les informations de ce serveur. Le second serveur de clés sera utilisé si le serveur de clés principal ne peut pas être atteint. Assurez-vous que chaque serveur de clés a accès à la même base de données de clés ; sinon, la baie affichera des erreurs et ne pourra pas utiliser le serveur de secours.
+
++
+
+NOTE: Un seul serveur de clés est utilisé à la fois. Si la baie de stockage ne peut pas atteindre le serveur de clés principal, la baie contactera le serveur de clés de secours. Notez que vous devez maintenir la parité entre les deux serveurs ; le non-respect de cette consigne peut entraîner des erreurs.
+
+** *Sélectionnez le certificat client* -- Cliquez sur le premier bouton *Parcourir* pour sélectionner le fichier de certificat pour les contrôleurs de la baie de stockage.
+** *Sélectionnez le fichier de clé privée* -- Si nécessaire, cliquez sur le deuxième bouton *Parcourir* pour sélectionner un fichier de clé privée pour les contrôleurs de la baie de stockage.
+** *Sélectionnez le certificat du serveur de gestion des clés* -- Cliquez sur le troisième bouton *Parcourir* pour sélectionner le fichier de certificat du serveur de gestion des clés. Vous pouvez choisir un certificat racine, intermédiaire ou serveur pour le serveur de gestion des clés.
+
+
+. Cliquez sur *Next*.
+. Sous *Create/Backup Key*, vous pouvez créer une clé de sauvegarde à des fins de sécurité.
++
+** (Recommandé) Pour créer une clé de sauvegarde, laissez la case cochée, puis saisissez et confirmez une phrase secrète. La valeur peut comporter entre 8 et 32 caractères et doit inclure chacun des éléments suivants :
++
+*** Une ou plusieurs lettres majuscules. Gardez à l'esprit que la phrase de passe est sensible à la casse.
+*** Un nombre (un ou plusieurs).
+*** Un caractère non alphanumérique, tel que !, *, @ (un ou plusieurs).
+
+
+
+
++
+[CAUTION]
+====
+*Conservez bien vos saisies pour une utilisation ultérieure*. Si vous devez déplacer un disque sécurisé de la baie de stockage, vous devez connaître la phrase de passe permettant de déverrouiller les données du disque.
+
+====
++
+** Si vous ne souhaitez pas créer de clé de sauvegarde, décochez la case.
++
+[CAUTION]
+====
+Attention : si vous perdez l’accès au serveur de clés externe et que vous ne disposez pas d’une clé de sauvegarde, vous perdrez l’accès aux données des disques si elles sont migrées vers une autre baie de stockage. Cette option est la seule méthode pour créer une clé de sauvegarde dans System Manager.
+
+====
+
+
+. Cliquez sur *Terminer*.
++
+Le système se connecte au serveur de gestion des clés avec les identifiants que vous avez saisis. Une copie de la clé de sécurité est ensuite enregistrée sur votre système local.
+
++
+[NOTE]
+====
+Le chemin du fichier téléchargé peut dépendre de l'emplacement de téléchargement par défaut de votre navigateur.
+
+====
+. Notez votre phrase de passe et l'emplacement du fichier de clé téléchargé, puis cliquez sur *Close*.
++
+La page affiche le message suivant avec des liens supplémentaires pour la gestion externe des clés :
+
++
+`Current key management method: External`
+
+. Testez la connexion entre la baie de stockage et le serveur de gestion des clés en sélectionnant *Test Communication*.
++
+Les résultats du test s'affichent dans la boîte de dialogue.
+
+
+
+.Résultats
+Lorsque la gestion des clés externes est activée, vous pouvez créer des groupes ou des pools de volumes sécurisés, ou activer la sécurité sur des groupes et pools de volumes existants.
+
+[NOTE]
+====
+Lorsque l'alimentation des disques est coupée puis rétablie, tous les disques avec la fonction de sécurité activée passent à l'état Verrouillé par sécurité. Dans cet état, les données sont inaccessibles jusqu'à ce que le contrôleur applique la clé de sécurité correcte lors de l'initialisation du disque. Si une personne retire physiquement un disque verrouillé et l'installe dans un autre système, l'état Verrouillé par sécurité empêche tout accès non autorisé à ses données.
+
+====
+.Après avoir terminé
+Vous devez valider la clé de sécurité pour vous assurer que le fichier de clé n'est pas corrompu.

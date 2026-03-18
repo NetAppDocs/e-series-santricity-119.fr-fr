@@ -1,0 +1,48 @@
+---
+permalink: sm-storage/disable-snapshot-volume.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, disable, snapshot, volume 
+summary: 'Vous pouvez désactiver un volume de snapshot ou un volume de snapshot dans un groupe de cohérence de snapshot lorsque vous n"en avez plus besoin ou que vous souhaitez temporairement arrêter de l"utiliser.' 
+---
+= Désactiver un volume snapshot dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez désactiver un volume de snapshot ou un volume de snapshot dans un groupe de cohérence de snapshot lorsque vous n'en avez plus besoin ou que vous souhaitez temporairement arrêter de l'utiliser.
+
+.À propos de cette tâche
+Utilisez l'option Disable si l'une de ces conditions s'applique :
+
+* Vous avez terminé avec le volume d'instantané ou le volume d'instantané du groupe de cohérence pour le moment.
+* Vous avez l'intention de recréer ultérieurement le volume d'instantané ou le volume d'instantané de groupe de cohérence (qui est désigné comme lecture-écriture) et souhaitez conserver la capacité réservée associée afin de ne pas avoir à la créer de nouveau.
+* Vous souhaitez augmenter les performances de la baie de stockage en arrêtant l'activité d'écriture sur un volume instantané en lecture-écriture.
+
+
+Si le volume d'instantané ou le volume d'instantané de groupe de cohérence est configuré en lecture-écriture, cette option permet également d'arrêter toute activité d'écriture supplémentaire sur le volume de capacité réservée associé. Si vous décidez de recréer le volume d'instantané ou le volume d'instantané de groupe de cohérence, vous devez choisir une image d'instantané provenant du même volume de base.
+
+[NOTE]
+====
+Si le volume d'instantané ou le volume d'instantané du groupe de cohérence d'instantané fait partie d'une relation de copie en ligne, vous ne pouvez pas exécuter l'option Désactiver sur le volume.
+
+====
+.Étapes
+. Sélectionnez le menu : Storage[Snapshots].
+. Sélectionnez l’onglet *Snapshot Volumes*.
++
+System Manager affiche tous les volumes d'instantanés associés à la baie de stockage.
+
+. Sélectionnez le volume d'instantané que vous souhaitez désactiver, puis sélectionnez menu:Uncommon Tasks[Disable].
+. Confirmez que vous souhaitez effectuer l'opération, puis cliquez sur *Désactiver*.
+
+
+.Résultats
+* Le volume de l’instantané reste associé à son volume de base.
+* Le volume de snapshot conserve son World Wide Name (WWN).
+* Si le volume est en lecture-écriture, le volume de l’instantané conserve sa capacité réservée associée.
+* Le volume de snapshot conserve toutes les affectations d'hôtes et les accès. Cependant, les requêtes de lecture-écriture échouent.
+* Le volume de l'instantané perd son association avec son image d'instantané.
+

@@ -1,0 +1,27 @@
+---
+permalink: sm-settings/delete-alert-email-addresses.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, delete, mail, server, email, addresses, alerts, 
+summary: Vous pouvez supprimer le serveur de messagerie précédemment défini afin que les alertes ne soient plus envoyées aux adresses électroniques, ou vous pouvez supprimer des adresses électroniques individuelles. 
+---
+= Supprimer le serveur de messagerie ou les adresses e-mail pour les alertes dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez supprimer le serveur de messagerie précédemment défini afin que les alertes ne soient plus envoyées aux adresses électroniques, ou vous pouvez supprimer des adresses électroniques individuelles.
+
+.Étapes
+. Sélectionnez menu : Paramètres[Alertes].
+. Sélectionnez l'onglet *Email*.
+. À partir du tableau, effectuez l'une des actions suivantes :
++
+** Pour supprimer un serveur de messagerie afin que les alertes ne soient plus envoyées aux adresses email, sélectionnez la ligne du serveur de messagerie.
+** Pour supprimer une adresse e-mail afin que les alertes ne soient plus envoyées à cette adresse, sélectionnez la ligne correspondant à l'adresse e-mail que vous souhaitez supprimer. Le bouton *Supprimer* dans le coin supérieur droit du tableau devient disponible pour la sélection.
+
+
+. Cliquez sur *Supprimer*, puis confirmez l’opération.
+

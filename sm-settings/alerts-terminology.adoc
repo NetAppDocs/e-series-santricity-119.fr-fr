@@ -1,0 +1,89 @@
+---
+permalink: sm-settings/alerts-terminology.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, alerts, terms, 
+summary: 'Découvrez comment les termes d"alerte s"appliquent à votre baie de stockage.' 
+---
+= Découvrez la terminologie des alertes dans le logiciel SANtricity
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Découvrez comment les termes d'alerte s'appliquent à votre baie de stockage.
+
+[cols="25h,~"]
+|===
+| Composant | Description 
+
+
+ a| 
+Moniteur d'événements
+ a| 
+Le moniteur d'événements réside sur la baie de stockage et s'exécute en tâche de fond. Lorsque le moniteur d'événements détecte des anomalies sur la baie de stockage, il consigne les informations relatives aux problèmes dans le journal des événements. Les problèmes peuvent inclure des événements tels qu'une panne de batterie, le passage d'un composant de l'état Optimal à Hors ligne, ou des erreurs de redondance dans le contrôleur. Si le moniteur d'événements détermine que l'événement est « alertable », il envoie alors une notification en utilisant les méthodes d'alerte configurées (email, SNMP et/ou syslog). Tous les événements Critiques sont considérés comme « alertables », ainsi que certains événements d'Avertissement et d'Information.
+
+
+
+ a| 
+Serveur de messagerie
+ a| 
+Le serveur de messagerie est utilisé pour l'envoi et la réception d'alertes par courriel. Le serveur utilise le protocole Simple Mail Transfer Protocol (SMTP).
+
+
+
+ a| 
+SNMP
+ a| 
+Le protocole Simple Network Management Protocol (SNMP) est un protocole standard Internet utilisé pour gérer et partager des informations entre les périphériques sur les réseaux IP.
+
+
+
+ a| 
+Trap SNMP
+ a| 
+Une alerte SNMP est une notification envoyée à un serveur SNMP. L'alerte contient des informations sur les problèmes importants affectant la baie de stockage.
+
+
+
+ a| 
+destination de trap SNMP
+ a| 
+Une destination de trap SNMP est une adresse IPv4 ou IPv6 du serveur exécutant un service SNMP.
+
+
+
+ a| 
+Nom de la communauté
+ a| 
+Un nom de communauté est une chaîne de caractères qui fait office de mot de passe pour le ou les serveurs réseau dans un environnement SNMP.
+
+
+
+ a| 
+fichier MIB
+ a| 
+Le fichier MIB (Management Information Base) définit les données surveillées et gérées dans la baie de stockage. Il doit être copié et compilé sur le serveur avec l'application de service SNMP. Ce fichier MIB est disponible avec le logiciel System Manager sur le site de support.
+
+
+
+ a| 
+Variables MIB
+ a| 
+Les variables de la base d'informations de gestion (MIB) peuvent renvoyer des valeurs telles que le nom de la baie de stockage, l'emplacement de la baie et une personne de contact en réponse à SNMP GetRequests.
+
+
+
+ a| 
+Syslog
+ a| 
+Syslog est un protocole utilisé par les périphériques réseau pour envoyer des messages d'événements à un serveur de journalisation.
+
+
+
+ a| 
+UDP
+ a| 
+User Datagram Protocol (UDP) est un protocole de couche transport qui spécifie un numéro de port source et de destination dans ses en-têtes de paquets.
+
+|===

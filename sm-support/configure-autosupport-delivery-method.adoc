@@ -1,0 +1,66 @@
+---
+permalink: sm-support/configure-autosupport-delivery-method.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, configure, autosupport, ASUP, delivery, method 
+summary: La fonctionnalité AutoSupport prend en charge les protocoles HTTPS et SMTP pour la transmission des messages au support technique. 
+---
+= Configurez la méthode de livraison AutoSupport dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La fonctionnalité AutoSupport prend en charge les protocoles HTTPS et SMTP pour la transmission des messages au support technique.
+
+.Avant de commencer
+* La fonctionnalité AutoSupport doit être activée. Vous pouvez vérifier si elle est activée sur la page AutoSupport.
+* Un serveur DNS doit être installé et configuré sur votre réseau. L'adresse du serveur DNS doit être configurée dans le Gestionnaire système (cette tâche est disponible depuis la page Matériel).
+
+
+.À propos de cette tâche
+Passez en revue les différents protocoles :
+
+* *HTTPS* -- Permet de se connecter directement au serveur d'assistance technique de destination via HTTPS. Si vous souhaitez activer AutoSupport OnDemand ou le diagnostic à distance, la méthode de livraison AutoSupport doit être définie sur HTTPS.
+* *Courriel* -- Permet d'utiliser un serveur de messagerie comme méthode de livraison pour l'envoi de dépêches AutoSupport.
+
+
+[NOTE]
+====
+*Différences entre les méthodes HTTPS et Email*. La méthode de livraison Email, qui utilise SMTP, présente des différences importantes par rapport à la méthode de livraison HTTPS. Premièrement, la taille des envois pour la méthode Email est limitée à 5 Mo, ce qui signifie que certaines collectes de données ASUP ne seront pas envoyées. Deuxièmement, la fonctionnalité AutoSupport OnDemand n'est disponible qu'avec la méthode de livraison HTTPS.
+
+====
+.Étapes
+. Sélectionnez le menu : Support [Support Center > AutoSupport] onglet.
+. Sélectionnez *Configurer AutoSupport Delivery Method*.
++
+Une boîte de dialogue apparaît, qui répertorie les modes de livraison de l'envoi.
+
+. Sélectionnez le mode de livraison souhaité, puis sélectionnez les paramètres pour ce mode de livraison. Effectuez l'une des opérations suivantes :
++
+** Si vous avez sélectionné HTTPS, sélectionnez l'un des paramètres de livraison suivants :
++
+*** *Directement* -- Ce paramètre de livraison est sélectionné par défaut. En choisissant cette option, vous pouvez vous connecter directement au système d'assistance technique de destination à l'aide du protocole HTTPS.
+*** *Via Proxy server* -- Cette option vous permet de spécifier les informations du serveur proxy HTTP nécessaires à l'établissement de la connexion avec le système d'assistance technique de destination. Vous devez spécifier l'adresse de l'hôte et le numéro de port. Cependant, vous ne devez saisir les informations d'authentification de l'hôte (nom d'utilisateur et mot de passe) que si cela est requis.
+*** *Via un script de configuration automatique du proxy (PAC)* -- Spécifiez l'emplacement d'un fichier de script de configuration automatique du proxy (PAC). Un fichier PAC permet au système de choisir automatiquement le serveur proxy approprié pour établir une connexion avec le système de support technique de destination.
+
+
+** Si vous avez sélectionné Email, veuillez saisir les informations suivantes :
++
+*** L'adresse du serveur de messagerie sous forme de domaine complet, d'adresse IPv4 ou d'adresse IPv6.
+*** L'adresse électronique qui apparaît dans le champ De de l'e-mail d'expédition AutoSupport.
+*** *Facultatif ; si vous souhaitez effectuer un test de configuration* : L'adresse e-mail à laquelle une confirmation est envoyée lorsque le système AutoSupport reçoit la requête de test.
+*** Si vous souhaitez chiffrer les messages, sélectionnez soit *SMTPS* soit *STARTTLS* comme type de chiffrement, puis sélectionnez le numéro de port pour les messages chiffrés. Sinon, sélectionnez *None*.
+*** Si nécessaire, saisissez un nom d'utilisateur et un mot de passe pour l'authentification avec l'expéditeur sortant et le serveur de messagerie.
+
+
+
+
+. Si vous avez un pare-feu qui bloque la livraison de ces envois ASUP, ajoutez l’URL suivante à votre liste blanche : `\https://support.netapp.com/put/AsupPut/`
+. Cliquez sur *Tester la configuration* pour tester la connexion au serveur de support technique en utilisant les paramètres de livraison spécifiés. Si vous avez activé la fonctionnalité AutoSupport On-Demand, le système testera également la connexion pour la livraison de l'envoi AutoSupport OnDemand.
++
+Si le test de configuration échoue, vérifiez vos paramètres de configuration et relancez le test. Si le test continue d'échouer, contactez le support technique.
+
+. Cliquez sur *Enregistrer*.
+

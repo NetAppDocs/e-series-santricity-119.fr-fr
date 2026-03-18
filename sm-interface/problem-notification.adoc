@@ -1,0 +1,71 @@
+---
+permalink: sm-interface/problem-notification.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, notifications 
+summary: System Manager utilise des icônes et plusieurs autres méthodes pour vous notifier que des problèmes existent avec la baie de stockage. 
+---
+= Découvrez les notifications de problème du gestionnaire système SANtricity
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SANtricity System Manager utilise des icônes et plusieurs autres méthodes pour vous avertir que des problèmes existent avec la baie de stockage.
+
+
+
+== Icônes
+
+System Manager utilise ces icônes pour indiquer l'état de la baie de stockage et de ses composants.
+
+[cols="1a,1a"]
+|===
+| Icône | Description 
+
+
+ a| 
+image:../media/sam1130-ss-icon-status-success.gif["Optimal"]
+ a| 
+Optimal
+
+
+
+ a| 
+image:../media/sam1130-ss-icon-status-failure.gif["Non optimal ou échec"]
+ a| 
+Non optimal ou échec
+
+
+
+ a| 
+image:../media/sam1130-ss-icon-status-service.gif["Nécessite une attention ou une réparation"]
+ a| 
+Nécessite une attention ou une réparation
+
+
+
+ a| 
+image:../media/sam1130-ss-icon-status-caution.gif["Prudence"]
+ a| 
+Prudence
+
+|===
+Le System Manager affiche ces icônes à différents endroits.
+
+* La zone Notifications de la page d'accueil affiche l'icône d'échec et un message.
+* L'icône de la page d'accueil dans la zone de navigation affiche l'icône d'échec.
+* Sur la page Composants, les graphiques des disques et des contrôleurs affichent l’icône d’échec.
+
+
+
+
+== Alertes et LED
+
+De plus, System Manager vous informe des problèmes d'autres manières.
+
+* System Manager envoie des notifications SNMP ou des messages d'erreur par e-mail.
+* Les voyants Service Action Required du matériel s'allument.
+
+
+Lorsque vous recevez une notification de problème, utilisez le Recovery Guru pour vous aider à résoudre le problème. Le cas échéant, utilisez la documentation matérielle avec les étapes de récupération pour remplacer les composants défaillants.

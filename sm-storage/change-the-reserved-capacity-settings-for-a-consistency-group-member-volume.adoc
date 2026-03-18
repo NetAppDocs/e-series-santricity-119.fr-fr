@@ -1,0 +1,64 @@
+---
+permalink: sm-storage/change-the-reserved-capacity-settings-for-a-consistency-group-member-volume.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, reserved capacity, settings, consistency group, member volume 
+summary: 'Vous pouvez modifier les paramètres d"un volume membre de groupe de cohérence afin d"ajuster le point de pourcentage auquel System Manager envoie une notification d"alerte lorsque la capacité réservée pour un volume membre est presque pleine et de modifier la politique à utiliser lorsque la capacité réservée atteint son pourcentage maximal défini.' 
+---
+= Modifiez les paramètres de capacité réservée pour un volume membre d'un groupe de cohérence dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez modifier les paramètres d'un volume membre de groupe de cohérence afin d'ajuster le point de pourcentage auquel SANtricity System Manager envoie une notification d'alerte lorsque la capacité réservée pour un volume membre est presque pleine et de modifier la politique à utiliser lorsque la capacité réservée atteint son pourcentage maximal défini.
+
+.À propos de cette tâche
+La modification des paramètres de capacité réservée pour un volume membre individuel modifie également les paramètres de capacité réservée pour tous les volumes membres associés à un groupe de cohérence.
+
+.Étapes
+. Sélectionnez le menu : Storage [Pools & Volume Groups].
+. Cliquez sur l’onglet *Reserved Capacity*.
+. Sélectionnez le volume membre du groupe de cohérence que vous souhaitez modifier, puis cliquez sur *Afficher/Modifier les paramètres*.
++
+La boîte de dialogue Paramètres de capacité réservée du volume membre s'affiche.
+
+. Modifiez les paramètres de capacité réservée pour le volume membre, si nécessaire.
++
+.Détails du champ
+[%collapsible]
+====
+[cols="25h,~"]
+|===
+| Paramètre | Description 
+
+
+ a| 
+Alertez-moi quand...
+ a| 
+Utilisez la boîte de sélection pour ajuster le point de pourcentage auquel System Manager envoie une notification d'alerte lorsque la capacité réservée pour un volume membre approche de la pleine capacité.
+
+Lorsque la capacité réservée pour le volume membre dépasse le seuil spécifié, System Manager envoie une alerte, vous permettant d’augmenter la capacité réservée ou de supprimer les objets inutiles.
+
+
+NOTE: Modifier le paramètre d'alerte pour un volume membre le modifiera pour _tous_ les volumes membres appartenant au même groupe de cohérence.
+
+
+
+ a| 
+Politique de capacité entièrement réservée
+ a| 
+Vous pouvez choisir l'une des politiques suivantes :
+
+** ${post_edited_translations.segment}
+** ${post_edited_translations.segment}
+
+
+|===
+====
+. Cliquez sur *Enregistrer* pour appliquer vos modifications.
+
+
+.Résultats
+${post_edited_translations.segment}

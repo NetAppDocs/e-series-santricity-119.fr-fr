@@ -1,0 +1,43 @@
+---
+permalink: um-manage/create-storage-array-group.html 
+sidebar: sidebar 
+keywords: SANtricity, Unified Manager, E-Series, create, storage, array, group 
+summary: Vous créez des groupes de stockage, puis vous ajoutez des baies de stockage aux groupes. Le groupe de stockage définit quels disques fournissent le stockage qui constitue le volume. 
+---
+= Configurez un groupe de baies de stockage dans SANtricity Unified Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous créez des groupes de stockage, puis vous ajoutez des baies de stockage aux groupes.
+
+La configuration des groupes est une procédure en deux étapes.
+
+
+
+== Étape 1 : Créer un groupe
+
+Vous commencez par créer un groupe. Le groupe de stockage définit quels disques fournissent le stockage qui constitue le volume.
+
+.Étapes
+. À partir de la page Gérer, sélectionnez menu :Manage Groups[Create storage array group].
+. Dans le champ *Nom*, saisissez un nom pour le nouveau groupe.
+. Sélectionnez les baies de stockage que vous souhaitez ajouter au nouveau groupe.
+. Cliquez sur *Créer*.
+
+
+
+
+== Étape 2 : Ajouter la baie de stockage au groupe
+
+Vous pouvez ajouter une ou plusieurs baies de stockage à un groupe créé par l'utilisateur.
+
+.Étapes
+. Dans la vue principale, sélectionnez *Manage*, puis sélectionnez le groupe auquel vous souhaitez ajouter des baies de stockage.
+. Sélectionnez menu : Manage Groups [Add storage arrays to group].
+. Sélectionnez les baies de stockage que vous souhaitez ajouter au groupe.
+. Cliquez sur *Ajouter*.
+

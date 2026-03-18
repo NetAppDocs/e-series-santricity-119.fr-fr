@@ -1,0 +1,34 @@
+---
+permalink: sm-settings/view-iser-over-infiniband-statistics-system.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, view, iser, over, infiniBand, statistics, 
+summary: Si le contrôleur de votre baie de stockage inclut un iSER sur InfiniBand port, vous pouvez consulter les données relatives aux connexions hôtes. 
+---
+= Afficher les statistiques iSER sur InfiniBand dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Si le contrôleur de votre baie de stockage inclut un iSER sur InfiniBand port, vous pouvez consulter les données relatives aux connexions hôtes.
+
+.À propos de cette tâche
+Le Gestionnaire système affiche les types suivants de statistiques iSER sur InfiniBand. Toutes les statistiques sont en lecture seule et ne peuvent pas être modifiées.
+
+* *Statistiques de la cible locale (protocole)* -- Fournit des statistiques pour la cible iSER sur InfiniBand, qui montrent l'accès au niveau bloc à ses supports de stockage.
+* *iSER sur interface InfiniBand statistiques* -- Fournit des statistiques pour tous les ports iSER sur l’interface InfiniBand, ce qui inclut les statistiques de performance et les informations sur les erreurs de liaison associées à chaque port du commutateur.
+
+
+Vous pouvez consulter chacune de ces statistiques sous forme de statistiques brutes ou de statistiques de référence. Les statistiques brutes correspondent à toutes les statistiques qui ont été collectées depuis le démarrage des contrôleurs. Les statistiques de référence sont des statistiques à un instant donné qui ont été collectées depuis que vous avez défini l'heure de référence.
+
+.Étapes
+. Sélectionnez menu : Paramètres [System].
+. Sélectionnez *Afficher iSER over InfiniBand Statistics*.
+. Cliquez sur un onglet pour afficher les différents ensembles de statistiques.
+. *Facultatif :* Pour définir la ligne de base, cliquez sur *Définir une nouvelle ligne de base*.
++
+L'établissement de la ligne de base définit un nouveau point de départ pour la collecte des statistiques. La même ligne de base est utilisée pour toutes les statistiques iSER sur InfiniBand.
+
+

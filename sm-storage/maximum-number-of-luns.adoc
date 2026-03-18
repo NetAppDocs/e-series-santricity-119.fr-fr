@@ -1,0 +1,16 @@
+---
+permalink: sm-storage/maximum-number-of-luns.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, maximum, luns 
+summary: 'La baie de stockage a un nombre maximal de numéros d"unité logique (LUN) pouvant être utilisés pour chaque hôte.' 
+---
+= Découvrez le nombre maximal de LUN dans le logiciel SANtricity
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La baie de stockage a un nombre maximal de numéros d'unité logique (LUN) pouvant être utilisés pour chaque hôte.
+
+Le nombre maximal dépend du système d'exploitation de l'hôte. La baie de stockage comptabilise le nombre de LUN utilisées. Si vous tentez d'attribuer un volume à un hôte qui dépasse le nombre maximal de LUN, l'hôte ne peut pas accéder au volume.

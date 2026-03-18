@@ -1,0 +1,31 @@
+---
+permalink: sm-storage/copy-snapshot-volume.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, copy, snapshot, volume 
+summary: Vous pouvez effectuer un processus de copie de volume sur un volume instantané ou sur un volume d’instantané de groupe de cohérence. 
+---
+= Copier un volume instantané dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez effectuer un processus de copie de volume sur un volume instantané ou sur un volume d’instantané de groupe de cohérence.
+
+.À propos de cette tâche
+Vous pouvez copier un volume instantané vers le volume cible comme lors d'une opération de copie de volume classique. Cependant, les volumes instantanés ne peuvent pas rester en ligne pendant le processus de copie de volume.
+
+.Étapes
+. Sélectionnez le menu : Storage[Snapshots].
+. Sélectionnez l’onglet *Snapshot Volumes*.
++
+Le tableau des volumes instantanés s'affiche et présente tous les volumes instantanés associés à la baie de stockage.
+
+. Sélectionnez le volume d'instantané que vous souhaitez copier, puis sélectionnez *Copy Volume*.
++
+La boîte de dialogue Copier le volume apparaît, vous invitant à sélectionner une cible.
+
+. Sélectionnez le volume cible à utiliser comme destination de la copie, puis cliquez sur *Finish*.
+

@@ -1,0 +1,107 @@
+---
+permalink: sm-support/view-storage-array-profile.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, view, storage, array, profile 
+summary: Le profil de la baie de stockage fournit une description de tous les composants et de toutes les propriétés de la baie de stockage. 
+---
+= Afficher le profil d'une baie de stockage dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Le profil de la baie de stockage fournit une description de tous les composants et de toutes les propriétés de la baie de stockage.
+
+.À propos de cette tâche
+Vous pouvez utiliser le profil de la baie de stockage comme aide lors de la récupération ou comme vue d'ensemble de la configuration actuelle de la baie de stockage. Vous pouvez enregistrer une copie du profil de la baie de stockage sur le client de gestion et conserver une copie papier du profil de la baie de stockage avec la baie de stockage. Créez une nouvelle copie du profil de la baie de stockage si votre configuration change.
+
+.Étapes
+. Sélectionnez le menu : Support [Support Center > Support Resources] onglet.
+. Faites défiler vers le bas jusqu'à *Lancer les informations détaillées sur la baie de stockage*, puis sélectionnez *Storage Array Profile*.
++
+Le rapport s'affiche sur votre écran.
+
++
+.Détails du champ
+[%collapsible]
+====
+[cols="25h,~"]
+|===
+| Section | Description 
+
+
+ a| 
+Baie de stockage
+ a| 
+Affiche toutes les options que vous pouvez configurer et les options statiques du système pour votre baie de stockage. Ces options comprennent le nombre de contrôleurs, de baies de disques, de disques, de pools de disques, de groupes de volumes, de volumes et de disques de secours à chaud ; le nombre maximal de baies de disques, de disques, de disques SSD (SSDs) et de volumes autorisés ; le nombre de groupes de snapshots, d’images de snapshots, de volumes de snapshots et de groupes de cohérence ; des informations sur les fonctionnalités ; des informations sur les versions du firmware ; des informations sur le numéro de série du châssis ; le statut AutoSupport et les informations de planification AutoSupport ; les paramètres pour la collecte automatique de données de support et la collecte de données de support planifiée ; l’identifiant mondial (WWID) de la baie de stockage ; et les paramètres d’analyse des supports et de cache.
+
+
+
+ a| 
+Stockage
+ a| 
+Affiche une liste de tous les périphériques de stockage dans la baie de stockage. Selon la configuration de votre baie de stockage, la section Stockage peut afficher ces sous-sections.
+
+** *Disk Pools* -- Affiche la liste de tous les disk pools de la baie de stockage.
+** *Groupes de volumes* -- Affiche la liste de tous les groupes de volumes de la baie de stockage. Les volumes et la capacité libre sont listés dans l'ordre dans lequel ils ont été créés.
+** *Volumes* -- Affiche une liste de tous les volumes de la baie de stockage. Les informations affichées comprennent le nom du volume, l'état du volume, la capacité, le niveau RAID, le groupe de volumes ou le pool de disques, le type de disque et des détails supplémentaires.
+** *Volumes manquants* -- Affiche une liste de tous les volumes de la baie de stockage qui ont actuellement le statut manquant. Les informations affichées incluent le World Wide Identifier (WWID) de chaque volume manquant.
+
+
+
+
+ a| 
+Services de copie
+ a| 
+Affiche une liste de tous les services de copie utilisés pour la baie de stockage. Selon la configuration de votre baie de stockage, la section Copy Services peut afficher les sous-sections suivantes :
+
+** *Copies de volume* -- Affiche une liste de toutes les paires de copies dans la baie de stockage. Les informations affichées comprennent le nombre de copies, les noms des paires de copies, l’état, l’horodatage de début et des détails supplémentaires.
+** *Groupes d'instantanés* -- Affiche une liste de tous les groupes d'instantanés dans la baie de stockage.
+** *Images instantanées* -- Affiche une liste de toutes les images instantanées dans la baie de stockage.
+** *Snapshot Volumes* -- Affiche la liste de tous les volumes instantanés de la baie de stockage.
+** *Groupes de cohérence* -- Affiche une liste de tous les groupes de cohérence dans la baie de stockage.
+** *Volumes membres* -- Affiche une liste de tous les volumes membres du groupe de cohérence dans la baie de stockage.
+** *Groupes miroirs* -- Affiche une liste de tous les volumes en miroir.
+** *Capacité réservée* -- Affiche une liste de tous les volumes de capacité réservée dans la baie de stockage.
+
+
+
+
+ a| 
+Affectations des hôtes
+ a| 
+Affiche une liste des affectations d'hôtes dans la baie de stockage. Les informations listées comprennent le nom du volume, le numéro d'unité logique (LUN), l'ID du contrôleur, le nom de l'hôte ou du cluster d'hôtes, et l'état du volume. Des informations supplémentaires listées incluent les définitions de topologie et les définitions de type d'hôte.
+
+
+
+ a| 
+Matériel
+ a| 
+Affiche la liste de tous les composants matériels de la baie de stockage. Selon la configuration de votre baie de stockage, la section Matériel peut afficher ces sous-sections.
+
+** *Contrôleurs* -- Affiche une liste de tous les contrôleurs de la baie de stockage et inclut l'emplacement du contrôleur, son état et sa configuration. En outre, elle inclut des informations sur les canaux de disques, les canaux hôtes et les ports Ethernet.
+** *Disques* -- Affiche une liste de tous les disques du système de stockage. Les disques sont listés dans l'ordre ID d'étagère, ID de tiroir, ID d'emplacement. Les informations listées incluent l'ID d'étagère, l'ID de tiroir, l'ID d'emplacement, l'état, la capacité brute, le type de support, le type d'interface, le débit de données actuel, l'ID du produit et la version du firmware pour chaque disque. La section Disques inclut également des informations sur les canaux de disque, la couverture des disques de secours et la durée de vie (uniquement pour les disques SSD). Les informations sur la durée de vie incluent le pourcentage d'endurance utilisé, qui correspond à la quantité de données écrites sur les disques SSD à ce jour, divisée par la limite théorique totale d'écriture pour les disques.
+** *Canaux de disques* -- Affiche les informations relatives à tous les canaux de disques de la baie de stockage. Les informations répertoriées comprennent l’état du canal, l’état de la liaison (le cas échéant), le nombre de disques et le nombre cumulé d’erreurs.
+** *Étagères* -- Affiche les informations relatives à toutes les étagères de la baie de stockage. Les informations listées comprennent les types de disques et les informations d’état pour chaque composant de l’étagère. Les composants d’étagère peuvent inclure des blocs-batteries, des émetteurs-récepteurs Small Form-factor Pluggable (SFP), des modules alimentation-ventilateur ou des modules d’entrée/sortie (IOM). La section Matériel affiche également l’identifiant de la clé de sécurité si une clé de sécurité est utilisée par la baie de stockage.
+
+
+
+
+ a| 
+Caractéristiques
+ a| 
+Affiche une liste des modules de fonctionnalités installés ainsi que le nombre maximal autorisé de groupes de snapshots, de snapshots (hérités) et de volumes par hôte ou cluster d'hôtes. Les informations de la section Fonctionnalités incluent également Drive Security ; c'est-à-dire si la baie de stockage est en mode sécurité activée ou désactivée.
+
+|===
+====
+. Pour rechercher dans le profil de la baie de stockage, saisissez un terme de recherche dans la zone de texte *Find*, puis cliquez sur *Find*.
++
+Tous les termes correspondants sont mis en surbrillance. Pour faire défiler tous les résultats un par un, continuez à cliquer sur *Rechercher*.
+
+. Pour enregistrer le profil de la baie de stockage, cliquez sur *Save*.
++
+Le fichier est enregistré dans le dossier Téléchargements de votre navigateur sous le nom `storage-array-profile.txt`.
+
+

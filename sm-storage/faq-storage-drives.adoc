@@ -1,0 +1,58 @@
+---
+permalink: sm-storage/faq-storage-drives.html 
+sidebar: sidebar 
+keywords:  
+summary: Cette FAQ peut vous aider si vous cherchez simplement une réponse rapide à une question. 
+---
+= FAQ sur les disques de stockage pour SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Cette FAQ peut vous aider si vous cherchez simplement une réponse rapide à une question.
+
+
+
+== Qu'est-ce qu'un disque de secours à chaud ?
+
+Les disques de secours à chaud servent de disques de secours dans les groupes de volumes RAID 1, RAID 5 ou RAID 6. Ce sont des disques pleinement fonctionnels qui ne contiennent aucune donnée. Si un disque tombe en panne dans le groupe de volumes, le contrôleur reconstruit automatiquement les données du disque défaillant vers un disque de secours à chaud.
+
+En cas de défaillance d'un disque dans la baie de stockage, le disque de secours à chaud est automatiquement substitué au disque défaillant sans nécessiter d'échange physique. Si le disque de secours à chaud est disponible lors de la défaillance d'un disque, le contrôleur utilise les données de redondance pour reconstruire les données du disque défaillant vers le disque de secours à chaud.
+
+Un disque de secours à chaud n'est pas dédié à un groupe de volumes spécifique. Au lieu de cela, vous pouvez utiliser un disque de secours à chaud pour n'importe quel disque défaillant dans la baie de stockage ayant la même capacité ou une capacité inférieure. Un disque de secours à chaud doit être du même type de support (HDD ou SSD) que les disques qu'il protège.
+
+[NOTE]
+====
+Les disques de secours à chaud ne sont pas pris en charge avec les pools. Au lieu de disques de secours à chaud, les pools utilisent la capacité de préservation de chaque disque qui compose le pool.
+
+====
+
+
+== Qu’est-ce que la capacité de conservation ?
+
+La capacité de préservation correspond à la quantité de capacité (nombre de disques) réservée dans un pool pour prendre en charge d'éventuelles défaillances de disques.
+
+Lors de la création d'un pool, le système réserve automatiquement une capacité de préservation par défaut en fonction du nombre de disques dans le pool.
+
+Lors de la reconstruction, les pools utilisent la capacité de préservation, tandis que les groupes de volumes utilisent des disques de secours à chaud pour le même objectif. La méthode de capacité de préservation est une amélioration par rapport aux disques de secours à chaud car elle permet une reconstruction plus rapide. La capacité de préservation est répartie sur plusieurs disques du pool au lieu d’être concentrée sur un seul disque dans le cas d’un disque de secours à chaud, vous n’êtes donc pas limité par la vitesse ou la disponibilité d’un seul disque.
+
+
+
+== Pourquoi remplacerais-je logiquement un disque dur
+
+Si un disque tombe en panne ou si vous souhaitez le remplacer pour une autre raison, et si vous disposez d'un disque non attribué dans votre baie de stockage, vous pouvez remplacer logiquement le disque défaillant par le disque non attribué. Si vous ne disposez pas d'un disque non attribué, vous pouvez remplacer physiquement le disque.
+
+Les données du disque d'origine sont copiées ou reconstruites sur le disque de remplacement.
+
+
+
+== Où puis-je consulter l'état d'un disque en cours de reconstruction ?
+
+Vous pouvez consulter l'état de la reconstruction du disque depuis le tableau de bord Opérations en cours.
+
+Depuis la page d'accueil, cliquez sur le lien *Voir les opérations en cours* en haut à droite.
+
+Selon le type de disque, la reconstruction complète peut prendre un temps considérable. Si la propriété d'un volume a changé, une reconstruction complète peut avoir lieu au lieu de la reconstruction rapide.

@@ -1,0 +1,41 @@
+---
+permalink: sm-support/view-autosupport-log.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, view, autosupport, log 
+summary: Le journal AutoSupport fournit des informations sur le statut, l’historique des envois et les erreurs rencontrées lors de la livraison des envois AutoSupport. 
+---
+= Consulter le journal AutoSupport dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Le journal AutoSupport fournit des informations sur le statut, l’historique des envois et les erreurs rencontrées lors de la livraison des envois AutoSupport.
+
+.À propos de cette tâche
+Plusieurs fichiers journaux peuvent exister. Lorsque le fichier journal actuel atteint 200 Ko, il est archivé et un nouveau fichier journal est créé. Le nom du fichier journal archivé est  `ASUPMessages.n`, où _n_ est un entier de 1 à 9. S'il existe plusieurs fichiers journaux, vous pouvez choisir de consulter le journal le plus récent ou un journal précédent.
+
+* *Journal actuel* -- Affiche une liste des derniers événements enregistrés.
+* *Journal archivé* -- Affiche une liste des événements antérieurs.
+
+
+.Étapes
+. Sélectionnez le menu : Support [Support Center > AutoSupport] onglet.
+. Sélectionnez *Afficher le journal AutoSupport*.
++
+Une boîte de dialogue apparaît, qui répertorie le journal AutoSupport actuel.
+
+. Si vous souhaitez consulter les journaux AutoSupport précédents, sélectionnez le bouton radio *Archivés*, puis sélectionnez un journal dans la liste déroulante *Sélectionner le journal AutoSupport*.
++
+L'option Archivé n'apparaît que si des journaux archivés existent sur la baie de stockage.
+
++
+Le journal AutoSupport sélectionné apparaît dans la boîte de dialogue.
+
+. *Facultatif :* Pour rechercher dans le journal AutoSupport, saisissez un terme dans la zone *Rechercher* et cliquez sur *Rechercher*.
++
+Cliquez de nouveau sur *Rechercher* pour rechercher d'autres occurrences du terme.
+
+

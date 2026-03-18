@@ -1,0 +1,64 @@
+---
+permalink: sm-hardware/unlock-or-reset-a-locked-nvme-drive.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, unlock, reset, locked, fips, nvme, drives, 
+summary: 'Si vous insérez un ou plusieurs disques NVMe ou FIPS verrouillés dans une baie de stockage, vous pouvez déverrouiller les données du disque en ajoutant le fichier de clé de sécurité associé aux disques. Si vous ne possédez pas de clé de sécurité, vous pouvez effectuer une réinitialisation sur chaque disque verrouillé en saisissant son identifiant de sécurité physique (PSID) pour réinitialiser ses attributs de sécurité et effacer les données du disque.' 
+---
+= Déverrouillez ou réinitialisez les disques NVMe ou FIPS verrouillés dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Si vous insérez un ou plusieurs disques NVMe ou FIPS verrouillés dans une baie de stockage, vous pouvez déverrouiller les données du disque en ajoutant le fichier de clé de sécurité associé aux disques. Si vous ne possédez pas de clé de sécurité, vous pouvez effectuer une réinitialisation sur chaque disque verrouillé en saisissant son identifiant de sécurité physique (PSID) pour réinitialiser ses attributs de sécurité et effacer les données du disque.
+
+.Avant de commencer
+* Pour l'option de déverrouillage, assurez-vous que le fichier de clé de sécurité (avec une extension de `.slk`) est disponible sur le client de gestion (le système avec un navigateur utilisé pour accéder à System Manager). Vous devez également connaître la phrase de passe associée à la clé.
+* Pour l'option Réinitialiser, vous devez trouver le PSID sur chaque disque que vous souhaitez réinitialiser. Pour localiser le PSID, retirez physiquement le disque et repérez la chaîne PSID (32 caractères maximum) sur l'étiquette du disque, puis réinstallez le disque.
+
+
+.À propos de cette tâche
+Cette procédure explique comment déverrouiller les données des disques NVMe ou FIPS en important un fichier de clé de sécurité dans la baie de stockage. Pour les situations où la clé de sécurité n'est pas disponible, cette procédure explique également comment effectuer une réinitialisation sur un disque verrouillé.
+
+[NOTE]
+====
+Si le lecteur a été verrouillé à l'aide d'un serveur de gestion de clés externe, sélectionnez menu:Settings[Système > Gestion des clés de sécurité] dans System Manager pour configurer la gestion des clés externes et déverrouiller le lecteur.
+
+====
+Vous pouvez accéder à la fonction de déverrouillage depuis la page Matériel ou depuis le menu : Paramètres [Système > Gestion des clés de sécurité]. La tâche ci-dessous fournit des instructions depuis la page Matériel.
+
+.Étapes
+. Sélectionnez *Hardware*.
+. Si le graphique affiche les contrôleurs, cliquez sur l’onglet *Lecteurs*.
++
+Le graphique change pour afficher les disques au lieu des contrôleurs.
+
+. Sélectionnez le disque NVMe ou FIPS que vous souhaitez déverrouiller ou réinitialiser.
++
+Le menu contextuel du lecteur s'ouvre.
+
+. Sélectionnez *Déverrouiller* pour appliquer le fichier de clé de sécurité ou *Réinitialiser* si vous ne disposez pas d’un fichier de clé de sécurité.
++
+Ces options n'apparaissent que si vous sélectionnez un disque NVMe ou FIPS verrouillé.
+
++
+[CAUTION]
+====
+Lors d'une opération de réinitialisation, toutes les données sont effacées. N'effectuez une réinitialisation que si vous ne possédez pas de clé de sécurité. La réinitialisation d'un disque verrouillé supprime définitivement toutes les données du disque et réinitialise ses attributs de sécurité à « secure-capable », mais sans l'activer. *Cette opération est irréversible.*
+
+====
+. Effectuez l'une des opérations suivantes :
++
+.. *Déverrouiller* : Dans la boîte de dialogue *Déverrouiller le lecteur sécurisé*, cliquez sur *Parcourir*, puis sélectionnez le fichier de clé de sécurité correspondant au lecteur que vous souhaitez déverrouiller. Ensuite, saisissez la phrase secrète, puis cliquez sur *Déverrouiller*.
+.. *Réinitialiser* : Dans la boîte de dialogue *Réinitialiser le lecteur verrouillé*, saisissez la chaîne PSID dans le champ, puis tapez `RESET` pour confirmer. Cliquez sur *Réinitialiser*.
++
+Pour une opération de déverrouillage, vous n'avez besoin d'effectuer cette opération qu'une seule fois pour déverrouiller tous les disques NVMe ou FIPS. Pour une opération de réinitialisation, vous devez sélectionner individuellement chaque disque que vous souhaitez réinitialiser.
+
+
+
+
+
+.Résultats
+Le disque est désormais disponible pour être utilisé dans un autre groupe de volumes ou pool de disques, ou dans une autre storage array.

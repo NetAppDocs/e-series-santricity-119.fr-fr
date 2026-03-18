@@ -1,0 +1,63 @@
+---
+permalink: sm-storage/create-pool-automatically.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, create, pool, automatically 
+summary: La création de pools est lancée automatiquement lorsque System Manager détecte des disques non affectés dans la baie de stockage. Vous pouvez utiliser la création automatique de pools pour configurer facilement tous les disques non affectés de la baie de stockage en un seul pool et pour ajouter des disques à des pools existants. 
+---
+= Créer automatiquement un pool dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La création de pools est déclenchée automatiquement lorsque SANtricity System Manager détecte des disques non affectés dans la baie de stockage. Vous pouvez utiliser la création automatique de pools pour configurer facilement tous les disques non affectés de la baie de stockage en un seul pool et pour ajouter des disques à des pools existants.
+
+.Avant de commencer
+Vous pouvez lancer la boîte de dialogue Pool Auto-Configuration lorsque l'une de ces conditions est vraie :
+
+* Au moins un disque non attribué a été détecté qui peut être ajouté à un pool existant avec des types de disques similaires.
+* Onze (11) disques ou plus non attribués ont été détectés et peuvent être utilisés pour créer un nouveau pool (s'ils ne peuvent pas être ajoutés à un pool existant en raison de types de disques différents).
+
+
+.À propos de cette tâche
+Gardez à l'esprit les points suivants :
+
+* Lorsque vous ajoutez des disques à une baie de stockage, System Manager détecte automatiquement les disques et vous invite à créer un seul pool ou plusieurs pools en fonction du type de disque et de la configuration actuelle.
+* Si des pools ont déjà été définis, System Manager vous propose automatiquement l’option d’ajouter les disques compatibles à un pool existant. Lorsque de nouveaux disques sont ajoutés à un pool existant, System Manager redistribue automatiquement les données sur la nouvelle capacité, qui inclut désormais les nouveaux disques que vous avez ajoutés.
+* Lors de la configuration d'une baie de stockage EF600 ou EF300, assurez-vous que chaque contrôleur ait accès à un nombre égal de disques dans les 12 premiers emplacements et à un nombre égal de disques dans les 12 derniers emplacements. Cette configuration permet aux contrôleurs d'utiliser les deux bus PCIe côté disque plus efficacement.
+
+
+Vous pouvez lancer la boîte de dialogue Pool Auto-Configuration en utilisant l'une des méthodes suivantes :
+
+* Lorsqu'une capacité non attribuée est détectée, la recommandation Pool Auto-Configuration apparaît sur la page d'accueil dans la zone de notification. Cliquez sur *View Pool Auto-Configuration* pour lancer la boîte de dialogue.
+* Vous pouvez également lancer la boîte de dialogue de configuration automatique du pool à partir de la page Pools and Volume Groups, comme décrit dans la tâche suivante.
+
+
+.Étapes
+. Sélectionnez le menu : Storage [Pools & Volume Groups].
+. Sélectionnez le menu : More [Launch pool auto-configuration].
++
+Le tableau des résultats répertorie les nouveaux pools, les pools existants auxquels des disques ont été ajoutés, ou les deux. Un nouveau pool est nommé avec un numéro séquentiel par défaut.
+
++
+System Manager effectue les tâches suivantes :
+
++
+** Crée un pool unique s'il existe un nombre suffisant de disques du même type (HDD ou SSD) et de capacité similaire.
+** Crée plusieurs pools si la capacité non attribuée est composée de différents types de disques.
+** Ajoute les disques à un pool existant si un pool est déjà défini dans la baie de stockage, et que vous ajoutez de nouveaux disques du même type au pool.
+** Ajoute les disques du même type de disque au pool existant et utilise les autres types de disques pour créer des pools différents si les nouveaux disques sont de types de disques différents.
+
+
+. Pour modifier le nom d'un nouveau pool, cliquez sur l'icône *Modifier* (le crayon).
+. Pour afficher des caractéristiques supplémentaires du pool, placez le curseur sur ou touchez l’icône *Details* (la page).
++
+Des informations concernant le type de lecteur, la capacité de sécurité, la capacité d'assurance des données (DA), la protection contre la perte sur étagère et la protection contre la perte sur tiroir s'affichent.
+
++
+Pour les baies de stockage EF600 et EF300, les paramètres de provisionnement des ressources et de tailles de blocs de volume sont également affichés.
+
+. Cliquez sur *Accepter*.
+

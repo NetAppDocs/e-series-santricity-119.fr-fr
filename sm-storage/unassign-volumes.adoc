@@ -1,0 +1,37 @@
+---
+permalink: sm-storage/unassign-volumes.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, unassign, volumes 
+summary: 'Désaffectez les volumes des hôtes ou des clusters d"hôtes si vous n"avez plus besoin d"un accès E/S à ce volume depuis l"hôte ou le cluster d"hôtes.' 
+---
+= Désaffecter les volumes dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Désaffectez les volumes des hôtes ou des clusters d'hôtes si vous n'avez plus besoin d'un accès E/S à ce volume depuis l'hôte ou le cluster d'hôtes.
+
+.À propos de cette tâche
+Gardez ces consignes à l'esprit lorsque vous désattribuez un volume :
+
+* Si vous supprimez le dernier volume attribué à un cluster d'hôtes, et que le cluster d'hôtes comporte également des hôtes avec des volumes attribués spécifiques, assurez-vous de supprimer ou de déplacer ces attributions avant de supprimer la dernière attribution du cluster d'hôtes.
+* Si un cluster d'hôtes, un hôte ou un port d'hôte est affecté à un volume qui est enregistré auprès du système d'exploitation, vous devez supprimer cet enregistrement avant de pouvoir supprimer ces nœuds.
+
+
+.Étapes
+. Sélectionnez le menu : Storage[Hosts].
+. Sélectionnez l'hôte ou le cluster d'hôtes que vous souhaitez modifier, puis cliquez sur *Désaffecter les volumes*.
++
+Une boîte de dialogue apparaît qui affiche tous les volumes actuellement attribués.
+
+. Cochez la case à cocher à côté de chaque volume que vous souhaitez désaffecter ou cochez la case à cocher dans l'en-tête du tableau pour sélectionner tous les volumes.
+. Cliquez sur *Unassign*.
+
+
+.Résultats
+* Les volumes qui n'avaient pas été attribués sont disponibles pour une nouvelle attribution.
+* Jusqu'à ce que les modifications soient configurées sur l'hôte, le volume est toujours reconnu par le système d'exploitation hôte.
+

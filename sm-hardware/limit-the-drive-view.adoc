@@ -1,0 +1,74 @@
+---
+permalink: sm-hardware/limit-the-drive-view.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, limit, drive, view, 
+summary: 'Si la baie de stockage comprend des disques avec différents types d"attributs physiques et logiques, la page Matériel fournit des champs de filtre qui vous aident à limiter l"affichage des disques et à localiser des disques spécifiques.' 
+---
+= Filtrer l'affichage du lecteur dans SANtricity System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Si la baie de stockage comprend des disques avec différents types d'attributs physiques et logiques, la page Matériel fournit des champs de filtre qui vous aident à limiter l'affichage des disques et à localiser des disques spécifiques.
+
+.À propos de cette tâche
+Les filtres de lecteurs peuvent limiter l'affichage à certains types de disques physiques (par exemple, tous les SAS), à certains attributs de sécurité (par exemple, compatibles avec le chiffrement sécurisé), à certains emplacements logiques (par exemple, Volume Group 1). Vous pouvez utiliser ces filtres ensemble ou séparément.
+
+[NOTE]
+====
+Si tous les disques partagent les mêmes attributs physiques, le champ de filtre *Show drives that are...* n'apparaît pas. Si tous les disques partagent les mêmes attributs logiques, le champ de filtre *Anywhere in the storage array* n'apparaît pas.
+
+====
+.Étapes
+. Sélectionnez *Hardware*.
+. Dans le premier champ de filtre (sous *Afficher les lecteurs qui sont...*), cliquez sur la flèche déroulante pour afficher les types de lecteurs et les attributs de sécurité disponibles.
++
+Les types de disques peuvent inclure :
+
++
+** Type de média de lecteur (SSD, HDD)
+** Type d'interface de lecteur
+** Capacité du disque (de la plus élevée à la plus faible)
+** Vitesse du disque (de la plus élevée à la plus basse) Les attributs de sécurité peuvent inclure :
+** Compatible avec la sécurité
+** Sécurisé activé
+** Compatible DA (Data Assurance)
+** Conforme FIPS
+** Conforme FIPS (FIPS 140-2)
+** Conforme à la norme FIPS (FIPS 140-3)
++
+Si l'un de ces attributs est identique pour tous les disques, il n'apparaît pas dans la liste déroulante. Par exemple, si la baie de stockage comprend tous les disques SSD avec des interfaces SAS et des vitesses de 15000 tr/min, mais que certains SSD ont des capacités différentes, la liste déroulante affiche uniquement les capacités comme choix de filtrage.
+
++
+Lorsque vous sélectionnez une option dans le champ, les disques qui ne correspondent pas à vos critères de filtrage sont grisés dans la vue graphique.
+
+
+
+. Dans la deuxième zone de filtre, cliquez sur la flèche déroulante pour afficher les emplacements logiques disponibles pour les drives.
++
+[NOTE]
+====
+Si vous devez effacer vos critères de filtrage, sélectionnez *Effacer* à l'extrême droite des cases de filtre.
+
+====
++
+Les emplacements logiques peuvent inclure :
+
++
+** Pools
+** Groupes de volumes
+** Disque de secours
+** Cache SSD
+** Non attribué
++
+Lorsque vous sélectionnez une option dans le champ, les disques qui ne correspondent pas à vos critères de filtrage sont grisés dans la vue graphique.
+
+
+
+. Vous pouvez également sélectionner *Activer les voyants de localisation* à l'extrême droite des champs de filtre pour activer les voyants de localisation des lecteurs affichés.
++
+Cette action vous aide à localiser physiquement les disques dans la baie de stockage.
+
+

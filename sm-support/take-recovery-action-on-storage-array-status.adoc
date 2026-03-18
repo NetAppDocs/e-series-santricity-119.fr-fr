@@ -1,0 +1,14 @@
+---
+permalink: sm-support/take-recovery-action-on-storage-array-status.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, take, recovery, action, storage, array, status 
+summary: 'Vous pouvez agir sur l"état actuel de votre baie de stockage en consultant le journal des secteurs illisibles, en réactivant les ports de disque et en effaçant le mode de récupération.' 
+---
+= Prenez des mesures de récupération sur l'état de la baie de stockage dans SANtricity System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez agir sur l'état actuel de votre baie de stockage en consultant le journal des secteurs illisibles, en réactivant les ports de disques et en effaçant le mode de récupération.

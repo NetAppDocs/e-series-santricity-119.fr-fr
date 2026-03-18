@@ -1,0 +1,65 @@
+---
+permalink: sm-storage/change-allocated-capacity-limit-for-a-thin-volume.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, allocated capacity, thin volume 
+summary: 'Pour les volumes minces capables d"allouer de l"espace à la demande, vous pouvez modifier la limite qui restreint la capacité allouée à laquelle un volume mince peut automatiquement s"étendre.' 
+---
+= Modifiez la limite de capacité allouée pour un volume fin dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Pour les volumes minces capables d'allouer de l'espace à la demande, vous pouvez modifier la limite qui restreint la capacité allouée à laquelle un volume mince peut automatiquement s'étendre.
+
+Vous pouvez également modifier le seuil de pourcentage à partir duquel une alerte (seuil d'avertissement dépassé) est envoyée dans la zone Notifications de la page d'accueil lorsqu'un volume léger approche de la limite de capacité allouée. Vous pouvez choisir d'activer ou de désactiver cette notification d'alerte.
+
+[NOTE]
+====
+Cette fonctionnalité n'est pas disponible sur le système de stockage EF600/EF600C ou EF300/EF300C.
+
+====
+Le système augmente automatiquement la capacité allouée en fonction de la limite de capacité allouée. La limite de capacité allouée vous permet de limiter la croissance automatique du volume fin en deçà de la capacité déclarée. Lorsque la quantité de données écrites approche de la capacité allouée, vous pouvez modifier la limite de capacité allouée.
+
+Lors de la modification de la limite de capacité allouée et du seuil d'avertissement d'un volume fin, vous devez tenir compte de l'espace qui sera consommé à la fois par les données utilisateur du volume et par les données des services de copie.
+
+.Étapes
+. Sélectionnez le menu : Storage[Volumes].
+. Sélectionnez l’onglet *Thin Volume Monitoring*.
++
+La vue de surveillance des volumes minces s'affiche.
+
+. Sélectionnez le volume mince que vous souhaitez modifier, puis sélectionnez *Change Limit*.
++
+La boîte de dialogue « Modifier la limite » s’affiche. La limite de capacité allouée et le seuil d’avertissement du volume mince que vous avez sélectionné apparaissent dans cette boîte de dialogue.
+
+. Modifiez la limite de capacité allouée et le seuil d'alerte selon les besoins.
++
+.Détails du champ
+[%collapsible]
+====
+[cols="25h,~"]
+|===
+| Paramètre | Description 
+
+
+ a| 
+Modifier la limite de capacité allouée à...
+ a| 
+Le seuil à partir duquel les écritures échouent, empêchant le volume fin de consommer des ressources supplémentaires. Ce seuil correspond à un pourcentage de la taille de capacité déclarée du volume.
+
+
+
+ a| 
+M'avertir lorsque... (seuil d'avertissement)
+ a| 
+Cochez la case à cocher si vous souhaitez que le système génère une alerte lorsqu'un volume léger approche de la limite de capacité allouée. L'alerte est envoyée dans la section Notifications de la page d'accueil. Ce seuil correspond à un pourcentage de la taille de capacité déclarée du volume.
+
+Décochez la case à cocher pour désactiver la notification d'alerte de seuil d'avertissement.
+
+|===
+====
+. Cliquez sur *Enregistrer*.
+

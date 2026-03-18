@@ -1,0 +1,32 @@
+---
+permalink: sm-settings/end-iscsi-session-system.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, end, iSCSI, session, 
+summary: 'Vous pouvez mettre fin à une session iSCSI qui n"est plus nécessaire. Les sessions iSCSI peuvent se produire avec des hôtes ou des baies de stockage distantes dans une relation de miroir asynchrone.' 
+---
+= Mettre fin à la session iSCSI dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez mettre fin à une session iSCSI qui n'est plus nécessaire. Les sessions iSCSI peuvent se produire avec des hôtes ou des baies de stockage distantes dans une relation de miroir asynchrone.
+
+.À propos de cette tâche
+Vous pourriez vouloir mettre fin à une session iSCSI pour les raisons suivantes :
+
+* *Accès non autorisé* – Si un initiateur iSCSI est connecté alors qu'il ne devrait pas avoir accès, vous pouvez mettre fin à la session iSCSI pour le déconnecter de la baie de stockage. L'initiateur iSCSI a pu se connecter parce que la méthode d'authentification None était disponible.
+* *Interruption du système* -- Si vous devez mettre hors service une baie de stockage et que vous constatez que des initiateurs iSCSI sont toujours connectés, vous pouvez mettre fin aux sessions iSCSI pour déconnecter les initiateurs iSCSI de la baie de stockage.
+
+
+.Étapes
+. Sélectionnez menu : Paramètres [System].
+. Sélectionnez *Afficher/Terminer les sessions iSCSI*.
++
+La liste des sessions iSCSI en cours s'affiche.
+
+. Sélectionnez la session que vous souhaitez terminer.
+. Cliquez sur *End Session*, et confirmez que vous souhaitez effectuer l'opération.
+

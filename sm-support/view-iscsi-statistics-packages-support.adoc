@@ -1,0 +1,42 @@
+---
+permalink: sm-support/view-iscsi-statistics-packages-support.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, view, iscsi, statistics, packages 
+summary: Vous pouvez consulter les données concernant les connexions iSCSI à votre baie de stockage. 
+---
+= Afficher les packages de statistiques iSCSI dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez consulter les données concernant les connexions iSCSI à votre baie de stockage.
+
+.À propos de cette tâche
+Le System Manager affiche ces types de statistiques iSCSI. Toutes les statistiques sont en lecture seule et ne peuvent pas être définies.
+
+
+NOTE: Les types de statistiques affichés dans System Manager dépendent des statistiques disponibles pour votre baie de stockage.
+
+* *Statistiques MAC Ethernet* -- Fournit des statistiques pour le contrôle d'accès au média (MAC). Le MAC fournit également un mécanisme d'adressage appelé adresse physique ou adresse MAC. L'adresse MAC est une adresse unique attribuée à chaque adaptateur réseau. L'adresse MAC aide à acheminer les paquets de données vers une destination au sein du sous-réseau.
+* *Statistiques Ethernet TCP/IP* -- Fournit des statistiques pour le TCP/IP, qui est le Transmission Control Protocol (TCP) et l'Internet Protocol (IP) pour le périphérique iSCSI. Avec TCP, les applications sur des hôtes en réseau peuvent créer des connexions entre elles, sur lesquelles elles peuvent échanger des données en paquets. L'IP est un protocole orienté données qui communique des données à travers un réseau interconnecté à commutation de paquets. Les statistiques IPv4 et les statistiques IPv6 sont affichées séparément.
+* *Statistiques du noyau Ethernet* -- Fournit des statistiques pour les pilotes du noyau de la plateforme du périphérique iSCSI. Les statistiques du noyau affichent des données réseau similaires à celles de l’option Statistiques TCP/IP. Cependant, les données des statistiques du noyau sont collectées à partir des pilotes du noyau de la plateforme au lieu d’être collectées directement à partir du matériel iSCSI.
+* *Statistiques de la cible/initiateur local (protocole)* -- Affiche les statistiques de la cible iSCSI, qui fournit un accès au niveau bloc à son support de stockage, et affiche les statistiques iSCSI de la baie de stockage lorsqu'elle est utilisée comme initiateur dans des opérations de mise en miroir asynchrones.
+* *Statistiques des états opérationnels de DCBX* -- Affiche les états opérationnels des différentes fonctionnalités de Data Center Bridging Exchange (DCBX).
+* *Statistiques TLV LLDP* -- Affiche les statistiques Type Length Value (TLV) du protocole Link Layer Discovery Protocol (LLDP).
+* *Statistiques TLV DCBX* -- Affiche les informations permettant d'identifier les ports hôtes de la baie de stockage dans un environnement Data Center Bridging (DCB). Ces informations sont partagées avec les pairs du réseau à des fins d'identification et de capacité.
+
+
+Vous pouvez consulter chacune de ces statistiques sous forme de statistiques brutes ou de statistiques de référence. Les statistiques brutes correspondent à toutes les statistiques qui ont été collectées depuis le démarrage des contrôleurs. Les statistiques de référence sont des statistiques à un instant donné qui ont été collectées depuis que vous avez défini l'heure de référence.
+
+.Étapes
+. Sélectionnez le menu : Support [Support Center > Diagnostics] onglet.
+. Sélectionnez *Afficher les packages de statistiques iSCSI*.
+. Cliquez sur un onglet pour afficher les différents ensembles de statistiques.
+. Pour définir la ligne de base, cliquez sur *Définir une nouvelle ligne de base*.
++
+L'établissement de la valeur de référence définit un nouveau point de départ pour la collecte des statistiques. La même valeur de référence est utilisée pour toutes les statistiques iSCSI.
+
+

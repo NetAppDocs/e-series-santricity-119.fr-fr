@@ -1,0 +1,72 @@
+---
+sidebar: sidebar 
+permalink: early-versions.html 
+keywords: early versions, e-series, hardware, santricity, os 
+summary: Versions antérieures de la documentation 
+---
+= Versions antérieures
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+Consultez les liens ci-dessous pour accéder à la documentation des versions antérieures du matériel E-Series et du logiciel SANtricity. Les liens vous mèneront vers un autre site de documentation.
+
+
+
+== Documentation matérielle pour les versions antérieures
+
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2484026["Installez les plateaux contrôleur-disque E2712, E2724, E5612, E5624 et les plateaux d'extension de disque DE1600 et DE5600"^]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2484072["Installez les plateaux contrôleur-disque E2760 et E5660 et les plateaux d'extension de disques DE6600"^]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2484108["Installer les baies flash EF560 et les plateaux d'extension flash DE5600"^]
+* https://mysupport.netapp.com/info/web/ECMP11392380.html["Installer les anciens systèmes"^]
+* https://mysupport.netapp.com/info/web/ECMP11751516.html["Maintenir les systèmes plus anciens"^]
+* https://mysupport.netapp.com/ecm/ecm_download_file/ECMP1394872["Ajouter un deuxième contrôleur aux E2600 et E2700"^]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2353447["Modifier ou ajouter des protocoles hôtes"^]
+* https://mysupport.netapp.com/ecm/ecm_download_file/ECMP1656638["Convertir le courant alternatif en courant continu"^]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2589397["Guide de mise à niveau des contrôleurs - Modèles de contrôleurs hérités"^]
+
+
+
+
+== Documentation logicielle pour les versions antérieures
+
+
+
+=== SANtricity Release 11.8
+
+* https://docs.netapp.com/us-en/e-series-santricity-118/index.html["Aide de System Manager"^]
+* https://docs.netapp.com/us-en/e-series-santricity-118/index.html["Aide Unified Manager"^]
+
+
+
+
+=== SANtricity Release 11.7
+
+* https://docs.netapp.com/us-en/e-series-santricity-117/index.html["Aide de System Manager"^]
+* https://docs.netapp.com/us-en/e-series-santricity-117/index.html["Aide Unified Manager"^]
+
+
+
+
+=== SANtricity Release 11.6
+
+* https://docs.netapp.com/us-en/e-series-santricity-116/index.html["Aide de System Manager"^]
+* https://docs.netapp.com/us-en/e-series-santricity-116/index.html["Aide Unified Manager"^]
+
+
+
+
+=== SANtricity Release 11.5
+
+* https://docs.netapp.com/us-en/e-series-santricity-115/index.html["Aide de System Manager"^]
+
+
+
+
+=== SANtricity Release 11.4
+
+* https://mysupport.netapp.com/ecm/ecm_get_file/ECMLP2862590["AMW (E2700, E5600/EF560) aide"^]
+* https://mysupport.netapp.com/ecm/ecm_get_file/ECMLP2862588["Aide EMW (E2700, E5600/EF560)"^]
+

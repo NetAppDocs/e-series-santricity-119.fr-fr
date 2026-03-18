@@ -1,0 +1,223 @@
+---
+permalink: sm-hardware/view-drive-status-and-settings.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, view, drive, status, settings, media, 
+summary: 'Vous pouvez consulter l"état et les paramètres des disques, tels que le type de support, le type d"interface et la capacité.' 
+---
+= Consultez l'état et les paramètres du lecteur dans SANtricity System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez consulter l'état et les paramètres des disques, tels que le type de support, le type d'interface et la capacité.
+
+.Étapes
+. Sélectionnez *Hardware*.
+. Si le graphique affiche les contrôleurs, cliquez sur l’onglet *Lecteurs*.
++
+Le graphique change pour afficher les disques au lieu des contrôleurs.
+
+. Sélectionnez le lecteur pour lequel vous souhaitez consulter l'état et les paramètres.
++
+Le menu contextuel du lecteur s'ouvre.
+
+. Sélectionnez *View settings*.
++
+La boîte de dialogue Paramètres du lecteur s'ouvre.
+
+. Pour afficher tous les paramètres, cliquez sur *Afficher plus de paramètres* dans le coin supérieur droit de la boîte de dialogue.
++
+.Détails du champ
+[%collapsible]
+====
+[cols="25h,~"]
+|===
+| Paramètres | Description 
+
+
+ a| 
+Statut
+ a| 
+Affiche les états Optimal, Hors ligne, Défaut non critique et Échec. L'état Optimal indique les conditions de fonctionnement souhaitées.
+
+
+
+ a| 
+Mode
+ a| 
+Affiche Attribué, Non attribué, Hot Spare en attente ou Hot Spare en cours d’utilisation.
+
+
+
+ a| 
+Pays
+ a| 
+Indique le numéro de l'étagère et de la baie où se trouve le lecteur.
+
+
+
+ a| 
+Assigné à/Peut protéger pour/Protège
+ a| 
+Si le disque est affecté à un pool, un groupe de volumes ou un cache SSD, ce champ affiche « Assigned to. » La valeur peut être un nom de pool, de groupe de volumes ou de cache SSD. Si le disque est affecté à un hot spare et que son mode est Standby, ce champ affiche « Can protect for. » Si le hot spare peut protéger un ou plusieurs groupes de volumes, les noms des groupes de volumes apparaissent. S'il ne peut pas protéger un groupe de volumes, il affiche 0 groupe de volumes.
+
+Si le disque est affecté à un disque de secours à chaud et que son mode est « En cours d'utilisation », ce champ affiche « Protecting ». La valeur correspond au nom du groupe de volumes concerné.
+
+Si le lecteur n'est pas attribué, ce champ n'apparaît pas.
+
+
+
+ a| 
+Type de média
+ a| 
+Affiche le type de support d'enregistrement utilisé par le lecteur, qui peut être soit un disque dur (HDD) soit un disque SSD (SSD).
+
+
+
+ a| 
+Pourcentage d'endurance utilisé (affiché uniquement si des disques SSD sont présents)
+ a| 
+La quantité de données écrites sur le disque à ce jour, divisée par la limite d'écriture théorique totale.
+
+
+
+ a| 
+Type d'interface
+ a| 
+Affiche le type d'interface d'hôte utilisé par le disque, par exemple SAS.
+
+
+
+ a| 
+Redondance du chemin du disque
+ a| 
+Indique si les connexions entre le disque et le contrôleur sont redondantes (Oui) ou non (Non).
+
+
+
+ a| 
+Capacité (Gio)
+ a| 
+Affiche la capacité utilisable (capacité totale configurée) du drive.
+
+
+
+ a| 
+Vitesse (tr/min)
+ a| 
+Affiche la vitesse en tr/min (n'apparaît pas pour les SSD).
+
+
+
+ a| 
+Débit de transfert des données actuel
+ a| 
+Affiche le débit de transfert des données entre le disque et la baie de stockage.
+
+
+
+ a| 
+Taille du secteur logique (octets)
+ a| 
+Indique la taille du secteur logique utilisée par le disque.
+
+
+
+ a| 
+Taille du secteur physique (octets)
+ a| 
+Indique la taille physique des secteurs utilisés par le disque. Généralement, la taille physique des secteurs est de 4096 octets pour les disques durs.
+
+
+
+ a| 
+version du firmware
+ a| 
+Affiche le niveau de révision du firmware.
+
+
+
+ a| 
+Identifiant mondial
+ a| 
+Affiche l'identifiant hexadécimal unique du lecteur.
+
+
+
+ a| 
+ID du produit
+ a| 
+Affiche l'identifiant du produit, qui est attribué par le fabricant.
+
+
+
+ a| 
+Numéro de série
+ a| 
+Affiche le numéro de série du disque dur.
+
+
+
+ a| 
+Fabricant
+ a| 
+Indique le fournisseur du disque dur.
+
+
+
+ a| 
+Date de fabrication
+ a| 
+Indique la date de fabrication du disque dur.
+
+
+NOTE: Non disponible pour les disques NVMe.
+
+
+
+ a| 
+Compatible avec la sécurité
+ a| 
+Indique si le disque est sécurisé (Oui) ou non (Non). Les disques sécurisés peuvent être soit des disques Full Disk Encryption (FDE), soit des disques Federal Information Processing Standard (FIPS) (niveau 140-2 ou 140-3), qui chiffrent les données lors des écritures et les déchiffrent lors des lectures. Ces disques sont considérés comme sécurisés-_capable_ car ils peuvent être utilisés pour une sécurité supplémentaire grâce à la fonction Drive Security. Si la fonction Drive Security est activée pour les groupes de volumes et les pools utilisés avec ces disques, les disques deviennent sécurisés-_enabled_.
+
+
+
+ a| 
+Sécurisé activé
+ a| 
+Indique si le disque est sécurisé activé (Oui) ou non (Non). Les disques sécurisés activés sont utilisés avec la fonction Drive Security. Lorsque vous activez la fonction Drive Security, puis appliquez Drive Security à un pool ou un groupe de volumes sur des disques sécurisés _capable_, les disques deviennent sécurisés _enabled_. L'accès en lecture et en écriture n'est disponible que via un contrôleur configuré avec la clé de sécurité correcte. Cette sécurité supplémentaire empêche tout accès non autorisé aux données d'un disque physiquement retiré de la baie de stockage.
+
+
+
+ a| 
+Accessible en lecture/écriture
+ a| 
+Indique si le lecteur est accessible en lecture/écriture (Yes) ou non (No).
+
+
+
+ a| 
+Identifiant de la clé de sécurité du lecteur
+ a| 
+Affiche la clé de sécurité pour les disques sécurisés. Drive Security est une fonctionnalité de la baie de stockage qui offre une couche supplémentaire de sécurité avec des disques Full Disk Encryption (FDE) ou Federal Information Processing Standard (FIPS). Lorsque ces disques sont utilisés avec la fonctionnalité Drive Security, ils nécessitent une clé de sécurité pour accéder à leurs données. Lorsque les disques sont physiquement retirés de la baie, ils ne peuvent pas fonctionner tant qu'ils ne sont pas installés dans une autre baie ; à ce moment-là, ils seront en état de verrouillage de sécurité jusqu'à ce que la clé de sécurité correcte soit fournie.
+
+
+
+ a| 
+Assurance des données (DA) capable
+ a| 
+Indique si la fonction Data Assurance (DA) est activée (Oui) ou non (Non). Data Assurance (DA) est une fonction qui vérifie et corrige les erreurs pouvant survenir lors du transfert de données des contrôleurs vers les disques. Data Assurance peut être activée au niveau du pool ou du groupe de volumes, avec des hôtes utilisant une interface d'E/S compatible DA telle que Fibre Channel.
+
+
+
+ a| 
+Compatible DULBE
+ a| 
+Indique si l’option pour Deallocated or Unwritten Logical Block Error (DULBE) est activée (Oui) ou non (Non). DULBE est une option sur les disques NVMe qui permet à la baie de stockage EF300 ou EF600 de prendre en charge les volumes à ressources provisionnées.
+
+|===
+====
+. Cliquez sur *Close*.
+

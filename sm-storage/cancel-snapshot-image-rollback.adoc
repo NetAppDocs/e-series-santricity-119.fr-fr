@@ -1,0 +1,43 @@
+---
+permalink: sm-storage/cancel-snapshot-image-rollback.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, cancel, snapshot, image, rollback 
+summary: 'Vous pouvez annuler un rollback actif en cours (copie active des données), un rollback en attente (dans une file d"attente en attente de ressources pour démarrer), ou un rollback qui a été mis en pause en raison d"une erreur.' 
+---
+= Annuler le retour arrière de l'image instantanée dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez annuler un rollback actif en cours (copie active des données), un rollback en attente (dans une file d'attente en attente de ressources pour démarrer), ou un rollback qui a été mis en pause en raison d'une erreur.
+
+.À propos de cette tâche
+Lorsque vous annulez une opération de restauration en cours, le volume de base redevient inutilisable et apparaît comme défaillant. Par conséquent, envisagez d'annuler une opération de restauration uniquement lorsque des options de récupération existent pour restaurer le contenu du volume de base.
+
+[NOTE]
+====
+Si le groupe d'instantanés sur lequel réside l'image d'instantané contient une ou plusieurs images d'instantané qui ont été automatiquement purgées, l'image d'instantané utilisée pour l'opération de restauration pourrait ne pas être disponible pour de futures restaurations.
+
+====
+.Étapes
+. Sélectionnez le menu : Storage[Snapshots].
+. Cliquez sur l’onglet *Snapshot Images*.
+. Sélectionnez la restauration active ou en pause, puis sélectionnez menu:Rollback[Cancel].
++
+La boîte de dialogue Confirmer Annuler Rollback s'affiche.
+
+. Cliquez sur *Oui* pour confirmer.
+
+
+.Résultats
+Le gestionnaire système interrompt l'opération de restauration. Le volume de base est utilisable mais peut contenir des données incohérentes ou non intactes.
+
+.Après avoir terminé
+Après avoir annulé une opération de restauration, vous devez effectuer l'une des actions suivantes :
+
+* Réinitialisez le contenu du volume de base.
+* Effectuez une nouvelle opération de restauration pour rétablir le volume de base en utilisant soit la même image instantanée que celle utilisée dans l'opération d'annulation de restauration, soit une image instantanée différente pour effectuer la nouvelle opération de restauration.
+

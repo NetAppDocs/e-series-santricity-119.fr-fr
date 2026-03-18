@@ -1,0 +1,147 @@
+---
+permalink: sm-settings/configure-iscsi-ports-system.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, configure, iSCSI, ports, systems 
+summary: Si votre contrôleur inclut une connexion hôte iSCSI, vous pouvez configurer les paramètres du port iSCSI depuis la page System. 
+---
+= Configurez les ports iSCSI dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Si votre contrôleur inclut une connexion hôte iSCSI, vous pouvez configurer les paramètres du port iSCSI depuis la page System.
+
+.Avant de commencer
+* Votre contrôleur doit comporter des ports iSCSI ; sinon, les paramètres iSCSI ne sont pas disponibles.
+* Vous devez connaître la vitesse du réseau (le débit de transfert des données entre les ports et l'hôte).
+
+
+[NOTE]
+====
+Les paramètres et fonctions iSCSI n'apparaissent que si votre baie de stockage prend en charge iSCSI.
+
+====
+.Étapes
+. Sélectionnez menu : Paramètres [System].
+. Sous *Paramètres iSCSI*, sélectionnez *Configurer iSCSI Ports*.
++
+[NOTE]
+====
+L’option Configurer les ports iSCSI apparaît uniquement si System Manager détecte des ports iSCSI sur le contrôleur.
+
+====
+. Sélectionnez le contrôleur avec les ports iSCSI que vous souhaitez configurer.
+. Dans la liste déroulante, sélectionnez le port que vous souhaitez configurer, puis cliquez sur *Suivant*.
+. Sélectionnez les paramètres du port de configuration, puis cliquez sur *Suivant*.
++
+Pour afficher tous les paramètres de port, cliquez sur le lien *Afficher plus de paramètres de port* à droite de la boîte de dialogue.
+
++
+.Détails du champ
+[%collapsible]
+====
+[cols="1a,1a"]
+|===
+| Paramètre du port | Description 
+
+
+ a| 
+Vitesse du port Ethernet configurée (Apparaît uniquement pour certains types de Host Interface Cards)
+ a| 
+Sélectionnez la vitesse qui correspond à la capacité de vitesse du SFP sur le port.
+
+
+
+ a| 
+Mode Forward Error Correction (FEC) (Apparaît uniquement pour certains types de cartes d'interface hôte)
+ a| 
+Si vous le souhaitez, sélectionnez l'un des modes FEC pour le port hôte spécifié.
+
+
+NOTE: Le mode Reed Solomon ne prend pas en charge la vitesse de port de 25 Gbps.
+
+
+
+ a| 
+Activer IPv4 / Activer IPv6
+ a| 
+Sélectionnez une ou les deux options pour activer la prise en charge des réseaux IPv4 et IPv6.
+
+
+NOTE: Si vous souhaitez désactiver l'accès au port, décochez les deux cases.
+
+
+
+ a| 
+Port d'écoute TCP (Disponible en cliquant sur *Afficher plus de paramètres de port*.)
+ a| 
+Si nécessaire, saisissez un nouveau numéro de port.
+
+Le port d'écoute est le numéro de port TCP utilisé par le contrôleur pour écouter les connexions iSCSI provenant des initiateurs iSCSI hôtes. Le port d'écoute par défaut est 3260. Vous devez saisir 3260 ou une valeur comprise entre 49152 et 65535.
+
+
+
+ a| 
+Taille MTU (Disponible en cliquant sur *Afficher plus de paramètres de port*.)
+ a| 
+Si nécessaire, saisissez une nouvelle taille en octets pour la valeur Maximum Transmission Unit (MTU).
+
+La taille par défaut de l'unité de transmission maximale (MTU) est de 1500 octets par trame. Vous devez saisir une valeur comprise entre 1500 et 9000.
+
+
+
+ a| 
+Activer les réponses ICMP PING
+ a| 
+Sélectionnez cette option pour activer le protocole Internet Control Message Protocol (ICMP). Les systèmes d'exploitation des ordinateurs en réseau utilisent ce protocole pour envoyer des messages. Ces messages ICMP déterminent si un hôte est joignable et combien de temps il faut pour que les paquets atteignent cet hôte et en proviennent.
+
+|===
+====
++
+Si vous avez sélectionné *Activer IPv4*, une boîte de dialogue s'ouvre pour sélectionner les paramètres IPv4 après avoir cliqué sur *Suivant*. Si vous avez sélectionné *Activer IPv6*, une boîte de dialogue s'ouvre pour sélectionner les paramètres IPv6 après avoir cliqué sur *Suivant*. Si vous avez sélectionné les deux options, la boîte de dialogue pour les paramètres IPv4 s'ouvre en premier, puis après avoir cliqué sur *Suivant*, la boîte de dialogue pour les paramètres IPv6 s'ouvre.
+
+. Configurez les paramètres IPv4 et/ou IPv6, automatiquement ou manuellement. Pour afficher tous les paramètres de port, cliquez sur le lien *Afficher plus de paramètres* à droite de la boîte de dialogue.
++
+.Détails du champ
+[%collapsible]
+====
+[cols="1a,1a"]
+|===
+| Paramètre du port | Description 
+
+
+ a| 
+Obtenir la configuration automatiquement
+ a| 
+Sélectionnez cette option pour obtenir la configuration automatiquement.
+
+
+
+ a| 
+Spécifier manuellement la configuration statique
+ a| 
+Sélectionnez cette option, puis saisissez une adresse statique dans les champs. (Si vous le souhaitez, vous pouvez couper et coller des adresses dans les champs.) Pour IPv4, incluez le masque de sous-réseau et la passerelle. Pour IPv6, incluez l'adresse IP routable et l'adresse IP du routeur.
+
+
+
+ a| 
+Activer la prise en charge des VLAN (Disponible en cliquant sur *Afficher plus de paramètres*.)
+ a| 
+Sélectionnez cette option pour activer un VLAN et saisissez son ID. Un VLAN est un réseau logique qui se comporte comme s'il était physiquement séparé des autres réseaux locaux (LAN) physiques et virtuels pris en charge par les mêmes commutateurs, les mêmes routeurs ou les deux.
+
+
+
+ a| 
+Activer la priorité Ethernet (Disponible en cliquant sur *Afficher plus de paramètres*.)
+ a| 
+Sélectionnez cette option pour activer le paramètre qui détermine la priorité d'accès au réseau. Utilisez le curseur pour sélectionner une priorité entre 1 (la plus basse) et 7 (la plus élevée).
+
+Dans un réseau local partagé (LAN), tel qu'Ethernet, plusieurs stations peuvent se disputer l'accès au réseau. L'accès se fait selon le principe du premier arrivé, premier servi. Deux stations peuvent tenter d'accéder au réseau en même temps, ce qui oblige les deux stations à reculer et à attendre avant de réessayer. Ce processus est minimisé pour l'Ethernet commuté, où une seule station est connectée à un port du commutateur.
+
+|===
+====
+. Cliquez sur *Terminer*.
+

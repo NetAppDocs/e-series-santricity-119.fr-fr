@@ -1,0 +1,69 @@
+---
+permalink: sm-hardware/configure-ntp-server-addresses.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, configure, ntp, server, addresses, network, time, protocol, 
+summary: 'Vous pouvez configurer une connexion au serveur Network Time Protocol (NTP) afin que le contrôleur interroge périodiquement le serveur NTP pour mettre à jour son horloge interne.' 
+---
+= Configurez les adresses du serveur NTP dans SANtricity System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez configurer une connexion au serveur Network Time Protocol (NTP) afin que le contrôleur interroge périodiquement le serveur NTP pour mettre à jour son horloge interne.
+
+.Avant de commencer
+* Un serveur NTP doit être installé et configuré dans votre réseau.
+* Vous devez connaître l'adresse du serveur NTP principal et, éventuellement, d'un serveur NTP de secours. Ces adresses peuvent être des noms de domaine complets, des adresses IPv4 ou des adresses IPv6.
+
+
+[NOTE]
+====
+Si vous indiquez un ou plusieurs noms de domaine pour les serveurs NTP, vous devez également configurer un serveur DNS pour résoudre l'adresse du serveur NTP. Vous devez configurer le serveur DNS uniquement sur les contrôleurs où vous avez configuré NTP et fourni un nom de domaine.
+
+====
+.À propos de cette tâche
+NTP permet à la baie de stockage de synchroniser automatiquement les horloges du contrôleur avec un hôte externe à l'aide du protocole Simple Network Time Protocol (SNTP). Le contrôleur interroge périodiquement le serveur NTP configuré, puis utilise les résultats pour mettre à jour son horloge interne de temps. Si un seul contrôleur a NTP activé, l'autre contrôleur synchronise périodiquement son horloge avec le contrôleur qui a NTP activé. Si aucun des deux contrôleurs n'a NTP activé, les contrôleurs synchronisent périodiquement leurs horloges entre eux.
+
+[NOTE]
+====
+Il n'est pas nécessaire de configurer NTP sur les deux contrôleurs ; toutefois, cela améliore la capacité de la baie de stockage à rester synchronisée en cas de panne matérielle ou de défaillance de communication.
+
+====
+.Étapes
+. Sélectionnez *Hardware*.
+. Si le graphique affiche les lecteurs, cliquez sur l’onglet *Controllers & Components*.
++
+Le graphique change pour afficher les contrôleurs au lieu des disques.
+
+. Cliquez sur le contrôleur que vous souhaitez configurer.
++
+Le menu contextuel du contrôleur apparaît.
+
+. Sélectionnez *Configurer le serveur NTP*.
++
+La boîte de dialogue Configure Network Time Protocol (NTP) Server s'ouvre.
+
+. Sélectionnez *Je souhaite activer NTP sur le contrôleur* (*A* ou *B*).
++
+Des options supplémentaires apparaissent dans la boîte de dialogue.
+
+. Sélectionnez l'une des options suivantes :
++
+** *Obtenir automatiquement les adresses du serveur NTP à partir du serveur DHCP* -- Les adresses du serveur NTP détectées sont affichées.
++
+[NOTE]
+====
+Si la baie de stockage est configurée pour utiliser une adresse NTP statique, aucun serveur NTP n'apparaît.
+
+====
+** *Saisir manuellement les adresses des serveurs NTP* -- Entrez l'adresse du serveur NTP principal et celle d'un serveur NTP de secours. Le serveur de secours est facultatif. (Ces champs d'adresse s'affichent après avoir sélectionné le bouton radio.) L'adresse du serveur peut être un nom de domaine complet, une adresse IPv4 ou une adresse IPv6.
+
+
+. *Facultatif :* Saisissez les informations du serveur et les paramètres d'authentification pour un serveur NTP de secours.
+. Cliquez sur *Enregistrer*.
+
+
+.Résultats
+La configuration du serveur NTP est affichée dans les paramètres du contrôleur, onglet *DNS / NTP*.

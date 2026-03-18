@@ -1,0 +1,65 @@
+---
+permalink: sm-settings/how-the-drive-security-feature-works.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, Drive Security, 
+summary: 'Drive Security est une fonctionnalité des baies de stockage qui offre une couche de sécurité supplémentaire avec des disques Full Disk Encryption (FDE) ou des disques Federal Information Processing Standard (FIPS).' 
+---
+= Fonctionnement de la fonctionnalité Drive Security dans SANtricity System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Drive Security est une fonctionnalité des baies de stockage qui offre une couche de sécurité supplémentaire avec des disques Full Disk Encryption (FDE) ou des disques Federal Information Processing Standard (FIPS).
+
+Lorsque ces disques sont utilisés avec la fonction Drive Security, ils nécessitent une clé de sécurité pour accéder à leurs données. Lorsque les disques sont physiquement retirés de la baie, ils ne peuvent pas fonctionner tant qu'ils ne sont pas installés dans une autre baie ; à ce moment-là, ils seront en état de verrouillage de sécurité jusqu'à ce que la clé de sécurité correcte soit fournie.
+
+
+
+== Comment mettre en œuvre la sécurité des disques
+
+Pour mettre en œuvre Drive Security, procédez comme suit.
+
+. Équipez votre baie de stockage de disques sécurisés, soit des disques FDE, soit des disques FIPS. (Pour les volumes qui nécessitent la prise en charge FIPS, utilisez uniquement des disques FIPS. Le mélange de disques FIPS et FDE dans un groupe ou un pool de volumes entraînera le traitement de tous les disques comme des disques FDE. De plus, un disque FDE ne peut pas être ajouté à un groupe ou un pool de volumes composé uniquement de disques FIPS, ni utilisé comme disque de secours dans un groupe ou un pool entièrement FIPS.)
+. Créez une clé de sécurité, qui est une chaîne de caractères partagée par le contrôleur et les disques pour l'accès en lecture/écriture. Vous pouvez créer soit une clé interne à partir de la mémoire persistante du contrôleur, soit une clé externe à partir d'un serveur de gestion de clés. Pour la gestion externe des clés, une authentification doit être établie avec le serveur de gestion de clés.
+. Activer la sécurité des disques pour les pools et les groupes de volumes :
++
+** Créez un pool ou un groupe de volumes (recherchez *Oui* dans la colonne *Secure-capable* du tableau Candidates).
+** Sélectionnez un pool ou un groupe de volumes lorsque vous créez un nouveau volume (recherchez *Oui* à côté de *Secure-capable* dans le tableau des candidats pool et groupe de volumes).
+
+
+
+
+
+
+== Fonctionnement de la sécurité du lecteur au niveau du lecteur
+
+Un disque compatible sécurisé, soit FDE soit FIPS, chiffre les données lors des écritures et les déchiffre lors des lectures. Ce chiffrement et ce déchiffrement n'affectent pas les performances ni le flux de travail de l'utilisateur. Chaque disque possède sa propre clé de chiffrement, qui ne peut jamais être transférée du disque.
+
+La fonction Drive Security offre une couche de protection supplémentaire avec des disques compatibles avec la sécurité. Lorsque des groupes de volumes ou des pools sur ces disques sont sélectionnés pour Drive Security, les disques recherchent une clé de sécurité avant d'autoriser l'accès aux données. Vous pouvez activer Drive Security pour les pools et les groupes de volumes à tout moment, sans affecter les données existantes sur le disque. Cependant, vous ne pouvez pas désactiver Drive Security sans effacer toutes les données sur le disque.
+
+
+
+== Comment fonctionne Drive Security au niveau de la baie de stockage
+
+La fonction Drive Security vous permet de créer une clé de sécurité qui est partagée entre les disques compatibles avec la sécurité et les contrôleurs dans une baie de stockage. Chaque fois que l'alimentation des disques est coupée puis rétablie, les disques compatibles avec la sécurité passent à un état Verrouillé jusqu'à ce que le contrôleur applique la clé de sécurité.
+
+Si un disque activé pour la sécurité est retiré de la baie de stockage et réinstallé dans une autre baie de stockage, le disque sera en état de verrouillage de sécurité. Le disque relocalisé recherche la clé de sécurité avant de rendre à nouveau les données accessibles. Pour déverrouiller les données, vous appliquez la clé de sécurité de la baie de stockage source. Après un processus de déverrouillage réussi, le disque relocalisé utilisera alors la clé de sécurité déjà stockée dans la baie de stockage cible, et le fichier de clé de sécurité importé ne sera plus nécessaire.
+
+[NOTE]
+====
+Pour la gestion interne des clés, la clé de sécurité est stockée sur le contrôleur dans un emplacement inaccessible. Elle n'est pas dans un format lisible par l'homme, ni accessible à l'utilisateur.
+
+====
+
+
+== Comment fonctionne Drive Security au niveau du volume
+
+Lorsque vous créez un pool ou un groupe de volumes à partir de disques compatibles avec la sécurité, vous pouvez également activer la sécurité des disques pour ces pools ou groupes de volumes. L’option Drive Security rend les disques ainsi que les groupes de volumes et pools associés secure-_enabled_.
+
+Gardez à l'esprit les consignes suivantes avant de créer des groupes et des pools de volumes sécurisés :
+
+* Les groupes et pools de volumes doivent être composés entièrement de disques compatibles avec la sécurité. (Pour les volumes qui nécessitent la prise en charge FIPS, utilisez uniquement des disques FIPS. Le mélange de disques FIPS et FDE dans un groupe ou un pool de volumes entraînera le traitement de tous les disques comme des disques FDE. De plus, un disque FDE ne peut pas être ajouté à un groupe ou un pool de volumes entièrement FIPS, ni utilisé comme disque de secours dans un tel groupe ou pool.)
+* Les groupes de volumes et les pools doivent être dans un état optimal.
+

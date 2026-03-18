@@ -1,0 +1,27 @@
+---
+permalink: sm-storage/delete-snapshot-schedule.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, delete, snapshot, schedule 
+summary: 'Si vous ne souhaitez plus collecter d"images instantanées, vous pouvez supprimer une planification d"instantané existante.' 
+---
+= Supprimez une planification de snapshot dans SANtricity System Manager
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Si vous ne souhaitez plus collecter d'images instantanées, vous pouvez supprimer une planification d'instantané existante.
+
+.À propos de cette tâche
+Lorsque vous supprimez une planification de capture d'instantanés, les images de capture d'instantanés associées ne sont pas supprimées en même temps. Si vous pensez que la collecte d'images de capture d'instantanés pourrait être reprise à un moment donné, vous devriez suspendre la planification de capture d'instantanés plutôt que de la supprimer.
+
+.Étapes
+. Sélectionnez le menu : Storage[Snapshots].
+. Cliquez sur l'onglet *Schedules*.
+. Sélectionnez la planification d'instantané que vous souhaitez supprimer et confirmez l'opération.
+
+
+.Résultats
+Le système supprime tous les attributs de planification du volume de base ou du groupe de cohérence de snapshot.

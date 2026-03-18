@@ -1,0 +1,53 @@
+---
+permalink: sm-mirroring/synchronous-mirroring-status.html 
+sidebar: sidebar 
+keywords: SANtricity, System Manager, E-Series, synchronous, mirroring, status, 
+summary: 'L"état d"une paire de miroirs synchrones indique si les données du volume principal et du volume secondaire sont synchronisées. L"état du miroir est indépendant de l"état des composants des volumes de la paire de miroirs.' 
+---
+= Découvrez l’état de la mise en miroir synchrone dans SANtricity System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'état d'une paire de volumes miroirs synchrones indique si les données du volume principal et du volume secondaire sont synchronisées. L'état du miroir est indépendant de l'état des composants des volumes de la paire de miroirs.
+
+[NOTE]
+====
+Cette fonctionnalité n'est pas disponible sur le système de stockage EF600/EF600C ou EF300/EF300C.
+
+====
+Les paires miroir synchrones peuvent avoir l'un des statuts suivants :
+
+* *Optimal*
++
+Indique que les volumes de la paire en miroir sont synchronisés, ce qui signifie que la connexion fabric entre les baies de stockage est opérationnelle et que chaque volume est dans l'état de fonctionnement souhaité.
+
+* *Synchronisation*
++
+Affiche la progression de la synchronisation des données entre les paires en miroir. Cet état sera également affiché lors de la synchronisation initiale.
+
++
+Après une interruption de liaison de communication, seuls les blocs de données qui ont changé sur le volume principal pendant l'interruption de liaison sont copiés sur le volume secondaire.
+
+* *Non synchronisé*
++
+Indique que la baie de stockage du volume principal ne peut pas écrire les données entrantes sur la baie distante. L'hôte local peut continuer à écrire sur le volume principal, mais les écritures distantes ne se produisent pas. Différentes conditions peuvent empêcher la baie de stockage du volume principal d'écrire les données entrantes sur le volume secondaire, telles que :
+
++
+** Le volume secondaire n'est pas accessible.
+** Le système de stockage distant est inaccessible.
+** La connexion réseau entre les baies de stockage n'est pas accessible.
+** Le volume secondaire ne peut pas être mis à jour avec un nouveau World Wide Identifier (WWID).
+
+
+* *Suspendu*
++
+Indique que l'opération de mise en miroir synchrone a été suspendue par l'utilisateur. Lorsqu'une paire de volumes en miroir est suspendue, aucune tentative de contact avec le volume secondaire n'est effectuée. Toutes les écritures sur le volume principal sont consignées de manière permanente dans les volumes de capacité réservée du miroir.
+
+* *Échec*
++
+Indique que l'opération de mise en miroir synchrone ne peut pas fonctionner normalement en raison d'une défaillance du volume primaire, du volume secondaire ou de la capacité réservée du miroir.
+
+
