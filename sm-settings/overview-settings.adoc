@@ -21,7 +21,7 @@ Vous pouvez configurer SANtricity System Manager pour certains paramètres gén�
 Les paramètres du tableau incluent :
 
 * link:cache-settings-and-performance.html["Paramètres et performances du cache"]
-* link:automatic-load-balancing-overview.html"["Équilibrage automatique de la charge"]
+* link:automatic-load-balancing-overview.html["Équilibrage automatique de la charge"]
 * link:how-add-on-features-work.html["Fonctionnalités supplémentaires"]
 * link:overview-drive-security.html["Sécurité des disques"]
 
