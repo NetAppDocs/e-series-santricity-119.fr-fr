@@ -15,12 +15,14 @@ Avant que SANtricity Unified Manager puisse afficher et gérer les ressources de
 
 
 
+[[discovering-multiple-storage-arrays]]
 == Découverte de plusieurs baies de stockage
 
 Si vous choisissez de détecter plusieurs baies, vous saisissez une plage d'adresses IP réseau, puis Unified Manager tente d'établir des connexions individuelles avec chaque adresse IP de cette plage. Toute baie de stockage atteinte avec succès apparaît sur la page Discover et peut être ajoutée à votre domaine de gestion.
 
 
 
+[[discovering-a-single-storage-array]]
 == Découverte d'une seule baie de stockage
 
 Si vous choisissez de découvrir une seule baie, vous entrez l'adresse IP unique de l'un des contrôleurs de la baie de stockage, puis la baie de stockage individuelle est ajoutée.
@@ -32,12 +34,14 @@ Unified Manager détecte et affiche uniquement l'adresse IP unique ou l'adresse 
 ====
 
 
+[[user-credentials]]
 == Identifiants utilisateur
 
 Dans le cadre du processus de découverte, vous devez fournir le mot de passe administrateur de chaque baie de stockage que vous souhaitez ajouter.
 
 
 
+[[web-services-certificates]]
 == Certificats de services Web
 
 Dans le cadre du processus de découverte, Unified Manager vérifie que les baies de stockage détectées utilisent des certificats provenant d'une source fiable. Unified Manager utilise deux types d'authentification par certificat pour toutes les connexions qu'il établit avec le navigateur :

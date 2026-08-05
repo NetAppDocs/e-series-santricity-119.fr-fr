@@ -51,8 +51,8 @@ Politique de capacité entièrement réservée
  a| 
 Vous pouvez choisir l'une des politiques suivantes :
 
-** ${post_edited_translations.segment}
-** ${post_edited_translations.segment}
+** *Suppression de l'image instantanée la plus ancienne* -- System Manager supprime automatiquement l'image instantanée la plus ancienne du groupe de cohérence, ce qui libère la capacité réservée du membre pour une réutilisation au sein du groupe.
+** *Rejeter les écritures sur le volume de base* -- Lorsque la capacité réservée atteint son pourcentage maximal défini, System Manager rejette toute requête d'écriture d'E/S sur le volume de base qui a déclenché l'accès à la capacité réservée.
 
 
 |===
@@ -61,4 +61,4 @@ Vous pouvez choisir l'une des politiques suivantes :
 
 
 .Résultats
-${post_edited_translations.segment}
+Le gestionnaire système modifie les paramètres de capacité réservée pour le volume membre, ainsi que les paramètres de capacité réservée pour tous les volumes membres du groupe de cohérence.

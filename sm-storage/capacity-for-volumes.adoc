@@ -16,6 +16,7 @@ Les disques de votre baie de stockage offrent la capacité de stockage physique 
 
 
 
+[[using-capacity-to-create-and-expand-volumes]]
 == Utilisation de la capacité pour créer et étendre des volumes
 
 Vous pouvez créer des volumes à partir de la capacité non attribuée ou de la capacité libre dans un pool ou un groupe de volumes.
@@ -28,6 +29,7 @@ Après avoir augmenté la capacité du volume, vous devez augmenter manuellement
 
 
 
+[[capacity-types-for-thick-volumes-and-thin-volumes]]
 == Types de capacité pour les volumes épais et les volumes minces
 
 Vous pouvez créer des volumes épais ou des volumes fins. La capacité déclarée et la capacité allouée sont identiques pour les volumes épais, mais différentes pour les volumes fins.
@@ -49,6 +51,7 @@ SANtricity System Manager ne propose pas d'option pour créer des volumes fins. 
 ====
 
 
+[[capacity-limits-for-thick-volumes]]
 == Limites de capacité pour les volumes épais
 
 La capacité minimale d'un volume épais est de 1 Mio, et la capacité maximale est déterminée par le nombre et la capacité des disques dans le pool ou le groupe de volumes.
@@ -65,6 +68,7 @@ Lors de la création d'un volume, une capacité supplémentaire est pré-alloué
 
 
 
+[[capacity-limits-for-thin-volumes]]
 == Limites de capacité pour les volumes minces
 
 Vous pouvez créer des volumes fins avec une capacité déclarée importante et une capacité allouée relativement faible, ce qui est bénéfique pour l'utilisation et l'efficacité du stockage. Les volumes fins peuvent aider à simplifier l'administration du stockage car la capacité allouée peut augmenter à mesure que les besoins de l'application évoluent, sans perturber l'application, permettant ainsi une meilleure utilisation du stockage.

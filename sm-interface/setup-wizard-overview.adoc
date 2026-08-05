@@ -16,6 +16,7 @@ Utilisez l’assistant de configuration pour configurer votre baie de stockage, 
 
 
 
+[[first-time-setup]]
 == Configuration initiale
 
 Lorsque vous ouvrez System Manager pour la première fois, l'assistant d'installation se lance. L'assistant d'installation vous invite à effectuer des tâches de configuration de base, telles que nommer votre baie de stockage, configurer vos hôtes, sélectionner des applications et créer des pools de stockage.
@@ -32,6 +33,7 @@ Si vous annulez l'assistant, vous ne pouvez pas le relancer manuellement. L'assi
 
 
 
+[[terminology]]
 == Terminologie
 
 L'assistant d'installation utilise les termes suivants.

@@ -24,6 +24,7 @@ Vous pouvez créer et gérer des clés de sécurité en utilisant l'une des mét
 
 
 
+[[internal-key-management]]
 == Gestion des clés internes
 
 Les clés internes sont conservées et « masquées » dans un emplacement inaccessible de la mémoire persistante du contrôleur. Pour mettre en œuvre la gestion des clés internes, procédez comme suit :
@@ -37,6 +38,7 @@ La clé de sécurité est stockée sur le contrôleur dans un emplacement caché
 
 
 
+[[external-key-management]]
 == Gestion des clés externes
 
 Les clés externes sont gérées sur un serveur de gestion de clés distinct, à l'aide d'un protocole Key Management Interoperability Protocol (KMIP). Pour mettre en œuvre la gestion de clés externes, procédez comme suit :

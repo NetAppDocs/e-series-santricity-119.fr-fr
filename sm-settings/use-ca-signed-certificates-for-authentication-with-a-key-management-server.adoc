@@ -22,6 +22,7 @@ L'authentification entre les contrôleurs et un serveur de gestion des clés est
 
 
 
+[[step-1-complete-and-submit-csr-for-authentication-with-a-key-management-server]]
 == Étape 1 : Remplissez et soumettez la CSR pour authentification auprès d’un serveur de gestion de clés
 
 Vous devez d'abord générer un fichier de demande de signature de certificat (CSR), puis utiliser ce fichier CSR pour demander un certificat client signé auprès d'une autorité de certification (CA) approuvée par le serveur de gestion des clés. Vous pouvez également créer et télécharger un certificat client depuis le serveur de gestion des clés en utilisant le fichier CSR téléchargé. Un certificat client valide les contrôleurs de la baie de stockage, de sorte que le serveur de gestion des clés puisse faire confiance à leurs requêtes Key Management Interoperability Protocol (KMIP).
@@ -56,6 +57,7 @@ NOTE: Il est courant que le serveur de gestion des clés dispose d'une fonctionn
 
 
 
+[[step-2-import-certificates-for-the-key-management-server]]
 == Étape 2 : Importer les certificats pour le serveur de gestion des clés
 
 L'étape suivante consiste à importer les certificats pour l'authentification entre la baie de stockage et le serveur de gestion des clés. Il existe deux types de certificats : le certificat client valide les contrôleurs de la baie de stockage, tandis que le certificat du serveur de gestion des clés valide le serveur. Vous devez charger à la fois le fichier de certificat client pour les contrôleurs et le fichier de certificat serveur pour le serveur de gestion des clés.

@@ -40,6 +40,7 @@ Le processus de création d'une paire miroir asynchrone est une procédure en pl
 
 
 
+[[step-1-create-or-select-a-mirror-consistency-group]]
 == Étape 1 : Créez ou sélectionnez un groupe de cohérence
 
 Dans cette étape, vous créez un nouveau groupe de cohérence de miroir ou vous en sélectionnez un existant. Un groupe de cohérence de miroir est un conteneur pour les volumes primaire et secondaire (la paire en miroir), et spécifie la méthode de resynchronisation souhaitée (manuelle ou automatique) pour toutes les paires du groupe.
@@ -95,6 +96,7 @@ Si Unified Manager parvient à créer le groupe de cohérence miroir sur la baie
 
 
 
+[[step-2-select-the-primary-volume]]
 == Étape 2 : sélectionnez le volume principal
 
 Dans cette étape, vous sélectionnez le volume principal à utiliser dans la relation de mise en miroir et allouez sa capacité réservée. Lorsque vous sélectionnez un volume principal sur la baie de stockage locale, le système affiche une liste de tous les volumes éligibles pour cette paire mise en miroir. Tout volume qui n'est pas éligible à être utilisé ne s'affiche pas dans cette liste.
@@ -123,6 +125,7 @@ Gardez à l'esprit les directives suivantes :
 
 
 
+[[step-3-select-the-secondary-volume]]
 == Étape 3 : Sélectionnez le volume secondaire
 
 Dans cette étape, vous sélectionnez le volume secondaire à utiliser dans la relation de mise en miroir et allouez sa capacité réservée. Lorsque vous sélectionnez un volume secondaire sur la baie de stockage distante, le système affiche une liste de tous les volumes éligibles pour cette paire mise en miroir. Tous les volumes qui ne sont pas éligibles à être utilisés ne s'affichent pas dans cette liste.

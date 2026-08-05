@@ -16,6 +16,7 @@ Cette FAQ peut vous aider si vous cherchez simplement une réponse rapide à une
 
 
 
+[[why-cant-i-log-in]]
 == Pourquoi je n'arrive pas à me connecter
 
 Si vous recevez une erreur lors de la tentative de connexion, examinez ces causes possibles.
@@ -30,6 +31,7 @@ Des erreurs de connexion peuvent survenir pour l'une de ces raisons :
 
 
 
+[[what-do-i-need-to-know-before-adding-a-directory-server]]
 == Que dois-je savoir avant d'ajouter un serveur d'annuaire ?
 
 Avant d'ajouter un serveur d'annuaire dans la gestion des accès, vous devez satisfaire à certaines exigences.
@@ -41,6 +43,7 @@ Avant d'ajouter un serveur d'annuaire dans la gestion des accès, vous devez sat
 
 
 
+[[what-do-i-need-to-know-about-mapping-to-storage-array-roles]]
 == Que dois-je savoir sur le mappage aux rôles des baies de stockage ?
 
 Avant d'associer des groupes à des rôles, consultez les directives.
@@ -66,6 +69,7 @@ Si vous utilisez un serveur LDAP (Lightweight Directory Access Protocol) et Dire
 
 
 
+[[saml]]
 === SAML
 
 Si vous utilisez les fonctionnalités Security Assertion Markup Language (SAML) intégrées à la baie de stockage, assurez-vous que :
@@ -83,12 +87,14 @@ Si vous utilisez les fonctionnalités Security Assertion Markup Language (SAML) 
 
 
 
+[[what-do-i-need-to-know-before-configuring-and-enabling-saml]]
 == Que dois-je savoir avant de configurer et d'activer SAML ?
 
 Avant de configurer et d'activer les fonctionnalités du Security Assertion Markup Language (SAML) pour l'authentification, assurez-vous de respecter les exigences suivantes et de comprendre les restrictions SAML.
 
 
 
+[[requirements]]
 === Exigences
 
 Avant de commencer, assurez-vous que :
@@ -103,6 +109,7 @@ Avant de commencer, assurez-vous que :
 
 
 
+[[restrictions]]
 === Restrictions
 
 En plus des exigences mentionnées ci-dessus, assurez-vous de bien comprendre les restrictions suivantes :
@@ -124,6 +131,7 @@ En plus des exigences mentionnées ci-dessus, assurez-vous de bien comprendre le
 
 
 
+[[what-are-the-local-users]]
 == Quels sont les utilisateurs locaux ?
 
 Les utilisateurs locaux sont prédéfinis dans le système et incluent des autorisations spécifiques.

@@ -15,6 +15,7 @@ SANtricity System Manager est une interface web qui vous permet de gérer une ma
 
 
 
+[[home-page]]
 == Page d'accueil
 
 La page d'accueil offre une vue du tableau de bord pour la gestion quotidienne de votre baie de stockage. Lorsque vous vous connectez à System Manager, la page d'accueil est le premier écran affiché.
@@ -55,6 +56,7 @@ La zone « Hiérarchie de stockage » offre une vue organisée des différents
 |===
 
 
+[[interface-settings]]
 == Paramètres d'interface
 
 Vous pouvez modifier les préférences d'affichage et d'autres paramètres depuis l'interface principale.
@@ -86,6 +88,7 @@ Accédez à la documentation d'aide et à d'autres ressources depuis le menu dé
 |===
 
 
+[[user-logins-and-passwords]]
 == Identifiants et mots de passe des utilisateurs
 
 L'utilisateur actuellement connecté au système est affiché en haut à droite de l'interface.

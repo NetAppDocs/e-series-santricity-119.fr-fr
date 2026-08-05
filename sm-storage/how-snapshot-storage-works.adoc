@@ -15,6 +15,7 @@ La fonction Instantanés utilise la technologie de copie en écriture pour stock
 
 
 
+[[how-snapshot-images-are-used]]
 == Comment les images instantanées sont utilisées
 
 Une image instantanée est une copie logique en lecture seule du contenu d'un volume, capturée à un instant précis. Vous pouvez utiliser les instantanés pour vous protéger contre la perte de données.
@@ -23,6 +24,7 @@ Les images d'instantané sont également utiles pour les environnements de test.
 
 
 
+[[snapshot-creation]]
 == Création d'instantanés
 
 Lors de la création d'instantanés, la fonction Snapshots enregistre les données d'image comme suit :
@@ -42,6 +44,7 @@ image::../media/sam1130-dwg-snapshots-cow-overview.gif[Aperçu des snapshots]
 
 
 
+[[snapshot-restoration]]
 == Restauration de snapshot
 
 Pour restaurer des données sur un volume de base, vous pouvez utiliser soit un volume snapshot, soit une image snapshot :

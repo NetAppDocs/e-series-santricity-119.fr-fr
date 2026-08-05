@@ -25,6 +25,7 @@ La découverte des tableaux est une procédure en plusieurs étapes.
 
 
 
+[[step-1-enter-network-address]]
 == Étape 1 : Saisir l’adresse réseau
 
 Vous saisissez une plage d'adresses réseau pour effectuer une recherche sur le sous-réseau local. Tout système de stockage accessible apparaît sur la page Discover et peut être ajouté à votre domaine de gestion.
@@ -57,6 +58,7 @@ Unified Manager effectue une vérification d'identifiant sur chaque baie que vou
 
 
 
+[[step-2-resolve-self-signed-certificates-during-discovery]]
 == Étape 2 : Résoudre les certificats auto-signés lors de la découverte
 
 Dans le cadre du processus de découverte, le système vérifie que les baies de stockage utilisent des certificats délivrés par une source fiable.
@@ -73,6 +75,7 @@ Dans le cadre du processus de découverte, le système vérifie que les baies de
 
 
 
+[[step-3-resolve-untrusted-certificates-during-discovery]]
 == Étape 3 : Résoudre les certificats non approuvés lors de la découverte
 
 Des certificats non approuvés surviennent lorsqu'une baie de stockage tente d'établir une connexion sécurisée avec Unified Manager, mais que la connexion ne parvient pas à être confirmée comme sécurisée. Lors du processus de découverte de la baie, vous pouvez résoudre les certificats non approuvés en important un certificat d'autorité de certification (CA) (ou un certificat signé par une CA) émis par un tiers de confiance.
@@ -109,6 +112,7 @@ Les baies de stockage présentant des problèmes de certificats non fiables et n
 
 
 
+[[step-4-provide-passwords]]
 == Étape 4 : Fournir les mots de passe
 
 Vous devez saisir les mots de passe des baies de stockage que vous souhaitez ajouter à votre domaine de gestion.

@@ -15,6 +15,7 @@ Découvrez comment les termes relatifs au volume s'appliquent à votre baie de s
 
 
 
+[[all-volume-types]]
 == Tous les types de volume
 
 [cols="25h,~"]
@@ -215,6 +216,7 @@ L'option de mise en cache en écriture sans piles permet de poursuivre la mise e
 |===
 
 
+[[specific-to-thin-volumes]]
 == Spécifique aux volumes fins
 
 [NOTE]

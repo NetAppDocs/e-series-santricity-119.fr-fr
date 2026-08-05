@@ -15,6 +15,7 @@ SANtricity System Manager utilise des icônes et plusieurs autres méthodes pour
 
 
 
+[[icons]]
 == Icônes
 
 System Manager utilise ces icônes pour indiquer l'état de la baie de stockage et de ses composants.
@@ -60,6 +61,7 @@ Le System Manager affiche ces icônes à différents endroits.
 
 
 
+[[alerts-and-leds]]
 == Alertes et LED
 
 De plus, System Manager vous informe des problèmes d'autres manières.

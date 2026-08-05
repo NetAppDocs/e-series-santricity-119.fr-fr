@@ -15,6 +15,7 @@ La fonctionnalité de cache SSD est une solution basée sur le contrôleur qui m
 
 
 
+[[ssd-cache-versus-primary-cache]]
 == Cache SSD versus cache principal
 
 Le cache SSD est un cache secondaire à utiliser avec le cache principal dans la mémoire dynamique à accès aléatoire (DRAM) du contrôleur.
@@ -35,6 +36,7 @@ Les volumes RAID internes sont utilisés à des fins de traitement du cache inte
 
 
 
+[[how-ssd-cache-is-used]]
 == Comment le cache SSD est utilisé
 
 La mise en cache intelligente place les données sur un disque à faible latence afin que les réponses aux futures requêtes pour ces données puissent se produire beaucoup plus rapidement. Si un programme demande des données présentes dans le cache (appelé « accès au cache »), alors le disque à faible latence peut traiter cette transaction. Sinon, un « cache miss » se produit et les données doivent être accédées depuis le disque d'origine, plus lent. Au fur et à mesure que les accès au cache augmentent, les performances globales s'améliorent.
@@ -52,6 +54,7 @@ Lorsque le CPU doit traiter des données lues, il suit les étapes ci-dessous :
 
 
 
+[[improved-performance]]
 == Performances améliorées
 
 La copie des données les plus fréquemment consultées (hot spot) vers le cache SSD permet un fonctionnement plus efficace du disque dur, une latence réduite et des vitesses de lecture et d'écriture accélérées. L'utilisation de SSD hautes performances pour mettre en cache les données des volumes HDD améliore les performances d'E/S et les temps de réponse.
@@ -60,12 +63,14 @@ Des mécanismes d'E/S de volume simples sont utilisés pour déplacer les donné
 
 
 
+[[ssd-cache-and-the-drive-security-feature]]
 == Cache SSD et fonction de sécurité du disque
 
 Pour utiliser le cache SSD sur un volume utilisant également la sécurité du disque (fonctionnalité sécurisée activée), les capacités de sécurité du disque du volume et du cache SSD doivent correspondre. Si elles ne correspondent pas, le volume ne sera pas sécurisé.
 
 
 
+[[implement-ssd-cache]]
 == Implémenter le cache SSD
 
 Pour implémenter le cache SSD, procédez comme suit :

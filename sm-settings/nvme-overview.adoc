@@ -15,12 +15,14 @@ Certains contrôleurs intègrent un port permettant la mise en œuvre de NVMe (N
 
 
 
+[[what-is-nvme]]
 == Qu'est-ce que NVMe ?
 
 _NVM_ signifie « Non-Volatile Memory » et désigne la mémoire persistante utilisée dans de nombreux types de périphériques de stockage. _NVMe_ (NVM Express) est une interface ou un protocole standardisé conçu spécifiquement pour la communication multi-queues haute performance avec les périphériques NVM.
 
 
 
+[[what-is-nvme-over-fabrics]]
 == Qu'est-ce que NVMe over Fabrics ?
 
 _NVMe over Fabrics (NVMe-oF)_ est une spécification technologique qui permet aux commandes et données NVMe basées sur des messages de circuler entre un ordinateur hôte et un système de stockage via un réseau. Un système de stockage NVMe (appelé _subsystem_) peut être accessible par un hôte en utilisant une fabric. Les commandes NVMe sont activées et encapsulées dans des couches d'abstraction de transport, tant côté hôte que côté subsystem. Cela étend l'interface NVMe haute performance de bout en bout, de l'hôte au stockage, et standardise et simplifie l'ensemble des commandes.
@@ -29,18 +31,21 @@ Le stockage NVMe-oF est présenté à un hôte comme un périphérique de stocka
 
 
 
+[[what-is-an-nvme-qualified-name-nqn]]
 == Qu'est-ce qu'un nom qualifié NVMe (NQN) ?
 
 Le nom qualifié NVMe (NQN) est utilisé pour identifier la cible de stockage distante. Le nom qualifié NVMe pour la baie de stockage est toujours attribué par le sous-système et ne peut pas être modifié. Il n'y a qu'un seul nom qualifié NVMe pour l'ensemble de la baie. Le nom qualifié NVMe est limité à 223 caractères. Vous pouvez le comparer à un nom qualifié iSCSI.
 
 
 
+[[what-is-a-namespace-and-a-namespace-id]]
 == Qu'est-ce qu'un espace de noms et un ID d'espace de noms ?
 
 Un espace de noms est l'équivalent d'une unité logique dans SCSI, qui correspond à un volume dans la baie. L'identifiant de l'espace de noms (NSID) est équivalent à un numéro d'unité logique (LUN) dans SCSI. Vous créez le NSID lors de la création de l'espace de noms et pouvez le définir sur une valeur comprise entre 1 et 255.
 
 
 
+[[what-is-an-nvme-controller]]
 == Qu'est-ce qu'un contrôleur NVMe ?
 
 À l'instar d'un nexus SCSI I_T, qui représente le chemin entre l'initiateur de l'hôte et la cible du système de stockage, un contrôleur NVMe créé lors du processus de connexion de l'hôte fournit un chemin d'accès entre un hôte et les namespaces de la baie de stockage. Un NQN pour l'hôte, associé à un identifiant de port hôte, identifie de manière unique un contrôleur NVMe. Bien qu'un contrôleur NVMe ne puisse être associé qu'à un seul hôte, il peut accéder à plusieurs namespaces.

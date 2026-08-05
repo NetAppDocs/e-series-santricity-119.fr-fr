@@ -24,6 +24,7 @@ L'utilisation de certificats signés par une autorité de certification (CA) est
 
 
 
+[[step-1-complete-csrs-for-the-controllers]]
 == Étape 1 : Remplir les CSRs pour les contrôleurs
 
 Vous devez d'abord générer un fichier de demande de signature de certificat (CSR) pour chaque contrôleur dans la baie de stockage.
@@ -85,6 +86,7 @@ Pour un seul contrôleur, un fichier CSR est téléchargé sur votre système lo
 
 
 
+[[step-2-submit-the-csr-files]]
 == Étape 2 : Soumettre les fichiers CSR
 
 Après avoir créé les fichiers de demande de signature de certificat (CSR), envoyez les fichiers à une autorité de certification (CA). Les systèmes E-Series requièrent le format PEM (encodage ASCII Base64) pour les certificats signés, ce qui inclut les types de fichiers suivants : pem, .crt, .cer ou .key.
@@ -103,6 +105,7 @@ Après avoir créé les fichiers de demande de signature de certificat (CSR), en
 
 
 
+[[step-3-import-signed-certificates-for-controllers]]
 == Étape 3 : Importer les certificats signés pour les contrôleurs
 
 Une fois que vous avez reçu les certificats signés de la Certificate Authority (CA), importez les fichiers pour les contrôleurs.

@@ -24,6 +24,7 @@ Bien que les certificats signés par une autorité de certification offrent une 
 ====
 
 
+[[signed-certificates]]
 == Certificats signés
 
 Un certificat signé est validé par une autorité de certification (CA), qui est un organisme tiers de confiance. Les certificats signés incluent des détails sur le propriétaire de l'entité (généralement un serveur ou un site web), la date d'émission et d'expiration du certificat, les domaines valides pour l'entité, et une signature numérique composée de lettres et de chiffres.
@@ -39,6 +40,7 @@ L'autorité de certification (CA) prend des mesures pour vérifier votre identit
 
 
 
+[[self-signed-certificates]]
 == Certificats auto-signés
 
 Chaque contrôleur de la baie de stockage inclut un certificat auto-signé préinstallé. Un certificat auto-signé est similaire à un certificat signé par une autorité de certification (CA), sauf qu'il est validé par le propriétaire de l'entité au lieu d'un tiers. Comme un certificat signé par une CA, un certificat auto-signé contient sa propre clé privée et garantit également que les données sont chiffrées et envoyées via une connexion HTTPS entre un serveur et un client. Cependant, un certificat auto-signé n'utilise pas la même chaîne de confiance qu'un certificat signé par une CA.
@@ -47,6 +49,7 @@ Les certificats auto-signés ne sont pas « `de confiance` » pour les navigat
 
 
 
+[[certificates-used-for-key-management-server]]
 == Certificats utilisés pour le serveur de gestion des clés
 
 Si vous utilisez un serveur de gestion de clés externe avec la fonctionnalité Drive Security, vous pouvez également gérer les certificats pour l'authentification entre ce serveur et les contrôleurs.

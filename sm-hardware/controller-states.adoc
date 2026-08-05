@@ -15,6 +15,7 @@ Vous pouvez placer un contrôleur dans trois états différents : en ligne, hor
 
 
 
+[[online-state]]
 == État en ligne
 
 L'état en ligne correspond à l'état de fonctionnement normal du contrôleur. Cela signifie que le contrôleur fonctionne normalement et est disponible pour les opérations d'E/S.
@@ -23,6 +24,7 @@ Lorsque vous placez un contrôleur en ligne, son statut est défini sur optimal.
 
 
 
+[[offline-state]]
 == État hors ligne
 
 L'état hors ligne est généralement utilisé pour préparer un contrôleur à son remplacement lorsqu'il y a deux contrôleurs dans la baie de stockage. Un contrôleur peut passer en état hors ligne de deux manières : vous pouvez émettre une commande explicite ou le contrôleur peut tomber en panne. Un contrôleur ne peut sortir de l'état hors ligne que par l'émission d'une autre commande explicite ou par le remplacement du contrôleur défaillant. Vous pouvez placer un contrôleur hors ligne uniquement s'il y a deux contrôleurs dans la baie de stockage.
@@ -37,6 +39,7 @@ Lorsqu'un contrôleur est hors ligne, les conditions suivantes sont vraies :
 
 
 
+[[service-mode]]
 == Mode de service
 
 Le mode service est généralement utilisé uniquement par le support technique pour déplacer tous les volumes de la baie de stockage vers un contrôleur afin que l'autre contrôleur puisse être diagnostiqué. Un contrôleur doit être placé manuellement en mode service et doit être remis en ligne manuellement après la fin de l'opération de service.

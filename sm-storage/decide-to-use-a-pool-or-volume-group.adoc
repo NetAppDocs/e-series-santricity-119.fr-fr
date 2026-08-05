@@ -15,6 +15,7 @@ Vous pouvez créer des volumes à l'aide d'un pool ou d'un groupe de volumes. Le
 
 
 
+[[reasons-to-choose-a-pool-or-volume-group]]
 == Raisons de choisir un pool ou un groupe de volumes
 
 *Choisissez un pool*
@@ -40,6 +41,7 @@ Vous ne pouvez pas définir ni modifier le niveau RAID des pools ou des volumes 
 ====
 
 
+[[feature-differences-between-pools-and-volume-groups]]
 == Différences de caractéristiques entre les pools et les groupes de volumes
 
 Le tableau suivant fournit une comparaison des fonctionnalités entre les groupes de volumes et les pools.
@@ -149,6 +151,7 @@ Oui
 |===
 
 
+[[functional-comparison-of-pools-and-volume-groups]]
 == Comparaison fonctionnelle des pools et des groupes de volumes
 
 La fonction et l'objectif d'un pool et d'un groupe de volumes sont identiques. Ces deux objets sont un ensemble de disques regroupés logiquement dans une baie de stockage et sont utilisés pour créer des volumes auxquels un hôte peut accéder.

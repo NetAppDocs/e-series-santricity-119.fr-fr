@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: SANtricity, System Manager, E-Series, reserved capacity, settings, snapshot, group 
 summary: 'Vous pouvez modifier les paramètres d"un groupe d"instantanés pour changer son nom, les paramètres de suppression automatique, le nombre maximal d"images d"instantané autorisées, le pourcentage auquel System Manager envoie une notification d"alerte de capacité réservée, ou la stratégie à utiliser lorsque la capacité réservée atteint son pourcentage maximal défini.' 
 ---
-= ${post_edited_translations.segment}
+= Modifiez les paramètres de capacité réservée pour un groupe de snapshots dans SANtricity System Manager
 :allow-uri-read: 
 :experimental: 
 :icons: font
@@ -12,18 +12,18 @@ summary: 'Vous pouvez modifier les paramètres d"un groupe d"instantanés pour c
 
 
 [role="lead"]
-${post_edited_translations.segment}
+Vous pouvez modifier les paramètres d'un groupe d'instantanés pour changer son nom, les paramètres de suppression automatique, le nombre maximal d'images d'instantané autorisées, le pourcentage auquel SANtricity System Manager envoie une notification d'alerte de capacité réservée ou la politique à utiliser lorsque la capacité réservée atteint son pourcentage maximal défini.
 
-${post_edited_translations.segment}
+Lors de la création d'un groupe d'instantanés, une capacité réservée est créée pour stocker les données de toutes les images d'instantanés contenues dans le groupe.
 
 .Étapes
 . Sélectionnez le menu : Storage [Pools & Volume Groups].
 . Cliquez sur l’onglet *Reserved Capacity*.
-. ${post_edited_translations.segment}
+. Sélectionnez le groupe d'instantanés que vous souhaitez modifier, puis cliquez sur *Afficher/Modifier les paramètres*.
 +
-${post_edited_translations.segment}
+La boîte de dialogue Paramètres du groupe d'instantanés s'affiche.
 
-. ${post_edited_translations.segment}
+. Modifiez les paramètres du groupe d'instantanés selon vos besoins.
 +
 .Détails du champ
 [%collapsible]
@@ -86,7 +86,7 @@ Politique de capacité entièrement réservée
 Vous pouvez choisir l'une des politiques suivantes :
 
 ** *Suppression de l'image instantanée la plus ancienne* -- System Manager purge automatiquement l'image instantanée la plus ancienne dans le groupe d'instantanés, ce qui libère la capacité réservée de l'image instantanée pour une réutilisation au sein du groupe.
-** ${post_edited_translations.segment}
+** *Rejeter les écritures sur le volume de base* -- Lorsque la capacité réservée atteint son pourcentage maximal défini, System Manager rejette toute requête d'écriture d'E/S sur le volume de base qui a déclenché l'accès à la capacité réservée.
 
 
 

@@ -46,6 +46,7 @@ Le processus de création de paires miroir synchrones est une procédure en plus
 
 
 
+[[step-1-select-the-primary-volume]]
 == Étape 1 : Sélectionnez le volume principal
 
 Dans cette étape, vous sélectionnez le volume principal à utiliser dans la relation de mise en miroir synchrone. Lorsque vous sélectionnez un volume principal sur la baie de stockage locale, le système affiche une liste de tous les volumes éligibles pour cette paire en miroir. Tous les volumes qui ne sont pas éligibles à être utilisés ne s'affichent pas dans cette liste. Le volume que vous sélectionnez occupe le rôle principal dans la relation de mise en miroir.
@@ -62,6 +63,7 @@ L'assistant Créer une paire miroir synchrone s'ouvre.
 
 
 
+[[step-2-select-the-secondary-volume]]
 == Étape 2 : sélectionnez le volume secondaire
 
 Dans cette étape, vous sélectionnez le volume secondaire à utiliser dans la relation de mise en miroir. Lorsque vous sélectionnez un volume secondaire sur la baie de stockage distante, le système affiche une liste de tous les volumes éligibles pour cette paire de volumes mis en miroir. Tout volume qui n'est pas éligible à être utilisé ne s'affiche pas dans cette liste. Le volume que vous sélectionnez occupera le rôle secondaire dans la relation de mise en miroir.
@@ -91,6 +93,7 @@ Si un volume secondaire est choisi avec une capacité supérieure à celle du vo
 
 
 
+[[step-3-select-synchronization-settings]]
 == Étape 3 : Sélectionnez les paramètres de synchronisation
 
 Dans cette étape, vous sélectionnez les paramètres qui déterminent comment les données sont synchronisées après une interruption de communication. Vous pouvez définir la priorité à laquelle le contrôleur propriétaire du volume principal resynchronise les données avec le volume secondaire après une interruption de communication. Vous devez également sélectionner la politique de resynchronisation, soit manuelle, soit automatique.

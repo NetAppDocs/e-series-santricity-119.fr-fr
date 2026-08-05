@@ -25,6 +25,7 @@ Le processus de création d'un volume instantané est une procédure en plusieur
 
 
 
+[[step-1-review-members-for-a-snapshot-volume]]
 == Étape 1 : Examiner les membres pour un volume de snapshot
 
 Sélectionnez une image instantanée d'un volume de base ou une image instantanée d'un groupe de cohérence. Si vous sélectionnez une image instantanée d'un groupe de cohérence, les volumes membres du groupe de cohérence s'affichent pour consultation.
@@ -48,6 +49,7 @@ Dans la boîte de dialogue Review Members, examinez la liste des volumes sélect
 
 
 
+[[step-2-assign-snapshot-volume-to-host]]
 == Étape 2 : Attribuer le volume de snapshot à l’hôte
 
 Sélectionnez un hôte ou un groupe d'hôtes spécifique pour l'assigner au volume de snapshot. Cette attribution accorde à un hôte ou à un groupe d'hôtes l'accès au volume de snapshot. Vous pouvez choisir d'assigner un hôte ultérieurement, si nécessaire.
@@ -90,6 +92,7 @@ L'attribution d'un volume à un hôte échoue si vous tentez d'attribuer un volu
 
 
 
+[[step-3-reserve-capacity-for-a-snapshot-volume]]
 == Étape 3 : Réserver de la capacité pour un volume d’instantané
 
 Associez de la capacité réservée à un volume de snapshot en lecture/écriture. System Manager suggère les volumes et la capacité en fonction des propriétés du volume de base ou du groupe de cohérence de snapshot. Vous pouvez accepter la configuration de capacité réservée recommandée ou personnaliser le stockage alloué.
@@ -130,6 +133,7 @@ Allouez la capacité réservée en utilisant les directives suivantes.
 
 
 
+[[step-4-edit-settings-for-a-snapshot-volume]]
 == Étape 4 : Modifier les paramètres d’un volume snapshot
 
 Modifiez les paramètres d'un volume d'instantané, tels que son nom, la mise en cache, les seuils d'alerte de capacité réservée, et ainsi de suite.

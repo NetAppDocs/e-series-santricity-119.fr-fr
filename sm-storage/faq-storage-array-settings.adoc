@@ -16,6 +16,7 @@ Cette FAQ peut vous aider si vous cherchez simplement une réponse rapide à une
 
 
 
+[[what-is-automatic-load-balancing]]
 == Qu'est-ce que l'équilibrage de charge automatique ?
 
 La fonction d'équilibrage de charge automatique assure un équilibrage automatisé des E/S et garantit que le trafic d'E/S entrant provenant des hôtes est géré et équilibré dynamiquement entre les deux contrôleurs.
@@ -37,6 +38,7 @@ Tout volume affecté à l'utilisation du cache SSD d'un contrôleur n'est pas é
 ====
 
 
+[[what-is-controller-cache]]
 == Qu'est-ce que le cache du contrôleur ?
 
 Le cache du contrôleur est un espace mémoire physique qui rationalise deux types d'opérations d'E/S (entrée/sortie) : entre les contrôleurs et les hôtes, et entre les contrôleurs et les disques.
@@ -60,6 +62,7 @@ Le cache du contrôleur influe de plusieurs manières sur les performances globa
 ====
 
 
+[[what-is-cache-flushing]]
 == Qu'est-ce que le vidage du cache ?
 
 Lorsque la quantité de données non écrites dans le cache atteint un certain niveau, le contrôleur écrit périodiquement les données mises en cache sur un disque. Ce processus d'écriture est appelé « flushing ».
@@ -79,6 +82,7 @@ L'algorithme basé sur l'âge spécifie la période pendant laquelle les donnée
 ====
 
 
+[[what-is-cache-block-size]]
 == Quelle est la taille d’un bloc de cache ?
 
 Le contrôleur de la baie de stockage organise son cache en « blocs », c’est-à-dire des portions de mémoire qui peuvent être de 8, 16 ou 32 Kio. Tous les volumes du système de stockage partagent le même espace cache ; par conséquent, les volumes ne peuvent avoir qu’une seule taille de bloc de cache.
@@ -87,6 +91,7 @@ Les applications utilisent différentes tailles de bloc, ce qui peut avoir un im
 
 
 
+[[when-should-i-synchronize-storage-array-clocks]]
 == Quand dois-je synchroniser les horloges des baies de stockage ?
 
 Vous devez synchroniser manuellement les horloges du contrôleur de la baie de stockage si vous constatez que les horodatages affichés dans SANtricity System Manager ne sont pas alignés avec les horodatages affichés sur votre client de gestion (l’ordinateur qui accède à SANtricity System Manager via le navigateur). Cette tâche est nécessaire uniquement si NTP (Network Time Protocol) n’est pas activé dans SANtricity System Manager.

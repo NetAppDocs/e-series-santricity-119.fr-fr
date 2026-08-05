@@ -17,6 +17,7 @@ Pour visualiser la hiérarchie de stockage, accédez à la page d'accueil et cli
 
 
 
+[[physical-components]]
 == Composants physiques
 
 Les composants physiques d'une baie de stockage sont décrits dans ce tableau.
@@ -81,6 +82,7 @@ Un client de gestion est l'ordinateur sur lequel un navigateur est installé pou
 |===
 
 
+[[logical-components]]
 == Composants logiques
 
 Les disques de la baie de stockage fournissent la capacité de stockage physique des données. Utilisez System Manager pour configurer la capacité physique en composants logiques, tels que des pools, des groupes de volumes et des volumes. Ces composants sont les outils que vous utilisez pour configurer, stocker, maintenir et préserver les données sur la baie de stockage. Les composants logiques d'une baie de stockage sont décrits dans ce tableau.

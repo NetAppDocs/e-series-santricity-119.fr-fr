@@ -15,12 +15,14 @@ SANtricity Unified Manager est une interface web qui vous permet de gérer plusi
 
 
 
+[[main-page]]
 == Page principale
 
 Lorsque vous vous connectez à Unified Manager, la page principale s'ouvre sur *Manage - All*. À partir de cette page, vous pouvez parcourir la liste des baies de stockage détectées sur votre réseau, consulter leur état et effectuer des opérations sur une baie individuelle ou sur un groupe de baies.
 
 
 
+[[navigation-sidebar]]
 == Barre latérale de navigation
 
 Vous pouvez accéder aux fonctionnalités et fonctions de Unified Manager depuis la barre latérale de navigation.
@@ -71,12 +73,14 @@ Consultez les options de support technique, les ressources et les contacts.
 |===
 
 
+[[interface-settings-and-help]]
 == Paramètres d'interface et aide
 
 En haut à droite de l'interface, vous pouvez accéder à l'aide et à d'autres documentations. Vous pouvez également accéder aux options d'administration, qui sont disponibles dans le menu déroulant à côté de votre nom de connexion.
 
 
 
+[[user-logins-and-passwords]]
 == Identifiants et mots de passe des utilisateurs
 
 L'utilisateur actuellement connecté au système est affiché en haut à droite de l'interface.

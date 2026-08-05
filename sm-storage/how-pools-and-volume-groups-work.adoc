@@ -36,6 +36,7 @@ Vous pouvez avoir des pools ou des groupes de volumes sur le même système de s
 
 
 
+[[pools]]
 == Pools
 
 Les pools sont conçus pour regrouper des disques durs physiques en un grand espace de stockage et pour offrir une protection RAID améliorée. Un pool crée de nombreux ensembles RAID virtuels à partir du nombre total de disques attribués au pool et répartit les données de manière uniforme entre tous les disques participants. Si un disque est perdu ou ajouté, System Manager rééquilibre dynamiquement les données sur tous les disques actifs.
@@ -44,12 +45,14 @@ Les pools fonctionnent comme un autre niveau RAID, virtualisant l'architecture R
 
 
 
+[[drive-matching]]
 === Correspondance des disques
 
 Vous pouvez choisir entre des HDD ou des SSD pour une utilisation dans les pools ; cependant, comme pour les groupes de volumes, tous les disques du pool doivent utiliser la même technologie. Les contrôleurs sélectionnent automatiquement les disques à inclure, vous devez donc vous assurer de disposer d'un nombre suffisant de disques pour la technologie que vous choisissez.
 
 
 
+[[managing-failed-drives]]
 === Gestion des disques défaillants
 
 Les pools ont une capacité minimale de 11 disques ; cependant, la capacité d'un disque est réservée comme capacité de secours en cas de panne disque. Cette capacité de secours est appelée « capacité de préservation ».
@@ -60,6 +63,7 @@ Après la création du pool, vous pouvez modifier la valeur de la capacité de p
 
 
 
+[[volume-groups]]
 == Groupes de volumes
 
 Les groupes de volumes définissent la répartition de la capacité dans le système de stockage entre les volumes. Les disques durs sont organisés en groupes RAID et les volumes résident sur les disques d'un groupe RAID. Par conséquent, les paramètres de configuration du groupe de volumes identifient les disques qui font partie du groupe et le niveau RAID utilisé.
@@ -68,6 +72,7 @@ Lors de la création d'un groupe de volumes, les contrôleurs sélectionnent aut
 
 
 
+[[drive-matching]]
 === Correspondance des disques
 
 Vous devez faire correspondre les disques du groupe de volumes en termes de taille et de performances. S'il y a des disques plus petits et plus grands dans le groupe de volumes, tous les disques sont reconnus comme ayant la plus petite capacité. S'il y a des disques plus lents et plus rapides dans le groupe de volumes, tous les disques sont reconnus à la vitesse la plus lente. Ces facteurs affectent les performances et la capacité globale du système de stockage.
@@ -76,6 +81,7 @@ Il est impossible de mélanger des technologies de disques différentes (HDD et 
 
 
 
+[[managing-failed-drives]]
 === Gestion des disques défaillants
 
 Les groupes de volumes utilisent des disques de secours à chaud comme solution de repli en cas de panne disque dans les volumes RAID 1/10, RAID 3, RAID 5 ou RAID 6 contenus dans un groupe de volumes. Un disque de secours à chaud ne contient aucune donnée et ajoute un niveau de redondance supplémentaire à votre baie de stockage.

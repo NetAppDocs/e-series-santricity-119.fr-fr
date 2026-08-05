@@ -15,6 +15,7 @@ Avant d'importer une configuration de stockage d'une baie de stockage à une aut
 
 
 
+[[shelves]]
 == Tiroirs
 
 * Les étagères sur lesquelles se trouvent les contrôleurs doivent être identiques sur les baies source et cible.
@@ -24,6 +25,7 @@ Avant d'importer une configuration de stockage d'une baie de stockage à une aut
 
 
 
+[[controllers]]
 == Contrôleurs
 
 * Le type de contrôleur peut être différent entre les baies source et cible (par exemple, importation d'un E2800 vers un E5700), mais le type de boîtier RBOD doit être identique.
@@ -34,6 +36,7 @@ Avant d'importer une configuration de stockage d'une baie de stockage à une aut
 
 
 
+[[status]]
 == Statut
 
 * Les baies cibles doivent être dans un état optimal.
@@ -42,6 +45,7 @@ Avant d'importer une configuration de stockage d'une baie de stockage à une aut
 
 
 
+[[storage]]
 == Stockage
 
 * La capacité des disques peut varier entre les baies source et cible, à condition que la capacité du volume sur la cible soit supérieure à celle de la source. (Une baie cible peut comporter des disques plus récents et de plus grande capacité qui ne seraient pas entièrement configurés en volumes par l'opération de réplication.)

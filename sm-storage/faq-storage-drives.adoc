@@ -16,6 +16,7 @@ Cette FAQ peut vous aider si vous cherchez simplement une réponse rapide à une
 
 
 
+[[what-is-a-hot-spare-drive]]
 == Qu'est-ce qu'un disque de secours à chaud ?
 
 Les disques de secours à chaud servent de disques de secours dans les groupes de volumes RAID 1, RAID 5 ou RAID 6. Ce sont des disques pleinement fonctionnels qui ne contiennent aucune donnée. Si un disque tombe en panne dans le groupe de volumes, le contrôleur reconstruit automatiquement les données du disque défaillant vers un disque de secours à chaud.
@@ -31,6 +32,7 @@ Les disques de secours à chaud ne sont pas pris en charge avec les pools. Au li
 ====
 
 
+[[what-is-preservation-capacity]]
 == Qu’est-ce que la capacité de conservation ?
 
 La capacité de préservation correspond à la quantité de capacité (nombre de disques) réservée dans un pool pour prendre en charge d'éventuelles défaillances de disques.
@@ -41,6 +43,7 @@ Lors de la reconstruction, les pools utilisent la capacité de préservation, ta
 
 
 
+[[why-would-i-logically-replace-a-drive]]
 == Pourquoi remplacerais-je logiquement un disque dur
 
 Si un disque tombe en panne ou si vous souhaitez le remplacer pour une autre raison, et si vous disposez d'un disque non attribué dans votre baie de stockage, vous pouvez remplacer logiquement le disque défaillant par le disque non attribué. Si vous ne disposez pas d'un disque non attribué, vous pouvez remplacer physiquement le disque.
@@ -49,6 +52,7 @@ Les données du disque d'origine sont copiées ou reconstruites sur le disque de
 
 
 
+[[where-can-i-view-the-status-of-a-drive-undergoing-reconstruction]]
 == Où puis-je consulter l'état d'un disque en cours de reconstruction ?
 
 Vous pouvez consulter l'état de la reconstruction du disque depuis le tableau de bord Opérations en cours.

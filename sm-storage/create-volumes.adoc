@@ -21,6 +21,7 @@ Le processus de création d'un volume est une procédure en plusieurs étapes.
 
 
 
+[[step-1-select-host-for-a-volume]]
 == Étape 1 : Sélectionner l’hôte pour un volume
 
 Vous créez des volumes pour ajouter de la capacité de stockage à une charge de travail spécifique à une application, et pour rendre les volumes créés visibles pour un hôte ou un cluster d'hôtes spécifique. De plus, la séquence de création de volumes offre des options pour allouer des quantités spécifiques de capacité à chaque volume que vous souhaitez créer.
@@ -61,6 +62,7 @@ La boîte de dialogue Select Workload s'affiche.
 
 
 
+[[step-2-select-a-workload-for-a-volume]]
 == Étape 2 : Sélectionnez une charge de travail pour un volume
 
 Sélectionnez une charge de travail pour personnaliser la configuration de la baie de stockage pour une application spécifique, telle que Microsoft SQL Server, Microsoft Exchange, des applications de vidéosurveillance ou VMware. Vous pouvez sélectionner "Other application" si l’application que vous souhaitez utiliser sur cette baie de stockage n’est pas répertoriée.
@@ -93,6 +95,7 @@ Sélectionnez une des entrées « Other » si l’application que vous souhait
 
 
 
+[[step-3-add-or-edit-volumes]]
 == Étape 3 : Ajouter ou modifier des volumes
 
 Le System Manager peut suggérer une configuration de volume en fonction de l'application ou de la charge de travail que vous avez sélectionnée. Cette configuration de volume est optimisée en fonction du type d'application que la charge de travail prend en charge. Vous pouvez accepter la configuration de volume recommandée ou la modifier selon vos besoins. Si vous avez sélectionné l'une des applications « Autre », vous devez spécifier manuellement les volumes et les caractéristiques que vous souhaitez créer.
@@ -330,6 +333,7 @@ Ressource provisionnée (EF300 et EF600 uniquement)
 
 
 
+[[step-4-review-volume-configuration]]
 == Étape 4 : Vérifier la configuration du volume
 
 Examinez un résumé des volumes que vous envisagez de créer et apportez les modifications nécessaires.

@@ -15,6 +15,7 @@ Pour gérer les ressources de stockage, vous devez d'abord découvrir les baies 
 
 
 
+[[how-do-i-discover-arrays]]
 == Comment puis-je découvrir les arrays ?
 
 Utilisez la page Ajouter/Découvrir pour rechercher et ajouter les baies de stockage que vous souhaitez gérer sur le réseau de votre organisation. Vous pouvez détecter plusieurs baies ou vous pouvez détecter une seule baie. Pour ce faire, vous saisissez les adresses IP du réseau, puis Unified Manager tente des connexions individuelles à chaque adresse IP de cette plage.
@@ -28,6 +29,7 @@ En savoir plus :
 
 
 
+[[how-do-i-manage-arrays]]
 == Comment gérer les arrays ?
 
 Après avoir découvert les baies, accédez à la page *Manage - All*. Depuis cette page, vous pouvez faire défiler la liste des baies de stockage découvertes sur votre réseau, consulter leur état et effectuer des opérations sur une seule baie ou sur un groupe de baies.

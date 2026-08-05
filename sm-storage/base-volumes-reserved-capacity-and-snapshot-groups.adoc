@@ -15,6 +15,7 @@ La fonction Snapshots utilise les volumes de base, la capacité réservée et le
 
 
 
+[[base-volumes]]
 == Volumes de base
 
 Un  est le volume utilisé comme source pour une image instantanée. Un volume de base peut être soit un volume épais, soit un volume mince, et peut résider soit dans un pool, soit dans un groupe de volumes.
@@ -29,6 +30,7 @@ image::../media/sam1130-dwg-snapshots-images-overview.gif[Objets Snapshot et vol
 
 
 
+[[reserved-capacity-and-snapshot-groups]]
 == Capacité réservée et groupes de snapshots
 
 System Manager organise les images instantanées en _groupes d'instantanés_. Lorsque System Manager établit le groupe d'instantanés, il crée automatiquement une _capacité réservée_ associée pour stocker les images instantanées du groupe et suivre les modifications ultérieures apportées aux instantanés supplémentaires.
@@ -43,6 +45,7 @@ Les groupes d'instantanés ne nécessitent aucune intervention de l'utilisateur,
 
 
 
+[[auto-deletion]]
 == Suppression automatique
 
 Lorsque vous travaillez avec des instantanés, utilisez l'option par défaut pour activer la suppression automatique. La suppression automatique supprime automatiquement l'image d'instantané la plus ancienne lorsque le groupe d'instantanés atteint la limite de 32 images. Si vous désactivez la suppression automatique, les limites des groupes d'instantanés sont finalement dépassées et vous devez intervenir manuellement pour configurer les paramètres des groupes d'instantanés et gérer la capacité réservée.

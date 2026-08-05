@@ -15,6 +15,7 @@ La page Performance vous offre des moyens simples de surveiller les performances
 
 
 
+[[what-can-i-learn-from-performance-data]]
 == Que puis-je apprendre des données de performance ?
 
 Les graphiques et tableaux de performances affichent des données de performance en quasi temps réel, ce qui vous permet de déterminer si une baie de stockage rencontre des problèmes. Vous pouvez également enregistrer des données de performance afin de constituer une vue historique d'une baie de stockage et d'identifier quand un problème a commencé ou ce qui a causé un problème.
@@ -27,6 +28,7 @@ En savoir plus :
 
 
 
+[[how-can-i-view-performance-data]]
 == Comment puis-je consulter les données de performance ?
 
 Les données de performance sont disponibles depuis la page d'accueil et depuis la page Storage.

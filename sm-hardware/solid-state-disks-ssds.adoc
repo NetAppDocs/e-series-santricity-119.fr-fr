@@ -15,6 +15,7 @@ Les disques SSD (Solid-state disks) sont des périphériques de stockage des don
 
 
 
+[[advantages-of-ssds]]
 == Avantages des SSD
 
 Les avantages des SSD par rapport aux disques durs incluent :
@@ -29,18 +30,21 @@ Les avantages des SSD par rapport aux disques durs incluent :
 
 
 
+[[identifying-ssds]]
 == Identification des SSD
 
 Sur la page Matériel, vous pouvez localiser les SSD dans la vue de la façade avant. Recherchez les baies de disque affichant une icône d'éclair, ce qui indique qu'un SSD est installé.
 
 
 
+[[volume-groups]]
 == Groupes de volumes
 
 Tous les disques d'un groupe de volumes doivent être du même type de support (soit tous des SSD, soit tous des disques durs). Les groupes de volumes ne peuvent pas contenir un mélange de types de supports ou de types d'interfaces.
 
 
 
+[[caching]]
 == Mise en cache
 
 La mise en cache en écriture du contrôleur est toujours activée pour les SSD. La mise en cache en écriture améliore les performances et prolonge la durée de vie du SSD.

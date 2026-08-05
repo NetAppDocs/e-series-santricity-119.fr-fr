@@ -16,6 +16,7 @@ Si vous disposez de la fonctionnalité Remote Storage, vous pouvez importer des 
 
 
 
+[[what-is-the-remote-storage-feature]]
 == Qu'est-ce que la fonctionnalité Remote Storage ?
 
 La fonctionnalité _Stockage distant_ vous permet d'importer des données depuis un système de stockage distant vers un système de stockage E-Series. Le système distant peut être un autre système E-Series ou un système d'un autre fournisseur. Cette fonctionnalité est utile lorsque vous souhaitez simplifier la migration des données avec une interruption minimale, par exemple lors de mises à niveau d'équipement.
@@ -33,6 +34,7 @@ En savoir plus :
 
 
 
+[[how-do-i-import-data-with-this-feature]]
 == Comment importer des données avec cette fonctionnalité ?
 
 L'assistant de stockage distant vous permet d'associer un périphérique de stockage distant (la source de l'importation des données) à un volume cible sur le système E-Series. Cet assistant est accessible via le menu : Storage[Remote storage].

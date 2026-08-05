@@ -16,6 +16,7 @@ Vous pouvez effectuer un certain nombre d'actions différentes sur un volume : a
 
 
 
+[[increase-capacity]]
 == Augmenter la capacité
 
 Vous pouvez augmenter la capacité d'un volume de deux manières :
@@ -37,6 +38,7 @@ Après avoir augmenté la capacité du volume, vous devez augmenter manuellement
 
 
 
+[[delete]]
 == Supprimer
 
 En règle générale, vous supprimez les volumes si les volumes ont été créés avec des paramètres ou une capacité incorrects, ne répondent plus aux besoins de configuration de stockage, ou sont des images instantanées qui ne sont plus nécessaires pour la sauvegarde ou les tests d'applications. La suppression d'un volume augmente la capacité libre dans le pool ou le groupe de volumes.
@@ -45,12 +47,14 @@ La suppression de volumes entraîne la perte de toutes les données sur ces volu
 
 
 
+[[copy]]
 == Copier
 
 Lorsque vous copiez des volumes, vous créez une copie à un instant donné de deux volumes distincts, le volume source et le volume cible, sur la même baie de stockage. Vous pouvez copier des volumes en sélectionnant menu:Storage[Volumes > Copy Services > Copy volume].
 
 
 
+[[initialize]]
 == Initialiser
 
 L'initialisation d'un volume efface toutes les données du volume. Un volume est automatiquement initialisé lorsqu'il est créé pour la première fois. Cependant, le Recovery Guru peut vous conseiller d'initialiser manuellement un volume pour récupérer certaines conditions de défaillance. Lorsque vous initialisez un volume, le volume conserve son WWN, ses affectations d'hôtes, sa capacité allouée et ses paramètres de capacité réservée. Il conserve également les mêmes paramètres Data Assurance (DA) et paramètres de sécurité.
@@ -59,6 +63,7 @@ Vous pouvez initialiser les volumes en sélectionnant le menu : Storage [Volume
 
 
 
+[[redistribute]]
 == Redistribuer
 
 Vous redistribuez les volumes pour les ramener à leurs contrôleurs propriétaires préférés. Généralement, les pilotes multipath déplacent les volumes de leur contrôleur propriétaire préféré lorsqu'un problème survient sur le chemin d'accès aux données entre l'hôte et la baie de stockage.
@@ -69,6 +74,7 @@ Vous pouvez redistribuer les volumes en sélectionnant menu : Storage[Volumes >
 
 
 
+[[change-volume-ownership]]
 == Changer la propriété du volume
 
 La modification du propriétaire d'un volume modifie le contrôleur propriétaire préféré de ce volume. Le contrôleur propriétaire préféré d'un volume est indiqué dans le menu : Storage [Volumes > View/Edit Settings > Advanced tab].
@@ -77,6 +83,7 @@ Vous pouvez modifier le propriétaire d'un volume en sélectionnant le menu : S
 
 
 
+[[mirroring-and-volume-ownership]]
 === Mise en miroir et propriété de volume
 
 Si le volume principal de la paire en miroir appartient au contrôleur A, alors le volume secondaire appartiendra également au contrôleur A de la baie de stockage distante. Changer le propriétaire du volume principal modifiera automatiquement le propriétaire du volume secondaire afin que les deux volumes appartiennent au même contrôleur. Les modifications de propriété actuelles du côté principal sont automatiquement propagées aux modifications de propriété actuelles correspondantes du côté secondaire.
@@ -85,6 +92,7 @@ Si un groupe de cohérence miroir contient un volume secondaire local et que la 
 
 
 
+[[copy-volume-and-volume-ownership]]
 === Copie de volume et propriété du volume
 
 Lors d'une opération de copie de volume, le même contrôleur doit être propriétaire à la fois du volume source et du volume cible. Il arrive que les deux volumes n'aient pas le même contrôleur préféré lorsque l'opération de copie de volume commence. Par conséquent, la propriété du volume cible est automatiquement transférée au contrôleur préféré du volume source. Lorsque la copie de volume est terminée ou arrêtée, la propriété du volume cible est rétablie sur son contrôleur préféré.
@@ -93,6 +101,7 @@ Si le propriétaire du volume source est modifié pendant l'opération de copie 
 
 
 
+[[change-cache-settings]]
 == Modifier les paramètres du cache
 
 La mémoire cache est une zone de stockage temporaire volatile (RAM) du contrôleur dont le temps d'accès est plus rapide que celui du support de stockage. Si vous utilisez la mémoire cache, vous pouvez augmenter les performances d'E/S globales pour les raisons suivantes :
@@ -120,6 +129,7 @@ Pour un volume mince, la prélecture dynamique du cache est toujours désactivé
 
 
 
+[[change-media-scan-settings]]
 == Modifier les paramètres de numérisation des supports
 
 Les analyses des supports détectent et réparent les erreurs de support sur les blocs de disque qui sont rarement lus par les applications. Cette analyse peut prévenir la perte de données si d'autres disques du pool ou du groupe de volumes tombent en panne, car les données des disques défaillants sont reconstruites à l'aide des informations de redondance et des données provenant d'autres disques du pool ou du groupe de volumes.

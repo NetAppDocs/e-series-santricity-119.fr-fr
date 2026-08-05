@@ -15,6 +15,7 @@ Vous créez des pools automatiquement ou manuellement pour permettre le regroupe
 
 
 
+[[automatic-creation]]
 == Création automatique
 
 La création automatique de pools est déclenchée lorsque System Manager détecte de la capacité non allouée dans une baie de stockage. Lorsque de la capacité non allouée est détectée, System Manager vous invite automatiquement à créer un ou plusieurs pools, à ajouter la capacité non allouée à un pool existant, ou les deux.
@@ -35,6 +36,7 @@ Chaque disque d'un pool doit être du même type (HDD ou SSD) et avoir une capac
 
 
 
+[[manual-creation]]
 == Création manuelle
 
 Il peut être nécessaire de créer un pool manuellement lorsque la création automatique ne parvient pas à déterminer la meilleure configuration. Cette situation peut se produire pour l'une des raisons suivantes :

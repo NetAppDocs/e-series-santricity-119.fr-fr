@@ -52,6 +52,7 @@ Lors de la connexion, le système effectue les tâches d'arrière-plan suivantes
 
 
 
+[[tasks-available-in-system-manager]]
 == Tâches disponibles dans System Manager
 
 L'accès aux tâches dépend des rôles attribués à l'utilisateur, qui comprennent les suivants :
@@ -66,6 +67,7 @@ Une tâche indisponible est grisée ou n'apparaît pas dans l'interface utilisat
 
 
 
+[[limitations-in-unified-manager-and-storage-manager]]
 == Limitations dans Unified Manager et Storage Manager
 
 Si SAML est configuré pour une baie de stockage, les utilisateurs ne peuvent pas découvrir ni gérer le stockage de cette baie à partir des interfaces Unified Manager ou Storage Manager héritées.

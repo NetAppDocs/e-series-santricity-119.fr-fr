@@ -34,6 +34,7 @@ Le processus de démarrage du retour arrière d'une image instantanée d'un grou
 
 
 
+[[step-1-select-members]]
 == Étape 1 : Sélectionner les membres
 
 Vous devez sélectionner les volumes membres à restaurer.
@@ -56,6 +57,7 @@ La boîte de dialogue « Start Rollback » s'affiche.
 
 
 
+[[step-2-review-capacity]]
 == Étape 2 : Examiner la capacité
 
 Si vous avez sélectionné des volumes membres associés à plus d’un objet de capacité réservée, tels qu’un groupe d’instantanés et un volume de capacité réservée, vous pouvez examiner et augmenter la capacité réservée pour le(s) volume(s) restauré(s).
@@ -77,6 +79,7 @@ La boîte de dialogue Modifier la priorité apparaît.
 
 
 
+[[step-3-edit-priority]]
 == Étape 3 : Modifier la priorité
 
 Vous pouvez modifier la priorité de l'opération de restauration si nécessaire.

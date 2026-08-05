@@ -19,6 +19,7 @@ Les opérations de copie de volume hors ligne et en ligne sont décrites ci-dess
 
 
 
+[[offline-copy-volume-operation]]
 == Opération de copie de volume hors ligne
 
 La relation de copie hors ligne s'établit entre un volume source et un volume cible. Une copie hors ligne lit les données du volume source et les copie sur un volume cible, tout en suspendant toutes les mises à jour du volume source pendant la copie en cours. Toutes les mises à jour du volume source sont suspendues afin d'éviter que des incohérences chronologiques ne soient créées sur le volume cible.
@@ -49,6 +50,7 @@ système de fichiers journalisé
 |===
 
 
+[[online-copy-volume-operation]]
 == Opération de copie de volume en ligne
 
 La relation de copie de volume en ligne s'établit entre un volume snapshot et un volume cible. Vous pouvez lancer une opération de copie de volume pendant que le volume source est en ligne et disponible pour les écritures de données. Cette fonction est réalisée en créant un snapshot du volume et en utilisant le snapshot comme volume source pour la copie.

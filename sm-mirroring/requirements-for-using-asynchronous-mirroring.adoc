@@ -16,6 +16,7 @@ Si vous prévoyez d'utiliser la mise en miroir asynchrone, gardez à l'esprit le
 
 
 
+[[unified-manager]]
 == Gestionnaire unifié
 
 Pour activer et configurer la mise en miroir entre deux baies, vous devez utiliser l'interface Unified Manager. Unified Manager est installé sur un système hôte avec le Web Services Proxy.
@@ -27,6 +28,7 @@ Pour activer et configurer la mise en miroir entre deux baies, vous devez utilis
 
 
 
+[[storage-arrays]]
 == baies de stockage
 
 * Vous devez disposer de deux baies de stockage.
@@ -41,6 +43,7 @@ Pour activer et configurer la mise en miroir entre deux baies, vous devez utilis
 
 
 
+[[supported-connections]]
 == Connexions prises en charge
 
 La mise en miroir asynchrone peut utiliser des connexions FC ou iSCSI, ou les deux, pour la communication entre les systèmes de stockage local et distant. Au moment de créer un groupe de cohérence de miroir, l'administrateur peut sélectionner soit FC, soit iSCSI pour ce groupe si les deux sont connectés à la baie de stockage distante. Il n'y a pas de basculement d'un type de canal à l'autre.
@@ -92,6 +95,7 @@ E4000 ne prend pas en charge la mise en miroir asynchrone lors de l'utilisation 
 ====
 
 
+[[mirrored-volume-candidates]]
 == Candidats à volume miroir
 
 * Le niveau RAID, les paramètres de mise en cache et la taille des segments peuvent être différents sur les volumes primaire et secondaire d'une paire miroir asynchrone.
@@ -114,6 +118,7 @@ NOTE: Pour les contrôleurs EF600 et EF300, les volumes primaire et secondaire d
 
 
 
+[[reserved-capacity]]
 == Capacité réservée
 
 * Un volume de capacité réservé est requis pour un volume principal et pour un volume secondaire dans une paire en miroir pour consigner les informations d'écriture afin de récupérer après des réinitialisations du contrôleur et d'autres interruptions temporaires.
@@ -128,6 +133,7 @@ NOTE: Pour les contrôleurs EF600 et EF300, les volumes primaire et secondaire d
 
 
 
+[[drive-security-feature]]
 == Fonction de sécurité du lecteur
 
 * Si vous utilisez des disques compatibles avec la sécurité, le volume principal et le volume secondaire doivent avoir des paramètres de sécurité compatibles. Cette restriction n'est pas appliquée ; vous devez donc la vérifier vous-même.

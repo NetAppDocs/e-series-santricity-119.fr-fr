@@ -16,6 +16,7 @@ Cette FAQ peut vous aider si vous cherchez simplement une réponse rapide à une
 
 
 
+[[what-data-am-i-collecting]]
 == Quelles données suis-je en train de collecter ?
 
 La fonctionnalité AutoSupport et la fonctionnalité de collecte manuelle des données de support offrent des moyens de collecter des données dans un bundle de support client pour le dépannage à distance et l'analyse des problèmes par le support technique.
@@ -24,6 +25,7 @@ Le bundle de support client regroupe tous les types d'informations concernant la
 
 
 
+[[what-does-unreadable-sectors-data-show-me]]
 == Que m'indiquent les données des secteurs illisibles ?
 
 Vous pouvez afficher des données détaillées sur les secteurs illisibles détectés sur les disques de votre baie de stockage.
@@ -104,6 +106,7 @@ Affiche l'un des types de défaillance suivants :
 |===
 
 
+[[what-is-a-health-image]]
 == Qu'est-ce qu'une image de santé ?
 
 Une image de santé est un vidage brut des données de la mémoire du processeur du contrôleur, que le support technique peut utiliser pour diagnostiquer un problème avec un contrôleur.
@@ -112,6 +115,7 @@ Le micrologiciel génère automatiquement une image de santé lorsqu'il détecte
 
 
 
+[[what-do-the-autosupport-features-do]]
 == Que font les fonctionnalités AutoSupport ?
 
 La fonctionnalité AutoSupport est composée de trois fonctionnalités individuelles que vous activez séparément.
@@ -123,6 +127,7 @@ La fonctionnalité AutoSupport est composée de trois fonctionnalités individue
 
 
 
+[[what-type-of-data-is-collected-through-the-autosupport-feature]]
 == Quel type de données est collecté via la fonctionnalité AutoSupport ?
 
 La fonctionnalité AutoSupport contient trois types d’envoi standard : les envois liés à des événements, les envois planifiés et les envois de diagnostic à la demande et à distance.
@@ -157,6 +162,7 @@ La fonctionnalité AutoSupport envoie automatiquement plusieurs envois à interv
 
 
 
+[[how-do-i-configure-the-delivery-method-for-the-autosupport-feature]]
 == Comment configurer la méthode de livraison pour la fonctionnalité AutoSupport ?
 
 La fonctionnalité AutoSupport prend en charge les protocoles HTTPS et SMTP pour la livraison des envois AutoSupport au support technique.
@@ -213,6 +219,7 @@ Si le test de configuration échoue, vérifiez vos paramètres de configuration 
 
 
 
+[[what-is-configuration-data]]
 == Que sont les données de configuration ?
 
 Lorsque vous sélectionnez Collecter les données de configuration, le système enregistre l'état actuel de la base de données de configuration RAID.
@@ -221,6 +228,7 @@ La base de données de configuration RAID inclut toutes les données relatives a
 
 
 
+[[what-do-i-need-to-know-before-upgrading-the-santricity-os-software]]
 == Que dois-je savoir avant de mettre à jour le logiciel SANtricity OS ?
 
 Avant de mettre à jour le logiciel et le micrologiciel de votre contrôleur, veuillez prendre en compte les éléments suivants.
@@ -268,6 +276,7 @@ CAUTION: Ne modifiez pas la baie de stockage pendant la mise à niveau.
 
 
 
+[[what-do-i-need-to-know-before-suspending-iom-auto-synchronization]]
 == Que dois-je savoir avant de suspendre la synchronisation automatique IOM ?
 
 La suspension de la synchronisation automatique de l'IOM empêche la mise à niveau du firmware de l'IOM lors de la prochaine mise à niveau du logiciel du contrôleur SANtricity OS.
@@ -276,6 +285,7 @@ Normalement, le logiciel du contrôleur et le firmware IOM sont mis à niveau en
 
 
 
+[[why-is-my-firmware-upgrade-progressing-so-slowly]]
 == Pourquoi la mise à niveau de mon firmware progresse-t-elle si lentement ?
 
 La progression de la mise à niveau du firmware dépend de la charge globale du système.
@@ -284,6 +294,7 @@ Lors d'une mise à niveau en ligne du firmware des disques, si un transfert de v
 
 
 
+[[what-do-i-need-to-know-before-upgrading-drive-firmware]]
 == Que dois-je savoir avant de mettre à niveau le firmware des disques ?
 
 Avant de mettre à niveau le firmware de vos disques, tenez compte des points suivants.
@@ -298,6 +309,7 @@ Avant de mettre à niveau le firmware de vos disques, tenez compte des points su
 
 
 
+[[how-do-i-choose-which-type-of-upgrade-to-perform]]
 == Comment choisir le type de mise à niveau à effectuer ?
 
 Vous choisissez le type de mise à niveau à effectuer sur le disque en fonction de l'état du pool ou du groupe de volumes.

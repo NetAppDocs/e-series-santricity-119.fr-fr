@@ -16,12 +16,14 @@ Cette FAQ peut vous aider si vous cherchez simplement une réponse rapide à une
 
 
 
+[[what-is-a-volume-group]]
 == Qu'est-ce qu'un groupe de volumes ?
 
 Un groupe de volumes est un conteneur pour des volumes partageant des caractéristiques communes. Un groupe de volumes possède une capacité et un niveau RAID définis. Vous pouvez utiliser un groupe de volumes pour créer un ou plusieurs volumes accessibles à un hôte. (Vous créez des volumes à partir d’un groupe de volumes ou d’un pool.)
 
 
 
+[[what-is-a-pool]]
 == Qu'est-ce qu'un pool ?
 
 Un pool est un ensemble de disques regroupés logiquement. Vous pouvez utiliser un pool pour créer un ou plusieurs volumes accessibles à un hôte. (Vous créez des volumes à partir d’un pool ou d’un groupe de volumes.)
@@ -32,6 +34,7 @@ Avec les pools, les données sont automatiquement redistribuées pour maintenir 
 
 
 
+[[what-is-reserved-capacity]]
 == Qu'est-ce que la capacité réservée ?
 
 La capacité réservée est la capacité physiquement allouée qui stocke les données des objets de service de copie tels que les images instantanées, les volumes membres de groupe de cohérence et les volumes de paires en miroir.
@@ -40,6 +43,7 @@ Le volume de capacité réservée associé à une opération de service de copie
 
 
 
+[[what-is-fdefips-security]]
 == Qu'est-ce que la sécurité FDE/FIPS ?
 
 La sécurité FDE/FIPS désigne les disques sécurisés qui chiffrent les données lors de l'écriture et les déchiffrent lors de la lecture à l'aide d'une clé de chiffrement unique. Ces disques sécurisés empêchent tout accès non autorisé aux données d'un disque physiquement retiré de la baie de stockage.
@@ -53,6 +57,7 @@ Pour les volumes nécessitant la prise en charge FIPS, utilisez uniquement des d
 ====
 
 
+[[what-is-redundancy-check]]
 == Qu'est-ce qu'un contrôle de redondance ?
 
 Un contrôle de redondance détermine si les données d'un volume au sein d'un pool ou d'un groupe de volumes sont cohérentes. Les données de redondance sont utilisées pour reconstruire rapidement les informations sur un disque de remplacement si l'un des disques du pool ou du groupe de volumes tombe en panne.
@@ -71,6 +76,7 @@ L'exécution immédiate d'une vérification de redondance sur le même pool ou g
 ====
 
 
+[[what-are-the-differences-between-pools-and-volume-groups]]
 == Quelles sont les différences entre les pools et les groupes de volume ?
 
 Un pool est similaire à un groupe de volumes, avec les différences suivantes.
@@ -84,6 +90,7 @@ Un pool est similaire à un groupe de volumes, avec les différences suivantes.
 
 
 
+[[why-would-i-want-to-manually-configure-a-pool]]
 == Pourquoi voudrais-je configurer manuellement un pool ?
 
 Les exemples suivants décrivent pourquoi vous souhaiteriez configurer manuellement un pool.
@@ -103,6 +110,7 @@ Pour ajouter manuellement des disques à un pool existant : depuis la page Pools
 
 
 
+[[why-are-capacity-alerts-important]]
 == Pourquoi les alertes de capacité sont-elles importantes ?
 
 Les alertes de capacité indiquent quand ajouter des disques à un pool. Un pool nécessite une capacité libre suffisante pour effectuer avec succès les opérations de la baie de stockage. Vous pouvez éviter les interruptions de ces opérations en configurant SANtricity System Manager pour envoyer des alertes lorsque la capacité libre d'un pool atteint ou dépasse un pourcentage spécifié.
@@ -116,6 +124,7 @@ Lorsque la capacité libre dans le pool atteint le pourcentage spécifié, une n
 ====
 
 
+[[why-cant-i-increase-my-preservation-capacity]]
 == Pourquoi ne puis-je pas augmenter ma capacité de conservation ?
 
 Si vous avez créé des volumes sur toute la capacité utilisable disponible, vous ne pourrez peut-être pas augmenter la capacité de préservation.
@@ -131,6 +140,7 @@ La capacité de préservation est spécifiée en nombre de disques, même si la 
 ====
 
 
+[[is-there-a-limit-on-the-number-of-drives-i-can-remove-from-a-pool]]
 == Existe-t-il une limite au nombre de disques que je peux retirer d'un pool ?
 
 SANtricity System Manager définit des limites pour le nombre de disques que vous pouvez retirer d'un pool.
@@ -142,12 +152,14 @@ SANtricity System Manager définit des limites pour le nombre de disques que vou
 
 
 
+[[what-media-types-are-supported-for-a-drive]]
 == Quels types de supports sont pris en charge pour un lecteur ?
 
 Les types de supports suivants sont pris en charge : Hard Disk Drive (HDD) et Solid State Disk (SSD).
 
 
 
+[[why-are-some-drives-not-showing-up]]
 == Pourquoi certains disques ne s'affichent-ils pas ?
 
 Dans la boîte de dialogue Ajouter de la capacité, tous les disques ne sont pas disponibles pour ajouter de la capacité à un pool ou à un groupe de volumes existant.
@@ -176,6 +188,7 @@ La capacité peut être augmentée dans votre baie de stockage en ajoutant de no
 ====
 
 
+[[how-do-i-maintain-shelfdrawer-loss-protection]]
 == Comment puis-je maintenir la protection contre la perte d'étagère/tiroir ?
 
 Pour maintenir la protection contre les pertes d'étagères/tiroirs pour un pool ou un groupe de volumes, utilisez les critères spécifiés dans le tableau suivant.
@@ -240,6 +253,7 @@ La protection contre la perte d'accès à une baie ou un tiroir n'est pas mainte
 ====
 
 
+[[what-is-the-optimal-drive-positioning-for-pools-and-volume-groups]]
 == Quel est le positionnement optimal des disques pour les pools et les groupes de volumes ?
 
 Lors de la création de pools et de groupes de volumes, veillez à équilibrer la sélection des disques entre les emplacements de disques supérieurs et inférieurs.
@@ -248,12 +262,14 @@ Pour les contrôleurs EF600 et EF300, les emplacements de disques 0 à 11 sont c
 
 
 
+[[what-raid-level-is-best-for-my-application]]
 == Quel niveau RAID est le mieux adapté à mon application ?
 
 Pour optimiser les performances d'un groupe de volumes, vous devez sélectionner le niveau RAID approprié. Vous pouvez déterminer le niveau RAID approprié en connaissant les pourcentages de lecture et d'écriture des applications qui accèdent au groupe de volumes. Utilisez la page Performance pour obtenir ces pourcentages.
 
 
 
+[[raid-levels-and-application-performance]]
 === Niveaux RAID et performance de l'application
 
 Le RAID repose sur une série de configurations, appelées , qui déterminent comment les données utilisateur et les données de redondance sont écrites et récupérées sur les disques. Chaque niveau RAID offre différentes caractéristiques de performance. Les applications avec un pourcentage élevé de lectures fonctionneront bien avec des volumes RAID 5 ou RAID 6 en raison de l'excellente performance de lecture des configurations RAID 5 et RAID 6.
@@ -382,6 +398,7 @@ Il est impossible de modifier le niveau RAID d'un pool. L'interface utilisateur 
 ====
 
 
+[[raid-levels-and-data-protection]]
 === Niveaux RAID et protection des données
 
 RAID 1, RAID 5 et RAID 6 écrivent des données de redondance sur le support du disque pour la tolérance aux pannes. Les données de redondance peuvent être une copie des données (en miroir) ou un code de correction d’erreurs dérivé des données. Vous pouvez utiliser les données de redondance pour reconstruire rapidement les informations sur un disque de remplacement en cas de panne disque.
@@ -390,6 +407,7 @@ Vous configurez un seul niveau RAID sur un seul groupe de volumes. Toutes les do
 
 
 
+[[what-is-data-assurance]]
 == Qu'est-ce que l'assurance des données ?
 
 L'assurance des données (DA) met en œuvre la norme T10 Protection Information (PI), qui augmente l'intégrité des données en vérifiant et en corrigeant les erreurs qui pourraient survenir lors du transfert des données le long du chemin d'E/S.
@@ -402,12 +420,14 @@ Assurez-vous d’assigner ces volumes compatibles DA à un hôte utilisant une i
 
 
 
+[[what-is-secure-capable-drive-security]]
 == Qu'est-ce que secure-capable (Drive Security) ?
 
 La sécurité des disques est une fonctionnalité qui empêche tout accès non autorisé aux données sur des disques sécurisés lorsqu'ils sont retirés de la baie de stockage. Ces disques peuvent être soit des disques à chiffrement complet (FDE), soit des disques Federal Information Processing Standard (FIPS).
 
 
 
+[[what-do-i-need-to-know-about-increasing-reserved-capacity]]
 == Que dois-je savoir sur l'augmentation de la capacité réservée ?
 
 En règle générale, vous devez augmenter la capacité lorsque vous recevez un avertissement indiquant que la capacité réservée risque d'être saturée. Vous pouvez augmenter la capacité réservée uniquement par incréments de 8 Gio.
@@ -425,6 +445,7 @@ Pour les opérations de snapshot, la capacité réservée représente générale
 
 
 
+[[why-cant-i-choose-another-amount-to-decrease-by]]
 == Pourquoi ne puis-je pas choisir un autre montant à diminuer ?
 
 Vous ne pouvez réduire la capacité réservée que du montant utilisé pour l’augmenter. La capacité réservée pour les volumes membres ne peut être supprimée que dans l’ordre inverse de leur ajout.
@@ -443,6 +464,7 @@ Vous ne pouvez pas réduire la capacité réservée d'un volume de snapshot en l
 
 
 
+[[why-do-i-need-reserved-capacity-for-each-member-volume]]
 == Pourquoi ai-je besoin d'une capacité réservée pour chaque volume membre ?
 
 Chaque volume membre d'un groupe de cohérence d'instantané doit disposer de sa propre capacité réservée afin de sauvegarder toute modification apportée par l'application hôte au volume de base, sans affecter l'image d'instantané du groupe de cohérence référencé. La capacité réservée confère à l'application hôte un accès en écriture à une copie des données contenues dans le volume membre désigné comme lecture-écriture.
@@ -453,6 +475,7 @@ Lors de la création d'un volume de snapshot de groupe de cohérence désigné c
 
 
 
+[[how-do-i-view-and-interpret-all-ssd-cache-statistics]]
 == Comment puis-je consulter et interpréter toutes les statistiques du cache SSD ?
 
 Vous pouvez consulter les statistiques nominales et les statistiques détaillées pour le cache SSD. Les statistiques nominales sont un sous-ensemble des statistiques détaillées.
@@ -461,6 +484,7 @@ Les statistiques détaillées ne peuvent être consultées que lorsque vous expo
 
 
 
+[[nominal-statistics]]
 === Statistiques nominales
 
 Pour consulter les statistiques du cache SSD, sélectionnez le menu : Storage[Pools & Volume Groups]. Sélectionnez le SSD Cache dont vous souhaitez consulter les statistiques, puis sélectionnez le menu : More[View Statistics]. Les statistiques nominales s’affichent dans la boîte de dialogue View SSD Cache Statistics.
@@ -513,6 +537,7 @@ La quantité de stockage SSD Cache contenant des données provenant de volumes a
 |===
 
 
+[[detailed-statistics]]
 === Statistiques détaillées
 
 Les statistiques détaillées comprennent les statistiques nominales, ainsi que des statistiques supplémentaires. Ces statistiques supplémentaires sont enregistrées avec les statistiques nominales, mais contrairement aux statistiques nominales, elles ne s'affichent pas dans la boîte de dialogue Afficher les statistiques du cache SSD. Vous pouvez consulter les statistiques détaillées uniquement après avoir exporté les statistiques vers un fichier  `.csv`.
@@ -637,6 +662,7 @@ Le nombre d'octets alloués dans le cache SSD qui contiennent des données prove
 |===
 
 
+[[what-is-optimization-capacity-for-pools]]
 == Quelle est la capacité d'optimisation des pools ?
 
 Les disques SSD auront une durée de vie plus longue et de meilleures performances d'écriture maximales lorsqu'une partie de leur capacité n'est pas allouée.
@@ -652,6 +678,7 @@ Le curseur de capacité d'optimisation supplémentaire est uniquement disponible
 ====
 
 
+[[what-is-optimization-capacity-for-volume-groups]]
 == Quelle est la capacité d'optimisation pour les groupes de volumes ?
 
 Les disques SSD auront une durée de vie plus longue et de meilleures performances d'écriture maximales lorsqu'une partie de leur capacité n'est pas allouée.
@@ -667,6 +694,7 @@ Le curseur de capacité d'optimisation supplémentaire est uniquement disponible
 ====
 
 
+[[what-is-resource-provisioning-capable]]
 == Quelles sont les capacités de l'approvisionnement en ressources ?
 
 L'approvisionnement en ressources est une fonctionnalité disponible dans les baies de stockage EF300 et EF600, qui permet de mettre les volumes en service immédiatement sans processus d'initialisation en arrière-plan.
@@ -680,6 +708,7 @@ NOTE: DULBE n'est pas pris en charge sur les baies de stockage EF300C ou EF600C 
 
 
 
+[[what-do-i-need-to-know-about-the-resource-provisioned-volumes-feature]]
 == Que dois-je savoir sur la fonctionnalité des volumes provisionnés en ressources ?
 
 L'approvisionnement en ressources est une fonctionnalité disponible dans les baies de stockage EF300 et EF600, qui permet de mettre les volumes en service immédiatement sans processus d'initialisation en arrière-plan.

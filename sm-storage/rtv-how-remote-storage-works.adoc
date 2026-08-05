@@ -18,6 +18,7 @@ Pour configurer la fonctionnalité de stockage distant, vous devez d'abord insta
 
 
 
+[[hardware-setup]]
 == Configuration matérielle
 
 Utilisez le workflow suivant pour préparer les connexions matérielles.
@@ -55,6 +56,7 @@ Sur le système de stockage distant :
 
 
 
+[[system-manager-setup]]
 == Configuration de System Manager
 
 Utilisez le workflow suivant pour créer un objet de stockage distant pour l'import :

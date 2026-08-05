@@ -29,6 +29,7 @@ Le processus d'alerte fonctionne comme suit :
 
 
 
+[[alerts-configuration]]
 == Configuration des alertes
 
 Vous pouvez configurer les alertes depuis l'assistant de configuration initiale (pour les alertes par e-mail uniquement) ou depuis la page Alertes. Pour consulter la configuration actuelle, accédez au menu:Settings[Alerts].
@@ -41,6 +42,7 @@ La vignette Alertes affiche la configuration des alertes, qui peut être l'une d
 
 
 
+[[alerts-information]]
 == Informations d'alerte
 
 Les alertes peuvent inclure les types d'informations suivants :

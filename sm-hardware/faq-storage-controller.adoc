@@ -16,6 +16,7 @@ Cette FAQ peut vous aider si vous cherchez simplement une réponse rapide à une
 
 
 
+[[what-is-auto-negotiation]]
 == Qu'est-ce que l'auto-négociation ?
 
 L'auto-négociation est la capacité d'une interface réseau à coordonner automatiquement ses propres paramètres de connexion (vitesse et duplex) avec une autre interface réseau.
@@ -29,6 +30,7 @@ Si la négociation automatique échoue, le contrôleur tente d'établir une conn
 ====
 
 
+[[what-is-ipv6-stateless-address-auto-configuration]]
 == Qu'est-ce que la configuration automatique d'adresse sans état IPv6 ?
 
 Avec la configuration automatique sans état, les hôtes n'obtiennent pas d'adresses ni d'autres informations de configuration auprès d'un serveur.
@@ -49,12 +51,14 @@ Les appareils effectuent ces étapes lors de l'utilisation de la configuration a
 
 
 
+[[which-do-i-choose-dhcp-or-manual-configuration]]
 == Que choisir — DHCP ou configuration manuelle ?
 
 La méthode par défaut pour la configuration réseau est le protocole Dynamic Host Configuration Protocol (DHCP). Utilisez toujours cette option sauf si votre réseau ne dispose pas de serveur DHCP.
 
 
 
+[[what-is-a-dhcp-server]]
 == Qu'est-ce qu'un serveur DHCP ?
 
 Dynamic Host Configuration Protocol (DHCP) est un protocole qui automatise la tâche d'attribution d'une adresse IP (Internet Protocol).
@@ -65,6 +69,7 @@ Sans DHCP, un administrateur réseau saisit ces adresses IP manuellement. Avec D
 
 
 
+[[how-do-i-configure-my-dhcp-server]]
 == Comment configurer mon serveur DHCP ?
 
 Vous devez configurer un serveur Dynamic Host Configuration Protocol (DHCP) pour utiliser des adresses Internet Protocol (IP) statiques pour les contrôleurs de votre baie de stockage.
@@ -75,6 +80,7 @@ Pour plus d'informations sur la façon d'attribuer des adresses statiques, consu
 
 
 
+[[why-do-i-need-to-change-the-controller-network-configuration]]
 == Pourquoi dois-je modifier la configuration réseau du contrôleur ?
 
 Vous devez configurer la configuration réseau de chaque contrôleur--son adresse Internet Protocol (IP), son masque de sous-réseau (subnet mask) et sa passerelle--lorsque vous utilisez la gestion hors bande.
@@ -83,6 +89,7 @@ Vous pouvez configurer le réseau à l'aide d'un serveur Dynamic Host Configurat
 
 
 
+[[where-do-i-get-the-network-configuration]]
 == Où puis-je obtenir la configuration réseau ?
 
 Vous pouvez obtenir l'adresse de protocole Internet (IP), le masque de sous-réseau (subnet mask) et les informations de passerelle auprès de votre administrateur réseau.
@@ -91,6 +98,7 @@ Vous avez besoin de ces informations lorsque vous configurez les ports sur les c
 
 
 
+[[what-are-icmp-ping-responses]]
 == Que sont les réponses ICMP PING ?
 
 Internet Control Message Protocol (ICMP) est l'un des protocoles de la suite TCP/IP.
@@ -99,6 +107,7 @@ Les  `ICMP echo request` et les (`ICMP echo reply` messages sont communément ap
 
 
 
+[[when-should-i-refresh-the-port-configuration]]
 == Quand dois-je actualiser la configuration du port ?
 
 Actualisez le serveur DHCP chaque fois que celui-ci est modifié ou mis à niveau, et que les informations DHCP relatives à la baie de stockage actuelle et à la baie de stockage que vous souhaitez utiliser ont changé.
@@ -112,6 +121,7 @@ L'actualisation de la configuration d'un port est destructive pour toutes les co
 ====
 
 
+[[what-should-i-do-after-configuring-the-management-ports]]
 == Que dois-je faire après avoir configuré les ports de gestion ?
 
 Si vous avez modifié l'adresse IP de la baie de stockage, vous devrez peut-être mettre à jour la vue globale de la baie dans SANtricity Unified Manager.
@@ -122,6 +132,7 @@ Si vous utilisez encore le SANtricity Storage Manager, accédez à la fenêtre E
 
 
 
+[[why-is-the-storage-system-in-non-optimal-mode]]
 == Pourquoi le système de stockage est-il en mode non optimal ?
 
 Un système de stockage en mode non optimal est dû à un état de configuration système invalide. Malgré cet état, l'accès E/S normal aux volumes existants est pleinement pris en charge ; cependant, SANtricity System Manager interdira certaines opérations.

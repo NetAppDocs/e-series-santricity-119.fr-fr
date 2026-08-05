@@ -16,6 +16,7 @@ Cette FAQ peut vous aider si vous cherchez simplement une réponse rapide à une
 
 
 
+[[what-are-hosts-and-host-clusters]]
 == Que sont les hôtes et les clusters d'hôtes ?
 
 Un hôte est un serveur qui envoie des opérations d'entrée/sortie à un volume sur une baie de stockage. Un cluster d'hôtes est un groupe d'hôtes. Vous créez un cluster d'hôtes pour faciliter l'attribution des mêmes volumes à plusieurs hôtes.
@@ -26,12 +27,14 @@ Le cluster d'hôtes est une entité logique que vous créez dans SANtricity Syst
 
 
 
+[[why-would-i-need-to-create-a-host-cluster]]
 == Pourquoi aurais-je besoin de créer un cluster d'hôtes ?
 
 Vous devez créer un cluster d'hôtes si vous souhaitez que deux hôtes ou plus partagent l'accès au même ensemble de volumes. En règle générale, les hôtes individuels ont un logiciel de clustering installé pour coordonner l'accès aux volumes.
 
 
 
+[[how-do-i-know-which-host-operating-system-type-is-correct]]
 == Comment savoir quel type de système d'exploitation hôte est correct ?
 
 Le champ « Type de système d'exploitation hôte » contient le système d'exploitation de l'hôte. Vous pouvez sélectionner le type d'hôte recommandé dans la liste déroulante.
@@ -135,6 +138,7 @@ Si le type de système d'exploitation hôte est défini sur cette valeur, utilis
 |===
 
 
+[[what-are-hbas-and-adapter-ports]]
 == Que sont les HBA et les ports adaptateurs ?
 
 Un adaptateur de bus hôte (HBA) est une carte intégrée à un hôte et comportant un ou plusieurs ports hôtes. Un port hôte est un port d’un adaptateur de bus hôte (HBA) qui assure la connexion physique à un contrôleur et est utilisé pour les opérations d’E/S.
@@ -143,6 +147,7 @@ Les ports de l'adaptateur sur le HBA sont appelés ports hôtes. La plupart des 
 
 
 
+[[how-do-i-match-the-host-ports-to-a-host]]
 == Comment faire correspondre les ports hôtes à un hôte ?
 
 Si vous créez manuellement un hôte, vous devez d'abord utiliser l'utilitaire d'adaptateur de bus hôte (HBA) approprié disponible sur l'hôte pour déterminer les identifiants de port hôte associés à chaque HBA installé dans l'hôte.
@@ -156,6 +161,7 @@ Veillez à sélectionner les identifiants de port hôte appropriés pour l'hôte
 ====
 
 
+[[how-do-i-create-chap-secrets]]
 == Comment créer des secrets CHAP ?
 
 Si vous configurez l'authentification Challenge Handshake Authentication Protocol (CHAP) sur un hôte iSCSI connecté à la baie de stockage, vous devez saisir à nouveau ce secret CHAP d'initiateur pour chaque hôte iSCSI.
@@ -166,6 +172,7 @@ Si vous utilisez l'authentification mutuelle CHAP, vous devez également défini
 
 
 
+[[what-is-the-default-cluster]]
 == Quel est le cluster par défaut ?
 
 Le cluster par défaut est une entité définie par le système qui permet à tout identifiant de port hôte non associé, ayant ouvert une session sur la baie de stockage, d'accéder aux volumes attribués au cluster par défaut. Un identifiant de port hôte non associé est un port hôte qui n'est pas logiquement associé à un hôte particulier, mais qui est physiquement installé dans un hôte et connecté à la baie de stockage.
@@ -181,6 +188,7 @@ Dans un premier temps, vous ne pouvez affecter des volumes au cluster par défau
 
 
 
+[[what-is-host-connectivity-reporting]]
 == Qu'est-ce que le rapport de connectivité hôte ?
 
 Lorsque le signalement de la connectivité hôte est activé, la baie de stockage surveille en permanence la connexion entre les contrôleurs et les hôtes configurés, puis vous alerte si la connexion est interrompue.

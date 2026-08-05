@@ -30,6 +30,7 @@ Vous pouvez consulter les données de performance sous trois formats :
 
 
 
+[[characteristics-of-performance-data-formats]]
 == Caractéristiques des formats de données de performance
 
 [cols="1a,1a,1a,1a,1a"]
@@ -93,6 +94,7 @@ Oui
 |===
 
 
+[[guidelines-for-viewing-performance-data]]
 == Consignes pour la consultation des données de performance
 
 * La collecte de données de performance est toujours activée. Il n'y a pas d'option pour la désactiver.

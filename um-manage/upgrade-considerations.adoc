@@ -15,12 +15,14 @@ Avant d'utiliser SANtricity Unified Manager pour mettre à niveau plusieurs syst
 
 
 
+[[current-versions]]
 == Versions actuelles
 
 Vous pouvez consulter les versions actuelles du logiciel SANtricity OS depuis la page Gérer d'Unified Manager pour chaque baie de stockage détectée. La version est affichée dans la colonne Logiciel SANtricity OS. Les informations relatives au microprogramme du contrôleur et à la NVSRAM sont disponibles dans une boîte de dialogue contextuelle lorsque vous cliquez sur la version SANtricity OS dans chaque ligne.
 
 
 
+[[other-components-requiring-upgrade]]
 == Autres composants nécessitant une mise à niveau
 
 Dans le cadre du processus de mise à niveau, vous devrez peut-être également mettre à niveau le pilote multipath/basculement de l'hôte ou le pilote HBA afin que l'hôte puisse interagir correctement avec les contrôleurs.
@@ -29,6 +31,7 @@ Pour plus d'informations sur la compatibilité, consultez le  https://imt.netapp
 
 
 
+[[dual-controllers]]
 == Contrôleurs doubles
 
 Si une baie de stockage contient deux contrôleurs et que vous avez installé un pilote multipath, la baie de stockage peut continuer à traiter les E/S pendant la mise à niveau. Pendant la mise à niveau, le processus suivant se produit :

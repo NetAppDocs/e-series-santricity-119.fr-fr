@@ -47,6 +47,7 @@ La page Opérations affiche les résultats de l'opération d'importation. Si l'o
 
 
 
+[[results]]
 == Résultats
 
 Les baies de stockage cibles sont désormais configurées avec les mêmes services d'annuaire que la baie source.

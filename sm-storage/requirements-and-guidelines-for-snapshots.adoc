@@ -15,6 +15,7 @@ Lors de la création et de l'utilisation d'instantanés, examinez les exigences 
 
 
 
+[[snapshot-images-and-snapshot-groups]]
 == Images instantanées et groupes d’instantanés
 
 * Chaque image instantanée est associée à exactement un groupe d'instantanés.
@@ -29,6 +30,7 @@ Vous pouvez consulter les groupes d'instantanés depuis la page Pools & Volume G
 
 
 
+[[snapshot-consistency-group]]
 == groupe de cohérence de snapshot
 
 * Un groupe de cohérence d’instantanés contient un groupe d’instantanés pour chaque volume qui est membre du groupe de cohérence d’instantanés.
@@ -39,6 +41,7 @@ Vous pouvez consulter les groupes d'instantanés depuis la page Pools & Volume G
 
 
 
+[[base-volume]]
 == Volume de base
 
 * Un volume de snapshot doit avoir les mêmes paramètres d'assurance des données (DA) et de sécurité que le volume de base associé.
@@ -49,6 +52,7 @@ Vous pouvez consulter les groupes d'instantanés depuis la page Pools & Volume G
 
 
 
+[[reserved-capacity]]
 == Capacité réservée
 
 * La capacité réservée est associée à un seul volume de base.
@@ -58,6 +62,7 @@ Vous pouvez consulter les groupes d'instantanés depuis la page Pools & Volume G
 
 
 
+[[pending-snapshot-images]]
 == Images instantanées en attente
 
 La création de l'image instantanée peut rester en attente dans les conditions suivantes :
@@ -68,6 +73,7 @@ La création de l'image instantanée peut rester en attente dans les conditions 
 
 
 
+[[maximum-number-of-snapshot-images]]
 == Nombre maximal d'images instantanées
 
 * Si un volume est membre d'un groupe de cohérence de snapshots, System Manager crée un groupe d'instantanés pour ce volume membre. Ce groupe d'instantanés est comptabilisé dans le nombre maximal autorisé de groupes d'instantanés par volume de base.
@@ -81,12 +87,14 @@ La création de l'image instantanée peut rester en attente dans les conditions 
 
 
 
+[[auto-deletion]]
 == Suppression automatique
 
 Si le groupe d'instantanés ou le groupe de cohérence est activé pour la suppression automatique, System Manager supprime l'image d'instantané la plus ancienne lorsque le système en crée une nouvelle pour le groupe.
 
 
 
+[[rollback-operation]]
 == Opération de restauration
 
 * Vous ne pouvez pas effectuer les actions suivantes lorsqu'une opération de restauration est en cours :

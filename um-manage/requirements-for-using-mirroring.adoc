@@ -16,6 +16,7 @@ Si vous prévoyez de configurer la mise en miroir, gardez à l'esprit les exigen
 
 
 
+[[unified-manager]]
 == Gestionnaire unifié
 
 * Le service Web Services Proxy doit être en cours d'exécution.
@@ -25,6 +26,7 @@ Si vous prévoyez de configurer la mise en miroir, gardez à l'esprit les exigen
 
 
 
+[[storage-arrays]]
 == baies de stockage
 
 [NOTE]
@@ -44,6 +46,7 @@ La mise en miroir synchrone n'est pas disponible sur la baie de stockage EF600/E
 
 
 
+[[connectivity-requirements]]
 == Exigences de connectivité
 
 La mise en miroir via une interface FC (asynchrone ou synchrone) nécessite les éléments suivants :
@@ -78,6 +81,7 @@ La communication intercontrôleurs iSCSI doit utiliser un port de connexion hôt
 ====
 
 
+[[mirrored-volume-candidates]]
 == Candidats à volume miroir
 
 * Le niveau RAID, les paramètres de mise en cache et la taille des segments peuvent être différents sur les volumes primaire et secondaire d'une paire en miroir.
@@ -101,6 +105,7 @@ NOTE: Pour les contrôleurs EF600 et EF300, les volumes primaire et secondaire d
 
 
 
+[[reserved-capacity]]
 == Capacité réservée
 
 Mise en miroir asynchrone :
@@ -117,6 +122,7 @@ Mise en miroir synchrone :
 
 
 
+[[drive-security-feature]]
 == Fonction de sécurité du lecteur
 
 * Si vous utilisez des disques compatibles avec la sécurité, le volume principal et le volume secondaire doivent avoir des paramètres de sécurité compatibles. Cette restriction n'est pas appliquée ; vous devez donc la vérifier vous-même.

@@ -18,6 +18,7 @@ La configuration des groupes est une procédure en deux étapes.
 
 
 
+[[step-1-create-group]]
 == Étape 1 : Créer un groupe
 
 Vous commencez par créer un groupe. Le groupe de stockage définit quels disques fournissent le stockage qui constitue le volume.
@@ -31,6 +32,7 @@ Vous commencez par créer un groupe. Le groupe de stockage définit quels disque
 
 
 
+[[step-2-add-storage-array-to-group]]
 == Étape 2 : Ajouter la baie de stockage au groupe
 
 Vous pouvez ajouter une ou plusieurs baies de stockage à un groupe créé par l'utilisateur.

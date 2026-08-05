@@ -15,6 +15,7 @@ Les administrateurs peuvent utiliser les capacités de contrôle d'accès basé 
 
 
 
+[[configuration-workflow]]
 == Flux de travail de configuration
 
 Les rôles des utilisateurs locaux sont préconfigurés dans le système. Pour utiliser les rôles des utilisateurs locaux pour l'authentification, les administrateurs peuvent faire ce qui suit :
@@ -33,6 +34,7 @@ L' `admin`utilisateur a un accès complet à toutes les fonctions du système.
 
 
 
+[[management]]
 == Gestion
 
 Lorsque seuls les rôles d'utilisateur locaux sont utilisés pour l'authentification, les administrateurs peuvent effectuer les tâches de gestion suivantes :

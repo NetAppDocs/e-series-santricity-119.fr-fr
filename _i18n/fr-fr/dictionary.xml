@@ -5138,16 +5138,7 @@
   <block id="8d8fc1b77f8521bde3bf3fce7bd85747" category="admonition">Modifier le paramètre d'alerte pour un volume membre le modifiera pour _tous_ les volumes membres appartenant au même groupe de cohérence.</block>
   <block id="56833f85930278aaeb56b28559a4458b" category="paragraph">Politique de capacité entièrement réservée</block>
   <block id="dd3bee12186f4cb1167b816a4a38da61" category="paragraph">Vous pouvez choisir l'une des politiques suivantes :</block>
-  <block id="5e21cf2e71ec97d165f6683d10e9b6b9" category="list-text">${post_edited_translations.segment}</block>
-  <block id="309f7f446a7e565ec33677c0cd5d26bc" category="list-text">${post_edited_translations.segment}</block>
-  <block id="a3fe93d80fb9848f6d10fe06b07f618a" category="paragraph">${post_edited_translations.segment}</block>
   <block id="380cbfd4d1cf37c4bcab258a95fa8770" category="summary">Vous pouvez modifier les paramètres d'un groupe d'instantanés pour changer son nom, les paramètres de suppression automatique, le nombre maximal d'images d'instantané autorisées, le pourcentage auquel System Manager envoie une notification d'alerte de capacité réservée, ou la stratégie à utiliser lorsque la capacité réservée atteint son pourcentage maximal défini.</block>
-  <block id="2129449eac2f1abcf7571dadc500ed44" category="doc">${post_edited_translations.segment}</block>
-  <block id="5565955fb75572cd15d1180cd1e84891" category="paragraph">${post_edited_translations.segment}</block>
-  <block id="461d4d6aff9437cf486bde4465e94358" category="paragraph">${post_edited_translations.segment}</block>
-  <block id="8c6fc876d654fd1d7f379afba14dabae" category="list-text">${post_edited_translations.segment}</block>
-  <block id="3726b7f0267ff56f9f5c771bd06c30b7" category="paragraph">${post_edited_translations.segment}</block>
-  <block id="5577250c3a813ef10d6deb748f56241a" category="list-text">${post_edited_translations.segment}</block>
   <block id="7a010b2f73ea576231e7d4878cdf66de" category="paragraph">*Paramètres du groupe d'instantanés*</block>
   <block id="cba14577ca1ea7044457c2cc8e9c57dc" category="paragraph">Nom du groupe d'instantanés. La spécification d'un nom pour le groupe d'instantanés est obligatoire.</block>
   <block id="160bf55a8e16d1cb7cafa207626644e9" category="paragraph">Ce paramètre permet de limiter le nombre total d'images instantanées du groupe à une valeur maximale définie par l'utilisateur. Lorsque cette option est activée, System Manager supprime automatiquement l'image instantanée la plus ancienne du groupe à chaque création d'une nouvelle image instantanée, afin de respecter le nombre maximal d'images instantanées autorisé pour le groupe.</block>
@@ -9041,4 +9032,21 @@
   <block id="2c0d7cdf55bdb12e152430a4a5b9c7e5" category="paragraph">Mise en miroir asynchrone :</block>
   <block id="f6082ab3e1c76ce4a981259403dbffb2" category="paragraph">Mise en miroir synchrone :</block>
   <block id="bc7dec44af17b73eb800d426c3a75c9f" category="list-text"><block ref="bc7dec44af17b73eb800d426c3a75c9f" category="inline-link-macro-rx"></block></block>
+  <block id="5e21cf2e71ec97d165f6683d10e9b6b9" category="list-text">*Suppression de l'image instantanée la plus ancienne* -- System Manager supprime automatiquement l'image instantanée la plus ancienne du groupe de cohérence, ce qui libère la capacité réservée du membre pour une réutilisation au sein du groupe.</block>
+  <block id="309f7f446a7e565ec33677c0cd5d26bc" category="list-text">*Rejeter les écritures sur le volume de base* -- Lorsque la capacité réservée atteint son pourcentage maximal défini, System Manager rejette toute requête d'écriture d'E/S sur le volume de base qui a déclenché l'accès à la capacité réservée.</block>
+  <block id="a3fe93d80fb9848f6d10fe06b07f618a" category="paragraph">Le gestionnaire système modifie les paramètres de capacité réservée pour le volume membre, ainsi que les paramètres de capacité réservée pour tous les volumes membres du groupe de cohérence.</block>
+  <block id="2129449eac2f1abcf7571dadc500ed44" category="doc">Modifiez les paramètres de capacité réservée pour un groupe de snapshots dans SANtricity System Manager</block>
+  <block id="5565955fb75572cd15d1180cd1e84891" category="paragraph">Vous pouvez modifier les paramètres d'un groupe d'instantanés pour changer son nom, les paramètres de suppression automatique, le nombre maximal d'images d'instantané autorisées, le pourcentage auquel SANtricity System Manager envoie une notification d'alerte de capacité réservée ou la politique à utiliser lorsque la capacité réservée atteint son pourcentage maximal défini.</block>
+  <block id="461d4d6aff9437cf486bde4465e94358" category="paragraph">Lors de la création d'un groupe d'instantanés, une capacité réservée est créée pour stocker les données de toutes les images d'instantanés contenues dans le groupe.</block>
+  <block id="8c6fc876d654fd1d7f379afba14dabae" category="list-text">Sélectionnez le groupe d'instantanés que vous souhaitez modifier, puis cliquez sur *Afficher/Modifier les paramètres*.</block>
+  <block id="3726b7f0267ff56f9f5c771bd06c30b7" category="paragraph">La boîte de dialogue Paramètres du groupe d'instantanés s'affiche.</block>
+  <block id="5577250c3a813ef10d6deb748f56241a" category="list-text">Modifiez les paramètres du groupe d'instantanés selon vos besoins.</block>
+  <block id="d45110f5b0683532651fabbc7f37abe3" category="section-title">Nouvelles fonctionnalités dans la version 11.90R6</block>
+  <block id="28761f84b87aaa50aba4cece137c1c2c" category="paragraph">Prise en charge des versions mises à jour du firmware IOM/DCM</block>
+  <block id="5da5b5a1379f61e80772e7790856b429" category="paragraph">Les nouvelles versions du firmware IOM/DCM sont désormais prises en charge pour les modèles IOM/DCM suivants :</block>
+  <block id="774c79e8635ac51d58e93d2e518c432a" category="list-text">IOM12A - v0412</block>
+  <block id="fbc1cde87a87977e12caf006b59004e5" category="list-text">IOM12B - v0212</block>
+  <block id="24c9cd56861c16e2290412c4fe4d5a8f" category="list-text">IOM12C - v0112</block>
+  <block id="818d5ca9647738ea76069fc99cf59499" category="list-text">IOM12G - v0212</block>
+  <block id="9133a8b23ddd677242ee6747a18b0e24" category="list-text">DCM3 - v01.12.09.02</block>
 </blocks>

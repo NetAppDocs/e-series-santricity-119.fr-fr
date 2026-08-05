@@ -16,12 +16,14 @@ Cette FAQ peut vous aider si vous cherchez simplement une réponse rapide à une
 
 
 
+[[what-is-shelf-loss-protection-and-drawer-loss-protection]]
 == Qu’est-ce que la protection contre la perte de tiroir et la protection contre la perte de tiroir d'extension ?
 
 La protection contre la perte d'étagère et la protection contre la perte de tiroir sont des attributs des pools et des groupes de volumes qui vous permettent de maintenir l'accès aux données en cas de défaillance d'une seule étagère ou d'un seul tiroir.
 
 
 
+[[shelf-loss-protection]]
 === Protection contre la perte de tiroir
 
 Un châssis est le boîtier qui contient soit les disques, soit les disques et le contrôleur. La protection contre la perte d'un châssis garantit l'accessibilité aux données sur les volumes d'un pool ou d'un groupe de volumes en cas de perte totale de communication avec un seul châssis de disques. Un exemple de perte totale de communication pourrait être une coupure de courant du châssis de disques ou la défaillance des deux modules d'E/S (IOM).
@@ -84,6 +86,7 @@ Non Concerné
 |===
 
 
+[[drawer-loss-protection]]
 === Protection contre la perte des tiroirs
 
 Un tiroir est un des compartiments d'une étagère que l'on tire pour accéder aux disques. Seules les étagères haute capacité ont des tiroirs. La protection contre la perte de tiroir garantit l'accessibilité aux données sur les volumes d'un pool ou d'un groupe de volumes en cas de perte totale de communication avec un seul tiroir. Un exemple de perte totale de communication pourrait être une coupure de courant du tiroir ou la défaillance d'un composant interne du tiroir.
@@ -150,6 +153,7 @@ Non Concerné
 |===
 
 
+[[what-are-battery-learn-cycles]]
 == Que sont les cycles d'apprentissage de la batterie ?
 
 Un cycle d'apprentissage est un cycle automatique permettant de calibrer l'indicateur de batterie intelligent.

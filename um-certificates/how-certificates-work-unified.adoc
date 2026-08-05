@@ -15,6 +15,7 @@ Les certificats sont des fichiers numériques qui identifient les entités en li
 
 
 
+[[signed-certificates]]
 == Certificats signés
 
 Les certificats garantissent que les communications web sont transmises de manière chiffrée, privée et inchangée, uniquement entre le serveur et le client spécifiés. Avec Unified Manager, vous pouvez gérer les certificats pour le navigateur sur un système de gestion d'hôtes et les contrôleurs dans les baies de stockage découvertes.
@@ -39,6 +40,7 @@ L'autorité de certification (CA) prend des mesures pour vérifier votre identit
 
 
 
+[[self-signed-certificates]]
 == Certificats auto-signés
 
 Chaque contrôleur de la baie de stockage inclut un certificat auto-signé préinstallé. Un certificat auto-signé est similaire à un certificat signé par une autorité de certification (CA), sauf qu'il est validé par le propriétaire de l'entité au lieu d'un tiers. Comme un certificat signé par une CA, un certificat auto-signé contient sa propre clé privée et garantit également que les données sont chiffrées et envoyées via une connexion HTTPS entre un serveur et un client.
@@ -47,12 +49,14 @@ Les certificats auto-signés ne sont pas « `de confiance` » pour les navigat
 
 
 
+[[certificates-for-unified-manager]]
 == Certificats pour Unified Manager
 
 L'interface Unified Manager est installée avec le Web Services Proxy sur un système hôte. Lorsque vous ouvrez un navigateur et essayez de vous connecter à Unified Manager, le navigateur tente de vérifier que l'hôte est une source fiable en recherchant un certificat numérique. Si le navigateur ne trouve pas de certificat signé par une autorité de certification pour le serveur, il affiche un message d'avertissement. À partir de là, vous pouvez continuer vers le site web pour accepter le certificat auto-signé pour cette session. Ou, vous pouvez obtenir des certificats numériques signés auprès d'une autorité de certification afin de ne plus voir le message d'avertissement.
 
 
 
+[[certificates-for-controllers]]
 == Certificats pour les contrôleurs
 
 Lors d'une session Unified Manager, des messages de sécurité supplémentaires peuvent s'afficher lorsque vous tentez d'accéder à un contrôleur ne possédant pas de certificat signé par une autorité de certification. Dans ce cas, vous pouvez approuver définitivement le certificat auto-signé ou importer les certificats signés par une autorité de certification pour les contrôleurs afin que le serveur proxy Web Services puisse authentifier les requêtes client entrantes provenant de ces contrôleurs.

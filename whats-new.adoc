@@ -16,18 +16,44 @@ Le tableau suivant décrit les nouvelles fonctionnalités de SANtricity System M
 
 
 
+[[new-features-in-version-11-90r6]]
+== Nouvelles fonctionnalités dans la version 11.90R6
+
+[cols="35h,~"]
+|===
+| Nouvelle fonctionnalité | Description 
+
+
+ a| 
+Prise en charge des versions mises à jour du firmware IOM/DCM
+ a| 
+Les nouvelles versions du firmware IOM/DCM sont désormais prises en charge pour les modèles IOM/DCM suivants :
+
+* IOM12A - v0412
+* IOM12B - v0212
+* IOM12C - v0112
+* IOM12G - v0212
+* DCM3 - v01.12.09.02
+
+
+|===
+
+
+[[new-features-in-version-11-90r5]]
 == Nouvelles fonctionnalités dans la version 11.90R5
 
 Cette version corrige uniquement des bogues et n’intègre aucune nouvelle fonctionnalité. Pour plus d'informations sur les modifications de cette version, veuillez consulter le fichier README de SANtricity OS 11.90R5 E-Series.
 
 
 
+[[new-features-in-version-11-90r4]]
 == Nouvelles fonctionnalités dans la version 11.90R4
 
 Cette version ne contient que des modifications mineures et aucune nouvelle fonctionnalité. Pour plus d'informations sur les modifications de cette version, veuillez consulter le fichier README de SANtricity OS 11.90R4 E-Series.
 
 
 
+[[new-features-in-version-11-90r3]]
 == Nouvelles fonctionnalités dans la version 11.90R3
 
 [cols="35h,~"]
@@ -43,12 +69,14 @@ La prise en charge des châssis SAS-3 IOM12C et DCM3 est désormais disponible p
 |===
 
 
+[[new-features-in-version-11-90r2]]
 == Nouvelles fonctionnalités dans la version 11.90R2
 
 Cette version ne contient que des modifications mineures et aucune nouvelle fonctionnalité. Pour plus d'informations sur les modifications apportées à cette version, veuillez consulter le  https://library.netapp.com/ecm/ecm_download_file/ECMLP3334464["Notes de version E-Series 11.90"^].
 
 
 
+[[new-features-in-version-11-90r1]]
 == Nouvelles fonctionnalités dans la version 11.90R1
 
 [cols="35h,~"]
@@ -71,6 +99,7 @@ Le contrôleur E4000 prend désormais en charge les cartes d'interface d'hôte S
 |===
 
 
+[[new-features-in-version-11-90]]
 == Nouvelles fonctionnalités dans la version 11.90
 
 [cols="35h,~"]

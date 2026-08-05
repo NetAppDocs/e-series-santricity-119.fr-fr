@@ -16,6 +16,7 @@ Cette FAQ peut vous aider si vous cherchez simplement une réponse rapide à une
 
 
 
+[[what-settings-will-be-imported]]
 == Quels paramètres seront importés ?
 
 La fonction Import Settings est une opération par lots qui charge les configurations d'une baie de stockage vers plusieurs baies de stockage. Les paramètres importés lors de cette opération dépendent de la façon dont la baie de stockage source est configurée dans SANtricity System Manager.
@@ -33,6 +34,7 @@ Les paramètres suivants peuvent être importés dans plusieurs baies de stockag
 
 
 
+[[why-dont-i-see-all-of-my-storage-arrays]]
 == Pourquoi ne vois-je pas toutes mes baies de stockage ?
 
 Lors de l'opération Import Settings, certaines de vos baies de stockage peuvent ne pas être disponibles dans la boîte de dialogue de sélection de la cible.

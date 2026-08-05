@@ -15,6 +15,7 @@ Avant d'utiliser la fonction Remote Storage, veuillez prendre connaissance des e
 
 
 
+[[supported-protocols]]
 == Protocoles pris en charge
 
 Les protocoles suivants sont pris en charge :
@@ -27,6 +28,7 @@ Pour obtenir des informations à jour sur la prise en charge et la configuration
 
 
 
+[[hardware-requirements]]
 == Exigences matérielles
 
 Le système de stockage E-Series doit comprendre :
@@ -44,6 +46,7 @@ Le système distant peut être un système de stockage E-Series ou un système d
 
 
 
+[[restrictions]]
 == Restrictions
 
 La fonctionnalité de stockage à distance présente les restrictions suivantes :

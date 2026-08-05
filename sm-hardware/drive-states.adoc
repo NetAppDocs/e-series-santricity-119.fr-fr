@@ -15,6 +15,7 @@ SANtricity System Manager signale différents états pour les disques.
 
 
 
+[[accessibility-states]]
 == États d'accessibilité
 
 [cols="25h,~"]
@@ -63,6 +64,7 @@ Le disque ne répond pas aux commandes.
 |===
 
 
+[[role-states]]
 == États de rôle
 
 [cols="25h,~"]
@@ -99,6 +101,7 @@ Le lecteur n'est membre d'aucun pool ni groupe de volume.
 |===
 
 
+[[availability-states]]
 == États de disponibilité
 
 [cols="25h,~"]

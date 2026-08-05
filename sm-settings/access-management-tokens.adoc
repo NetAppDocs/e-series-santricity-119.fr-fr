@@ -15,6 +15,7 @@ Les jetons d'accès fournissent une méthode d'authentification avec l'API REST 
 
 
 
+[[saml-and-json-web-token-access]]
 == Accès SAML et JSON web token
 
 Par défaut, un système avec SAML activé n'autorise pas l'accès aux outils en ligne de commandes traditionnels. L'API REST et la ligne de commandes deviennent effectivement inopérantes, car le workflow MFA exige une redirection vers un serveur Identity Provider pour l'authentification. Par conséquent, vous devez générer des jetons dans System Manager, ce qui impose qu'un utilisateur soit authentifié via MFA.
@@ -24,6 +25,7 @@ NOTE: Il n'est pas nécessaire d'activer SAML pour utiliser des jetons web, mais
 
 
 
+[[workflow-for-creating-and-using-tokens]]
 == Flux de travail pour la création et l'utilisation des jetons
 
 . Créez un jeton dans System Manager et déterminez sa date d'expiration.

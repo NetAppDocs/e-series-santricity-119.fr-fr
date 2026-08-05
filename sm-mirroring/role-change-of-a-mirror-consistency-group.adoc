@@ -24,6 +24,7 @@ Examinez les informations suivantes concernant l'opération de changement de rô
 
 
 
+[[force-role-change]]
 == Forcer le changement de rôle
 
 Vous pouvez forcer un changement de rôle entre les groupes de cohérence de miroir lorsqu'un problème de communication entre la baie de stockage locale et la baie de stockage distante empêche la promotion des volumes membres au sein du groupe de cohérence de miroir secondaire ou la rétrogradation des volumes membres au sein du groupe de cohérence de miroir primaire.
@@ -32,6 +33,7 @@ Vous pouvez forcer le groupe de cohérence miroir du côté secondaire à passer
 
 
 
+[[when-is-a-forced-promotion-allowed-and-not-allowed]]
 == Quand une promotion forcée est-elle autorisée et non autorisée ?
 
 La promotion forcée d'un groupe de cohérence miroir n'est autorisée que si tous les volumes membres du groupe de cohérence miroir ont été synchronisés et possèdent des points de récupération cohérents.
@@ -46,6 +48,7 @@ La promotion forcée d'un groupe de cohérence miroir n'est pas autorisée dans 
 
 
 
+[[mirror-group-role-conflict]]
 == Conflit de rôles du groupe miroir
 
 Lorsqu'un problème de communication entre les baies de stockage locales et distantes est résolu, une condition de conflit de rôle du groupe miroir se produit. Utilisez le Recovery Guru pour corriger cette erreur. Une promotion forcée n'est pas autorisée lors de la résolution d'un conflit de double rôle.
@@ -54,6 +57,7 @@ Pour éviter la condition de conflit de rôle du groupe miroir et les étapes de
 
 
 
+[[role-change-in-progress-state]]
 == État de changement de rôle en cours
 
 Si deux baies de stockage en configuration miroir se déconnectent, et que le côté principal d'un groupe de cohérence miroir est rétrogradé de force en rôle secondaire, et que le côté secondaire d'un groupe de cohérence miroir est promu de force en rôle principal, alors, lorsque la communication est rétablie, les groupes de cohérence miroir sur les deux baies de stockage sont placés dans l'état de changement de rôle en cours.

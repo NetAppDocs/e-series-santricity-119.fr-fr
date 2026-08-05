@@ -17,6 +17,7 @@ Lorsque ces disques sont utilisés avec la fonction Drive Security, ils nécessi
 
 
 
+[[how-to-implement-drive-security]]
 == Comment mettre en œuvre la sécurité des disques
 
 Pour mettre en œuvre Drive Security, procédez comme suit.
@@ -33,6 +34,7 @@ Pour mettre en œuvre Drive Security, procédez comme suit.
 
 
 
+[[how-drive-security-works-at-the-drive-level]]
 == Fonctionnement de la sécurité du lecteur au niveau du lecteur
 
 Un disque compatible sécurisé, soit FDE soit FIPS, chiffre les données lors des écritures et les déchiffre lors des lectures. Ce chiffrement et ce déchiffrement n'affectent pas les performances ni le flux de travail de l'utilisateur. Chaque disque possède sa propre clé de chiffrement, qui ne peut jamais être transférée du disque.
@@ -41,6 +43,7 @@ La fonction Drive Security offre une couche de protection supplémentaire avec d
 
 
 
+[[how-drive-security-works-at-the-storage-array-level]]
 == Comment fonctionne Drive Security au niveau de la baie de stockage
 
 La fonction Drive Security vous permet de créer une clé de sécurité qui est partagée entre les disques compatibles avec la sécurité et les contrôleurs dans une baie de stockage. Chaque fois que l'alimentation des disques est coupée puis rétablie, les disques compatibles avec la sécurité passent à un état Verrouillé jusqu'à ce que le contrôleur applique la clé de sécurité.
@@ -54,6 +57,7 @@ Pour la gestion interne des clés, la clé de sécurité est stockée sur le con
 ====
 
 
+[[how-drive-security-works-at-the-volume-level]]
 == Comment fonctionne Drive Security au niveau du volume
 
 Lorsque vous créez un pool ou un groupe de volumes à partir de disques compatibles avec la sécurité, vous pouvez également activer la sécurité des disques pour ces pools ou groupes de volumes. L’option Drive Security rend les disques ainsi que les groupes de volumes et pools associés secure-_enabled_.

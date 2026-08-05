@@ -16,6 +16,7 @@ Vous pouvez configurer les hôtes et les clusters d'hôtes, qui définissent les
 
 
 
+[[what-are-hosts-and-host-clusters]]
 == Que sont les hôtes et les clusters d'hôtes ?
 
 Un hôte est un serveur qui envoie des opérations d'entrée/sortie à un volume sur une baie de stockage. Un cluster d'hôtes est un groupe d'hôtes que vous pouvez créer pour attribuer les mêmes volumes à plusieurs hôtes.
@@ -29,6 +30,7 @@ En savoir plus :
 
 
 
+[[how-do-i-configure-hosts-and-host-clusters]]
 == Comment configurer les hôtes et les clusters d'hôtes ?
 
 Pour définir les connexions hôtes, vous pouvez accéder au menu : Storage[Hosts] pour configurer manuellement l’hôte. Si vous souhaitez que deux hôtes ou plus partagent l’accès au même ensemble de volumes, vous pouvez alors définir un cluster et affecter les volumes à ce cluster.
@@ -45,6 +47,7 @@ En savoir plus :
 
 
 
+[[related-information]]
 == Informations connexes
 
 En savoir plus sur les tâches liées aux hôtes :

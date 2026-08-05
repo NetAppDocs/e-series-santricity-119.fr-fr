@@ -40,6 +40,7 @@ La configuration de l'authentification SAML est une procédure en plusieurs éta
 
 
 
+[[step-1-upload-the-idp-metadata-file]]
 == Étape 1 : Téléversez le fichier de métadonnées IdP
 
 Pour fournir à la baie de stockage les informations de connexion IdP, vous importez les métadonnées IdP dans Unified Manager. Le système IdP a besoin de ces métadonnées pour rediriger les requêtes d'authentification vers la bonne URL et pour valider les réponses reçues.
@@ -63,6 +64,7 @@ Après avoir sélectionné le fichier, l'identifiant de l'entité IdP s'affiche.
 
 
 
+[[step-2-export-service-provider-files]]
 == Étape 2 : Exporter les fichiers du Service Provider
 
 Pour établir une relation de confiance entre l'IdP et la baie de stockage, vous importez les métadonnées du Service Provider dans l'IdP. L'IdP a besoin de ces métadonnées pour établir une relation de confiance avec le contrôleur et traiter les demandes d'autorisation. Le fichier contient des informations telles que le nom de domaine du contrôleur ou son adresse IP, afin que l'IdP puisse communiquer avec les Service Providers.
@@ -82,6 +84,7 @@ Après avoir cliqué sur *Exporter*, les métadonnées du fournisseur de service
 
 
 
+[[step-3-map-roles]]
 == Étape 3 : Mapper les rôles
 
 Pour fournir aux utilisateurs l'autorisation et l'accès à Unified Manager, vous devez associer les attributs utilisateur IdP et les appartenances aux groupes aux rôles prédéfinis de la baie de stockage.
@@ -159,6 +162,7 @@ Les correspondances de rôles peuvent être modifiées après l’activation de 
 
 
 
+[[step-4-test-sso-login]]
 == Étape 4 : Tester la connexion SSO
 
 Pour garantir la communication entre le système IdP et la baie de stockage, vous pouvez éventuellement tester une connexion SSO. Ce test est également effectué lors de la dernière étape pour activer SAML.
@@ -191,6 +195,7 @@ Si le test ne se termine pas avec succès, un message d'erreur apparaît avec de
 
 
 
+[[step-5-enable-saml]]
 == Étape 5 : Activer SAML
 
 La dernière étape consiste à finaliser la configuration SAML pour l'authentification des utilisateurs. Durant ce processus, le système vous invite également à tester une connexion SSO. La procédure de test de connexion SSO est décrite à l'étape précédente.

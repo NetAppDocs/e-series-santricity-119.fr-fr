@@ -16,6 +16,7 @@ Cette FAQ peut vous aider si vous cherchez simplement une réponse rapide à une
 
 
 
+[[why-does-the-cannot-access-other-controller-dialog-box-appear]]
 == Pourquoi la boîte de dialogue Cannot Access Other Controller s'affiche-t-elle ?
 
 Lorsque vous effectuez certaines opérations liées aux certificats CA (par exemple, importer un certificat), il se peut que vous voyiez une boîte de dialogue vous invitant à accepter un certificat auto-signé pour le deuxième contrôleur.
@@ -32,6 +33,7 @@ Si cette boîte de dialogue réapparaît et que vous ne pouvez pas terminer une 
 
 
 
+[[how-do-i-know-what-certificates-need-to-be-uploaded-to-santricity-system-manager-for-external-key-management]]
 == Comment savoir quels certificats doivent être téléchargés sur SANtricity System Manager pour la gestion des clés externes ?
 
 Pour la gestion des clés externes, vous importez deux types de certificats pour l'authentification entre la baie de stockage et le serveur de gestion des clés afin que les deux entités puissent se faire confiance.
@@ -46,6 +48,7 @@ Un certificat de serveur de gestion de clés valide le serveur de gestion de cl�
 
 
 
+[[what-do-i-need-to-know-about-certificate-revocation-checking]]
 == Que dois-je savoir sur la vérification de la révocation des certificats ?
 
 SANtricity System Manager vous permet de vérifier les certificats révoqués en utilisant un serveur Online Certificate Status Protocol (OCSP), au lieu de télécharger des Certificate Revocation Lists (CRLs).
@@ -61,6 +64,7 @@ Spécifier une adresse de répondeur OCSP dans le Gestionnaire système ou dans 
 ====
 
 
+[[what-types-of-servers-will-revocation-checking-be-enabled-for]]
 == Pour quels types de serveurs la vérification de révocation sera-t-elle activée ?
 
 La baie de stockage effectue une vérification de révocation chaque fois qu'elle se connecte à un AutoSupport serveur, un serveur de gestion de clés externes (EKMS), un serveur Lightweight Directory Access Protocol over SSL (LDAPS), ou un serveur Syslog.

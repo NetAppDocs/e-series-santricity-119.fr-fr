@@ -22,6 +22,7 @@ L'utilisation de certificats signés par une autorité de certification (CA) est
 
 
 
+[[step-1-complete-a-csr-file]]
 == Étape 1 : Complétez un fichier CSR
 
 Vous devez d'abord générer un fichier de demande de signature de certificat (CSR), qui identifie votre organisation et le système hôte sur lequel le Web Services Proxy et Unified Manager sont installés.
@@ -57,6 +58,7 @@ Vous pouvez également générer un fichier CSR à l'aide d'un outil tel que Ope
 
 
 
+[[step-2-submit-csr-file]]
 == Étape 2 : Soumettre le fichier CSR
 
 Après avoir créé un fichier de demande de signature de certificat (CSR), vous l'envoyez à une Certificate Authority (CA) pour recevoir des certificats de gestion signés pour le système hébergeant Unified Manager et le Web Services Proxy.
@@ -81,6 +83,7 @@ L'emplacement du dossier de téléchargement dépend de votre navigateur.
 
 
 
+[[step-3-import-management-certificates]]
 == Étape 3 : Importer les certificats de gestion
 
 Une fois que vous avez reçu les certificats signés de l'autorité de certification (CA), importez les certificats dans le système hôte où sont installés le Web Services Proxy et l'interface Unified Manager.

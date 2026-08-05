@@ -15,6 +15,7 @@ Vous pouvez utiliser SANtricity Unified Manager pour importer les paramètres d'
 
 
 
+[[settings-available-for-import]]
 == Paramètres disponibles pour importation
 
 Les configurations suivantes peuvent être importées sur plusieurs arrays :
@@ -40,6 +41,7 @@ Les configurations suivantes peuvent être importées sur plusieurs arrays :
 
 
 
+[[configuration-workflow]]
 == Flux de travail de configuration
 
 Pour importer les paramètres, suivez ce workflow :

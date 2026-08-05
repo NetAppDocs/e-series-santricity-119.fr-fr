@@ -16,6 +16,7 @@ Cette FAQ peut vous aider si vous cherchez simplement une réponse rapide à une
 
 
 
+[[what-do-i-need-to-know-before-creating-a-remote-storage-connection]]
 == Que dois-je savoir avant de créer une connexion de stockage distant ?
 
 Pour configurer la fonction Remote Storage, vous devez connecter directement le périphérique distant et les systèmes de stockage cibles via iSCSI.
@@ -28,6 +29,7 @@ Pour configurer la connexion système iSCSI, reportez-vous à :
 
 
 
+[[why-am-i-being-prompted-to-remove-my-remote-volumes]]
 == Pourquoi me demande-t-on de supprimer mes volumes distants ?
 
 Lorsqu'il atteint son nombre maximal de volumes distants, le système de stockage détecte automatiquement tout volume distant inutilisé et vous invite à le supprimer.
@@ -36,6 +38,7 @@ Il arrive que les volumes distants inutilisés ne soient pas supprimés lors du 
 
 
 
+[[why-dont-i-see-all-my-volumes-on-my-destination-array]]
 == Pourquoi ne vois-je pas tous mes volumes sur mon array de destination ?
 
 Lors de la configuration d'une importation pour la fonctionnalité Remote Storage, vous remarquerez peut-être que certains volumes n'apparaissent pas dans la liste des volumes de destination en raison de la taille des blocs, de la capacité ou de la disponibilité des volumes.
@@ -57,6 +60,7 @@ Les volumes candidats sont exclus de la liste s'ils ont :
 
 
 
+[[what-do-i-need-to-know-about-the-remote-volume-in-an-import]]
 == Que dois-je savoir concernant le volume distant lors d'une importation ?
 
 Lorsque vous utilisez la fonction Remote Storage, sachez que le volume distant est la source d'où proviennent les données.
@@ -65,12 +69,14 @@ Lors de l'importation, les données sont transférées du volume distant vers le
 
 
 
+[[what-do-i-need-to-know-before-starting-a-remote-storage-import]]
 == Que dois-je savoir avant de commencer une importation de stockage distant ?
 
 La fonction de stockage distant vous permet de copier des données d'un système de stockage distant vers un volume sur un système de stockage E-Series. Avant d'utiliser cette fonction, consultez les directives suivantes.
 
 
 
+[[configuration]]
 === Configuration
 
 Avant de créer l'importation depuis un stockage distant, vous devez effectuer les actions suivantes et vérifier les conditions suivantes :
@@ -92,6 +98,7 @@ Avant de créer l'importation depuis un stockage distant, vous devez effectuer l
 
 
 
+[[import-process]]
 === Processus d'importation
 
 Les étapes suivantes décrivent le processus d'importation.
@@ -114,6 +121,7 @@ Une fois l'import déconnecté, les performances du volume de destination local 
 
 
 
+[[restrictions]]
 === Restrictions
 
 La fonctionnalité de stockage à distance présente les restrictions suivantes :
@@ -132,6 +140,7 @@ La fonctionnalité de stockage à distance présente les restrictions suivantes 
 
 
 
+[[additional-information]]
 === Informations complémentaires
 
 Des informations supplémentaires concernant la fonctionnalité de stockage à distance sont disponibles auprès du https://www.netapp.com/pdf.html?item=/media/28697-tr-4893-deploy.pdf["Rapport technique sur le stockage à distance"^].

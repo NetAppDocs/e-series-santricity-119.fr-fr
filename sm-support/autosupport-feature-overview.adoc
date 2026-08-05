@@ -19,6 +19,7 @@ AutoSupport data comprend des informations sur la configuration, l'état, les pe
 
 
 
+[[key-benefits]]
 == Principaux avantages
 
 Certains avantages clés de la fonctionnalité AutoSupport incluent :
@@ -33,6 +34,7 @@ Certains avantages clés de la fonctionnalité AutoSupport incluent :
 
 
 
+[[individual-autosupport-features]]
 == Fonctionnalités individuelles AutoSupport
 
 La fonctionnalité AutoSupport est composée de trois fonctionnalités individuelles que vous activez séparément.
@@ -44,6 +46,7 @@ La fonctionnalité AutoSupport est composée de trois fonctionnalités individue
 
 
 
+[[difference-between-autosupport-and-collect-support-data]]
 == Différence entre AutoSupport et Collecte de données de support
 
 Il existe deux méthodes de collecte des données de support dans la baie de stockage :

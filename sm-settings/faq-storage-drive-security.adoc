@@ -16,6 +16,7 @@ Cette FAQ peut vous aider si vous cherchez simplement une réponse rapide à une
 
 
 
+[[what-do-i-need-to-know-before-creating-a-security-key]]
 == Que dois-je savoir avant de créer une clé de sécurité ?
 
 Une clé de sécurité est partagée par les contrôleurs et les disques sécurisés au sein d'une baie de stockage. Si un disque sécurisé est retiré de la baie de stockage, la clé de sécurité protège les données contre tout accès non autorisé.
@@ -28,6 +29,7 @@ Vous pouvez créer et gérer des clés de sécurité en utilisant l'une des mét
 
 
 
+[[internal-key-management]]
 === Gestion des clés internes
 
 Les clés internes sont conservées et « cachées » dans un emplacement inaccessible de la mémoire persistante du contrôleur. Avant de créer une clé de sécurité interne, vous devez effectuer les opérations suivantes :
@@ -40,6 +42,7 @@ Vous pouvez ensuite créer une clé de sécurité interne, ce qui implique de d�
 
 
 
+[[external-key-management]]
 === Gestion des clés externes
 
 Les clés externes sont gérées sur un serveur de gestion de clés distinct, en utilisant le protocole Key Management Interoperability Protocol (KMIP). Avant de créer une clé de sécurité externe, vous devez effectuer les opérations suivantes :
@@ -60,12 +63,14 @@ Vous pouvez ensuite créer une clé externe, ce qui implique de définir l'adres
 
 
 
+[[why-do-i-need-to-define-a-pass-phrase]]
 == Pourquoi dois-je définir une phrase de passe ?
 
 La phrase de passe sert à chiffrer et déchiffrer le fichier de clé de sécurité stocké sur le client de gestion local. Sans la phrase de passe, la clé de sécurité ne peut être déchiffrée et utilisée pour déverrouiller les données d'un disque sécurisé si celui-ci est réinstallé dans une autre baie de stockage.
 
 
 
+[[why-is-it-important-to-record-security-key-information]]
 == Pourquoi est-il important d'enregistrer les informations de clé de sécurité ?
 
 Si vous perdez les informations de la clé de sécurité et que vous n'en avez pas de sauvegarde, vous pourriez perdre des données lors du déplacement de disques sécurisés ou de la mise à niveau d'un contrôleur. Vous avez besoin de la clé de sécurité pour déverrouiller les données sur les disques.
@@ -74,6 +79,7 @@ Veillez à noter l'identifiant de la clé de sécurité, la phrase secrète asso
 
 
 
+[[what-do-i-need-to-know-before-backing-up-a-security-key]]
 == Que dois-je savoir avant de sauvegarder une clé de sécurité ?
 
 Si votre clé de sécurité d'origine est corrompue et que vous n'en avez pas de sauvegarde, vous perdrez l'accès aux données sur les disques s'ils sont migrés d'une baie de stockage à une autre.
@@ -99,6 +105,7 @@ Il ne faut pas confondre la phrase de passe de Drive Security avec le mot de pas
 
 
 
+[[what-do-i-need-to-know-before-unlocking-secure-drives]]
 == Que dois-je savoir avant de déverrouiller des lecteurs sécurisés ?
 
 Pour déverrouiller les données d'un disque avec la sécurité activée, vous devez importer sa clé de sécurité.
@@ -113,6 +120,7 @@ Avant de déverrouiller des disques sécurisés, gardez à l'esprit les consigne
 
 
 
+[[what-is-readwrite-accessibility]]
 == Qu’est-ce que l'accessibilité en lecture/écriture ?
 
 La fenêtre Paramètres du lecteur contient des informations sur les attributs de sécurité du lecteur. « Accès en lecture/écriture » est l’un des attributs qui s’affiche si les données d’un lecteur ont été verrouillées.
@@ -121,6 +129,7 @@ Pour afficher les attributs de sécurité du lecteur, accédez à la page Matér
 
 
 
+[[what-do-i-need-to-know-about-validating-the-security-key]]
 == Que dois-je savoir sur la validation de la clé de sécurité ?
 
 Après avoir créé une clé de sécurité, vous devez valider le fichier de clé pour vous assurer qu'il n'est pas corrompu.
@@ -134,6 +143,7 @@ Si la validation échoue, procédez comme suit :
 
 
 
+[[what-is-the-difference-between-internal-security-key-and-external-security-key-management]]
 == Quelle est la différence entre la clé de sécurité interne et la gestion externe des clés de sécurité ?
 
 Lorsque vous mettez en œuvre la fonction Drive Security, vous pouvez utiliser une clé de sécurité interne ou une clé de sécurité externe pour verrouiller les données lorsqu'un disque sécurisé est retiré de la baie de stockage.

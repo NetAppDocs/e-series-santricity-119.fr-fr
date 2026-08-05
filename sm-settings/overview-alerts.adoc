@@ -16,6 +16,7 @@ Vous pouvez configurer SANtricity System Manager pour envoyer des alertes de la 
 
 
 
+[[what-are-alerts]]
 == Que sont les alertes
 
 _Alerts_ informent les administrateurs des événements importants survenant sur la baie de stockage. Les événements peuvent inclure des problèmes tels qu'une panne de batterie, le passage d'un composant de l'état Optimal à Hors ligne, ou des erreurs de redondance au niveau du contrôleur. Tous les événements Critiques sont considérés comme « alertables », ainsi que certains événements d'Avertissement et d'Information.
@@ -28,6 +29,7 @@ En savoir plus :
 
 
 
+[[how-do-i-configure-alerts]]
 == Comment configurer les alertes ?
 
 Vous pouvez configurer les alertes pour qu'elles soient envoyées sous forme de message à une ou plusieurs adresses e-mail, sous forme de trap SNMP à un serveur SNMP, ou sous forme de message à un serveur syslog. La configuration des alertes est disponible à partir du menu : Paramètres[Alertes].
@@ -41,6 +43,7 @@ En savoir plus :
 
 
 
+[[related-information]]
 == Informations connexes
 
 Apprenez-en davantage sur les concepts liés aux alertes :

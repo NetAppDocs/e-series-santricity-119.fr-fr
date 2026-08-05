@@ -16,6 +16,7 @@ Cette FAQ peut vous aider si vous cherchez simplement une réponse rapide à une
 
 
 
+[[why-cant-i-log-in]]
 == Pourquoi je n'arrive pas à me connecter
 
 Si vous recevez une erreur lors de votre tentative de connexion à SANtricity System Manager, examinez ces causes possibles.
@@ -39,6 +40,7 @@ Des erreurs de connexion à une baie de stockage distante pour les tâches de mi
 
 
 
+[[what-do-i-need-to-know-before-adding-a-directory-server]]
 == Que dois-je savoir avant d'ajouter un serveur d'annuaire ?
 
 Avant d'ajouter un serveur d'annuaire dans la gestion des accès, assurez-vous de respecter les exigences suivantes.
@@ -50,6 +52,7 @@ Avant d'ajouter un serveur d'annuaire dans la gestion des accès, assurez-vous d
 
 
 
+[[what-do-i-need-to-know-about-mapping-to-storage-array-roles]]
 == Que dois-je savoir sur le mappage aux rôles des baies de stockage ?
 
 Avant d'associer des groupes à des rôles, examinez les directives suivantes.
@@ -64,6 +67,7 @@ Les fonctionnalités RBAC (contrôle d'accès basé sur les rôles) intégrées 
 
 
 
+[[directory-services]]
 === Services d'annuaire
 
 Si vous utilisez un serveur LDAP (Lightweight Directory Access Protocol) et Directory Services, assurez-vous que :
@@ -80,6 +84,7 @@ Si vous utilisez un serveur LDAP (Lightweight Directory Access Protocol) et Dire
 
 
 
+[[saml]]
 === SAML
 
 Si vous utilisez les fonctionnalités Security Assertion Markup Language (SAML) intégrées à la baie de stockage, assurez-vous que :
@@ -97,12 +102,14 @@ Si vous utilisez les fonctionnalités Security Assertion Markup Language (SAML) 
 
 
 
+[[which-external-management-tools-may-be-affected-by-this-change]]
 == Quels outils de gestion externes peuvent être affectés par ce changement ?
 
 Lorsque vous effectuez certaines modifications dans SANtricity System Manager, comme le changement de l'interface de gestion ou l'utilisation de SAML comme méthode d'authentification, certains outils et fonctionnalités externes peuvent être restreints.
 
 
 
+[[management-interface]]
 === Interface de gestion
 
 Les outils qui communiquent directement avec l'interface de gestion héritée (SYMbol), tels que le SANtricity SMI-S Provider ou OnCommand Insight (OCI), ne fonctionnent pas à moins que le paramètre Interface de gestion héritée ne soit activé. De plus, vous ne pouvez pas utiliser les commandes CLI héritées ni effectuer d'opérations de mise en miroir si ce paramètre est désactivé.
@@ -111,6 +118,7 @@ Contactez le support technique pour plus d'informations.
 
 
 
+[[saml-authentication]]
 === Authentification SAML
 
 Lorsque SAML est activé, les clients suivants ne peuvent pas accéder aux services et ressources de la baie de stockage :
@@ -127,12 +135,14 @@ Contactez le support technique pour plus d'informations.
 
 
 
+[[what-do-i-need-to-know-before-configuring-and-enabling-saml]]
 == Que dois-je savoir avant de configurer et d'activer SAML ?
 
 Avant de configurer et d'activer les fonctionnalités du Security Assertion Markup Language (SAML) pour l'authentification, assurez-vous de respecter les exigences suivantes et de comprendre les restrictions SAML.
 
 
 
+[[requirements]]
 === Exigences
 
 Avant de commencer, assurez-vous que :
@@ -147,6 +157,7 @@ Avant de commencer, assurez-vous que :
 
 
 
+[[restrictions]]
 === Restrictions
 
 En plus des exigences mentionnées ci-dessus, assurez-vous de bien comprendre les restrictions suivantes :
@@ -168,6 +179,7 @@ En plus des exigences mentionnées ci-dessus, assurez-vous de bien comprendre le
 
 
 
+[[what-types-of-events-are-recorded-in-the-audit-log]]
 == Quels types d'événements sont enregistrés dans le journal des audits ?
 
 Le journal des audits peut enregistrer les événements de modification, ou les événements de modification et en lecture seule.
@@ -180,6 +192,7 @@ En fonction des paramètres de stratégie, les types d'événements suivants son
 
 
 
+[[what-do-i-need-to-know-before-configuring-a-syslog-server]]
 == Que dois-je savoir avant de configurer un serveur syslog ?
 
 Vous pouvez archiver les journaux des audits sur un serveur syslog externe.
@@ -195,6 +208,7 @@ Avant de configurer un serveur syslog, gardez à l'esprit les consignes suivante
 
 
 
+[[the-syslog-server-is-no-longer-receiving-audit-logs-what-do-i-do]]
 == Le serveur syslog ne reçoit plus les journaux d'audit. Que dois-je faire ?
 
 Si vous avez configuré un serveur syslog avec un protocole TLS, le serveur ne peut pas recevoir de messages si le certificat devient invalide pour quelque raison que ce soit. Un message d'erreur concernant le certificat invalide est consigné dans le journal des audits.

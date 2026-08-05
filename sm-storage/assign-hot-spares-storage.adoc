@@ -64,6 +64,7 @@ Le disque est affiché en rose sur la page Matériel, ce qui indique qu'il est d
 
 
 
+[[results]]
 == Résultats
 
 Si un disque appartenant à un groupe de volumes RAID 1, RAID 5 ou RAID 6 tombe en panne, le contrôleur utilise automatiquement les données de redondance pour reconstruire les données du disque défaillant sur le disque de secours.

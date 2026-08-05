@@ -15,6 +15,7 @@ Depuis la page Manage Groups, vous pouvez créer un ensemble de groupes de baies
 
 
 
+[[what-are-array-groups]]
 == Que sont les groupes de tableaux ?
 
 Vous pouvez gérer votre infrastructure physique et virtualisée en regroupant un ensemble de baies de stockage. Vous pourriez vouloir regrouper des baies de stockage pour faciliter l'exécution de tâches de surveillance ou de génération de rapports.
@@ -27,6 +28,7 @@ Il existe deux types de groupes :
 
 
 
+[[how-do-i-configure-groups]]
 == Comment configurer les groupes ?
 
 Depuis la page Manage Groups, vous pouvez créer un groupe puis y ajouter des arrays.

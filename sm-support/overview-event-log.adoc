@@ -17,6 +17,7 @@ Vous pouvez utiliser le journal des événements comme outil de diagnostic compl
 
 
 
+[[event-categories]]
 == Catégories d'événements
 
 Les événements du journal des événements sont classés avec différents statuts. Les événements nécessitant une intervention de votre part présentent les statuts suivants :
@@ -32,6 +33,7 @@ Les événements qui sont informatifs et ne nécessitent aucune action immédiat
 
 
 
+[[critical-events]]
 == Événements critiques
 
 Les événements critiques indiquent un problème avec la baie de stockage. Si vous résolvez immédiatement l'événement critique, vous pourriez éviter une perte d'accès aux données.

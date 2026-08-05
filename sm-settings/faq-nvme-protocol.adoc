@@ -16,6 +16,7 @@ Cette FAQ peut vous aider si vous cherchez simplement une réponse rapide à une
 
 
 
+[[how-do-i-interpret-nvme-over-fabrics-statistics]]
 == Comment interpréter les statistiques NVMe over Fabrics ?
 
 La boîte de dialogue Statistiques NVMe over Fabrics affiche les statistiques du sous-système NVMe et de l'interface RDMA. Toutes les statistiques sont en lecture seule et ne peuvent pas être définies.
@@ -28,6 +29,7 @@ Vous pouvez consulter chacune de ces statistiques sous forme de statistiques bru
 
 
 
+[[what-else-do-i-need-to-do-to-configure-or-diagnose-nvme-over-infiniband]]
 == Que dois-je faire d'autre pour configurer ou diagnostiquer NVMe over InfiniBand ?
 
 Le tableau suivant répertorie les fonctions de SANtricity System Manager que vous pouvez utiliser pour configurer et gérer les sessions NVMe over InfiniBand.
@@ -69,6 +71,7 @@ Afficher les statistiques NVMe over InfiniBand
 |===
 
 
+[[what-else-do-i-need-to-do-to-configure-or-diagnose-nvme-over-roce]]
 == Que dois-je faire d'autre pour configurer ou diagnostiquer NVMe over RoCE ?
 
 Vous pouvez configurer et gérer NVMe over RoCE depuis les pages Matériel et Paramètres.
@@ -110,6 +113,7 @@ Afficher les statistiques NVMe over Fabrics
 |===
 
 
+[[why-are-there-two-ip-addresses-for-one-physical-port]]
 == Pourquoi y a-t-il deux adresses IP pour un seul port physique ?
 
 La baie de stockage EF600 peut inclure deux HIC : une externe et une interne.
@@ -120,6 +124,7 @@ Pour atteindre des performances maximales de 200Gb, vous devez attribuer une adr
 
 
 
+[[why-are-there-two-sets-of-parameters-for-one-physical-port]]
 == Pourquoi existe-t-il deux ensembles de paramètres pour un port physique ?
 
 La baie de stockage EF600 peut inclure deux HIC : une externe et une interne.

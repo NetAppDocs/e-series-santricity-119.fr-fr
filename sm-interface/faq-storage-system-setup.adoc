@@ -16,6 +16,7 @@ Cette FAQ peut vous aider si vous cherchez simplement une réponse rapide à une
 
 
 
+[[what-if-i-dont-see-all-of-my-hardware-components]]
 == Que se passe-t-il si je ne vois pas tous mes composants matériels ?
 
 Si vous ne voyez pas tous vos composants matériels dans la boîte de dialogue Vérifier le matériel, cela peut signifier qu'une baie de disques n'est pas correctement connectée ou qu'une baie incompatible est installée dans la storage array.
@@ -24,6 +25,7 @@ Vérifiez que tous les châssis de disques sont correctement connectés. Si vous
 
 
 
+[[what-if-i-dont-see-all-of-my-hosts]]
 == Que faire si je ne vois pas tous mes hôtes ?
 
 Si vous ne voyez pas vos hôtes connectés, la détection automatique a échoué, les hôtes sont mal connectés ou aucun hôte n'est actuellement connecté.
@@ -36,6 +38,7 @@ Vous pouvez configurer les hôtes ultérieurement, une fois l'installation termi
 
 
 
+[[how-does-identifying-applications-help-me-manage-my-storage-array]]
 == Comment l'identification des applications m'aide-t-elle à gérer ma baie de stockage ?
 
 Lorsque vous identifiez des applications, SANtricity System Manager recommande automatiquement une configuration de volume qui optimise le stockage des données en fonction du type d'application.
@@ -44,6 +47,7 @@ L'optimisation des volumes par application peut rendre les opérations de stocka
 
 
 
+[[what-is-a-workload]]
 == Qu'est-ce qu'une charge de travail ?
 
 Pour certaines applications de votre réseau, telles que SQL Server ou Exchange, vous pouvez définir une charge de travail qui optimise le stockage pour cette application.
@@ -54,6 +58,7 @@ Lors de la création d'un volume, le système vous invite à répondre à des qu
 
 
 
+[[how-do-i-configure-the-delivery-method-for-autosupport]]
 == Comment configurer la méthode de livraison pour AutoSupport ?
 
 Pour accéder aux tâches de configuration des méthodes de livraison AutoSupport, allez dans le menu : Support [Support Center], puis cliquez sur l’onglet *AutoSupport*.
@@ -62,6 +67,7 @@ Les protocoles suivants sont pris en charge : HTTPS et SMTP.
 
 
 
+[[how-do-i-know-if-i-should-accept-the-recommended-pool-configuration]]
 == Comment savoir si je dois accepter la configuration de pool recommandée ?
 
 Le fait d'accepter ou non la configuration de pool recommandée dépend de plusieurs facteurs.
@@ -77,6 +83,7 @@ Si vous avez répondu Oui à l'une de ces questions, envisagez de rejeter la con
 
 
 
+[[santricity-system-manager-has-not-detected-any-hosts-what-do-i-do]]
 == SANtricity System Manager n'a détecté aucun hôte. Que dois-je faire ?
 
 Si vous ne voyez pas vos hôtes connectés, la détection automatique a échoué, les hôtes sont mal connectés ou aucun hôte n'est actuellement connecté.

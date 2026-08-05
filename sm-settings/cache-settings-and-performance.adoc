@@ -24,6 +24,7 @@ Les paramètres de cache par défaut répondent aux exigences de la plupart des 
 
 
 
+[[storage-array-cache-settings]]
 == Paramètres de cache de la baie de stockage
 
 Pour tous les volumes de la baie de stockage, vous pouvez spécifier les valeurs suivantes depuis la page Système :
@@ -34,6 +35,7 @@ Pour tous les volumes de la baie de stockage, vous pouvez spécifier les valeurs
 
 
 
+[[volume-cache-settings]]
 == Paramètres du cache de volume
 
 Pour chaque volume d'une baie de stockage, vous pouvez spécifier les valeurs suivantes à partir de la page Volumes (menu:Storage[Volumes]):

@@ -21,12 +21,14 @@ Pour gérer facilement les opérations de snapshot des volumes de base, vous pou
 
 
 
+[[snapshot-schedule]]
 == Calendrier des snapshots
 
 Si vous souhaitez prendre automatiquement des instantanés pour un volume de base, vous pouvez créer une planification. Par exemple, vous pouvez définir une planification qui prend des images d’instantané chaque samedi à minuit, le premier de chaque mois, ou à toute date et heure que vous décidez. Après que le maximum de 32 instantanés est atteint pour une seule planification, vous pouvez suspendre les instantanés planifiés, créer plus de capacité réservée, ou supprimer des instantanés. Les instantanés peuvent être supprimés manuellement ou en automatisant le processus de suppression. Après la suppression d’une image d’instantané, une capacité réservée supplémentaire est disponible pour une nouvelle utilisation.
 
 
 
+[[snapshot-consistency-group]]
 == groupe de cohérence de snapshot
 
 Vous créez un groupe de cohérence d'instantanés lorsque vous souhaitez garantir que des images d'instantanés sont prises sur plusieurs volumes en même temps. Les actions sur les images d'instantanés sont effectuées sur l'ensemble du groupe de cohérence d'instantanés. Par exemple, vous pouvez planifier des instantanés synchronisés de tous les volumes avec le même horodatage. Les groupes de cohérence d'instantanés sont idéaux pour les applications qui s'étendent sur plusieurs volumes, telles que les applications de base de données qui stockent les journaux sur un volume et les fichiers de base de données sur un autre volume.

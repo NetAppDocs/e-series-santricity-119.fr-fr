@@ -50,6 +50,7 @@ volumes minces
 |===
 
 
+[[thin-volume-restrictions]]
 == Restrictions de volume minces
 
 Les volumes minces prennent en charge toutes les opérations que prennent en charge les volumes épais, à l’exception des opérations suivantes :

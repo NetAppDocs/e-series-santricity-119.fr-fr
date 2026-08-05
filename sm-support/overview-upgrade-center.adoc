@@ -16,12 +16,14 @@ Utilisez le Centre de mise à niveau pour télécharger les derniers logiciels e
 
 
 
+[[controller-upgrade-overview]]
 == Aperçu de la mise à niveau du contrôleur
 
 Vous pouvez mettre à niveau le logiciel et le firmware de votre baie de stockage pour bénéficier de toutes les dernières fonctionnalités et corrections de bugs.
 
 
 
+[[components-included-in-the-os-controller-upgrade]]
 === Composants inclus dans la mise à niveau du contrôleur du système d'exploitation
 
 Plusieurs composants des baies de stockage contiennent des logiciels ou du matériel que vous pourriez souhaiter mettre à niveau occasionnellement.
@@ -43,12 +45,14 @@ Dans le cadre du processus de mise à niveau, il peut être nécessaire de mettr
 
 
 
+[[when-to-stop-io]]
 === Quand arrêter les E/S
 
 Si votre baie de stockage comporte deux contrôleurs et qu'un pilote multipath est installé, la baie de stockage peut continuer à traiter les E/S pendant la mise à niveau. Pendant la mise à niveau, le contrôleur A bascule tous ses volumes vers le contrôleur B, effectue la mise à niveau, récupère ses volumes ainsi que tous les volumes du contrôleur B, puis met à niveau le contrôleur B.
 
 
 
+[[pre-upgrade-health-check]]
 === Vérification de l'état avant la mise à niveau
 
 Une vérification de l'état préalable à la mise à niveau est exécutée dans le cadre du processus de mise à niveau. La vérification de l'état préalable à la mise à niveau évalue tous les composants de la baie de stockage afin de garantir que la mise à niveau peut se dérouler. Les conditions suivantes peuvent empêcher la mise à niveau :
@@ -68,12 +72,14 @@ Vous pouvez également exécuter la vérification de l'état séparément, sans 
 
 
 
+[[drive-upgrade-overview]]
 == Aperçu de la mise à niveau du disque
 
 Le firmware contrôle les caractéristiques de fonctionnement de bas niveau d'un disque. Périodiquement, les fabricants de disques publient des mises à jour du firmware pour ajouter de nouvelles fonctionnalités, améliorer les performances et corriger des défauts.
 
 
 
+[[online-and-offline-drive-firmware-upgrades]]
 === Mises à niveau du firmware des disques en ligne et hors ligne
 
 Il existe deux types de méthodes de mise à niveau du firmware des disques : en ligne et hors ligne.
@@ -113,6 +119,7 @@ Les lecteurs suivants DOIVENT utiliser la méthode hors ligne :
 
 
 
+[[compatibility]]
 === Compatibilité
 
 Chaque fichier de firmware de disque contient des informations sur le type de disque sur lequel le firmware s'exécute. Vous pouvez télécharger le fichier de firmware spécifié uniquement sur un disque compatible. System Manager vérifie automatiquement la compatibilité lors du processus de mise à niveau.

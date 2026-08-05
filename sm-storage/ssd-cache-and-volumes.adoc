@@ -15,6 +15,7 @@ Vous pouvez ajouter un volume au SSD Cache pour améliorer les performances en l
 
 
 
+[[volumes]]
 == Volumes
 
 Des mécanismes d'E/S de volume simples sont utilisés pour déplacer les données vers et depuis le SSD Cache. Une fois les données mises en cache et stockées sur les SSD, les lectures suivantes de ces données sont effectuées sur le SSD Cache, ce qui évite d'accéder au volume du HDD.
@@ -34,6 +35,7 @@ Tout volume affecté à l'utilisation du cache SSD d'un contrôleur n'est pas é
 ====
 
 
+[[drive-security-feature]]
 == Fonction de sécurité du lecteur
 
 Pour utiliser le cache SSD sur un volume utilisant également la sécurité du disque (fonctionnalité sécurisée activée), les capacités de sécurité du disque du volume et du cache SSD doivent correspondre. Si elles ne correspondent pas, le volume ne sera pas sécurisé.

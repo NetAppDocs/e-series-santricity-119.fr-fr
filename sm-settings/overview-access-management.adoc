@@ -16,6 +16,7 @@ La gestion des accès est une méthode permettant d'établir l'authentification 
 
 
 
+[[what-authentication-methods-are-available]]
 == Quelles méthodes d'authentification sont disponibles ?
 
 Les méthodes d'authentification comprennent le RBAC (role-based access control), les services d'annuaire et le Security Assertion Markup Language (SAML) :
@@ -37,6 +38,7 @@ En savoir plus :
 
 
 
+[[how-do-i-configure-authentication]]
 == Comment configurer l'authentification ?
 
 La baie de stockage est préconfigurée pour utiliser les rôles d'utilisateurs locaux, qui sont une implémentation des capacités RBAC. Si vous souhaitez configurer une méthode différente, allez dans menu:Paramètres[Gestion des accès].
@@ -49,6 +51,7 @@ En savoir plus :
 
 
 
+[[related-information]]
 == Informations connexes
 
 Apprenez-en davantage sur les tâches liées à la gestion des accès :

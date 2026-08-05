@@ -16,6 +16,7 @@ Cette FAQ peut vous aider si vous cherchez simplement une réponse rapide à une
 
 
 
+[[why-dont-i-see-all-my-volumes-hosts-or-host-clusters]]
 == Pourquoi ne vois-je pas tous mes volumes, hôtes ou groupes d'hôtes ?
 
 Les volumes de snapshot avec un volume de base activé DA ne peuvent pas être attribués à un hôte qui n'est pas compatible Data Assurance (DA). Vous devez désactiver DA sur le volume de base avant qu'un volume de snapshot puisse être attribué à un hôte qui n'est pas compatible DA.
@@ -33,6 +34,7 @@ Vous ne pouvez pas désactiver DA sur un volume associé à des instantanés (gr
 ====
 
 
+[[what-is-a-snapshot-image]]
 == Qu'est-ce qu'une image instantanée ?
 
 Une image instantanée est une copie logique du contenu d'un volume, capturée à un instant précis. Les images instantanées utilisent un espace de stockage minimal.
@@ -45,6 +47,7 @@ Les données des images instantanées sont stockées comme suit :
 
 
 
+[[why-use-snapshot-images]]
 == Pourquoi utiliser des images instantanées ?
 
 Vous pouvez utiliser des instantanés pour vous protéger contre la perte ou la corruption accidentelle ou malveillante de données et permettre la récupération.
@@ -61,12 +64,14 @@ Le système conserve plusieurs images instantanées servant de points de restaur
 
 
 
+[[what-kinds-of-volumes-can-be-used-for-snapshots]]
 == Quels types de volumes peuvent être utilisés pour les instantanés ?
 
 Seuls les volumes standard et les volumes fins peuvent être utilisés pour stocker des images instantanées. Les volumes non standard ne peuvent pas être utilisés. Le volume de base peut résider soit sur un pool, soit sur un groupe de volumes.
 
 
 
+[[why-would-i-create-a-snapshot-consistency-group]]
 == Pourquoi créerais-je un groupe de cohérence ?
 
 Vous créez un groupe de cohérence d'instantanés lorsque vous souhaitez vous assurer que des images d'instantanés sont prises sur plusieurs volumes en même temps.
@@ -85,6 +90,7 @@ Vous pouvez effectuer les opérations d'instantané suivantes sur un groupe de c
 
 
 
+[[what-is-a-snapshot-volume-and-when-does-it-need-reserved-capacity]]
 == Qu'est-ce qu'un volume de snapshot et quand a-t-il besoin de capacité réservée ?
 
 Un volume de snapshot permet à l'hôte d'accéder aux données de l'image snapshot. Le volume de snapshot possède sa propre capacité réservée, qui enregistre toute modification apportée au volume de base sans affecter l'image snapshot originale. Les images snapshot ne sont pas accessibles en lecture ou en écriture par les hôtes. Si vous souhaitez lire ou écrire des données de snapshot, créez un volume de snapshot et assignez-le à un hôte.
@@ -97,6 +103,7 @@ Vous pouvez créer deux types de volumes d'instantané. Le type de volume d'inst
 
 
 
+[[what-is-a-snapshot-group]]
 == Qu'est-ce qu'un groupe d'instantané ?
 
 Un groupe d'instantanés est une collection d'images instantanées à un instant donné d'un seul volume de base associé.
@@ -109,6 +116,7 @@ System Manager organise les images instantanées en . Les groupes d'instantanés
 
 
 
+[[why-would-i-disable-a-snapshot-volume]]
 == Pourquoi désactiverais-je un volume de snapshot ?
 
 Vous désactivez un volume de snapshot lorsque vous souhaitez attribuer un autre volume de snapshot à l'image de snapshot. Vous pouvez réserver le volume de snapshot désactivé pour une utilisation ultérieure.
@@ -117,6 +125,7 @@ Si vous n'avez plus besoin du volume d'instantané ou du volume d'instantané du
 
 
 
+[[what-is-the-disabled-state]]
 == Qu’est-ce que l’état Désactivé ?
 
 Un volume de snapshot en statut Désactivé n'est actuellement associé à aucune image de snapshot. Pour activer le volume de snapshot, vous devez utiliser l'opération de recréation pour associer une nouvelle image de snapshot au volume de snapshot désactivé.
@@ -125,6 +134,7 @@ Les caractéristiques du volume de snapshot sont définies par l'image de snapsh
 
 
 
+[[why-would-i-suspend-a-snapshot-schedule]]
 == Pourquoi suspendrais-je une planification d'instantanés ?
 
 Lorsqu'une planification est suspendue, la création des images d'instantanés planifiées n'a pas lieu. Vous pouvez mettre en pause une planification d'instantanés pour économiser de l'espace de stockage, puis reprendre les instantanés planifiés ultérieurement.

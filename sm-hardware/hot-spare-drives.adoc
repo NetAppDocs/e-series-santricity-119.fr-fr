@@ -24,12 +24,14 @@ Les disques de secours à chaud ne sont pas dédiés à des groupes de volumes s
 
 
 
+[[how-to-identify-hot-spares]]
 == Comment identifier les hot spares
 
 Vous pouvez attribuer des disques de secours via l'assistant de configuration initiale ou depuis la page Matériel. Pour déterminer si des disques de secours sont attribués, allez à la page Matériel et recherchez les baies de disques affichées en rose.
 
 
 
+[[how-hot-spare-coverage-works]]
 == Comment fonctionne la couverture de secours
 
 La couverture des pièces de rechange à chaud fonctionne comme suit :
@@ -49,6 +51,7 @@ Les disques de secours à chaud ne peuvent pas être utilisés pour les pools, q
 
 
 
+[[considerations-for-hot-spare-drive-capacity]]
 == Considérations relatives à la capacité du disque de secours à chaud
 
 Sélectionnez un disque dont la capacité est égale ou supérieure à la capacité totale du disque que vous souhaitez protéger. Par exemple, si vous disposez d’un disque de 18 Gio avec une capacité configurée de 8 Gio, vous pouvez utiliser un disque de 9 Gio ou plus comme disque de secours. En règle générale, n’assignez pas un disque comme disque de secours à moins que sa capacité ne soit égale ou supérieure à celle du disque le plus volumineux de la baie de stockage.
@@ -60,12 +63,14 @@ Si aucun disque de rechange à chaud de même capacité physique n'est disponibl
 ====
 
 
+[[considerations-for-media-and-interface-types]]
 == Considérations relatives aux types de médias et d'interfaces
 
 Le disque utilisé comme disque de secours à chaud doit être du même type de support et du même type d'interface que les disques qu'il protégera. Par exemple, un disque dur (HDD) ne peut pas servir de disque de secours à chaud pour des disques SSD.
 
 
 
+[[considerations-for-secure-capable-drives]]
 == Considérations relatives aux disques sécurisés
 
 Un disque compatible avec la sécurité, tel que FDE ou FIPS, peut servir de disque de secours à chaud pour des disques avec ou sans capacités de sécurité. Cependant, un disque qui n'est pas compatible avec la sécurité ne peut pas servir de disque de secours à chaud pour des disques avec des capacités de sécurité.
@@ -79,6 +84,7 @@ Lorsque vous activez la fonction Drive Security, puis créez un pool ou un group
 ====
 
 
+[[recommended-number-of-hot-spare-drives]]
 == Nombre recommandé de disques de secours à chaud
 
 Si vous avez utilisé l'assistant de configuration initiale pour créer automatiquement des disques de secours, System Manager crée un disque de secours pour chaque groupe de 30 disques d'un type de support et d'interface particulier. Sinon, vous pouvez créer manuellement des disques de secours parmi les groupes de volumes de la baie de stockage.

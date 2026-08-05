@@ -15,6 +15,7 @@ La page Matériel présente une représentation graphique des composants physiqu
 
 
 
+[[shelves]]
 == Tiroirs
 
 Une étagère est un composant qui contient le matériel de la baie de stockage (contrôleurs, modules d'alimentation/ventilateurs et disques). Il existe deux types d'étagères :
@@ -41,6 +42,7 @@ Vous pouvez effectuer les fonctions suivantes relatives aux shelves :
 
 
 
+[[controllers]]
 == Contrôleurs
 
 Un contrôleur est l'ensemble matériel et micrologiciel qui implémente les fonctions de gestion et de traitement des baies de stockage. Il comprend la mémoire cache, la prise en charge des disques et la prise en charge de l'interface d'hôte.
@@ -57,6 +59,7 @@ Vous pouvez effectuer les fonctions suivantes liées aux contrôleurs :
 
 
 
+[[drives]]
 == Disques
 
 La baie de stockage peut inclure des disques durs (HDD) ou des disques SSD (SSD). Selon la taille du tiroir, jusqu'à 12, 24 ou 60 disques peuvent être installés dans le tiroir.

@@ -19,6 +19,7 @@ Lors de la création d'un volume, le système vous invite à répondre à des qu
 
 
 
+[[types-of-workloads]]
 == Types de charges de travail
 
 Vous pouvez créer deux types de charges de travail : charge de travail applicative et Autres.
@@ -39,6 +40,7 @@ Vous pouvez consulter la configuration de volume recommandée et modifier, ajout
 
 
 
+[[application-and-workload-views]]
 == Vues d'application et de charge de travail
 
 Pour afficher les applications et les charges de travail, lancez SANtricity System Manager. Depuis cette interface, vous pouvez consulter les informations associées à une charge de travail applicative spécifique de plusieurs manières :

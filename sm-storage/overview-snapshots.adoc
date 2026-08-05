@@ -16,6 +16,7 @@ La fonction Snapshot vous permet de créer des images à un instant précis des 
 
 
 
+[[what-are-snapshot-images]]
 == Que sont les images instantanées ?
 
 Une _image instantanée_ est une copie logique des données de volume, capturée à un moment précis. Comme un point de restauration, les images instantanées vous permettent de revenir à un jeu de données correct connu. Bien que l'hôte puisse accéder à l'image instantanée, il ne peut pas directement lire ou écrire dessus.
@@ -31,6 +32,7 @@ En savoir plus :
 
 
 
+[[how-do-i-create-snapshots]]
 == Comment créer des instantanés ?
 
 Vous pouvez créer manuellement une image instantanée à partir d'un volume de base ou d'un groupe de cohérence de snapshot. Cette procédure est disponible à partir du menu:Storage[Snapshots].
@@ -47,6 +49,7 @@ En savoir plus :
 
 
 
+[[how-do-i-roll-back-data-from-a-snapshot]]
 == Comment puis-je restaurer des données à partir d'un instantané ?
 
 Un  est le processus de retour des données d'un volume de base à un point antérieur dans le temps. Vous pouvez effectuer un rollback des données d'instantané depuis menu:Storage[Snapshots].
@@ -60,6 +63,7 @@ En savoir plus :
 
 
 
+[[related-information]]
 == Informations connexes
 
 En savoir plus sur les tâches liées aux instantanés :
