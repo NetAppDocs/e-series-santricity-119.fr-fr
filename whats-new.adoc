@@ -16,6 +16,13 @@ Le tableau suivant décrit les nouvelles fonctionnalités de SANtricity System M
 
 
 
+[[new-features-in-version-11-90r7]]
+== Nouvelles fonctionnalités dans la version 11.90R7
+
+Cette version corrige uniquement des bogues et n’intègre aucune nouvelle fonctionnalité. Pour plus d'informations sur les modifications de cette version, veuillez consulter le fichier README de SANtricity OS 11.90R7 E-Series.
+
+
+
 [[new-features-in-version-11-90r6]]
 == Nouvelles fonctionnalités dans la version 11.90R6
 

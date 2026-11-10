@@ -5899,7 +5899,6 @@
   <block id="945ae7820c24188a29edbd29e427962f" category="paragraph">Extension de capacité (ajout de capacité)</block>
   <block id="bd3fd623256db562bebda3e697d43452" category="paragraph">Réduction de capacité</block>
   <block id="dca785ddf6462cb2ce8d0332432fef85" category="paragraph">Les types de disques mixtes (HDD, SSD) ne sont pas pris en charge pour les pools ni pour les groupes de volumes.</block>
-  <block id="28777dded0f4b7a62c3138973e35582c" category="summary">Vous utilisez l’option « Diminuer la capacité » pour réduire la capacité réservée des objets de stockage suivants : groupe d’instantanés, volume d’instantanés et volume membre du groupe de cohérence. Vous pouvez diminuer la capacité réservée uniquement du ou des montant(s) que vous avez utilisés pour l’augmenter.</block>
   <block id="37e9db9b7a1415532978e5e59b0e1792" category="doc">Diminuer la capacité réservée dans SANtricity System Manager</block>
   <block id="115acc53492ff3d71c7e0717c01220a6" category="paragraph">L'option « Diminuer la capacité » permet de réduire la capacité réservée pour les objets de stockage suivants : groupe d'instantanés, volume d'instantanés et volume membre du groupe de cohérence. Vous pouvez diminuer la capacité réservée uniquement du ou des montant(s) que vous avez utilisés pour l'augmenter.</block>
   <block id="1d76cca7e5eb092d02723fdb9a2c1272" category="list-text">L'objet de stockage doit contenir plus d'un volume de capacité réservée.</block>
@@ -9049,4 +9048,9 @@
   <block id="24c9cd56861c16e2290412c4fe4d5a8f" category="list-text">IOM12C - v0112</block>
   <block id="818d5ca9647738ea76069fc99cf59499" category="list-text">IOM12G - v0212</block>
   <block id="9133a8b23ddd677242ee6747a18b0e24" category="list-text">DCM3 - v01.12.09.02</block>
+  <block id="fb2a0888f91c24b63218fe88807bbba3" category="summary">Vous pouvez placer un contrôleur dans trois états différents : en ligne, hors ligne et en mode service.</block>
+  <block id="49390b5788f909c095a9221fc5028cc6" category="summary">Vous pouvez effectuer un certain nombre d'actions différentes sur un volume, notamment augmenter sa capacité, le supprimer, le copier, l'initialiser, le redistribuer, en changer le propriétaire, modifier les paramètres du cache et modifier les paramètres d'analyse des supports.</block>
+  <block id="5fde626ba0e89d16805ea6acf1d0ad24" category="summary">Vous utilisez l’option « Diminuer la capacité » pour réduire la capacité réservée des groupes d’instantanés, des volumes d’instantanés et des volumes membres du groupe de cohérence. Vous pouvez diminuer la capacité réservée uniquement des montants que vous avez utilisés pour l’augmenter.</block>
+  <block id="9587f27e2d9da9b950f8b3a7d00fbad9" category="section-title">Nouvelles fonctionnalités dans la version 11.90R7</block>
+  <block id="7e2382649b16a571eb0ec2a8e1b78824" category="paragraph">Cette version corrige uniquement des bogues et n’intègre aucune nouvelle fonctionnalité. Pour plus d'informations sur les modifications de cette version, veuillez consulter le fichier README de SANtricity OS 11.90R7 E-Series.</block>
 </blocks>
